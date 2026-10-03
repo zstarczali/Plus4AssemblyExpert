@@ -1,0 +1,3277 @@
+# OCR text of bevezetes_a_commodore_plus_4-es_gepi_kodu_programozasba_i.pdf
+# Windows OCR (en-US); accents and digits may be misread (0/O, 8/B, 1/l).
+# Use it to locate pages, then open the PDF page itself to verify.
+
+--- PAGE 1 ---
+1119750   PEDXG6GlN
+i
+MÜHELY
+11.
+Gudenus Låszb
+BEVEZETÉS
+A COMMODORE
+PLUS/4-ES
+PROGRANOZÅSÅBX
+PEST ME-GYEI PEDAGÖGIAI INTÉZET
+1989
+
+--- PAGE 2 ---
+Gudenus Lész16
+BEVEZETÉS A C&+OOORE PLUS/4ÆS
+GÉPI KÖoÜ PROGRNOZÅSÅBA
+Pest Hegyei Pedag6giai Intézet
+1989
+
+--- PAGE 3 ---
+Lektorålta:
+Zoltån
+ISSN   0238 3217
+ISBN   963 01 9696 4
+1. 963 01 9697 2
+Kiedja a Pest Megyei Pedag6giai Intézet
+Fele16s kiad6: Or.Szivi J6zsef igazgat6
+Felelås szerkeszt6: Pap Jånos
+Készült a Pedag6giai Intézet
+1989—ben 2000 példånyban
+Fele16s vezet6: Mårkus Istvån
+h-jnkaszån :   / 1989. Budapest
+
+--- PAGE 4 ---
+A   TAL
+Bevezetés   2
+I.   Elåisæretek   4
+2.   A processzor   7
+3.   Irjuré< 8 képerny6ret   12
+4.   Aritmetika   25
+5.   Csillagok ,   villogés   37
+6.   Szåmljunk   tovåbb !   48
+7.   Mi mirenre hasznélhatjuk?   63
+Befejezés   73
+Utasftåståblézat   74
+Irodalom   77
+ICL - segédlet   78
+
+--- PAGE 5 ---
+S.I tai anos i S.kban fel I eI hete:   sz Ämi te.qepek   kS2Stt
+a Commodore+4—es a leggyakori bb. Ez a qep   sok
+mas Y. ivalo ajdonsaqa mel Lett   — rendel kezik eqy a ROM—ban
+gopr moni tornal , amel yet el Sbb—ut4bb mindenki ki—
+, ezzel meqtesz i az els.3 seket a gep bel ss
+fel qe•pi k.SdO programozas eI emex nek megi smerese
+fele. Hi aba ha J t azonban sokakat a tucjasvåqy, keveseknek si—
+Icer•ül er edmenyt eI Erni   — s ez tanarokra—di Akokra
+egyar-ar-rt. e•r-venyes   ne•håny si kertelen k ot an , a qep
+I ert-hetetlen vi sel kedese, a sege•deszkö2E.P ,   az Crt'
+tars hi mi att Alta I Aban hamar. hagyn€ik a pr6bå1 kozås—
+sat, 4 el +oqhatatl annak, meqtanulhatatlannak tartva,   srökre
+mor.danak gepi progr Ennek eI engre
+szåmo•:; O elda b i hogy mar az AI talÄnos i Asok kö—
+is pr-o+i müvel eje akad ennek a terül etnek.
+pr oqr amcoz val i smerkedeghez   ki San
+ai masa E a Commodor processzorai (amel yek egyebként
+proqramozås Ezempont _J.ibö1 etesen egyenrangoak): egyszerü
+k i utasi t as,   b c mz esm'd   jel I emz i
+Sket.. Az t;Ssok en tese•t   a jelz6bi tekre   gyakorol t
+hat Ssat f•agqelékben tal a I hat juk; a tovabbi   szükséges
+(rends: ervål t.oze.k ,   TED—regi sz t erek ,   ROM—I i sta
+st.b.)   a qe•p bel fel epi tesenek pontos es   resz I etes
+i eqytatt   — mazzak azok a k.snyvek   i s , arne—
+yehet   i r odal omjeqyzékben fel sorol tank ,   iqy   ebb en
++iÅzetben leqszoksegesebb tudni val i smetel juk meq.
+pr oqr amoz asr a   I e.n.:ssen   h ogy
+eI saj4ti t. I eghatékonyabb, mondhatni agos Ot j e a
+fel adatmoqoJ dab ,   a q vak.orl Ss. Ehhez k i   seq
+A ge•pa   k' de-i proqr amoz assai fogl al koz E.snyvek
+talé.ban azt a +el 4pi'tési me.dot välasztjåk, hogy fel sorol
+az u t as i tast, a .jelzabi tehre q yakorolt hat Ssukkal
+I ehet%éqes c imzésm,Sdokkal st.b. együtt, emi itenek esetleg 1—2
+példat ezekre, majd maqÄra h aqyva a tanulni vAqySt,   regt.i.n
+nagyobb 1 e legzet•Ä fel adat.•ra ternek Ez ketségkivol korrekt
+tar q yaJ m.Sd, vi szont. f i gyel men k hagyja, hogy egy, az
+at L aqosnS1 nehezebben el za_iStithat6 témsxr.Sl van sz'-
+ehhez vezet.f.•: ,   akad41 zsü+olt Oton hal ad ,
+lepten-•nyomon nehézseqekbe s ha menet k.:.zben nem jut
+e I eoend.5 si k, er e I menyhez   bi z ony   nag yon   E.snnyen   kedvet
+, hamarosan vi sszafordul. MI tens t nem ezt az
+ke:.vet iük, hanem fel adatokon keresztül mutatjuk be nem
+c•supsru Lit asitSsokat,   h anem a gepi   k k.d•-fi progr amoz asr a
+jel I em: .4 sajåtossaqokat is, de nem törekszonk
+mert nem x s t.örekedhet   ebben a etben tel jessegre.
+Ali q ne hany u tagitåssal mar ravid,   de progr amokat
+i tonk, s ezt az utasitåsksrt fokozatosan b'vitve,   eq yre
+nag vobb es naqyobb fel adatokat 01 dunk: meg .   Nem esz
+2
+
+--- PAGE 6 ---
+tekintettel t ehSt Eem az utasi t Asok szokasos ertel emben vett
+pedi Q fel adatok temati c sopor tositä—
+i r a Gé.hoz ,   fordl tasåhoz az el ter jedt JCL assembl er
+proqrafliüt- ennek lei rasa p ld. fel hetS.
+f eI adatob'„ meqol dÅ5Éihoz n Ehå.ny J e,tanacs: soha ne indul Lit-tnk
+I-teqy a gepbe pétye.gjük eppen eté
+qcjndc,l nEat, for ditiuk, majd futtat_juk; ez gépi prog—
+E.iÅ1e.rte.gen vesz yes: a k ar eqész munkänk is k Arba
+veszhet. El mi nd i q t ervezz G k meq a programot   f ogal —
+meq a I c-;or-x tmust. (ehhez k i vålS seq{tséget nyéjt a
+r 6 J—bar. smert-etett qoritmusleir.4 nyelv) , majd ezt
+veti a Bfi±.ciolas, a szxntaktikus el lenSrzés, a mentes (lemezre
+v•aqy t Awa)   c sap a
+Iud juk, hoqv az a: or-tos adatot vegzö BASIC ill.   k Scio
+proaram e: c.it.±.bbi orta gyorsabb es 1 ényegesen ke—
+vesebb tar at. i c.vnyel. MOgsem javasol Buk ,   hog y mi ndent qépi
+, mert sol-ska i nehezebb es f Arads<go—
+akkor n yeti junk ehhez az eszke.zhöz ,
+f enol azaz val ami   en I eges empont
+c. qyc.'jr •sa€,Sq, pont-e--'E gep bel sejéhez val' hozzåféres
+sib.) at. t s BASIC mar- a I kal matl an. Fel adataxnk nem mindiq
+felel rteb:   meq enrjel( Eövetel menyneb( , mer t j .4
+r Z szuket
+i % meq tutdné.nk 01 dani ,   megi s erdemes foqi a I kozni
+, a qepi program sebessegenek ér-zékelése,
+héqr.eirt a gepi   proqramozSs techni el zajati tasa
+empont i E.
+mecoci1ciSE0E E i J asszt-åsåné.1 41 taläban a tanulås seqitésére
+nem pedi q arra,   hogy a fel adatra (val ami I yen
+ember.) meqc-ildést köz.i.l junk. Mi vel a gepi k.e.clt--.
+pr•cigr- eqyi jel S je,   hog y ugyanazt a fel adatot
+•s meqol dhat-juk, mi ndiq pr.'bål Jun E mas,   jobb
+sebb hel yet el foqlalé. vaqy me•q qyorsabb)
+admi .
+
+--- PAGE 7 ---
+. SMEREI
+X SMEA•ETEF::
+Fel tot I van bi zonyog smeretekre   a fel adatok
+meqc:il dA%Ähoz. Ez ek ei sssorban a   kez6ket
+yel enti k:
+apveté. g.jr oqnamozasx strukt•-oråk (el c i k I us)
+i , a pr oqramoz asban szerzett jar-tasså.got
+(I ehet.41eq C+4 BASIC nyel ven)
+mem.r.nt i Ahoz hozzAfénCs
+szamr endszerek i smeretet
+beep i tett mort 1 tor parancsarnak hasznAIatSt.
+a megsz   bSvi teséhez az
+1 rc,dalom f e I sorolt s." QI q AI tehetnek.
+e I néhåny + el adattal mx   i seq t seget myo j —
+k e: .:.kben deci i s sz amok at nem
+jelezzoVs, a b 1 naris mindig hexadecimal is
+sz•moEat pedl q nd i q eI Ai ak tsuk At az
+a I •bbl sz mi sz Amr endszerbe:
+164
+27 4   1989
+7.1   7.1001
+7.10101010
+$10   $12
+$1234
+00   $ fff f
+Fl gyel '0k meq, mennyxre eqygzerü a   Ret tes es a   ti z enhatos
+endszer Ee•ze.tti t. Ss
+X Vege: z 0k el a ksvetkezS   müvel et eket   (a   sz amok
+decimal i sss a i akit.ése:q ROI) :
+7.0+7.0=   7.0+7.1=   % I +7.1 =
+1+7.1=   7.101+7.1=
+t'. | i 0+7.1001 —   7.1011+7.1001=   7.11-7.1=
+7.101-7.1   7.1010-7.11
+$9a+$6c=
+$ 100—$ac =   $121 -$+B=
+i 2-7.1 OQOIII=   7.1 1 1
+4
+
+--- PAGE 8 ---
+i . El-OISMERETEK
+meq   L'övet kez S   bi naris   sz 4mok
+i rat Sn   formaban):
+7.10   7.1   7.10111011
+7.1'.) 10 tc.uo
+X — 'VI zsqSI   meg ,   hog y   fel ad at ban   kapott
+mi yen   e.sszefugqé•st   mutatnak   er edeti
+kel Mit mondani az eredményként kapott bi s
+Stnok 'hoes: Sr.±.l • ? A t4roISsShoz   eqy—egy (B bi tes)
+hasznål El fog—e mi ndegyik   s: am ké•tsz erese s
+f # r n i egy bvt   Mi kel I tennank   hog y ne vesz i t sunk
+Héqt meq a k.•vet kez6 bi s sz amok
+(g: i r. t t) I r i % + cwtrj4ban):
+7.1 001   7.10111011
+VI trreq, hoqy az S. fel adatban kapott erecimC—
+rtv•eE mi I yer-a mutatnaV:: az eredeti Mit
+t i er edme•rtyként   kapot t   binaris   s: amok
+hogs:   t: eqy—egy (B bi tes) byte—ot
+f c.q--e mi ndegyi k szam f ele is fern 1 egy
+MI € k ell hogy ne vesz it sunk
+9 •vjer r-tve: tar   k ez dete   $0c 00 ,   betü
+wer i q I .   Mi yen   HAS I ar ancc   tud juk
+\ bai fels6 sarkaba i r n 1 az   betüt?
+k i 5tjet-a—naqybetiÅ iazemme,dra! )
+1 r 01 BASI amely az e I feladat
+mint* tel eat' r j a
+— 01 BASIC—programot, amel y   nn ndenfajta
+Stal AR i t •s el a I Ealmas a b i naris, a decxmSIis Ss a
+hers: ends: er el enarizzi.ik
+t.   adott megaldasainEat
+1   mem.±.riét 1 c i m.Å byte—JA 64—et mutat, ha nem
+lent vüzetne: ,   v i C , shift e s control
+biller-jtya lenyomåsåra Cs trÄs
+11.' , amel 1 yel k i der ,
+v 1 qomb I s Sra mennyi ez az en t C E ! (Cél szer•a eqy,
+q tel en   mr közben
+a z eqy'E?E. bli I entyüket. )
+c;] V an BASIC—programot, amely fol yamat:csan a
+k e ver e 1 r   byt   tartalmåt   (itt
+hel f:'l .é.rS j a; a leggyorsabban $aS—c.s
+t-,vte . nrc•qr c.vrt ir j a ki a TI tozes mindenkori
+tart-a I e E+ä.".e Mit tapasztal ,
+ha a keit pré.b*.1 k i i rat n i?
+
+--- PAGE 9 ---
+MI   ki I obyte—nyi   tarter;.i.l et   eg+el s'.
+bvte— hexadecimS.Iis   c i me? H Any bit Kell ennek: bi
+aor Asano: ?
+TOR par ancs hat asana a gep ROM— 1 T EDMON
+tor t at • E ax t vehet i genybe. a C, F,
+L, m, S, T, V 4s X Skat meq a qé•pr   utas t-asok
+*jneret-e r-'é•1 hat jak.   old 30k meg az
+.4bbi fel adatokat:
+1   T 'l t SOR fel a kC•pernyS fei s' Sor At a   • ? )ellel
+Tol t I QI az egész kCverny.St a
+VAI at a képerny.3rt I Sthat.±, e.sszes karakter
+rte•t   Ur-e (a sz i nrnemé.ria k ) A sz int
+nmeme.r i a meqfel el byt O. —3.   ( hat s' 4)   bit je
+sz
+I VSI tsuk at a k É•perny.é.n I A that-a ssszes karaktert a
+I ehet.:: eqfenyesebbre! A + enyesseqet a zz a megfel eI
+byte—.j Snak 4.--6. bit je szabél yozza.
+i — 1 7 VS. I tsuk at a k eperny6n i 4 that' e.sszes karaktert
+v ill ogora! villogast a sz inmem.Sria megfelelé byte—Janak 7.
+(legfel s.o bi t Je szabSl yozza.
+— I Ker essok meq ,   hol hel yez kednek el a tar ban a
+hi baozenetek
+I — I rr ) uk k: i a k épernyé.re a t Sr k ezd8d.S $300
+byte— j St a V par ances seqitsege•vel! rr- St a   • COMMODORE •
+felinatot   ' DEC IMAI-IS • -r a,   majd a C par ant: s seg
+meq a képerr-ty.starban az a G r t heiy c {met
+Van—e a gep ROM—j4ban 01 yan hel y   yr•e a
+monogr be?
+rr juk Ei a képernySre az M parancs seg{tségevel a
+ROM $81 Be—t'l E ezd6dS néhåny byte—jat   Itt a BASIC-kulcs-
+avakat t HIS I de nincs ke,zöttük el
+Emer heta fel me•gis, hogy mel yi —meddig tart?
++ en t i masol.4,   fel   .ögszehasonl stb-   funkcié,k
+s.'é•grehajtåsa nag yon e•rzékel teti   hog y a gepi k.Sdban
+megi'r-t TELIMON naqysÄgrendekkei sabb, mi nt a BASIC—ben i r t
+pr-cjqramok. e), 'i smeretek mar I el egendSk, kezdjunk
+tehSt hozzs a process: or rai val e. smerkedeshez
+6
+
+--- PAGE 10 ---
+Q. PROCESSZOR
+mi kroprocesszor :   sok mas fel adatä
+mel let. t: bonyol le   az adat+orgal mat a tar egyes részei
+veqzi I oqi E. ax   ill   . sz tasi mavel eteket s ezek
+t covabbS a   proqram el f ügggen vezérli
+a program f Commodore+4 7501 —es i i l.   8501 —es pr 0—
+cess: or-ral E észolt.; ezek eqymS.ssal s a ceg kor Sbbi   ter me•kei —
+a 651 processz orral proqr amozas
+52 emr:jont pew, t ozan meqegyeznek. Mx vei a gepi ködt:•• progra—
+mt.VAcs rtem m AS, mi rat a processzor programoz asa   fel enüi
+sz.ükse•qeg regi 52 terei nek al apos i smerete.
+prucesszor regl szterei 8 bi tesek, c supån egy 16 bi tes re—
+s: tere van, a proqrammutate. (PC). Mint t: Cid juk, program a
+t Är ban hel yez e l, s az éppen soron h.i.vetkezé. Lit as ft asra
+(amely a: 1 . 12 fel eredménye al apjS.n a 64 ki lobyte—os
+inut-at ez bi r egi s: ter.   T artal ma egy—egy at as i t. as
+veqrehajtSsa vo.;.2ben S.ban az utasitas hosszåval n,övekszik
+meta , s iqy automati kusan a következ.:::, utas{tSs kezdetére
+mutat, de Sit ala 01 dhat6 meg a program masutt val' folytatäsa
+is:   yen kcjr eqysz er-üeri a k i vant met töl t juk   a PC
+reqiszterbe, s a program etté,l a c: "ntél kezdve fol ytat.Sdik. A
+•T EDMON—bé' 149 ve r-.i,qte.n   I athatjuk   (de   az   R par ancs
+seqi t   is b armi kor   I ekérdezhet jük )   a PC
+reqi ter t artal mS.t.
+A $3 bi tes reqi terek a leggyakrabban az akkumul Storral
+(ACY fcjqunk kc,zni. Sokszor hasznÄl juk ma_jd a két on. in—
+dexreqi tert is ( _)elük: XR i II. YR), amel yeknek k e.zel azonos
+ver ( SF) s z erepC•neE megérteséhez szSl nun k kel I a
+veremr-e.i, amely ( te.bbeE kö?ött) a szt-tbrutinok. h i vasakor azok
+e-irne•t t artal mezza. Képzei juk el, hogy
+eqy nt-   ebb..±.i eqy masi k szubruti n t t esetL eg
+te.bbsze.n is met; 1 smeg tel ve   — ezeE.et h i v juk eqyébként eqymSsba
+noknaE). A2 elsS h ivasakor• a vi sszater-ési
+cimet meq k ell jeqyezrtonk, de a vi sszate•rés e16tt h i v Jilk a
+mSsodJ. kat, ter me•szetesen a vi sszateresi c i met i 5 eI
+t ertriö€nk .   A masod ,jS.ra t-åvott szubruti n befejez tével
+fel v 1 C i met; ez   utan +01 y tat juk.,
+majd az ei hivottat, s ekkor- kell c sak ennek
+a v i sss: at-em •si c tal Snosan is iqaz ,   hog y eq ymasba
+Oqyazott: h i vasal: or az utol sSként el rak.tSrozott
+vi c i rone 1 el Ssze.r szüks4qonk, s eze a tar 01 asi
+a I ver em seqitsegével val 'sit hat juk
+meq. ver-em a a I .   ap jan ,   a $100...$1 ++ cimeken
+he I yea hect i   el, csak '$100 fe161i vegén ferhetünk. hozza;
+mxr,diq   eqveséwel tehet bele 111. vehetjük   k i bel Sle
+e ! emeEet„-   SF reqi sz ter mindenkor a c d met mutatja,
+7
+
+--- PAGE 11 ---
+2.   A PROCESSZOR
+ahovÄ berakåskor a ksvetkezS el em keral. Mi vel a veremben az
+E.sszes hely c i' me i—gyel kezdé.dlk, f eges volna ezt is
+tarolni, ezC•rt c sak a c: i m a Is' B bit jet mutatja az SP. Tehåt
+petdåul: ha SP=$+O, akkor tudjuk, hogy a ver em $1 fl...$lf+
+része fogl a It, az els6 Gres hely C i me, ahovS. adatot tehetünk,
+f i +0; ha pedig (p ld. egy szubrutin befeJezesekor) a veremb61
+egy adatot keli ki venno.nk, azt most I cimen tal Juk-
+Ismetel ten + elhi v juk a figyelmet arra,   hogy a ver met nem
+c supan a szubruti nok vi sszaterési c ime•nek., hanem tetszSl eges
+adatoknak a tarolSsAra hasznäl juk.
+Mar c sak egyetl en, de nagyon font 05 reqi szterr61   kei be—
+nank: a fel regiszterr•SI ( a I I apotregi szter, SR). Ez a
+I egutébb vegreha jt Ott   utasitSs   er edmSnyer'I   5201 gal tat
+bi zonyos i nformac:ié.kat, mi vel az utasitSsok z Sme it ja az
+SR bit jext (ezeket jelzäbi teknek   A   jel z Sbi tek
+sorban kez :
+a bit sorszSma:   7   4
+a jelzébit neve:   D   1   z   c
+Jel en té•siÅk:
+N NEGAtrV jel z 4: ertéke akkor I ha a mavelet eredményé•—
+nek 7. bit Je 1.
+V OVERFLOW (tol csordul Ss) jel z 6: é•rtéke t, ha a m«vel et
+eredmenyeképpen at vi tel t•srtént a 6. bi tr.Si a 7. bi
+B BREAK jei2ß: ertéke 1, ha a bekövetkezett megszak{tåst
+nem a hardware, hanem a program hozta I etre-
+D DECI MALIS Jeizé.: ertéke 1 ha a szSmitSsi müvei etet nem
+16—os, hanem IO—es szSmrendszerben akarjuk el végezni .
+I INTERRUPT (meqszaki t as) jel 26: ertéke t, ha a megszaki—
+tast 1 etil tot tuk-
+Z ZERO jel z6: ertéke akkor i, ha a maveiet eredménye O.
+C CARRY tel) jelz6: ertéke akkor 1, ha a mavelet
+eredmenye B bi ten nem t4rolhat.S.
+bi tet nem hasznål juk ,   ertéke mi nd i g 1.   Az SR—et
+egybyte—os hex adec i mal i s sz Amként 01 vasva egy   O 2SS
+t i értéket kapunk , amel Yb61   az   eg yes   jel zSbi tek
+SI I apotara vi ssza tudunk következ tetni
+Men Jünk a TEDMON—ba! He jel entkezéskor ki i r ja a regi szterek
+tar-tal mÄt, ezeket y. edvunk szerint m'dosithatjuk ; prébål juk
+ki Hasznål juk a ROM—ban I évé, $BOOO—en kezd6dé gepi k6dO
+programot a BASIC hi degi nd i tasåhoz :   gBOOO, majd RETURN.
+Nyuqodtan pr'bÄ1 kozzunk mas cimekkei is; a gepet ezzei ogysem
+tudjuk elrontani
+
+--- PAGE 12 ---
+A PROCESSZOR
+gepi amozÄs   er edeti I eq a mern.Sri a byte—jai nak
+bi be*.l I jel enti .   Az   egyes   meme i ac mek
+hartal mA   füqqSen   processzor   mas—mas   tevékenység
+el vegzeere kap t Sst, a gepi k.Sdt-•. program tehåt egy —
+sz emi sz Smara St teki nthetet I en ,   é•rthetetl en
+meme i at et- E 2 a qépi   ké.dé. proqramoz askor a k vant
+hat.as Sl landéan tåblÅzatokat kel I ene forgatnunk, s
+t. artal mSnak meqfel ei Sen kel 1 ene   a   tar   byte—jai t
+eqvenként beAl I itanunk. Ezt az ember tel en   — raadäsul tévedési
+1 ehet8segekEel z sofol   evékenyséqet sz erencsere el végz i
+hel yet egy ford i taprogr am ,   az on. assembl er
+programot s: Smara Crt hete: formäban, az On.   assemb I y nyel ven
+ad meq   Ami k or qe•pi E.E.dO proqramot   a k or t at
+val' j Sban assembly nyel ver. programozunk, ennek eredmenye az
+f am, amel yet az assembl errel I efordi'tva kapjuk
+programot. Assembly nyelv termeszetesen nem egy
+v ,ar-j   hi en mx nden procesz or-t i pushoz mas es mas   nyel v
+tar-to: 1k.   M 1 ettSl   f;agqetl enal tové.bbra is gepi   k'dO
+c:jqr ,   mert ez az e I nevezés jobban el terjedt,
+s a fC1reentEEt-é.I rjem k.eJl tartanunk.
+Néhhnv fel adat a fenti ekkel kapcsol atban:
+Hat: ar u E meq ,   me] y 1 jel t   1   ill.
+•y' 1 ha SR Or-te•ke
+$21
+$28
+I r a reqiszterek tart alma t:   x: 202 :
+Y: Haszr-tSl T EDMON par Ez a beep {tett
+er fordi t. S par aricsa ,   az utana szerepl tar hel yre
+az e: t E e.vet4 assembly nyelvü utasftast. I•rjuk be:
+a 2000 t as:
+200t br•k
+( t er et eseri   z arva a sorokat) .   A ford tas
+er mSris vjuE: a gep jelzi   hoqy a tar $2000—es
+c A men (a T PiX k Sd 3 a), a tar •$2001—es c i men pedig SC.)C) (a
+j a) taiÄ1hate,•   ezek eqyüttesen mar egy gepi
+C'r«oqr-amot E: utan q 200Ci—rel i nd it va ezt a programot
+em tkV.eEet kap juk: Az-Ol
+. x=01 .   , ugyani s a
+Vitz as it. A s az   tar-tal mat   X —be,   mi közben
+j a, hoqv ez szém ill. a 7. bit je i —e, s ennek
+meqfelel€:eti a Z —s az N jelz6bi teket.
+"X —hc-jz h exsonl&ak a TXA, TAY es TYA utasitasok;
+rtev;.i. 1 Li). ,   hc.qy melyik regiszter tart alma t mel Yi E
+tölti Nines vi szont sem TX Y
+TY X I-lt.é15itSs. yan programot, amel yik X—et Y—ba   , sem pedi q
+ill
+9
+
+--- PAGE 13 ---
+n. A PROCESSZOR
+2 — 4 Rész it sunk 01 yan proqramot, amel h:
+a. / A tart alma ± t.ölti X—be es Y—ba,
+b. / X tart al mg.t tel ti Y—be es
+c. / Y mat tölti X —be es A—ba'
+Van meg ket tag ja ennek az ,   rsx
+TXS, az X regiszter az SP adatétvi Eel t.
+de ezekkel most meg nem tudunk fog lal
+2 — rr juk 4 t Y e•rté két O—ra,
+Haj t sunk vegre egy TYA utasitast, maid v 2 j uk meq jel—
+z'bitek: SIIAsåt! Mit tapasztal Link, ha a
+mazzuk?
+Ismerkedgünk meg a talån 1 eqqyakoribb assembly
+(més szSva1: mnemoni kk.al), az L DCA—val! E —
+utäna sz erepl 6 szi mbé.l (az on .   oper )   or-mS
+fuggSen egy egybyte—os értéket t e.lt az (I ehet
+közvetlenül egy szåmot vaqy a tar val amel y i E
+é•rtékét). Meq kell azonban ki-ilönböztetnüfik ,   hog y d.
+2
+egybyte—os $23 s2 Smot ,   vagy a $23—as metné.ri ac i men I
+egybyte—os szåmot ( ami tsrténetesen Copen $ ad)
+A—ba töl teni, ezért az e I sg esetben az
+masodik esetben az Ida $23 utasitast hasznAl ,
+hatåsåra az akkumul Storba $23 i 1 1 .   Hoq y eqy
+bizonyos mnemoni khoz az operandust mi I yen tn.±.don erhc,t eI
+azt a lehet seges   c mzesm'dok   hat åroz•:
+tneq .
+processzorunk összesen 13 kü1önbe.2.±' c emer
+teszi I eheté.ve a vi szonylaq kis E z t Ss rugal mas
+fel hasznS.l SsSt.   Eddi g   mar   h4r om
+megi smer :
+— a TAX és tar sai kulan operandust r.em i genyel nel:, h J
+egyertel maen meqhatarozzåk, hoqy mi vel Eel
+véqrehajtanunk; ez az On. impi i ed vaqy bel ek•ntett
+c mz C•smSd ;
+— az LDA #$23 u t as ft as operandusÄt meqha—
+tarozza, ez az on. közvetlen c imzésme.d;
+— a2 LDA $23 egybyte—os cime csak azok.r•a tnemé.r ahe—
+I yekre tud hivatkozni, amel yek cime nem naqyobb,
+mint fff. Mi vel ezek a meme ia C). lap jan he) yez ked—
+nek el, ezt a cimzésmédot nul lal apos (Zero Page)
+c Æmzesm.Sdnak nevezzük.
+Ez ute.bbi nak a $4 f —nél nagyobb c tar hel yell, esetc•r-g
+ke.vetkezg cimzésm.±d +elel meg:
+— pld. az LDA $4320 utas{tasnål a c: On csak byte—on
+fer el, ez az on. abszolLtt cimzestn.±.d.
+A t.öbbi c i mzesm6dot   hasonl San
+Ravetet
+éthoz   a k kor   i smertet juk ,   ami Eor   € arqyal ésban
+e I Skero I nek.
+10
+
+--- PAGE 14 ---
+FROCESSZOR
+h asonléan hasznålhate,k az X   ill.   az Y
+r E.grszter-be t-e.jt€she: az L DX i II. LDY utasitasok.   Az eddig
+megi gmer-t seq t segk•vel 01 d juk   meg   mi ndhårom
+r -egi
+Ez .±.bbi   feladat i s peldäzza mar,   hogy a
+or oqr amo:: •sban nag yon e me.don meg tud juk
+dan 1 a fel adat.ot, s e: ek   t tabb enyeqesen
+van-   Hog y jrjel Yi ket reszesitjük el Snyben ,   az
+mi nd ico a lanatnyi helyzettSI fugg.
+7 Val   k i lehetseqes megol d4sok azt ,
+y i E tar bk.l a I eqpeve•sebb hel yet fog lal ja eI
+VI z sce.l meg E.onkr-et -et4kekkel, hoqy az LDA, L DX
+i-L)Y yik .jelzdbi teket Vessok e.ssze
+en edmenv;./fii. tp t.   + ; iqqelékben talSlhate. t ablazatban foglal tak—
+esetben Ei fe etten szük Ség van arra,   hog y eqy
+oqr•amree:: f uttat•sa e IStt a jelz6bitek
+2.1 i qenvelt 9%ban   I eqyenek .   II yenkor   mr vel az
+beS11itott helyzetük esetleqes
+t bell I   u t. as • tAE0kat   hasznål unk   Ezek   bei eertett
+utasit4sok,   mi ndegyi kak   egy—eqy
+tet AI I it: I—re i O—ra. Fel sorol
+SEC   I—re Alli tja   rendre a C, a D ill.
+CLV O—ra   rendre a C, az I
+111.
+— SE r æqx eer tar talma $0f .   Mennyi esz   ai Abbi
+•.w•gqr-ehéq
+CLI   SEI   CLD   CCC
+
+--- PAGE 15 ---
+mat behapcÆ0i i s   bér sem X r tunk be,
+mi ndertt tud   ROM—ban   ugyana s   t. e.bbeE   01 yan
+gepi proqr- amokat t al yeE nagyban segitse—
+qonEre lehetnek. mx is hasznal hat JOE, csupSn arra kei I
+oqyel Ciori\::   hog y poritosan E i g 41 j u k Aket .   Cser e sok
+tahar i that unk meq:   nem kel ez eket meq irnunk   (ami
+biztns, hoqy q yenqebbre si kerolne, mi nt ahoqy a gép al koté,i ,
+profi el it ettkk). Leqfontosabbak szS—
+mtnril.ra most a z 0k, amel yek sega a kepernyé.re tudunk
+irni. etesen
+CHROt.JT nevO, $+fd2 c i men k ezdéci,s rut i n eqy karaktert
+ki : a b:.ar aft ter- k ad Ft a rutin h i vS.za eI at t az A
+regi teni (a E Z.doEat asd p ld. a gépkanyvben,
+vaqv a: omjegyzekben szer•epIS Bte.nyvek ) .
+rut 1 r, (Kezdåcime $ff4f) e.sszefogq&' szuveqet k i ;
+E : e.veqet a rut i n t h Cttagitas u t An Eel I a t Srba
+tent-a, a sz4veq eqy O byte jelzi.
+I HA rut 1 r. me $fbOS) akkumi-tl ator tart a I mat
+(CHHOtJm—t-al el I entetben nem ,   hanem) eqy C) 2SS
+en tel mezi, s ezt a szSmot hexadeci malis
+formaban a E.evernySre (Cs eqy space—t) .
+A HAX r ot i n ( Yezdäcime $faff) az A—ban levs az X—ben
+(i yen sorrendben) egymSs mellé irSsSvaI   kapott
+kef t byte—os ezamot {r ja (Üqy is mondjuk,   hoqy ennek a
+A fel X pedag az a Isa byte—ja- )
+A E. r ot-in ( Eezd.scime $a4Sf az X felge cs az
+byte—bol t kétbyt sz amot a   deci mai i san.
+(V i qy4zat! sorrend ford {tot t, mint KIHAX—nAl ' )
+Mar mi nden€ t.i.tdunk., c sak azt nem, hogyan lehet egy szubrutint
+meghivrti' Erre EZ01q41 a JSR u t as it As, amel yet c sak abszol ut
+cimzesm.SddaJ hasznSi hatunk. Pél dåul a
+2000 jsr fffd2
+br
+hat-asar•a a vi BE: at cresi c i m ver embe Ker GI ,   pr oqr am
+ft-it-Sea Effd2 c i men fol ytaté.dik, ege:.zen addag, arniq   egy RTS
+t Set Ai, majd a ver emben eve. c: i mre ter   ssza
+e: t ki is veszi a veremböl), tehät   futås4t
+•E 20C.)2t. c i naen fol ytatja. A JSR   RTS utasi t A spar eqyCb EC•nt
+tos   meq fel elSje   a   BASIC-bél i   GOSUB   RETURN
+ot as i t Sr nak .
+
+--- PAGE 16 ---
+o.
+pe•l d4kat a fenti ruttinok   hasznålatara!
+proqr amot p ld. ford it suk a tarba,   majd futtasst.tk
+put ego : k Ot'
+; i r e. r-utinok
+chr   A tart. alms t k i rutin cime
+pri mm=fff.4f   ; a sze.vegki rutin cime
+k i ha=$fbOS   A—ban I k•vS egesz ki hex rn41 i san
+—ben I evS egesz   ki i rasa hexadec.
+V. Fa4t}f   : x / a—ban eggsz   ki frSsa decxmSlisan
+\ •pt..±.rlés ksé•.dga
+RETURN k.scija
+jcsr chrout-
+or-a mm
+. byte 'e: t   sn•.oveget i r J a a   kepernyore' , O
+Ida   : f cA yamatosan egy
+chrout-   .jel i rasa,
+; maid eqy
+; sor emel és
+: s e: utan eqy
+chr-ot.tt   : ki i r a sea
+; O jabb
+: emel es
+cla   ; a: = 17 (=$11)
+: a F i {r Ssa hex.
+hex   hex . $0201 ( —S 1 Z.)
+dec. 2SB (=$0102)
+rt.s   : vi ssza.a BASIC—be
+. end
+Eqy   E. i azc:jE E. edvéért, akik méq nem t-l-%l ot tho—
+rto•saE JCI.. as.semtilen hasznal atåban: a lemezen tal S. I hat'
+f x i e•-cå:,   on. f or-rasszaveget t artal mazzåk•,   ez t a
+JILL —be t .81 01 ,   sz er- kesz thet 0k a szokåsos
+m.*den,   asm par an c s u t Sn ford i that j uk i s.
+ss.•SmunEra I e ford it Ss i 1 ehetasegek:
+szintakti kus ell ertarzes:
+a tarba,
+nyomtat.Sra,
+. 8: fi a B—as I emezeqyséqben I 1 erne: re
+S.ban 1 eve. for-råsszöveqet.
+Töré.l jok I e kk•pernySt, majd ir juk P. i ra a nevt.in—
+Ret ,   If.ét sormal 1 jetib a sz emé•lyi sz amur-jk at ' Meg tudjuk—e
+i s 01 clani a feiaclatot, hogy a szemelyi szSm k i irasähoz a
+El Hß, I HAX ill. a EIDXA rutinokat hasznäl
+
+--- PAGE 17 ---
+a hel yzetetS1 St sorral
+jebb az. 1989 decima lis es hex formåban
+Vi Kur z c,rt   (bårhol   i s van) a 6.   sor
+i c i e. r i qyel j 0k a $c4—$cS c imep.en 1 eva sor—   ill.
+Hogyan hagznosithatjuk ezeket?
+I e a képernySt, majd i r junk az eI ss
+'Sorba eqy I—egt, mel pedi q az I karak.tert, a m4sodik
+eqy 2—est, mel a 2 karak.tert s.   t . egeszen
+is a CHROUT rut i nt
+( kuru: or mozqat i nek   i nverz, vil loqk. karakterek )
+7 CHh•OtJT r ot-in def a I abl akot
+a tt. S. hel yen, jobb a Is' sarka a IS. sor
+12   hel
+i I At hat mennyire eqyszer•ü a dol gun k azokban az
+bert, Eon porttosan a: a rutin van tar ban   atni re
+van (ezert i % has: nos dolc,g a ROM—I i ståEat
+for-gatni ' ) .   Fer E? e, nem rrnndig van i I yen 52 erencsenk,
+a •vet   adatnål sem:
+ké•pernyé.   4.   sor Snak   k é.z epe•re   egy
+csrllaqot
+meqcjl dhat•nånbt problémåt a 3.4 fel adat seg is,   van
+orjban eqy sok k a I egysz eriåbb meqoi d Ss   hi sz en pontosan
+i qmer a deses képernyöpoz ci   t Srbéli   c met :
+(.3072--$OCOC)) es   sorral
+fel i ebb van-   Err e a   c {mre be irnunk a
+•liar Ehhez i smernunE   Eel az STA ,
+y Stor tart al mat   a meqadott
+c i mzesm.±.dot a I kalmazunk:
+put " (40: c0 "
+; a 4. sor i r egy c sill aqot
+hel   ; 4. sor k .:.zepe
+; akkumulåtorba k.±.d ja
+; a hel yere i r
+; vi ssza a BASIC—be
+y-QF.   rrtE•q ,   hog y   JCL   meqenqedi   deci mél is
+hex ( 5.3t binaris) szÄmoE egyottes hasznÄl at at
+A adatol: meqol d asa.hc.jz seq i' t seget nyojtanak az   1
+4 e aciatai ke.z.slt informAci.±.E.:
+
+--- PAGE 18 ---
+r RJUNK A KEPERNYORE!
+rr junk a   Eéperny6 bal al s' sarkåba egy   piros
+et
+I j ctnk   k Sperny6 jobb als6 sarkåba eqy zöl d
+eqyenl.sség_jel et, leqse.tetebb sz {narnyalattal
+- 11   A TED—rega szter terképe al apjan mega I I apithatjuk,
+hogy a hS.tt.e•r es a ker•et sz inét az $ff1S es a $ff19 cimeken
+toztathat 1 be a keret sz {net a legs.:.tétebb
+kékre, a hatter sz pedig a leghal vanyabb pirosra'
+eoy Earaktert v 11 loq'ra szeretnénk {tan i, a sz frtmern.Aria
+tneqfelel.:. byte— j Snak   eqfel ss bi t jet magasr a ( I —r e)
+{tanunk, 01',' m.Sdon, hogy a többi bit tozatlan maradjon.
+Erre k i v San a I az ORA utasitas, amely az akkumul ator
+tar-tal mea az utasitås operandusa kaze.tt bi tenként
+eI z i a log i VAGY mavel etet ,   er ed men y t   az
+i r i a. EnneE seq itsegével tudjuk a következ6
+fel meqoldani :
+I V a 4. gor kazepere egy villogé csil
+4. sor kazepCx-e egy villog6 c sill agot
+; 4. sor kaz epe
+i n=hei   • ua- a sz i nmemari Aban
+Ida ' *   ; ait kumul atorba a k 'dja
+bely   ; a helyére i r juk
+Ida   ; sz in—erték bet Sl tese
+c,ra   ; a leqmagasabb bit bekapcsol
+; sz vi sszate,l tese
+a BASIC-be
+. end
+I az ORA utasi   ké.z vet I en   c esm4dda1
+has: r.±.l tulo de meqol dhatjuk abszolut cimzes segitségével is:
+01 meq   a: eI fel adatot az ORA utasitÅs
+abszolut c {mzesevel
+; 4. sor epe
+sz i *hel
+; Storba a kSdja
+Et.é@ he) y   : a hel yere juk
+; maszk a 7. bithez
+; a sz in—érték 7. bitjének
+; bekapcsol asa, vi sszate.l tése
+; vi a BASIC—be
+. end
+
+--- PAGE 19 ---
+. 1 FROOM.
+meq   fel adatban   ki irt
+Nyi   e I Stob   c si aq v i I I og4sat   a
+uqyanazcjn byte—ja I bit jeneE kapcsol asa
+szonteti meq, mi g tabbi bitneE erintetl enol kell maradnia.
+Erre az AND ot as i t Ss a I kal mas; ez az akkumul ator az AND
+t As operandusa k •zett bi tenként logi E ai ES müvel etet
+veqez, az eredmenyt az akkumul Atorba i r ja. Egy megoldås a
+keze.:
+: put " c 2 "
+4. sor ké.zecje•re E. i i r t c gill aq villoqSsSt
+; meqszonteti (sys270C)O)
+»-=27000
+hel y=$Oc 00+ 140   ; 4. sor kö2 epe
+s: in=hel   ; ua. a sz i Aban
+Ida q: i r"   ; sz { betsl tese
+; a Ieqmaqasabb bit kapcsolåsa
+st.a s." in   ; sz in—ert.ék vi sszate.l tese
+; vi a BASIC—be
+. end
+Eat a proqr amot 27000—t6i   tuk   hog v az eredet i
+kezd.Sdé) programmal egymas utan többsze,r is
+futtathatSk egyenek.
+I S Old juk meg az elSzg fel adatot az AND utasités
+abszolut cimzC•sevel
+; put "@O: c 21 "
+a 4. sor kö2epere Ei irt csillaq villogasat
+; megszunteti (sys27000)   4.
+hel y=$Oc 00+ 140   ; 4. sor epe
+in=hel   ; ua. a sz inmemsri Aban
+and EZ   ; a sz in—értek 7. bit jenek
+sta 52 i n   ; ki kapcsol asa, vi sszatel tése
+r ts   ; vi ssza a BASIC—be
+. end
+1 rr junk a jobb felsS saroEba eqy inverz space—t!
+A megoi dSsh02 kell tudnunk, hogy egy karakter inverz vol tat a
+Lever nystarban rjeki meqfel byte I eg+elsS bit je hat S.rozza
+meq .
+1 7 rr junk 01 yan proqramot, amely az e 1628 fel adatban
+Ei i rt inverz space—t normSi space—sze alakitja v i ssza'
+16
+
+--- PAGE 20 ---
+. 1+JUNR
+X rr junk 01 yan proqramot, amel y a 4.   sor kaz epén
+Ler vi lioqAsåt el i enkez.Sjere val toztatja (azaz: ha
+I oqott, meqszonteti a vil   ha pedi g nem akkor
+vi Ilogtatni Eezdi)!
+Seqitsk qPCvpen: az EOR utasitas az akk.umul ator tar talma es az
+EOR operandutBeA Ee,zett bi tenként K IZARØ VAGY logi kai
+movel ete•t ve•qez, jna_jd eredményt az akkumul a torba i r ja.
+(Em14Eezteté.:   IEORI = OEC)RO = O ill.   IEORO = OEORI = 1
+TovSbbi ad4surÅ".hoz fel te•tl enol szükseqes néhSny el agazasi
+I ehet.:.seg ismerete, iqy most erre I at-unk néhåny péld4t.
+T rr iunE o I yan programot, a mely az 1 ,   2,   sz amok
+bSrmely ket-t-.:. he.ze.tti rel Sc i 't i r j a a képerny6re!
+Ebben a fel *dat ban kül.önbe.z.s sz Smokat kell e.sszehasonl ft a—
+, ehhe:: CMP Lit as i tast fog juk haszn41ni .   Ez az
+hogy a tar ban v agy a fel szteren
+b•r- mely mas regi sz terben v 41 tozast idézne el
+beal .jä a Jel tek•et az operandusa ertékét61 foggaen
+mi r, tha kumu 1 Storbel k i vonta volna az operandus ertékét.
+IAE'5..•nåI az -fel tot eleg ugrS utasftåsok kazal a BEQ es a
+BPL tSsoEat; a te.bbi i Iyen utasitSssal egyutt mi ndketten
+t Srban el foqj t hel YüktS1 szamitott rel at i v   ugr asra
+oper andusként szerepl 6 tavol sag vi ssz afel
+t-tqr-ssr-.al eqfel 126, eI Sre ugrasnäl pedig 1 eqfel jebb 129
+bvte I ehet :   ennél   nag yobb   tavol saqra   sz er etnenk
+seqi t Eel ugrani   ford ft askor hi bajelzést kapunk.   A BEQ
+a Z jel•zé. I—es értéke esetén, a BPL pedig az N jelz6
+O eseten er-edményezi az adott rel at iv cimre torte•né,
+uqr-*st, 1 esetben (mi ntha mi sem tar tent voi na) a
+proar-äffi t Srban ke.vetkez6 utas{tassal fol ytat&.di k.
+e j tenonk meg   arrSl   hoqy   eqy ,   az
+akkt-unt-11Storban I évS, 0 es 9 közötti szamot hoqyan irathatunk
+E i a nyé.re. megol das a KIHA rutin hasznSl at a,
+mert eqy i I yen 62 Amot a k Är decima lisan, akår hexadeci mél i san
+i E. i , uqyanaz k. A CHROIJT ruti nhoz azonban
+mi vel •torban a ki i rand' karakter k.SdjÅt var ja
+eredeti f or•jnSgShan nem al kal mas, a ki kedvéért at hell
+Al akitanunk,   — mi vel az eredeti   tovåbbra i s
+sz0Ese•gunk esz   — a vi sszaal is el kel vC•qeznunk.
+Szererjcsere a O 9 szamok E Sd jai $30 $39 k.±.zé
+erecleti sorr•endjüknek megfel Zen, Ægy az   Atal akitåst
+ORA •O
+. a v 1 sszaalaBGtåst pedig egy EOR 'O • utasitäs
+egysz eraen megol dhat _jLtk.
+finny i LI tzar. a program megé•rtése bi zonyåra nem
+.jel ent probi •S Tia t :
+
+--- PAGE 21 ---
+3.
+: " €20: eO"
+beq, bpl
+(Kiaras relaci&jellei)
+: a i r e. rut 1 n came
+: Etz {A tart. alma t r at in c i me
+Ida   ; r endr e
+Ida   ata
+vrzsq
+: vize•qålat: az acc—ban s: am
+; mi yen van rendre
+: I—qyel, 2—veI ill. 3—maI?
+; acc E i
+it I—he:
+pri mm   ; szöveq:
+. byte   1
+; A Ei O-Ssa
+cmp   ; hasonl it   2 —ho z
+j sr E. i ir
+j sr pri mm
+. byte
+cmp   ; a—hoz
+jsr k. i i r   ; E i i rja
+pri   : E i szöveg:
+byte
+r ts
+a relSciét
+beq eqyenl
+bpl nagy   . ha = , akkor eqy•enl
+; ha > , naqy
+isr pri mm   ; snben ki 52 Sveg:
+. byte
+; Ina Jd vi ssza
+ecu yen i
+pri mm   k i szoveg:
+. byte
+vissza
+nagy
+pri mm   ; ki sze.veq:
+. bvt-e
+; tn.ajd vi SE2-•a
+Sink   ; az A—ban szSmjegy B.i O-åsa
+; k i xråshoz a ké,d m6dosit4sa
+chrol-tt
+; v i ssza,
+vi ssza
+. end
+1B
+
+--- PAGE 22 ---
+EEFERNYe.RE
+. IRJIJNK
+01 c! jul.: meq az e I SzS   fel adatot   mas   relativ   ugr Asok
+el Sgaz   bne, bmi
+(sze.veqes k i iras)
+pr i mm=$+ 4 f   ; a sze,vegki i r,' rutin cime
+c.hr out = Ff f d2   : az tar-tal mat   rutin   c i me
+• rendre
+isr   vi z sg   ; 1, 2 ill. 3
+Ida   ; vizsqålata
+Ida
+; vi zsqÄl at: az acc—ban szam
+: mi I yen reläcié.ban van rendre
+; I •qyel, 2—veI ill. 3—mal?
+; értékének ki i rasa
+c Ili p   : hasonl it. 1--hez
+pr mm   : El sz.öveg:
+. byte
+; acc CrtC•kÉnek ki irasa
+: h asonli't 2—-he,?
+or• i mm   ; E i szaveg:
+. bv•€t?
+.Smki   ; acc ertékének ki i rasa
+c:tng:'   : hasonlx't 3—hoz
+;Eiirja
+or-i Irun   : Ei szaveg:
+r ts
+; s: •vegqel ki i r ja   rel Sc i St
+k i sebb   q. , akkor   k i sebb
+brae netqy   a k or   nagy
+pri   ; E i sze.veq:
+byte   egyertlcj ' , C)
+r-tE   ; majd vi gsza
+sebb
+. bvt€@
+rte   : majd vi ssza
+; ki sz.:-sveq:
+- l." v't.t?   nag
+; mayd vi ssza
+; az act: —ban szamjegy E. i i rasa
+irishoz a k.Sd me.dos{tÄsa
+eor• ' C.) •   ; modositÄs vi sszaållitåsa,
+r-ts:,   ; maJd vissza
+
+--- PAGE 23 ---
+A BNE LitasktS.s abbart az esetben eredmenye:: relet O/ ugrSEt, ha
+Z jelzSbit ke O, a EMI pedi g. akkor, ha az N bit
+1.
+E temaj&ban ,   de haczrtål at i értéE.et ntve i gen
+jel k i terz utan   fol ytassuk •ceil I agos• fel adatai rtkat
+vegig a k.épernyé Z. soråt c si
+A fel adat mepol daze. lehetne egy 01 yan program is, amel yben 40
+ki-ilsnbaz6   STA utas: tas szerepel, amel yeh operandusai a
+egyes poz i c i e, ira E: azonban nagycn idé—
+emerqx aigénves 01 yankcr, ami a ci 9 k
+szükséges esz mS.r majdnem mindnyåjan a -znkben vartr:ak,
+csupSn X regi eqy Ojabb f ctnkciSjÄval, a nevet i E
+i c kel I megi smerkednunk.
+en tx:
+Ha az L DO: CI'M, X kapja proces=or ,
+akkctmulåtorba a CI'MæX ér+-eEet t:   (teat: ha
+X regl s: ter t art-a I maz, ak pent a   na
+akkor —en stb. I eve ere get). Ha teh
+eqymSs Lit Sn eihel yez ked' Eel 1 eqym->.s
+vc•grehaj ,   has: nél hat e: t c: i mz ,
+eqyi a val' c supg.n X kell a
+megadott. hat?.roE. kk.ze.tt egyesevel VA I : ha navel esre
+van e: az I NX, ha pedag akkor a DEX
+Lit asi t 2s seg ft s#ével ke.nnyedén megval 'si Ugyanez
+masa   i ndex regi s: terre l'   Y—nal )
+haszrtalhate,; INY a regi szter tart al mat noel' es DEY
+cse.kkente; utasftSs.   Ezek utan mar tenyl eg gyerek
+program el
+; putt c Z "
+; * a scrt vegigxrja cgxllaggal
+(sys2e214)
+hel   ; sor eleje
+: ennyx csillag kell egy scroa
+Ida • *   ; akkumul atorba a k'dJa
+c i k lus
+sta   ; a hel yere i r juk
+dex
+bne c i k lus   ; ha * 30, akkor vissza
+;vxssza a BASIC—be
+. end
+Ha a ki {rand' cei Ilagok darabsz tesszük az Y. regiszterbe,
+akkor az i nder.eléEt a kezdScünné1 1—gyel ki sebb c imhez kell
+vi sz Ha a kezdécimhez akarLtnk
+a kSvetkezS me,don i r yuk meq a ci k I ust:
+20
+
+--- PAGE 24 ---
+01 d j meq az   eI fel adat ot   hog y
+i ndexel a i mhez   v i szonyitunk
+: • a •sort c sillagqal
+j. sy•s26214)
+hel   sor eleje
+: ennyi+l c: sill aq kell egy sorba
+Ida   Storba * k&dja
+hel yere irjuk
+bpi   ; ha ab<kor v i
+; v i szza a BASIC—be
+fel adatainkban a 3.   sorban f oqun k egy   c si agot
+bal n   qi qf t t i oly m'don ,   hog y az is
+hei ndxq Earakter•rel jobbra i r juk k i, s az eredeti
+hel f el. Miel 't t azonban hozzåfognank,
+i jorih meg I IO + e I adatban IS eml i tett 198—as (=$c6)
+byt€'
+junk egg 01 c amely a ' kurzor jobbra'
+biJlentyGÅ vAr!
+annvit t ttdnunk, hogy az eml i tett byte C•rtéke
+S 1 I ec;z, ha ezt a billerjt-yüt nyomjuk 1 e. A program:
+; a J c)bbra b i lientYiä enyomåsara var
+bill = Ec:6   ; bil lentyü lenyomasat jelzi
+J obbr   ; Ectrzor jobbra bill.
+bill   I lent yat nyomunk?
+c: mp   obbr   ; E ur-zor jobbra?
+bne   : ha nem, var junk'
+: v 1 ssza a BASIC—be
+. end
+junk   eqy 01 yan progr amot ,   amel y a   • k ur z or
+jot'br•a' b i I I erjt.yü I ec.yomssåra engedi a   sorban moz ogni a
+21
+
+--- PAGE 25 ---
+: • 3. sorba r-t c sill aq a kun z or jobbra
+• qomb e i meqv a gor v e qexq.
+: I q yors
+; bil I enyomÄ54t Dei z i
+: Eurzcjr J0bbra bill.
+; Z. sor eleje
+; akkLtmuIStorba a ESdja
+; * a sor elejere
+s? *mol juk
+; mozqat.s c: i klus
+; var- aP.oz —s
+; bil entyüt
+; kurzor J obbra?
+; ha nem, var Junk !
+; Storba a
+; a hel yre i r juk
+; akkumulatcorba a Espace ja
+Et.a   hel v , x   e) 'z' * tarlése
+volt?
+: ha nem, or vi ssza
+; v i sgza BASI C—be
+l..athat hc,qy   ' k ur •or jobbra' gomb eqyszer•i I enyomasa s
+tovÅbb t. ,   mi n t a a sor-on val e. veqxgfutSsa,
+ezr-r t   ahoqv   a. k4ASlC nyei vben is s: ol..asos   egy
+c: i E. I ussal   meg   a
+y 01 pr oqr amot , amel y a   • or
+jobbra• € % 'Eur z. c.r ballenty•a togatott lenyomasara
+ertqecli a C.   mc.zc:jgrti eq c s i
+; w sorba art c E illaq E.urzor jobbra i *
+itur•zor balra qombok nyomasara el meqy a
+: bill entyü lenyomÄs4t jelzi
+jobbr   Eurzor jobbra bill.
+; Eurzor balra bill.
+sor e 1 e Je
+Storba a k 'd ja
+; * a sor elejére
+; s: Smol juk
+22
+
+--- PAGE 26 ---
+1 fi•JUNE   KEPERNYSRE l.
+• moz qat6
+: vSr aEoz Ss
+bili   ; bil lentyüt nyomunk?
+V'.urzor jobbra?
+brit?   : ha nem, var
+v Sr2   ; v Arak.ozas
+; bi entyüt nyomunk ?
+c inp   #balra   kurzor baira?
+bne   ; ha nem, var junk!
+I cia   ; akkumulåtorba a * k'dja
+; a ke.v. hel yre
+: Storba a space k'dja
+helve:   tarlése
+vol t?
+brie   : nem,   aE.Eor ssza
+BASIC-be
+e I p r c.jqram   rettentsen dar abos. 01 d juk meq
+a v 3r eqy—eqy s: amla I ' ci Elus hei yette—
+az Y reqi sz terbe ,
+c Itent.'äi@k, e: t addrq fol ytassuk,   am x g el nem eri az
+a yeri lass it Ja ez a mozgast?
+1.11   fel adatban is eml i tett
+enneE lassi tsuk a fol yamatot
+: •'@2t9: veh "
+J byte—ja Crt.eve•nek megfe—
+i r equ Y—ot
+; a kk•per-ny.Står kezdete
+: a .E.ra legal sS byte—ja
+b i I j r:bc.S   ; b i I ier-ltyü jelzi
+: k'dja
+A tar-talmÄrjak ki irasa
+vei•   : vey 1 eqalsÉ. byte—ja ki jel ze•se
+brae   O, tehåt i r-unk
+space
+torte   ; me q van, vassza
+i cj.a   ; a—ba a ja
+sta   : he•l yer e
+; bill ent-yüt figyel
+; k ur-zor jobbra?
+
+--- PAGE 27 ---
+S: i at hate.   hoqy mi riden   S. c: 5illag h 1 ir4sa utan az
+maqyar ata,   hog y az
+meqszeOt it As ,   de az
+1/ 60 cekben merr az 1 dét   — c sak Ogy I esz
+ha mi r-tcier•j fi megszakit9sbé.1 4 al kal   I épest
+a: kal ommal vi szont kettSt.   h a menet
+i r.qetdozxk   is J arSga,   vegeredmenyben
+n öveEszik az Crt-ewe, t ehSt éppen I / 60
+merr i dat .
+ogy a z e I proqramot,   hogy a bel s'
+byte— t e: 2 e E i
+corban t em tena moz q Ssa
+_ a * —nak a
+t. apasztal   hog y a meq a I ( tehat a
+J ) j a is to I s•gogan   I omha   c sill ag
+I tåss•hoz .
+eqy e.raval: a TED I eve.
+eqyx
+: " €10: cbt "
+; a sorba c siiiag el meqy a sor v C•aeiq
+felz6 byte.a
+; Z.. sot-' eleJe
+; atorba a k.±.dja
+sor elejére
+; szåmol juk
+; tr,ozgaté. ciklus
+vars
+'ra C)--n 411—e?
+var I   : ha r-jem, vS.r junk'!
+var 2   ; var- Ss
+Ida   ; az sra —e?
+beq   : ha iqen, var
+Ida   ; alf.kumu1Storba a *
+sta   ; a helyre
+Ida   aEkumu1Ätor-ba a space ked J a
+sta   helve:   : az el.'-X2S tar-lése
+cpx   : utoi
+ci IA us   Ak Eor vi ssza
+BASJC-Pe
+c. E i I I aqcj\:: t anul mSnyozÄsahoz   fel I errül
+52ükföCges   b i Z oruyos   Sjrå!-åsokat is végezn;-irik ,   ez ek
+fol yt.at jt.tk a munkét.
+24
+
+--- PAGE 28 ---
+4 _ ARI T MET I KA
+1 T MET
+Ebben a ben az egy— es kétbyte—os egeszek körében
+vege: hets ari emeti i kai mavel etekr61   1 esz sz'-   BAr el egge
+ri hasznÄl at 05, teqyünk eml {test az ari Emeti kai mavel etek
+hasz.ri@l at deci målis azemmSdban
+N.ävel Jiük meg S—tel deci malis mé.dban a $66SO c imen
+52.4m C•r-téket.!
+a: ADC utasxtåEt hasznål juk, amely esszeadja
+Kumu 14 tor-, oper andus es a C jelzSbit értC•két (ez
+Lite.t)bi nak E etbyt. e—os össz eadasnÄI   I esz   I ényeges
+52 er•epe). Ne f elejt%O.k: el a C jelzSt az összeadås e 1 at t O—ra
+a I it ani   flier t. lehet, hoqy el mavel etek eredmenyeképpen
+'Jit-it at.
+; * ar-x ttneti éiUott hozzAadSsa egy
+; * adott cimeti szSmhoz, deci mSlis m&dban
+— ; eqy eqybyte—os szam cime
+s: 4m: Sm+S
+sed   ; d— ielzé. be411itasa
+52 Am
+: carry=O
+aclc   ; a.m+S
+Sm=sz åm4S
+t.örlése
+. end
+Z.—mal deci i s mSdban a $66SO c men
+ertepet.
+k i az SBC utasitas seg véqezhetS el ;   ez az
+all.kumt.i1Stc,r t artal mat. cs.3kkenti az operandus es a C jelz6
+I ent.ett ieneb:. (tehåt O eseten I—nek,   1 esetén O—nak) az
+Or Ezi ntén a ketbyte—os ki vonasnål   1 esz
+tel e: ert üqyel nünk Eel 1, hogy a mavelet megkezdése
+el.ött C ért-C•Lét t —re   mert ehet ,   hoqy az
+mavel etek k i fol YSIag éppen a II .
+: put " a2"
+ari t met i egy adott érték ki von4sa egy
+aciott c i men szÄmb.Sl, decimalis m'dban
+
+--- PAGE 29 ---
+ARI
+sz am=$66SC)   ; egy egybyte—os szam Gme
+; s: am: =sz am—3
+sed   beållftÄsa
+Ida   sz am
+sec   ; carry—I
+Bbc   ; acc=sz am—3
+sta   sz am   ; sz Äm=sz am—Z.
+cld   ; d—jelzé. ese
+r ts
+. end
+Ad junk e.ssze k ét egybyte—os egesz sz   deci malis
+mé,dbar:   es az esszeget i r juk az egyik gzam hel yer e!
+; put "@O: "
+; * aritmetika: adott c i men I egybyte—os
+; * szåm Ssszeadåsa. decima lis me.dban
+egyi k.=$66EO   ; az egyi k egybyte—cs s: am c i'me
+masi k=$66S2   ; a masik eqybyte—os szÄm c "Tle
+; egyi E: =egyi k+mäsi k
+sed   ; d—jelz,; bean ft asa
+Ida   egyi k   ; acc=egyi k
+c lc   ; carry—0
+adc   masi k   ; acc=egyi k
+sta   egyi   ; egyi k=egyi k+masi k
+cld   törlé•se
+. end
+4 Hatarozzuk meg k ét eqybyte—os egesz szåm különbsegét
+deci malis m'dban, es az eredményt i'r juk egy ejabb byte—rai
+; put 'i a4 "
+; * arxtmeti k a: két, adctt c i men 1 évé egybyte—os
+• * szSm kivonåsa, deci malls m'dban
+egyi k=$60SO   ; az egyik egybyte—os szåm cime
+masi   ; a masik egybyte—os s: 4m cime
+eredm=$6SS2   ; az eredmény cime
+; eredm: =egvi k—måsx k
+sed   beållftåsa
+Ida   egyi k   ; acc=egyi k
+sec   ; carry=l
+sbc   masi k   ; acc=egyi k—m4si k
+sta   er edm   ; eredm=egyi k—mäsi k
+cld   tsrlése
+. end
+26
+
+--- PAGE 30 ---
+4. ARI
+A deci mé.l i s ari t met i k a   ut an ter junk   tai aban
+hasznål at os hexadecimal is   ari tmeti k ara 1.
+— N.±.vel .jiÅnk 1   eqy adott egybyte—os sz amot 1.
+meqol dé.shoz i smernonk kel I az INC utasitast   amel y   az
+oper megfel elé. ertéket I—gyel, meqnevel i
+put €0:
+; * ari t meti L a: egy adott cGmen I évé egybyte—os
+r,e.velése I—qyel (inkrementålés)
+fff':   ; az eqybyte—os szam cime
+: EZ.Äm: —SZ am+l
+inc '57. •m
+r ts
+. end
+Navel _iür-tk I—qyel egy adott kétbyte—os sz .1
+ari tmet.i k a: eqy adott c "nen 1 év6
+; A I—qyel rjövelése
+Sm=$66SO   ; a E.etbyte—os szÄm cime
+: 62 am: =sz arn+l
+i r-tc   byte
+: ha nem O, kész
+; felse byte
+meq 'eqyzeseE beszC•l nek: a f else. byte—ot c: sak akkor
+roove I v-i.\:, ha a Is.:. CVn All
+egy adott egybyte—os szåmot!
+: put " €10: as "
+: Y ari t met i eqv adott c i men 1 e vS eqybyte—os
+: * c: sob E etitE.e (dekrementål As)
+esz S.m= Eb6SO   ; az egybyte—os szam cime
+; s: 4m: am—I
+dec szSm
+r ts
+
+--- PAGE 31 ---
+Csakkentsor-il< 1 —qyel egy adott kétbyte—os szamot
+; put "@C):
+; A ari t met i I' a: c i men i eva
+: * 52 Sm t —gyel csakkentése
+Amai 66.%0   ; a kétbyte—os szåtn c i me
+; 52 Am: —sz am—I
+J da   •   sz am
+brae   uqr   ; nem,   >uqr
+d equ   Strj+l   sz Arn= -Sm
+Ltqr   • sz sz am—   1
+_ Net. vel 13—tna1   eqy adott egybyte—os sz amot
+; putt €0 : "
+; * ari t.met.i La: eqy adott c: x' men I e vS eqybyte—os
+; * navel ese eqy adott. ertékkel (pl . 13—mal ) *
+S 2 6650   ; az eqybyte—os szåm c i me
+Ida   52   acc=sz am
+acc=szam+13
+åm=zzSm+13
+r ts
+. end
+— I O N.SveI j O.E   I Z.—mal   egy   adot t   c men   1 evg   kétbyte—os
+; put
+; * arx tmeti ka: eqy adott c i men I év6 kétbyte—os
+; * szSm •Srtékének eqy adott egybyte—os szammal
+; * (p ld. 13—ma1) navelése
+s: Sm=$66SC.)   ; a szÄm cime
+; szsm:
+; car-ry=o
+Ida
+adc
+; esz am+13
+bcc   ; ha nx ncs Atv i tel
+inc
+, Am: åm+l
+ogr
+. end
+2B
+
+--- PAGE 32 ---
+4. ARI T MET IKA
+Egy adott c i men 1 ev6 egybyte—os szam S2—vel navel t
+ér-tékét. i r egv mésik adott c {mre!
+A megol das ra   eg ysz ertÅ,   el egendS   csak   a
+meq geqvzesekkel el I Stott fur-rasszöveget   közsl nank :
+put i'@o: as "
+; * ara tmetika: egy adott c i men 1 egybyte—os
+; * szÄm navel ese egy adott ertékkei (pl ; *
+; * az eredmény eqy masik G men legyen.
+eqyi E=$66SO   ; az egyik eqybyte—os szåm cime
+masi k=$66S2   ; a masik egybyte—os szåm cime
+; masi k: =eqyi k+S2
+cic   ; carry—O
+Ida egyiE.   ; acc=eqyi k
+adc   ; acc—eqyi k+S2
+St. a mé.Ei\t   ; masi k=egyi k+52
+. end
+Eqv adott. c I év6 kétbyte—os szam $1234—gyei
+ertékét år• juk eqy masik adot.t c {mre!
+: put (#0:
+; • ari t. meti ka: egy adott c inten I évg kétbyte—os
+: * s: am e.rtékét ne.vel .jük egy adott kétbyte—os
+; * sz4mmal Cpl d. S 1234—gyel) , s az eredményt
+: * ir juth eqy masik k.etbyte—os szam c {mere
+eqyi k=$66SO   ; az egyik kétbyte—os szäm cime
+mA%i k =$66S2   ; a mAsik kétbyte—os szam cime
+1234   ; az adott kétbyte—os szåm értéke
+masi k: =egyi k+sz am
+c lc   ; carry=o
+Ida   eqyl k
+adc   szSm   ; k+<sz am
+sta   mSsi k   ; cm.Åsi sz am
+TF•QNT   cja   eqyi k+i
+k+>sz am
+sta   mSsi k+l   k=.Segyi k+>sz 4m
+grdemes megfi qyelnün}:: a C bit értékének v Al tozas4t az EGYIK
+szS.m fel byte—jÄhoz val 6 hozz : a JCL SETBRK
+utasithsa segitsegével iktathatunk be a TPONT—näl
+a J byte—on val S e.ssz eadés befejezesekor) .   Vi juk
+Sl felsé, esszead4sa el at t '
+29
+
+--- PAGE 33 ---
+Egy t c R men   I evg   eqybyte—os   27-tel
+E en tett ir jok az   adot t
+put. i' :
+; Y ari k a: eqy acjott c i men I eqybyte—os
+; * s: Sm eqy adott ertékkel
+(p ld. 27 —tel)
+egybyte—os szam cime
+; s: Am: am—27
+sec
+: acc=szam
+5 bc
+sta
+. end
+4 — I Eqv ado t t c i men eve:   egybyte—os sz Sm
+csökkentett Crt ± ECt i r juk eqy masa k   adott c {mre!
+; put " €0: a 10"
+; Y ari ka: egy adott c i men I évS egybyte—os
+; * s: Stn csökkente•se egy adott ertékkel (pl. 31 —
+; * gyel) az eredmény egy masik c i men legyen.
+; az egyik egybyte—os szam cime
+mSsi k=$66S2   ; a masik egybyte—os szam cime
+; masi k: =egyi k —3 i
+sec   ; car
+Ida egyik   ; acc=egyi k
+sbc   ; acc=egyi k—31
+St. a masik   ; masi k=eqyi E—ZI
+I Egy adott c i men I év&. k étbyte—og szåm   27-tel
+cse.kkentett erték•et i r juk az adott cimre!
+A Y.étbyte—os szam eqybyte—ossal val 6 c se.kkentésekor a fel ss
+byte erte•ke 1 —gyel vaqy O—val c se.kkenhet aszerint,   hog y az
+al byte—ok különbsé•qének k épzesekor kel etkezet t —e at vi tel
+vaqy sem. Ez a C bit all SsSt61 fuggS elågazast jel ent.
+; * ari tmeti ka: eqy adott c {men 1 é•v6 kétbyte—os
+52 Sm ertékének eqy adott eqybyte—os szSmma1
+(p ld. 27 —t. e)) cs.5kkentese
+30
+
+--- PAGE 34 ---
+* = •$6666
+s: am=$66SO   ; a kétbyte—os szÄm cime
+a26   ; sz Am: —sz Am—27
+set:   ; carry=l
+Ida   ; 4m
+#27   : s: am—27
+• sz sz am—27
+TPON r   bc s   (.tQr
+dec   Sm+i   Am: am—I
+uqr
+. end
+Itt is   mint a 4.12 feladatnéi   f i qyel j meg   ku I .5nbé26
+eset ekben a T PONT Ee.réspontban a C bit ertékét !
+— 1 Egy adott c i men kétbyte—os szäm   $1234-gyel
+c se.kkentett ir juk egy masik adott c
+; put i' a27 "
+ari t.meti k a: egy adc-Jtt cimen I C•v6 kétbyte—os
+; * 52 Sm sok egy adott k4tbyte—os *
+: * szé.tmnal (g, ld. , s az eredmenyt
+; * i r eqy m Asik kétbyte—os szam c i mere
+eqyi k=$66SO   ; az eqyik kétbyte—os szåm cime
+masik kétbyte—os szÄm cime
+; az adott kétbyte—os szäm ertéke
+; magi k: =egyi k —sz am
+; carry—I
+Ida   eqyi
+5b c
+fit-a   mSsi k   ; < mési am
+egyi k+l
+Sbr-   : acc= >eqyi am
+sta   mSsi i   ; ymåsi
+A tcjv4bbi akban   e.ne.sebb maqyarazat nél ku I   e: ek kel r okon
+fel adatokat   meg jegyz esekkel   b6ségesen   el iatott
+megol cHgoEat I O nE.
+1 7 Eqy a dot t c I e vS eqybyte—os   sz amot   novel junk
+meq eqv masik c i men I eqybyte—os s: Ammal   s az   eredmenyt
+else g: hel yer e/
+; put " @Cy: a 1 1 "
+ari tmetx k a: eqy adott c: i men I évé. egybyte—os
+; * sz3mhoz ad hozzé. egy mSsik c i men I évS,
+; s uqvancsak 52 am ertékét.
+
+--- PAGE 35 ---
+eqyi   eqyi9: eqvbyte—os szam c i me
+m.451   ; a masxk eqybyte—os szAm cime
+: egyi k: =egyx k
+: car
+ltda eqvi\:   : acc=eqyiE•
+adc masi   ; k+mSsi
+; eqyi k.=egyi k+måsi
+. end
+4 — 1 Eqv a dot-t c I k étbyte—os   sz amot   novel junk
+tneq c amen E.etbyte—os sz ammal   er edmenyt
+i r e I hel yer e!
+PLA t " €20: "
+an i 1 k e' : eqy adott c i men I e•vé
+; Y s: S m e r t-éhé-t meg eqy masik
+$ 6666
+; az egyik kétbyte—os s: am G me
+; a masik szam c i me
+; egyi k: =egyx k +masi
+c: lc   ; carry—0
+Ida   egyi   ; acc=egyi k
+adc   magi k   ; acc=egyi k+masi k
+eqyi   ; egyi k=egyi k+mÄsi
+adc   ; k+>mSsi
+sta   egyi k+l   ; Segyi k
+. end
+Egy aclott Gmen I C•vS eqybyte—os   Smot   növel jünk
+meq eqy magi E. c i men I évé. egybyte—os s: ammal   s az   er edmenyt
+ir eqy hartnadik cimre!
+; Y an 1 E.a: egy adott be
+; * Ltgyancsak adott cimeken I eve. egybyte—os szam *
+; * osszeqerjek Crtevet.
+eqyi E '*$66SO   ; az egyik egybyte•-os szam c i me
+mS%i k=$66S2   ; a mAsik egybyte—os szÅm c {me
+edm=$66S2   ; az eredmeny cime
+; eredm: =egyi k+masi k
+c lc   ; carry=O
+Ida egyik   ; acc=eqyi
+adc masik   acc=egyi E+måsi k
+sta eredm   ; eredm=eqyi k+masi k
+. end
+32
+
+--- PAGE 36 ---
+4 - 20   Eqy adott c i men I év6 kétbyte—os szåm értékét
+ne.vel meq egy c i men kétbyte—os sz ,   s az
+eredmC•nyt juk eqy harmadik cimre!
+; put " €0: a29"
+; * ari tmeti k a: egy adott c {men I év6 kétbyte—os
+; * sz•m ertSECt ne.vel jiÅb{ meg egy masik
+; * szSmmaI, s az eredményt i r juk egy ugyancsak
+; * adot-t hel yre'
+eqyi k=$66SO   ; az egyi\t ketbyte—os szam cime
+masi k=$6SS2   ; a masik kétbyte—os szam cime
+eredm=$66ü4   ; az eredmeny cime
+a29   ; eredm: =egyi k+masi
+; car-ry=O
+eqyi k
+masi k   ; k+<masi
+k+<mSsi k
+Ida   eqyik+l
+adc   ; acc= > egyi
+sta   er-edm+ 1
+. end
+Eqy   t. c i men 1 eqybyte—os szam ertékét
+ken t egy   c men 1 egybyte—os szåmmal
+ere"trtertyt i r j u E   eqy harmadik cimrei
+; putt
+; * Ka: equ adott c "nre i r juk be két
+: • adott c imeken 1 egybyte—os szåm *
+bfiÅI.±.nb5égenek
+eqyi E. =$66SC.)   ; az egyik egybyte—os szam cime
+rnSG1   ; a mSsik egybyte—os szam cime
+; az eredme•ny cime
+: er•edm: =egyi k —masi k
+sec   ; carry—I
+egyik
+sbc inSEik   k —masi
+sta er edm   ; erecjm=egyi k —masi k
+. end
+adott c "nen I év6 kétbyte—os szÄm ertékét
+eqy   magi R c i men 1 CVS kétbyte—os szÄmmal
+, s az
+eqy harmadik c imre!
+33
+
+--- PAGE 37 ---
+: 90 t (Ego:
+: • t: meta ad'.-jt-t c k men k e •byte—cs
+z er eqy m•si k   Cit) yte—os
+: * s: Amma I , s az eredff'ényt i r egy •agyancsak
+nel yrei
+eqyr   : az egyik Ytetbyte—os s: am cime
+: eredtn: =eqyi k —masi k
+; carry=l
+Ida   eqyi
+5b c   ; k —<mSsi
+Est e.   er edin
+eqyi   acc= ; egyi
+1rt.S.si E +1   ; act: = .%egyi k—
+er edrn+l   ; .:egyi k
+Eqv aciott   c men   I e vS eqybyt e—os sz Am   erte
+resvei meq eqy masa k   c men   eqybyte—os szämmal   Ss meg
+az eredmenyt   az els6 szåm hel yer e!
+put i'
+ari t met i k a: egy adott c i mert I ev6 egybyte—os
+; * szamhoz ad junk eqy mAsik G men i eve. ,
+ugyancsak egybyte—os 52 amot cs egy adctt
+szamot (p ld.
+eqyi k=$66SC)   ; az egybyte—os c i me
+masi   : a mast k eqybyte—os s: Sm c: i' me
+; eqyi : =egyi k+-masi /1+32
+c lc   ; car-ry=O
+Ida   egyi k   acc=egyi
+adc   masi   ; acc=eqyx F.+masi
+; carry=C_)
+adc   ; acc=eqyi R ••-måsi k+32
+egyi It   ; eqyi k=egyi E+masi k. +32
+. end
+4 _ Eq•/ adott.   c i' men   I e v' eqybyte—os sz am
+rte.vel yak: meq egy magi k   c men   e v' kétbyte—os sz ammal , majd
+c Gökkent-E0k 21 —gyel ,   eredményt i r j egy harmadi k
+
+--- PAGE 38 ---
+; * tmeti k a: eqv adott c i mre juk be két.
+• • ogyexncsak adott c i meken I szåm E.sszeqének *
+eqy acicott (mond»tk 21 —gyel) cse,kken—
+eqyi   ; az egyik egybyte—os szam Gme
+m.Ssi   ; a mAsiE egybyte—os sz4m cime
+eredrn=f66S4   eredme•ny c {me
+a IS   ; eredm: aegyi k '-masi k. —21
+c Ic   ; car-ry=O
+I clei   QQ yik   : acc=egyi k
+acc=eqyi k+måsi k
+; carry—I
+Bbc   acc=eqyi k+masi k—21
+sta   er edm   erecim=egyi k *masi k —21
+Fts
+. end
+Eqyet oar•a meg szükséqünk ahhoz, hog y a E.épernyére
+t-c-ovAbb a j 201 junk:   ez pedig a kétbyte—oes egesz ek
+erre is egy
+Hat-Är•cjzzubl meq, nagyobb két,   ad ot t c men
+Ké•tbytemos (p ld. C. ill. )
+; putt " €30: el 2."
+ari tmet-l Rex : hat. S.rozzuk meq két adott c {men
+esz4m kaz•e.tt: a nagysågrendi vi—
+eqyx   ; az egyiE kétbyte—os szåm cime
+masi E.=$66S4   ; a masik kétbyte—os szSm cime
+; ha egyi k<masik, ak.kor
+; Rülonben k i:
+egyi k +1   ; felse: byte—ok
+c mp   masi E. +1   ; asszehas.
+bcc   ki sebb   egyi k < mésik, ki sebb
+n aqyeq   egyi k >lnåsik, nagyeq
+I cla   egyi   ; byte—ok
+masi k
+k i sebb   ; eqyi E<mSsi k,   ki sebb
+nagyeq   : eqyi k k
+k i: sz.±.veq
+r t.rs
+E i Eit?bb   ; eqyi k < masi
+j sr fff 4 f   El : sz.?.veg
+bvt€?
+
+--- PAGE 39 ---
+n . TMETIBA
+e C o I Oya/ or-I   liéhSny fel adat:
+Old meq oqy   4.2S fel adatot,   h oqy   ill.
+rel v i 2 qqål jon a   progr- am
+_ meq Oqy   a 4.2S fel adatot   hog y   väl asszuk
+eseteket
+rtdntt: egybyte—os szåm a c i :   EGYIK es
+Ir it-tnE. 01 programot,   amel y a ki sebbi ket
+E (BY Jb —be, a r.aqycobbl pedi q MASIK—ba teszi
+— gneq az e 1.32.' feladatot abban az esetben,
+EGYIE eqyar Snt szSmokat Dei 01 nek
+ficjot.t eqybyte—os s: Sm a cimevel :   EGYIR
+I r 01 yan proqramot, amely e.sszeqoket EGYIK—be   a
+pedi q NASIE—ba teszr
+(31 d juba meq feladatot abban az esetben, ha
+MAS I B, eqyar ant 52 amok at jel nek
+7.1   Adott. a memé.riÄban k ét, egybyte—os szSmokb'l Al IS
+60-•60 e I sorozat. A sorozatok kezdScimei: EGYIK es MAS 1K.
+Jr ictrtE 01 yan proqnamot,   amel y sorozatok el emei t rendre
+e.%gzeadja, s a: iqy kapott 60 sz amot sorban lerakja a tar
+€SSSZEG c: kez•dve' (Az egysz ertÅskg kedveert tetel ezzük
+hogy mi liden e.sszeq el fer 1 byte—on. )
+— 01 d juk meg az e I Sza feladatot abban az esetben, ha
+mi gorozat ECtbyte—os sz amok at tart al maz
+Mek kora amok at tudunk negy byte—on Sbrazol ni ?
+I•-r _junv:: , amel y két négybyte—os   sz am   esszegét
+Ir junk programot ,   amel y ket negyb yte—os   sz S.m
+rr .junk proqramot, amely két neqybyte—os s zam
+nem naqyobbi kat
+rr proqramot, amely a memSri.Aban felcsere•l k et
+
+--- PAGE 40 ---
+VILLOGAS ...
+Ismet vi képernyg.hk.z: mar meq tudunk 01 dani 01 yan
+fel adatokat, amel yekben apr6bb—naqyobb sz tasokat is ei
+I ve gezni .   El egy 01 yan fel adatot 01 dunk meg ,
+amel yben ecgy i qen q yakori c i' mzésme.dot i s hasznäiunk (bar nem
+ez a most-ani mazåsa a legnagyobb eI , hanem p ld.
+4.32—berj) a." on. i ndxr•ekt i ndexelt c amel yel egy,
+tar nul I al ap elhel yezett c i' mhez E. epest Y—nal h atrC•bb I evS
+tudutr-'h hozzSférni. Ez eléqqC• bonyoiLII tnak k,
+cte I eqy pe I dat! TudvaIéva, hogy a tar $2b—$2c c i mén
+mi rtcjiq a BASI kezdetenek hel yet jelzS mutat6 van,
+er- talSban $1 (301.   Teqy;ak fel ,   hog y az Y regi sz ter
+t. artalma El: kor a: LDA ($2b) , Y utas{ tas hatas4ra az
+eO<kumulÄtorba t .31 tacti k a $2b—n tal cimnC•l Y—nal nagyobb
+c imu byte tart alma,   tehät (mi vel $1001 +$33   $1034) ez
+eqvenertékü az L-t)A $ 1 (934 utasitassal. Hoqy akkor mi ert nem
+e: t hasznSl juk? Egyr eszt azert, mert az Y index ertékét i gen
+Eonnyen juk navel n i ill.   csakkenteni   ez t a I kennyedén
+tuduraE p ld. adattSbI atoEban moz ogni , masreszt pedi g sok
+esetben tar més és mas teral etet.'l kezd6d6,   ugyanol yan
+szerkezet{å adatok fel dol goz kannyen el tudjuk végezni
+apon eqyetlen CA m at i r-åsaval ) .
+I' r juk tele a képernyg 10. oszlopft csil
+: put " €0: c 7"
+; * a i O. 062 i opot vegißirja csi II aqqal
+; t Ärhely a nul apon
+hel v=$OcOO+ 10   ; IO. oszlop teteje
+; kezd.3cim
+sta   : nul lal apra
+# >hel y   ; töl te•se
+sta   29+1
+ennyi+t csillag kell egy oszl opba
+#0   ; index el éshez nul I Azzuk
+Ida   akkumul Atorba a ké,dja
+; a hel yer-e i r juk
+; , azaz eqy sorral lejjebb
+acle
+bcc
+nc
+dex
+bpl   c i klus   ; ha x aEkor vi ssza
+; vi ssza a BASIC—be
+
+--- PAGE 41 ---
+% - CS II-I-AGOK;   v 11-LOGAS
+Me q e•qv aprA%Äq: rnaqurtk kész   mutat hel yez on k a
+null a I apra, f iqyel junk r a, nehogy oda   {r juk,   ahol m4s,
+rendszer tal hasznålt k•rtékek vannak! Egy RAM—terkepb61
+der•iÅ1 (ld. p ld. C 1 J—ben), hogy a Sd8—$e8
+ores; . iqy a $eO—$e1 byte—okat nyugodtan hasznél hat juke
+Most   mar t.i.tdunk a kavetkezS fel adat megol désähoz :
+csxl lagokb.S1 egy keretet a képerny're'
+; put " c8"
+her-etet vegiq{rja c sill aggal
+t4rheIy a null al apon
+hel   ; a bal széIs6 oszlop teteje
+hel y _j=-hel -y'b+39   ; a .J0bb széIs6 oszlop teteje
+hel yeczheJ yb+960   ; az a I s' sor eleje
+; ennyi+l csillag kell eqy sorba
+; (a sar kokat az osz lopokböl
+; akkumuIÄtorba a * k.±.dja
+sor c. i   ; c i klus
+hei yb+l   ; felsa sorba i r juk
+sta   hel ya+l   ; a I s' sorba i r juk
+dex
+bpl   sorci   ; ha x 30, akkor vi ssza
+Ida   hel Yb   ; bal felsS sarok
+sta   ; c mének
+Ida   # bhel Yb   ; nul lal apra
+sta   zp+l   ; tel tese
+osz I op
+Ida   w: hel Y j   ; Jobb fels6 sarob.
+sta   ; c menek
+Ida   ; nul lal apra
+sta   zp+l   ; t 'l tése
+j sr   osz I op
+r ts   ; vi ssza a BASIC—be
+osz 1 op   ; oszloptölt6 c: i k lus
+; ennyi+l csillag kell egy oszlopba
+indexel é5hez nul I azzuk
+oszcik
+; akkumul atorba a * kSdja
+sta   ; a hel yere {r juk
+c lc   ; z p: =zp+40
+Ida   ; , azaz eqy sorral I ej jebb
+adc
+sta
+bcc:   ogrik
+ZP+i
+uqr-iE
+bpl   oszci   {ha x akkor vi ssza
+; vi ssza a BASIC—be
+. end
+
+--- PAGE 42 ---
+S. CS ILI-AGOK;   VILLOGAS ...
+rr junk a:- el fel adatra r Svi debb programot
+; put c 9"
+Eeretet: c sillaggal
+;térhely a nul lalapon
+hel   bal szélsS oszlop teteje
+hel yb+':.9   ; a jobb osz lop teteJe
+hel ya-:hel yb+960   a Iss sor eleje
+c-jy:   ; ennyi+l csillag keli egy sorba
+: aE,E.umuI Storba a * kSdja
+: E.or-t.ölt6 c: i k I us
+helyb , x   ; fels.3 sorba i r Juk
+hel ya,.v: ; a 15S sorba
+dey:
+Eon c: i   ; ha akkor vi ssza
+; jobb fels6 sarok.
+sta   ; c menek
+Ida   ; nul lal apra
+sta   2P+l
+; ennyi c sil lag kell egy oszl opba
+052 c i
+Idy   indexel éshez nul
+I cja   ; Storba * k'dja
+(29) , y   ; a hel yere irjuk
+; a hel yere i r Juk
+; z p: =zp+40
+; , azaz egy sorral   ej jebb
+acic
+z 9+1
+uqr-
+oszc.iE   ; ha x akkor vissza
+; vissza BASIC-be
+. end
+k ét megol d as t I egi nkåbb az   INY
+hasznAlatSban van k.ülönbség. Mi teszi ezt lehet'vé,
+mennyi ben 'r-e,vx debt) • a masodik program az eI s6néI?
+m.±.cjcon hasznSl juk—e S. 1, az S. 2
+fel G T to (z p) , Y utasitSst?
+rr j ur. k 01 yari proqr amot   amel y eqy 12*6   01 dalo
+apot ir a k e:perrty.s közepere !
+Vr junk 01 yan programot ,   amel y a keretb61   i ndul va
+eovr-e c 5-3k o] ijal t éqlal apokat rajzoi E.üle.nbezg
+jE•l
+39
+
+--- PAGE 43 ---
+S. CS ILI-AGOK;   VILLOGAS ...
+— 8 r r junk 01 yan proqramot, amely a kCpernyat telefrja
+csillaggal !
+El s.3Eént a képernyS 4 1 apjånak par-huz amos töl tésevel 01 d juk
+meg a fel adatot:
+; put 'i €20: c-•91 "
+a köpernyé.t teleirja csillaggal
+(sys26214)
+I—tocOO   ; a képerny6 1.   lapjånak kezdete
+kep2=$OdOO   ; a képerny3 2. lap j anak kezdete
+; a képernyS .3- lap j anak kezdete
+; a képerny6 4. lap janak kezdete
+; csillaggal teleirja a képernygt
+aponEÉnt
+; a * képer-ny6k6dja az acc—ba
+#0   ; index O—r'l indul
+i ndul   ; ci kezdete
+képl , *   . I apra
+- * a 2. I apra
+sta   ; * a Z. I apra
+sta   EÉ•p4,;:   ; * a 4. 1 apra
+bne   i nciul   ; ha * < 256, akkor   vi ssza
+r ts
+. end
+Rögté.n I athate., hogy azzal, hogy mind a 4 i apot teleirtuk,
+föle.sl eges munk4t i % végeztünk,   mer t ezzel essz esen 1024
+csi I I agot hel yez eI a képerny6re vi szont csak 2S*40,
+azaz 1000 karakt.er fér, 24 csi 1 aqot a képerny6 utan I evg
+tar teral etre Or t ur. k.   Ez probl émåt nem okoz ,   vi szont
+programoz4s sz empont: _jÄb41 1 ényeges kanny{test jel ent ,   h og y
+nem kell a Jobb szar-oknål meqål Ini .
+— 9 rr junk 01 •yan proqramot, amely az S. 8 fel adatot egy
+null alapos mutato seqitségevel old ja meg
+Ez a megal dSs egy nul lal apos c Onre teszi   a képernyS
+aktuÅI i lap J Sra mutate, értéket ,   majd az   Y   regi sz ter
+érte•kének nevelésével vegi gfut a   I apon ,   ennek   vegez tévei
+pedi g a I apmutäte. (azaz   a fel byte—ot ) nsvel i
+I—gyel, mindezt 4—szer csinål ja   vegig,   ez zel   I ef edi az
+eqesz képer-ny6t
+; put. €0: c 92 "
+a képernyat tel eirja csillaqgal
+(sys26214)
+40
+
+--- PAGE 44 ---
+S. CSILLAGOK;   VILLOGAS ...
+; a képernyg kezdete
+; hétbyte—os mutat6 a   nul 1 al apon
+:csillaggal teleirja   a képernySt
+; laponké•nt, nul lal apos mutatS segitsegével
+# . Kev   nullalapos
+mutate. beSIIitäsa
+Ida   ; a képerny6
+sta   z 9+1   : Fez deter e
+: a * ké•perny6k6dja az   acc   —ba
+: 4—szer csinÅl juk
+we 00   index O—r61 indul
+r.cjul   ;ciklus eleje
+Eta   ; * a mutatott hel yre
+iny
+bne   ndul   : ha y<2S6, akkor vi ssza
+i rac:   z 9+1   ; 'S j lap a kepernygn
+indul   ; ha * +0, akkor vissza
+r t.sz
+I r' juro 01 yan programot, amely az S.B fel adatot eqy
+mutate, vel dj a meg ,   de nem a mar
+tel eirt , hanem az elért cim értékete.l   fugg6en
+a keper tel e {r ja csillagqal
+(sys26214)
+00   ; a kC•pernyS kezdete
+; kétbyte—os mutatS a nul lal apon
+; csillagqal tel a kC•pernySt
+: eqy null al apos mutate. seg{tségével
+.1r3a   nul apos
+: mutat,s {tasa
+; a képernyé.
+: Eezcletere
+I dy   1 O—rSI indul
+; Äi.lsS ciklus (laponként)
+Ida   : a képernySkSdja A—ba
+i ndi-tl   : bels' ciklus (egy lapon belul )
+sta   ; * a mutatott hel yre
+; ha ysZ2Sb, akkor vi ssza
+; O j lap a keperny'n
+z: 0+1   ; a I apmutatö
+: el Or-te a
+; netn, aidtor ssza
+. end
+41
+
+--- PAGE 45 ---
+S. CSILLAGOE; VILLOGAS .
+Nyi a van a lea I I Ssra SZOk5é•g,   ha a mutatS
+e I eri a $1000—et, mert ez mar nem adhat az Y—nal val'
+index e I es utan a képerny6re egg • ;   a kép jobb al s'
+sarkår.aE a cime ugyanis 4071, s ez a legnaqyobb.
+rr junk 01 yan programot, amely az S.B fel adatot egy
+apo'S mutats seqitseqevel 01 dja meq, de az indexel éshez
+az Y regi s: ter c sak formai lag hasznSlja (pass: {v Y)
+A ' pass: i' v Y azt jel enti, hoqy a pr ogram futSsa kö2ben Y
+ke vegiq O, nem val toztatjuk, maqyarul: csak a null al apon
+c: hat Aroz•za meq a k EpernyScimet. Hogy akkor
+mx t v an r A sz ükseg? Az ert , mert   n a nc s nem   index elt
+I apos indi rekt   c i mzésmSd ,   s   ezzel   I atszSl ag
+eqesen t Y—nal eqysz   meq rhate.k   az i I yen
+; €0 : c 94 "
+a E —per nyat telefrja csillaqqal
+(sys26214)
+$ 6666
+E Cv-=$ocov   ; a k4pernyS kezdete
+; kétbyte—os mutate, a apon
+; c sill tel eirja a képer•nygt
+; egy lal apos mutat6 segitsé•gevel ,
+; (pass: i v) y—nal indexel ve
+: a null alapos
+sta   ; mutate. beÄll
+Ida   ; a képerny.3
+sta   ; ke2detC•re
+; O az i Oshez
+; c i Elus (lapcjnként)
+Ida   ; a * kepernyÅké.dja A—ba
+; belsé. c i EILIS (egy lapon belül)
+sta   ; Y a mutatott he lyre
+al byte—ja
+bne   ; ha I apon belül van, akkor vi ssza
+inc   zp+l   ; o j lap a
+Ida   ; a I apmuta€.é.
+c mp   : el erte a
+br-.e   k ezd   : ha me g nem, akkor vi ssza
+1 2 Old meg ugyanezt a feladatot,   de most   passz i v
+X—gzel
+Ez a masik nul apos indexel Csi lehetSsC•g,   a neve   i ndexel t
+i ndirekt c. amely nevében hasonl it. a fejezet el e jen
+i smer c imzé•sm'dhoz   de nem c sup an for-mai i ag ,   hanem
+I enyeqében is el ter at t' I. Eqyreszt   — mint nevébdl is kitiånik
+— itt elSsz•r az indexelést kell   f i embe venni   s csak
+42
+
+--- PAGE 46 ---
+VII-LOGAS .
+az i nd ir e•hc1St: (tehåt azt, hogy ez az ere k csak egy
+c i m, eqes oper andus Ott tal hatS, ahova ez a cim
+mtlt.at)   M*.sreszt.:   mi g az el c mzesm6dnål csak az Y
+rægi i tt az   X regi sz ter hasznal hate,. Ennek a
+a cneqvi I Agi t. 4 sara is I assunk egy dat
+[ecty;.iE f hcjqy hel yt61 kezdve a Eövetkezé. értékek
+v ar-tnak t Srban: $12 $134 $7 B •$9a $de $fO , tegyüb(
+f P J a:.t. i hcoqy a: X reqx sz ter tar-talma $04.1 E k kor az LDA
+(.t:ci8, X) ot as i tar $bc9a c Onen er-te•ket tölti az
+av. or bag   uqvanx s eI toy-ten i az i ndexel Cs :
+$04—qyeI h StrSbb I eve. ( tehåt a $dc—n kezdädS)
+t en S t tbc9a a s   — most j.sn az   indarekci.:i.
+her Q I az akkumul St orba.   Ha X értéke
+t .ör net- C)   Ecor az St or ba a $3412   rekesz
+c i mze•sméd   r endk val   ritka,   a
+era al Ssa.val sem .SI koztunk, s
+ked veer t mutatunk ra példat.
+; I-utt.
+t e) eir„ja c sillagqai
+liéverny&. kezdete
+: mutatS a nul lal apon
+teleÅrja a EC•pernySt
+eqy nul apos mutate. segitse•gével ,
+; de most   (ugyancsak•   passziv)
+; a apos
+; a K éperrtye.
+; det.ere
+: C.) az index e I eshez
+; ci (laponké•rvt)
+; a Leper nyé'k.Sdja A—ba
+: be ) SS ci (egy apon belül)
+; * a [lit At at net hel yre
+byte—Jä
+: belül van, akkor vi ssza
+; O a ké•pernyan
+: a I Etprnutatö
+brie   .tha meq Eor- VI ssza
+
+--- PAGE 47 ---
+S. CS II-LAGOK;   VILL.OGÅS .
+A arra 1 Stunk egy pe•ldå.t   hog y egy
+huqy,arj *mmaq4t a Grnx, me.dositani .   Ez tipi kus
+Sa J StossÄq, de nagyon evat osan   vele,   mer t
+I emet len meql epetések &rhetnek bennünket
+t k 01 y an   .±.nmag m.é,dcj5i   pr ogr amot ,
+ätnel•e' A? pernyst fel c sill agokEal
+" (90: c 96"
+a b:epernyét tel eir csillaqqal
+magst
+egyszer f ot: t asci, Rülsnben baj I esz
+(SYE26214)
+* 22 '$6666
+Eezdete
+: c: % i I I agqal teleirja a k epernySt
+: eqy maqÄt Stirs program seq
+; a EEperny8ké.dja az A—ba
+kezdete
+muttatott. hel yre
+; frtutate, a I s.s byte—ja navel ese
+mutt   ; ha me g nem O, tovÄbb
+i rtc   : f €•lsé. byte—ot is
+I chi.
+: e I Srte a
+b rwe   trn.t t   •e me g nem, éOtkor vi ssza
+. end
+E z 2 eI foc)S.csaI   D.ScskSn I ere.vi d i tetti-(k progr amunkat
+I en yeg S T Ai zorban van; ez a byte—oz utasitas 2. es 3.
+byte- ( a acsony—magas sorrendben) mind i q azt
+a I-Spenny.?.cünet tart al mazza, ahovå k.svetkezg kerül, s ezt
+a c me.c-icj%i't az INC MUT+t i II. szaksé•q esetén az   INC
+MO T +2 , am i q cim ei nem eri a
+Ez a program 1 yen formS.jS.ban azonban ériSsi veszélyt rejt
+maqSbetra. E 15-3 f uttatåsa el 't t ugyanis a STA KEF' u t as ft as STA
+al futas utan STA $1 C)OC) al ako i esz   Mäsodsz ori
+icid. t Ssa cttact t. en 4 t ele.szer a $ IC)OO, majd a $1 OOI   a *1002
+c i mre {r J a a * kar akter- kSdjåt   egyesevel
+ve MIJT+I a MUT+2 érte•két, s ezzel   ( en add ig ,
+amiq $6666—no:.• erve sajÄt magat i s t önkre nem teszi) a tar
+mi rider. byte. at S'2a-•ra,   a * a a I I it. j a ! Tökéi etesen
+a I k: almas arra   hog y mi nden eddi g i munkån tan kretegye
+CivAt.cjsan b Sn iurjk tehät ezzel az eszE.E.zzel! De mi akkor a
+meqc•l d Ss'?   z , hoqy az e.nmagåt program fettasa eI Stt a
+If.ezd,se rte kre 41 1 az   i I yen ,   menet   k •z ben
+é•rtékeket:.
+44
+
+--- PAGE 48 ---
+S. CS ILI-AGOK;   VILLOGAS .
+fel adatr 01 y an meqol ,
+Etm€-:ly t eqytriA% vat Sni futtatåsra is al kalmas!
+; ''@C): c97'i
+\ *per ny.a tel eirja cesillaggal
+; i m.±.ciü€.it j a maqit., de ez mar ügyesebb!
+is +uttathatod
+OcoO   ; a Ekperny,6 Eezdete
+tel ekr_ja a kC•perny6t-
+; eqy magat Stir-Z. program
+Ida   ; a programban I eva
+trtt 1 tH I   ; fm-it-ate, beall
+: a kk•pernya
+trtt.tt +   ; dt?tcre
+; a A—ba
+k I use-jk Eezdete
+; * mutatott hel yre
+; als.s byte—.ja novel
+met t   meq nem O, tovåbb
+mut   : feisa byte—ot is
+: növel yak
+; erte a
+mtn t.   ; meg nem, akkor v 1 ssza
+. end
+t 01 yan ,   progr amot ,
+nden   k ar a k t er enek
+toz Cat J a ( a: a: : a vi I Iogé.k meqszünnek, a nem v i II ogok
+pedi q villoqni )
+v II Joc;eatasert   ( mi rat mér a 3.1B fel adatnål
+egfels&t bit je a feleISs,   e: t kel
+t en S t: a i a mi nden a esetén el I enkezSjere
+EOR #7.10000000 utasi tas seq t ségevel
+t hate. meq, de e:. a v 41 tozést csak az A—ban hozza I etre.
+i a bvt e- 'ait tehÄt egyenként be kell töi tenor-jk az
+a—bet, Ott el Eell vegeznonk az EOR mavel etet, majd az
+t tenonk a sz i nmem&r i Aba- Ha az el 'bbi hez
+maqS t- m.•Sdosi t.S proqr ammai dol goz unk ,   akkor
+c hel yen iS szerepel :   el Ssze.r az LDA ,
+LttasÅ t as oper andusakC•nt   Pont osan
+that i. , MUT+1-MUT+2, ill. a MUT+6-MUT+7
+c: i eqy megjeqyzes: az aktuäli s c i met addig
+S I toe. mi q nem eri a sz inmem.sria me.g.±.tt I eva
+met   $0cOO--t .   Ezek utan
+
+--- PAGE 49 ---
+S. CS ILL AGOK;   VII-L-OGÉIS
+; put "@O: C99 'i
+; * a képernyg minderi vi I logs Earaktere vi i logs—
+; * SS t megszünteti, a nem villog6kat pedig vil— *
+; * loge.vÅ teszi.
+(sys26214)
+; a sz inmeméria kez dete
+vill   ; vi 1 logsst ford it
+Ida   iri   ; a proqramban I év6
+Est a   mut + t   ; beS.11
+; a masik helyen is
+Ida   ; a EZ i nmemoria
+mut +2   ; deter-e
+sta   mut+7   ; a mSsik hei yen is
+mut   klusok kezdete
+; ci Elusok kezdete
+eon   # % 10000000   ; a 7. bit negåläsa
+; * a mutatott hel yre
+; mutat.S byte—ja ne.velése
+i nc   mutt +6   ; a masib< hei yen x s
+bne   mut   : ha meg nem O, tovSbb
+mut+2   ; felsd byte—ot is
+inc   mut + 7   ; a masik hel yen is
+; ne.vel juk
+; el érte a
+bne   mut.   ; ha meg nem, akkor vi ssza
+A t ov4bbi akban , az eddi gi   i smeretek kel assz efuggg
+feladat megol Javasoi juk:
+1 junk Eepernyg közepére egy piros
+kari kåkbé.l rae•qyzetet ,   s az t huzzuk meg kék
+S — I 01 yan programot, amely az Fl billentyü
+meqnyomSsAra I etar I i a képernyé als6, az F 2—ere pedig a föl s.s
+•felk•t
+I Készitsunk 01 yan programot, amely az Fl bi Ilentyü
+meqnycjmSsSra I etörl i a képernyé bal, az F2—ére pedi g. a jobb
+01 data t '
+I Részitsunk 01 yan programot, amely a * bi Ilenty«
+meqnyomasara fel cseréli a képernyg Al s' es fölsé felét !
+Kész t5ünk 01 yan programot, amely a @ bi I lent YG
+megnyomasara fel cseréli a képerny8 bal ég jobb 01 dal at!
+21   Kesz itsünk 01 yan programot, amely az Fl bil lent
+megnyom45Ara a képernySt vizszi ntes kö2C•pvonal ara tükrözi
+46
+
+--- PAGE 50 ---
+S. CS 1 LI-AGOK;   VILLOGAS ...
+— 01 yan programot, amely az Fl billentyü
+megnvotnåsar-a K epennySt fi-i.ggél eges kezépvonal ara ti-ikre,zi
+01 yan programot, ameiy az Ft bi
+meqnyomasåra a E. épernyS mi nden   kara k teret   eredet i
+inverzeue
+A feEete—f ehér képerny6n nem 1 at juk hat terrel
+f enyesse•gü k ar-aktereket. Kész it sunk 01 yan programot ,
+F bi 1 1 megnyomasåra az i yen karakterek
+fenye€sse•qet megvSl toz tat j a'
+i 01 yan programot, amely a • kurzor baira
+bj rrneqnyc•mS5Srca a Eépernyé.t I oszloppal balra I épteti
+Oqy, hcoqy a _iobb 052 Iop hel yere ores oszl opot
+— 1 t: '30.0 E yan pr ogramot amel y   Eur z or
+bi meqnyomAsSra a képernygt I oszl oppa I jobbra
+I C pteti hogy bal oszlop hel yére Gres oszl opot
+i 01 yan programot, amely a   E ur-z or + eI
+bi I ectt   megnycji1i45Sra a k epernygt 1 sorral fel felé
+09 y , hog v   sc.r• hel yere ures sort i r
+y an proqramot, amely a
+bil   megnyorn,l képernyé.t I sorral   efei I é•pteti
+hocay   a + el sor hel yere ures sort i r
+meq €21 Sze 4 fel adatot oqy, hoqy a ki I épa
+sort.   opot eI lerW.ez.S 01 dalon Ojra bel eptetjOk•
+képernyé tart al mat Oqy,   hogy   mi nden
+r. aqybt?t-'Åt   Et»etOræ c sere•l
+a képernyS tartalmåt Ogy,   hog y   mi ndert
+*bet" t neqvbetGre
+a k eper n yd tart alma t .ogy, hogy   mi oden
+i Steet: are ctgyanakkor mi nden k i sbetüt nagybetiäre
+rr tele a Répernyé.t sakktåbl a—szerüen fel val tva
+b arna rjeqvzetek.kel (a: i nverz space ki erre a
+it 01 yan   amel yen   mi nden
+barrja Inez&.t Ekt- zeld k.±.vet' Vigyåzzunk a laphatåroknål
+
+--- PAGE 51 ---
+6. SZAMOLJUNK   TOVABB
+az ogz tassal es a negyzet—
+fel adatokat t ant-II m4nyozunk.
+van egy ,   a memsri a adott c "men I évé.
+eqvbyt.e—os s z Sm eredeti hel yen.   rr- J unk 01 yan
+pr-oqr•jnot, amely ezt összeadås segitsegevel megoldja
+Ez E. i kes,   f ékC•nt• nag yobb sz amok esetén ,   de
+52 erencser-e veili eqyszerübb mad) a i s. Az I .3—1.6 fel adatokban
+14thattcxK•, hoqy a b i naris al akban Abrazolt sz amok kétszeresét
+( taqyanoqy , mi nt- a t i zes sz Smrendsz erben Abrazol sz amok
+t er ) eqysz eriÅen   eqy O sz 4m jegy   ho: z r asaval
+meq; e: z e I enyegében a sz Amban mi nden sz Amjegyet
+az eredet eqqyel maqasabb hel yi ertékre hel yeztunk,   s az
+he) yi (az egyesek hel yer-ei i r tunk. A szSm
+tal hogszabb' 1 esz, SbrSzol SsShoz az eddiqi   1 —gyel
+t-e.bb b tre v art sz;./kségank, s ha a rendel k e: e sunkre Sl 16
+Szi tart. cjmS.ny kor I Stozott (mint egy egybyte—os
+5." e€,et. )   a kor- err 'l   1   bi t r 81   kell
+Egybyte—os s: Smok   .—vel val 6   sz orz sak or
+nn evet egyetl ert   az I b It Cel baira I É•pteté. ASL utasitSs
+tehSt : a I egfelz.s (bal azaz 7—es) bi tet a
+C--be i r i a, a többi bi tet egy hel 1 yel balra tol _ja,   maJd a
+I eqétls.±. ( Jobb ss, azaz 0—5) bitbe ir. A tebbi   ehhez
+hasonl.:. f el utasitassal egyetemben több mé.don
+a reqi szterekbe t.é•s nel ,
+hel el •vegezhet)ük egy s: Am megkktszerezését-
+Old meg a 6.   fel adatot   ASL
+; putt
+ar it met i kea: egy adott c {men I eva eqybyte—os
+; az egybyte—os s: am cime
+; 524m:
+asl s: am
+s 2 Smok eseten n y ilvanval 'an ugyanezt k ell kétszer
+vSqr en a t anun k   apra   A2 a Is' byte—tal
+Eel I ter•trs.ank, mint az eI vi szont a fel byte C).
+bi t jebe értel emszerüen nem kell   irnunk,   hanem az al s'
+byte I eptetesekor onnan a C jelz6bi tbe ker;alt,   eredeti I eg
+I eqfelsé. bit jet.   A felsg byte ki al ak itS.sÅhoz
+Eell meqval 'sitanunk: a C—ben 1 —vS értéket a O.
+48
+
+--- PAGE 52 ---
+6. SZAMOLJUNK TOVABB!
+bi t be ezzel eqyidejüleg minden bi tet egy hel yel baira
+ur-lb: ,   E i c sordul   7.   bi tet (mint ASL—ne ) a C
+jelze.bi t be t essziÅk. Eze a funkc:i.é.t i s szeml tethetjük,
+hoay C bi ten   Rereszti-il baira forgatjuk a byte tart al mat,
+ezert: az e: t meqval ROL utas' tast   baira   forgat6
+— meq egy ,   a meme i a adott c i men I evg
+Rett byte—os zzfirn kC•tsz eresét, eredeti hel yen
+" GO: a 31
+ari h a: eqy adott c {men I
+: • G.z:S.jn €2 or c': zuk meq 2—ve1
+; a s: Am cime
+: szSm:
+; a I byte
+rol   ; felsa byt.e
+r ts
+. end
+meqol d as értel emsz erü   al kai maz as4val
+meq eqy, a mem6ria adott men I evg négybyte—os
+kß•tgzereget, eredeti hel yen
+Naqv•ori eqysz era 2 hatvanyai val val 6 szorzas proqramozasa
+is. 1.9.ssunk. err-e is
+Hat-Srozzctk meg egy, a meme i a adott c mén I évé.
+eqvbvt.e—0fä s: am nyol cszorosat, eredeti hel yen
+; a 17"
+; Y ar i tmeti ka: eqy adott cimen IC•vS eqybyte—os
+8--cal
+; az eqybyte—os 524m c "ne
+; szSm: am*8
+(kC•t szer es)
+; (négysz eres)
+; (nyolcszoros)
+. end
+— 6 meq egy, a memari a adott c i men 1 év6
+szSm nyol cszorosat, eredeti hel yen
+A S.S mint. S ) Ara egyszeriÄ a megoldås. Mi most mégis a 6.3—ban
+i tett a: 1 rutiti fel hasznålåsat mutatjuk be, egy héromszor
+I efut& c i Elus mazÄsaval, mert ez dét szoigål tat a 2
+jr,aqafiédib hat vs.nyai val val' szorzäs mmeqvalé.s{tåsara.
+49
+
+--- PAGE 53 ---
+6. S ZANOLJUNK   TOVABH
+; put " €0 : a32 "
+: * ari tmet i k a: eqy adott c i men I ketbyte—os
+; * szorcjzzuk meg a—cal t.
+SZ 6650   ; a cime
+; szÄm: 4m*B
+; ride* ndul
+ugr   j sr   ; 52 Srn duplÄzasa
+dex   ; k ell
+bne   Ltgr   ; ha i gem,   —Svi a
+; vi ssza a BASIC—be
+; szSm: 4m*2
+asl   ; aisS byte
+rol   ; felsé. byte
+; VI esza a h i' vas hel yéhez
+— 7 Hat z meg eqy , a mem'ri a adott   c men I e vg
+kétbyte-•os Sm eredeti hel yen
+A nem 2—hatvSnnyaI tör-tén.é. or z As 1 —forgatassai
+val k, meqol d Asa Altal S.ban a szcjrz.±. ertékétg.l {üqgsen
+meqol i genyel. Err e mutatunl< most néhåny dat.
+— Hat Srozzubt meg eqy,   a meme i a adot t c i mén I évé
+egybyte—cjs s: am tizszeresét, er edeti hel yen 1.
+I a szam kétszeresének es nyol csz orosanak
+.±.sgzeqebé.l _juk meg.
+: * trrtf?t.i KEI : adott c i men I evg egybyte—os
+; s I (.-wzel s: or z Ssa
+; az egybyte—os szam c' me
+ala
+asl
+St. a   ; sz Am
+; acc=Besz4m
+; carry—O
+; acc= 10*sz am
+; sz am-a I Owsz am
+. end
+so
+
+--- PAGE 54 ---
+S. SZIIMOL.JUNE.   TOVABB
+6 — Hat meg eqy,   a   meme i a adot t   c men
+s az   er edmC•nyt {r J uk   egy k
+; ari t-meti k.a: adc,tt cimen kétbyte—os
+• F g: Sjr. trteg IO—zeI, s az ered—
+menu t eq•,; etqyanc€,ak adott c: i mre!
+; a c One
+: az er edme•ny cime
+egy Ores ECtbyte—os hely a tar-ban
+; er•edm: I O
+; szåm duplSzÄsa
+sz Stn
+mé.Ei I,
+.ti.m+•
+s;t.a   . masi 4m
+.1sr-   dupl
+; dupl SzÄsa
+erecjm=sz k
+; vi ssza a BASI C—hez
+eredm: am•-mSsi
+; carr
+ad c   fn.ä.%lk   ; Am+<mSsik
+fit a   er edm   er sz am+<.mÄsi k
+; ac.c= .>s2 Am
+Am+>mési k
+; vi ssza a hivas hel ye•hez
+: S: Am: ÅffJ*2
+; a Isa byte
+: felsé, byte
+: vi ssza a hivS5 hel yéhez
+. erro
+
+--- PAGE 55 ---
+TOVABB
+meq egy, a   meme-sr i a ad ot t   c i men I eve:
+egybvte—os 52 am i S—sze.raset, eredeti hel yen
+It t. k.e,vetkezé. fel adatokn41 te.bb lehetéseqet   mutat unk a
+meqol dasra (az riYbe vett tar-hel yek sz ,   a ver em
+has: nti.latSt.ål ,   I S—sz or er   stb.
+füqq.:eri ) .   •jabb ,   meqol d S sokat
+i' thet-(iriE
+Most e rte•ket- oz 1—   es a a—sz or-os
+ér-t.åk P.cpezz;.ik; a t: Srb.sl c sak eqy hel yet veszonE
+i qere,'be, az er-edet:it: r esz er ec.jmerjyek Atmeneti tar-olés4ra
+ver-met
+; pt.lt " €20: 9"
+; * ar•i t.meti E a: eqv• acjott. c i men 1 eve eqybyte—os
+• * 524m
+; az s: 4m cime
+ai'9
+am
+ver embe 2 *szåm
+; ver embe 4*S2Sm
+; carryz:O
+; am
+adc
+pla
+: carrv=C.'
+aclc:
+sz Stn
+end
+52
+
+--- PAGE 56 ---
+6. SZAMOLJUNK TOVABB±
+6 — 1 1 Hatarozzuk meg egy , a meme i a adott c: "Tjen 1 eva
+ketbyte—os szÄm eredeti hel yen !
+Most a szam   a 16—sz or osamak es a sz Amna k a
+kül'nbse•gébSI al ak it juk k i; az eredeti tar-hel yen k i v;-il meg
+ket masi kat veszi-ink igénybe. Ké•t, mar elSzSleg meg rut inra
+is epitiänk: a 4.22 fel adat a30—as rut in Jåra, amely kk•t, adott
+cimeken I evg ketbyte—os s: Am kiälsnbsé•get egy harmadik c i mre
+i r ja, es az a31—esre (ld.   6.3 fel adat) ,   amel y egy adott
+hel yen szerepl.s kétbyte—os s: amot eredeti hel yen megdupl
+ver-met adatck' Oroläsåra nem hasznSl
+; put " €0: a34 "
+; * ari tmetika: egy adott cumen I e•vé.
+; * szåm értékét szorozzuk meq IS—tel
+s z Sm=$66SC.)   ; a SZAm
+; egy Ores kétbyte—os hely a tar-ban
+masi R.=$66ä4   ; egy rnasxk ures hely a urban
+; szam: i S/ i.
+Ida   szam
+sta   masa k.   masi am
+Ida   szÄm+I   ; acc= .ün
+sta   mSsi k+i
+; szåm dup14zÄsa ( *2)
+; s: 4m dupl (
+; szam dupl (*B)
+; szam duplÄzÄsa ( *16)
+Ida   er edm   ; eredm
+sta   ; sz eredm
+Ida   er edm+ I
+sta   sz am+l   ; .>sz .åm= >eredm
+r ts   ssza a BASIC—hez
+; szäm:
+s: am   ; a Is' byte
+rol   szsm±l   ; f else, byte
+r ts   ; vi ssza a h Ævås hel yere
+; eredm: k
+sec   ; carry=i
+Ida   acc=•:: szam
+sbc   ; sz k
+sta   eredm   ; er edm=e. s: masi
+Ida   sz Sffj+l
+sbc   masi k +1
+sta   er edm+ 1
+; vissza a hi•vas hel yer e
+. end
+53
+
+--- PAGE 57 ---
+6. S ZAMOLJUNE
+Hat Snozzutk meg eqy, a   i a ad ot t c men I eve.
+IS-sz.z.re.set, es eqy adott cimre'
+6. IO—zeI egyez 'en vc qezz;.ik; az
+erede:'tl t.±.rhel meg két mS5i kat veszonk i qcnybe. Most
+Rétbyte—os szam hel yben dupl mel lett
+1 5 ( 4.20 feladat) haszr,Sl juk: ez utöbbi
+h' etbyte—os s: am SESZ eq— t eqy   harmadi
+i ver-joet adatok t Srol most sem hasznål juk.
+ani tmeti k a: eqy• adott c i' men I C•v.g
+: Y szSm E"? or-ozzuk meq IS—te1, az ered—
+; m mü-,yt ir- eqv Liqyancsak adott c i' mre'
+52 Sm c. ime
+eredm%$66S'2   ; az eredmC•rty helye tar-ban
+: eqy or eg hely t Arban
+; edm: IS/ i
+: Str.
+• f. mSsi Sm
+SZ *.rti+l
+Stu a   mÄ%i
+; sz Am
+I cia   en edm   ; eredm
+mé5i en edm
+er ecim4 1   ; acc= Yer ecjjn
+misi E +1   •mÄEi >eredm
+; eredm=szam+mS5i k
+; sz Sm=2wszÄm
+er edm   ; eredm
+Eta   masi eredm
+er- edrrt+ 1
+; >mÄsi
+; er edm=52Sm+mÄsi k
+; am: 4m*2
+byte
+r Cwl   G? Sm+l   ; fe15S byte
+a29   ; er edm: —sz Am+masi
+Lil c
+4m
+,adc.   masi k   : mSsi k
+er eum
+: Ärrj+
+eta   er edrrt+ t   ; Yeredm= arrj+ k
+. end
+
+--- PAGE 58 ---
+e. SZ'AI*IOLJUNK   TOVAHE4
+Hat: 3 r   meq eqy, a   memSr i a   adott c mC•rt
+IS" i r eqy   adot€ cimre!
+put m. :
+i V a: acjott c. i men I kétbyte—os
+i r eqy adott c {mre!
+; a sz.*.m Cime
+erecimeny hel ye a tar ban
+: erecim: •s: IS/ i i .
+Sm
+1
+1   acc-- ; szÄm
+•rrt
+. Am
+:san
+li..n
+; he i yore
+510+1
+a BASIC
+: 3.cn:
+byte
+byte
+a hivås   hel yere
+
+--- PAGE 59 ---
+TOVABB
+Mi   ItialaEÅt.SsSt tt is 6. IO—zel
+ver c 'sak az eredet.i tar-hel yet vess»ZiÅk i génybe,
+cit? a ver-met s c sak Cpitünk.
+0010} i   t re.viclebb meqoldS.st tudunk
+Sr meq eqy , meme.ria adott c. I e v'
+eredeti hel yen
+A ver etu es cikiusok al mss tar-heiy
+01 a pr-coqr
+c i tnen I IOS tbyte—os
+s: Sm cime
+; 52 Sm: Smet O/ i i.
+inciul
+to Ira   '32 om+l
+; byte
+; als,S byte
+52 Am
+roi   .%.ili+ 1   ; duplAzSs
+b rje   uqr a   ; ha meg Eel I,
+: i ride::
+ocarb   c:lc:   carr-
+; a I byte
+Sin
+sta   : hel yer e
+byte
+adc   Sm+ I
+; hel yere
+tone   1.1 qr-b   ; ha
+. end
+it az OE2 Ehhez   a or 2. I mondot tak
+ertel   — a jobbra I eptet.3
+I-SF. a j f ROR ot. as i t asoEt-a, amel yek (az eI t-g•ré.
+i n 'nyctal::   meqfel   me.dosi t Sssal )   mi ndenben
+el ASL i a FOL   Vi I Sqos tehSt ,
+hoov esqv eqvbyte—os _jobbr-a I épteteseEor szam o j értéke
+az eredet.i f ele ,   a   2—vel val e. os;-• task or kel etkez ett
+mar adee "Edi 1 q a C t be
+
+--- PAGE 60 ---
+6. SZI"M01.JUNEs
+eqy ,   a   mern.:sr   ad ot t   év6
+t.meti c i men
+eqybytæ—os szSm c i me
+meq eqy, a meme.rx,a adott c i men eqy—
+C f oqq.?.en i r k i a
+edet.L szS.m paros vol t -e vaqy pyr at. I an
+. eqy, mem.±.ri.a adott c i mer-j   I eve.
+I •.ttl.lvt.€••
+"if? t' .a: adott c I ilierj Ret byte -OS
+: -.4 •zzam c i me
+; s: S.an: Am/ 2
+t.y'te
+; a I byte
+. encl
+I t eqy , a
+I ehet   CSR
+t. tel t:
+tuner J ac.lcß.t- c i men egybyte—os
+eqvbyte—os s: 4m c: ime
+(fel e)
+Am/ 2 (negyede)
+3m/ 2 cada)
+
+--- PAGE 61 ---
+meq eqy, a
+r-.yol ,   osztÄsi
+mar' Cit
+cytibr   keletkezS
+t trjeq egy,   a merr:4r• i   adot t   c mer.
+nyol ce«lr•
+: s ari e•qy aclot.t c. i inen hétbyte—os
+: Atn/2 (rreqyede)
+eSm/2 cada)
+: vi BASIC.—hez
+.3tn/2
+bvte
+h i vas yer-e
+, a mem'ri a adcit:t   c me n   1 evg
+eredmenyt 1 r juk   egy   adot t
+is lehet
+I vert egybyte—cjs sz am   esz or z sara
+a: i tesehez vegyük eszre, hog y kCt
+szor z at a a k Svetkezé,képpen szami that':
+(MASIE/ 2)   ha MAS 1K paros
++ (MASIE-I)   ha par atl an.
+Ez   *lap Milts IK V: C t: (akår p Srcjs, a b:.ér p Sratlan) eqyre
+c 541: I!   a vegeredmenyhez (termeszetesen közben
+—Vt 1 to: t. at iuE), de c sak 4sszeadé.st
+i I i. frilfiSIK esetén ugyancsak 2—vel val' osztSst
+tr.azva. Az algori tmus:
+MIISIF. ITJÅr0%, O.kor   EGYIK:
+I .±.fibeti   -EREDM+EGY I
+MASIE:
+vege
+(..i ! . 1 Cjt:-•
+
+--- PAGE 62 ---
+6. SZAMOLJUNK
+A program:
+" a40"
+; * an i t met i ka: egy adott egybyte—os
+; Sm meq egy magi k egybyte—cse
+szSmeval, s az eredményt egg ugyancse\t
+; * adoct hel yre (a s: or-zat- is lehet!)
+; az egyik egynyte—os s: 4m ca;ne
+; a masik. eqyryte—os s z A m
+eredmenv c i me byte! )
+; eredm: =egy4a
+Ida   ; eredm
+er ecim
+eredm+l
+sta   egyi k +1   ;egyik fel=' byte—Ba
+; c i k I us, am: g masi
+Ida   masi k   vizsgSlatA
+bec
+br:e   pti
+parcs   parcs eset:zr,
+egyik   ; eqy:
+rol   egyi   ; maJd : yte
+: magi k fel e:
+; parcs aq
+ptl   ; misik parat.an eseté•n
+; carry—0
+Ida   er edm   • eredm:
+adc   egyi
+sta   eredm   ; ais' byte
+Ida
+adc   eqyi k+l
+sta   er edm+i   : felsé byte
+mazi k   ; mi.si k: =mas•,
+ci
+ese:cn
+; vi ssza a EASIC—hez
+. end
+Ehhe:   h asonl.s   gcr:dz at meret   al mazasåval
+hat v Ar-,yøzé. pregramot. amely szémftja EGYIEtfr1ASIS
+F: gyel meq, hcgy
+ha
+EGVIE   MASIE OS.ros
+h a MAS I K p seat. Ian
+Erne;; a'.   Vteszxtsük el   me Jd programc,t.
+
+--- PAGE 63 ---
+b. TOVABE«:
+hényados4t
+— EC•t, adc»tt: c E.étbyte—os s: 4m
+5 r juk eqy adet:t c osztåskor Eel ett   mar-adékot
+pedig 524m hel vere (mar ozztä.s) !
+; put " €40: 1 "
+; * ari tmeti ka: egy adott c inten i evg Eétbyte—os
+; * 52 Sm értékét c-3%szuE el egy mÅsik kCtbyte—os
+; * 524mévaI, s az eredményt i r juk egy ugyancsak
+: * adott hel
+evyi E.=$66SO   ; az eqyik kétbyte—os szam cime
+magi   ; a kCtbyte—os szAm cime
+; az eredmer.y cime (k et byte')
+; eredm: nt (egyi k/ masi k)
+; ( a:. az: a hånyados)
+; eqyi : =eqyi k —mS.si E*eredm
+; (azaz: a marade•k)
+hSrayados Ssa
+eum   ; a I s', majd
+5t.a   ; felsé. byte
+; eredmÉny Ssa
+er eclm   byte
+brie   L.tqr•i   ; hél nem O, E•ész
+;.fels.i.k byte navel ese
+Ltc:r i   : e:gyi k: =egyi k —masl
+Ida   eeqyi   :.acc egyi k
+sbc:
+egyi
+eqyi k+i   ; >egyi E.
+mÅEik+I   ; acc= k— >mÄsi k
+egyi k + I   ; >eqyi k
+: egyi
+bc s   ki von   ; meq nem, toväbb
+had   ; i gen, egyszer vissza kell   admi
+; eredm:
+Ida   er- edm   ; < eredm=C)?
+bne   uqrcJ   ; nem ,   >ugrd
+dec   er edm+ 1
+dec   eredm   ; < er er edm—
+; eqyi k: =egyi k+mÅsi k
+; carry—o
+eqyik
+adc   tn.4.si k   ; k+<mäsi k
+sta   eqyi k   ; <eqyi k+<mssi
+Ida   eqyi   ; acc= Yegyi E
+adc   masik+l   ; acc= >egyi k+ >mäsi k
+5ta   eqvi k+i   ; .>egyi k+>mSsi
+r ts
+. end
+60
+
+--- PAGE 64 ---
+TOVABB
+meq v i Sqos az al qori tmus: addi g
+k i am i q EGYIK negati nem val i V:: , majd
+s a mavel etek sz a.méb'l   i smer• j O k. a
+11<--ben pedi g éppen a mar adC•kot   juk-
+meq eqy adott c i men   eva kétbyte—os
+J t 9 A : meg egy adott cimen
+bétbyte-«j€, né•gyzetqyekét
+; a kétbyte—os szam c {me
+; taz eredme•ny cime
+: a: seqé•dvSl toz.s
+mS5iE sege•dvåltoze.
+: —int- (sqr ('32 am) )
+; a: er edme•rty
+1 2 zåsa
+1--re 41 1 it juk
+mssib:   : kat
+sz Äm<eqyiE, althor   vege
+z : Sm+l   byte—cuk
+: ehasonl i tasa
+imc:eqyik, vege
+b r-IC•   ; am } eqyi ,   t ova. bb
+: byte—ok
+: i tasa
+•..e-qe   ; Arne. egyi E, vege
+Abb   ; toväbb
+er- ecljn   ; er•eclm: =eredm+l   — csak 1 byte!
+mSsi k : æmasi k+•2
+cic-   c éirry=Ci
+mS%iV$
+; ha nx r,cs at vi tel
+i roe:
+; K: =egyi k+rrt4si k
+: car-ry=O
+: acc=eqyi k
+niS'.:Ä.1i
+: k=eqyi k A-masi
+• eayik
+k+>mSsi k
+: v i ciklus elejere
+
+--- PAGE 65 ---
+6. S,'ÅMCJL-JUNK   TOVABP
+seqe•dvSl 1   EGYIX
+01 E HI 13M e E.ee-esiÅnE, amel yr e   n oqy
+(Efi•EDM+i ) •t2
+yen   i gazol hats )
+szer i nt a   az elsS k
+at 1 egyer-jlé.. Az EREDM szåm C•rt.ék.e I—qyel
+set) b   ter mész et   sz StnnSl   t ar t un   a
+v i (gortcjol juk meq: a k i ctt4n Epp erre van
+aktuAlis pSratlara 52 amot jel enti, EGYI\::
+a (EREDM+I neqvzetet.) , tehåt nem mSs,
+eddiqi par an sz Amok •sszege.   Enri e k i smer etében
+a I 1 b'e.vet Lez S:
+•EREDM+ 1
+1 -MfiSIK+2
+fel eadat   meqol *.hoz   sz k sC•ges   a
+qyz etr   I r- at Ogy ,   hc,gy a fenti al gor i tmust
+62
+
+--- PAGE 66 ---
+MINDENRE HASZNALHATJUK?
+Ebbe a fe col yara feladatokat g yajte.ttünk e.%ßze,
+tol dat mutatnak a .snbözé.
+rte.: ho: z Sférésre.
+T IfC•pennyatÄrba a képernyél bal felsS sarkÄté.l
+t Sr ban c. i mt.31 kezdve 1 , O byte—tal   z Sre.dé
+az a kis probl'éma van, hogy sze.veq a
+v an, pedig k epernyéh.±.dban Eel I
+Stal akitSs segitségevel meqol dhatS.
+: put.
+; a ascci EZdban tarolt szoveget
+: a I i r ja a ké•per-ny're
+; indes: i rtdul
+; aktuålis byte
+anci   : f.everny8k6d
+: képre teszi
+; byte—ra mutat
+; vi ssza, tovåbb
+; vi ssza a BASIC—be
+' jo n,.apot:!' O
+.i eq meq ,   hoqy ami kor a PRINT is
+JIT ur. k €22 sveget a képre,   Ak k or val ami ehhez
+t.ör•t.enrk az ak it as.
+Teoy•ok a a SZOVEG cimt61 kezdve a E.cperny.g bal
+zarSdS szsveget
+It t. fel epperi a ford i tot-tjaré.l van sze.,   mer
+I öveget ASCI I a I it ani .
+I ) ver-j f e I a:: INPUT BASIC—utasitås veqrehajtasakor
+; ' ' Cito: e 1
+tar 01 t. , 1 egfel jebb 256
+- , agqal z4r6d6 szoveqet
+i r ja tarba,
+c Eezd6dSen
+
+--- PAGE 67 ---
+MINDENRE HASZNIQ-HATJUVP
+00   E e pernyö
+Idy
+5t•.ar•.
+E z.±veq aEt.uSIiE byte
+; c si I laq—e?
+beq   : ha iqen,   — >vege
+it $ 40   : asci i k.±.d
+memSriSba i r ) a
+byte—ra mutat
+s t. art:   ; vi ssza, tov4bb
+vege r e
+: v i ssza BASIC-t.je,•
+; hely I efoqlal
+I m eredeti sorrend 'ükben   abc   betidi t
+kezd'cjaert
+; " €20: étbcl "
+I' megfel e i 6 bet'Åket
+abc a E.C•pernySre i r- J a
+; a k epernyé,t-år kezdete
+abc 1   : abc—ben a k.epre
+I civ   ; az e15é. beta k.Sdja
+; a ciklus Yezdete
+sta   PCP—I , y
+; var. meg?
+ci I us   ; i qen, v i ssza
+; nincs, vege
+- end
+Fiqyel j;.ik meq: a TYA Ot-as i't.asra van SZÜESéA, mert nincs
+STY utasitas, azaz sajat maqSvai nem indexelhet6 az
+szter m4s016 Ute as it.as; (sat ,   X regi szter i s
+I al aj»os esetéfi index eI heté )
+i u E' k i az h aeon I
+Lert V:epernyki
+E: c sak annyibari Eülanb.azik, bogy Y   ér-ték.é•t egy
+apon ker esztül kell futtatnunE .
+
+--- PAGE 68 ---
+HASZNßLHATJUK?
+: * megfel karakte—
+r gor•r endben a k eperny6re *
+: a Képer-nyatar kezdete
+; l. an •E terek abc—beri a képre
+e) 5' karakter
+; a ciklus kezdete
+E eper-nyé.re
+tine   : tart, vi
+; mar n i ncs, vege
+RPiSIC-Vu1csszavakat
+I J At , a c:sszavaE $81
+t:er eten hel yez E.ednek el a t Srban ,
+tar-tomS.nynak képernyére mSs019sa. Ez   n em
+I Ver 01 et, s mint ké•perny.5 c: s i 1 1 aqokkai
+I Stt-•ctk,   erdemesebb
+cm feJ eqesen vegrehajtatnunk, ha a program
+i k. Most inkå.bb ezt   sz er t
+•ail
+" •i. : 11   — t Sr beli sorrend ,jükben *
+4.
+: a Ekper-ny&.tår eleje
+c-ssze.tåbl k•ezdete
+; a csszé.t-Sb14zat vége+l
+: a ku I hossza
+k Sper ny.StSr vege
+: C sszavak a Eépre
+: I rides. i ndul
+; a c: i El us Lez dete
+: 1 byte t St., I Szat
+; o pe•per-nyare
+: 1 byte t.
+; a k eper-nye.re
+: van, VI ssza
+: roar-gcs, vege
+
+--- PAGE 69 ---
+MINDCNRE HASZNAL.HAT.JIJY.T'
+($fft00) s. byte—J   eqy O
+7 ?.tti   Smot
+kapot:t érte•k nyi Ivan nem véletlenszäm,   hi sz ert az
+r endszer al ap jan veszi fel ertékeit
+c: EZE keri az me•gis vel ennek   hat, mert
+ve•l eti 1 1 fordul unk hozza.
+pr oqramh.:.l val S h i I epest a STOP bi entyü   1 enyomÄsSt
+f iqyelé, e) SgazSE 01 dot tuk meq-
+.7 ke.ze.tti vél enszamot E i
+: a stop bill entyüt fiqyeli
+a I E' byteæ.ja
+es k'dja
+chr out •X f t d 5'
+I cJéi   tic.) s
+c:hr   : a Ee•oernya tar lese
+L cia   t i mer   ; •vel etlen' byte
+; a 1 E.0 bit je
+or a
+c h rout.   ; k j {rasa
+; stop?
+: nem, toväbb
+; vi ssza a BASIC—be
+end
+7 — ir J 0.1k At eldz8 fel adatot az   1.   i daz t' fei
+ld.   1.1 1 fel adat)
+jaira Mi t   tag, tal   ' vél etl ensz amok '
+Sei val kapcsol atban0
+i d.;z ($ffC)O) als.S byte—jar-jak
+ert.ékp:t fol yamatosan a képer-ny6 els.:; '236 byte— jar a,   de   csak
+esptben, ha az eppen eqy É.SdJä!
+Tul a 'donkeppen a gyorsan cEökkené. szamlÅlé. értékeit 'elhozva
+a ECpernySre. Hogy a. 1 atv4ny szåmunkra is krze•kel hetdve
+VA I jék, bei k tattunk eqy lassi ta ci k lust.   A progr amb'l a
+bil lent.yü. segitségé•vel tudt-tnk k i 1 épni .
+put " €20: vek2"
+• * a Réperny.gre ja 1.   id6zit.a a 1s'
+ha az éppen eqy sz ämjeqy ké.dja
+
+--- PAGE 70 ---
+HASZN11L.HnrJt-lK?
+kez dete
+byte—ja
+ent-y•å i enyomS%At
+: t i a EC•pre (el
+: 1 i nd(-ll
+; O —t megelé.zü'
+: 1 ueri, v 1 ssza
+: 9 utan je,n?
+: v i ssza
+a btevr-e
+fiqyeli
+; _jobbr a?
+-3   fel adatot az   1.   i d.Sz fel se.
+fel )
+•vél et eCiEZ Amok '
+val .
+it o I proqramot   amel y   hog y
+v i If i Yue cn.±.dban vaqyunk
+c mré.1 01 vashat.e.E   k i , ennelt a
+i grafi   fügqvC n yében
+Abbi :
+kar nya
+naqy+el bont.S5'0 grafa
+boot. * so gr at ika + karakteres   Ké•per
+i qrafi
+1 1 t.ei.;bsz:: i rt'Å qrafil:a + karakteres kC•per-rtyS.
+ten St., hoqy legfelsS bit mutatja a több—
+qr S. bit a grafi u zemmSd, a 6.
+behapcsolt vol t St. Ezeket a bi—
+et tet-tS!. meqvi nur-O$. Enneb.f I eqeqyszerübb ja: a
+at a az utasitas a Lér-dé•ses byte 7.
+t? it I? J t V —be j a, es Z er az akkumu—
+E bitenEénti R'NI) mi-Kvelet ered—
+mz,dort be. MI vel (Z, N es
+t el -3.q*z6srSl I esz Sze. , ezeket c sak e—
+kC•zenfeEvS, hoqy elsS v i
+ej b 1 z tande;.   meratsoE. el a
+t e . fel regi szter ver embe merit-eset a
+pedig a PLF Lit agitas haJt-ja vex-;re.
+
+--- PAGE 71 ---
+rut i n
+tar til.
+VI 1 at-a
+•fit
+s.:éveq:
+• graf
+; t.e•k
+; v=O, nine €3
+is i sze.veg:
+1   ROM —t'
+q —p ben   Ear apter et
+• q t art   , iqy e: t. a t-erOletet k ell
+V.un $ '2000—te.1 kezd.3cté terol etere-
+be Yell i tar-junk :   a reo iffC.)6,
+grafi m.±.dba valé.
+i E ez nek
+) up SCNCLR gepben
+IDE utSn kevetkez.s LDA
+f (41 yamat.og
+ur .?fil o:   i r a graf
+
+--- PAGE 72 ---
+7. MI   MINDENRE HASZNÅI.HATJUK?
+* = •$6666
+scncl r=$cS66   ; scnclr bel epési pontja
+; a graf.   E eperny.6 kezdete
+kar   ; a let Eezdete
+; grafik.us me.d jelz&.
+arapter• et
+Ida   ; at. teres
+or a   # 7.001 OC-)OOO   ; bi t tery.épes
+sta   $ff06   ; Oz emmeclr- a
+I cia   $$ f 12   ; a bitterk•ep keas dete
+and   #34000000 t 1   ; —s a r cont/ ram v S I
+or a   1 OOCY   ; nul låzåsa, $.20
+$ff12   ; bi Eezdete
+Ida
+sta   $ f f 14   Eezdete: $ 1 aoo
+Ida   gnafiEa
+g r mod   ; +524veq beåll
+scrtclr
+Ida   k ar gen   ; a programban
+sta   nnert+l   ; mutate. bed I I it Asa
+Ida   # > k ar gen   ; a karakterké•szlet
+sta   i nnen +2   ; kezdetC•re
+Ida   kep   ; a programbart I
+sta   i de+l   ; mutate. beall it asa
+Ida   # > kep   ; a képernya
+i de+2   ; kezdeter-e
+nnen   ; a karakterqeneråtor eEtuSli'E.
+Ida   karger,   ; byte—Jé.bSl
+; a aktuSli% byte—Ja
+sta
+ide+l   mut.ate.E
+i n ner•t+l
+bne   nnen   ; ha meg nem O, tovå.bb
+i nc   cje+2   ; f f? Isa byte—
+inc   i nrgen+2   ; 0k at is ne.vel jiÅE
+I dx   i nnen +2   ; kar aktergener ator
+CVS'.
+bne   i nnen   ; ha mcg nem, tovÄbb
+. end
+7 — I SOE j am   i genyei megfel el Sen   iSt
+karakterkész etet hasznål   RAM-bar,   tar
+(l eggyakrabbar, a $ 1000 i 11 .   a tzaoo t: imtS1   Lez d.é.de:erO .
+Kész i t sunk ezeket karakter I eteket qrafi
+mésola programokat
+7 — 1 3 IV junk 01 yan programot, amely nder, t) 1 J
+I enyomasara hang jel zest ad   megpedi g I .:.rtbe.zS   bi erityük
+esetén kole,nbé.zé' maqass4qt-e• hanqot
+A fel adat mequldSsShoz a mSr i smert bi I jel:a
+byte—ot haszn31 A I b i 11 ent
+k.-é.djåt meqne•gyszerezziÅk, maJd az Crt ket.
+
+--- PAGE 73 ---
+hanqqer-ter vrxjqr   K j I •pru   .i0bbr a   gomb
+; put " (90: t' 'J "
+; w a bil 1.
+t ad
+t-.ill=$r6   ; bi I Jent ya ertyomésat z i
+: hanqvezer-I.S regi szter
+hang 1,   : I - hanggem. 7. bit
+bi I lentyük I e•rjyomSsa.ra hangot   ad
+bill
+; ) obbr-a•:
+; i qen, E i Eza.ll
+.•mS.s bi lent y;åt nyomunv•
+netn, V: i
+4—qyel
+: •frehvencia be i' r Asa
+; iqen,
+• qen. be, t•.éinqer-e:
+: i tc»vAbb
+it"'. 1110 t 111   ; I. qen. K. i,   hanqer.* max.
+; elhallgat
+tov4bb
+. erid
+Ot: 01   i dol qc.jz ot t   egy   egysz era
+t as: i r junk yan proqramut, amely (a
+1 11.   a shift ki vet-tel evel )   bar-mel yi k   bi I I entya
+i dejeee Gel sé sort c sall aqokkal i r j a tele! A
+ctr cjqr-   hog y or-I at i   b\rmi kor
+1 eqyera, t. ehSt p ld. •eqy BASIC—proqram v agy egy (nem let i I tott
+a 1 f uté.) proqram kszben is
+has: r/ * I heÄ5%1iP..
+e i men meqszab:. it & svektor   ameJ y a I apesetben
+•$C cimre   it i r 4 a MEG.SZ c imre djüE
+ahol vyÉqe.2tet vele a k x v Srtt fel adatot ,
+'t d jo.l.', a $ceOe c i mre-   Ezert
+a cgeSvo el eredet:i fel adataxt, c sak
+is el eqet t esz
+am m €90 i r   Jel en t. i nehCa seqet ,
+E e v i g y nun ,   t or
+til tsuk: Ie a   t Eé.nnyen
+I hot)
+
+--- PAGE 74 ---
+7. MI   MINDENfi•E HASZNHI-HATVJUY<?
+aEitSs: bÄrmi kor   — akar egy basic vagy
+qt:pi k'd•+ program fut.Äsa közben i s
+(a c = , control ill. a shift kivételével )
+y i bil lenyomasanak ide jere a
+•:sort csillaqokkal i r ja tele.
+00   ; a kkoerny.Star kezdete
+; a meqszakitåsvektor hel ye
+; az eredeti megszakitås hel ye
+: meqszakitSs Stir S sara
+til tasa
+meqsz .
+; veEtor
+.t•meqs:•   : At: ir-Ssa
+engedél yezese
+ssza BASIC—be
+meqsoz   ; 'Z' j meqsz.
+bill   : bi I I ent-yüt
+c tnp
+beq   ; nem nyomunk
+i gen   ; bi nyomunk
+az a—ba
+: az adott karakterrel
+; enrtyi+l hely van egy sorban
+bpl   ; ha még van, vi ssza
+; meqszaEit.Ss tovåbb
+; nem nyomunk bil
+; space kSdja az a—ba
+bne   ; tes   — most space—sz el
+; mindig ugrik!
+end
+Old JOE meq megszak{tasbSl a 7. i 3   fel adatot
+veqyes fel adat:
+7 — .t Ford it suk meg egy byte bi tjeinek   sorrend jet
+7 junk. enszerüen 6t   amot ,
+juk .3Eet kC•perny6re nagysåq szerinti   sorrendben
+7 I O Hat Ar meq az elsS 100 termeszetes   sz am
+e:get.   hog y   az   sssz ead askor   kel et kezS
+is ki
+71
+
+--- PAGE 75 ---
+7. MI   MINDENRE HASZNÅLHATJUK?
+egy   täblåzatot   képerny6re
+Tart. Al 1 a termeszetes szatnokat-,   n éqyz eti-iket es
+Ké sz { t sunk egy masi k t: 4b I atot   a képernygre
+Tart,almazza   1-20-i q   a   t er- me sz et es   sz Smokat
+f ton i S I sulcat
+rr junk 01 yan programot ,   amel y b.' i i r j a egy adott
+c Orten I eve. 52.4mnak egy mS.sib$ c: i men   I évS szåmnål ki sebb asszes
+7 rr junk 01 yan programot, amely k i irja az
+els.s 10 hat-vanyat!
+rr junk 01 yan programot, amely ki i r j a az
+Fi bonaccx —52 amot
+7 - 24 rr junk   01 yan   progr amot ,   amel V   gép
+hanqgeneråtor-ånak   mi nden 1 ehet seges _i at annyi   i deig
+j a, acr.i'q lefut egy VAR ciklus (ld. 7.7 fel adat)
+
+--- PAGE 76 ---
+EIEEEJEZÉS
+ha i d fig eI i s hog y mar mi ndent
+cjroqr• r e j tel   hi szen meq éppen
+tart! az sem bi z tog,   hog y az es
+c u i smer-i, mi vel r-tem tudtunk mi ndenre
+"t. atrii i a t. 4b 1 ve•l szerxnt el eqendd
+tovSbbhal ad Sshoz ) .   Azt   azonban
+mor.dha€ i a, hog v ké.ciO proqr-amozÄg el sajÄtitSsSnak
+t •Lil v an, % mS.r c supSn szorgalcjm
+I or-of i ' e: en a t enol eten. tovabbi munka
+fel tetel ez ,   ehhez   etek.et
+i eqyz e•Eben fel t rrßS.vekb&)   Ez en
+eav j alib köt.etet is, amel yben nC•hÄny, az i tt
+i tetL / I   n au yobb   1 61 eqzetü   pr ogr am   tel jes
+i sz ak i mum k At.
+4.1   egy összefoql t: Abl S: at
+Jel   da
+I-DP,
+I-SR
+t.et.t   SEC
+CMP
+AND
+LDY   $18, x
+ago ' Y   I-SR
+abs, X   EOR   $1234, x
+11.   abs, y   SFC
+I cu.i•i r   (abs)   •$BOOO
+
+--- PAGE 77 ---
+UTASI'TASTABI-HZAT
+cr MZES   LEI RAS
+NV Bbl ZC
+adc:   a: =a+m+c
+Fidc:
+a: =a+m+c
+a: =a+m+c
+adc
+abs, ,
+arid   and
+and   m
+and   and   Crt
+and
+.:tnd
+and   and
+and   and
+and   and
+balra I eptet.k%   m—ben
+balra I k pt-et•s   bi t tel   a —b an
+balra I   1   bi t tel   m—ben
+4.   balra 1 éptete•s   1   bi t tel   m —b en
+Ab'5 , y:   1   bi t tel   m —ben
+bcc   esete•cj rel at i'v ugras
+eset.erj relativ ugrå.s
+beq   eseten relaüv ugras
+bit   r, : =.n7, v: =m6, and m szerint z
+bit.   n: =m7, v: =m6, a and m s: en i nt z
+rt=l esete•n rel at i v uqrSs
+z —C) esete•r-t rel at i v Ltgr-as
+esete•n relativ ugr•äs
+1   bel meqszabGtScs
+vat".) eset:én rel at i v i-tqr•ås
+esetén relativ ugrag
+cid   C)
+c. 11   cneqsz eragesdC•1 yezese
+c: jrtp   jel z Abi   4 Ili t Ssa   szer i nt
+jel t eE   All it Ssa
+jet z 'b 1 •teV::   sz eri nt
+Sliit.asa   sz er i n t
+(29) , V   jelze.bJ   Al I it@sa a—rn   sz eri nt
+jel   sz er i nt
+sz er i nt
+c mp   abs, x   _yel   sz er i nt
+jej ze:bi teh   All .   sz eri nt
+c:ps:   a II it 4sa   szer int
+cpx   abs   je)2Sbi tek   61 1 it asa x —m
+sz er i nt
+cpv   Jel t eE   411. y—ertev.   szer int
+cpy   tek   S I I it asa   sz er i n t
+
+--- PAGE 78 ---
+TMSTABLAZAT
+: TEE   L.EI'RAS
+jel z Zbi tek   a 11 {t Ssa   m   sz en nt
+-1
+—1
+m   : am—I
+4.
+eor
+eon   in
+e or
+eor•
+ecjr
+a   eor
+eon   y.   e or   m
+eor   m
+uqras abs—r a
+ugrSs az abs—on I éva c {mre
+abs—on kezci.Sci.S szt.lbrutin   h i vasa
+abf.
+y: =érték
+) obbra   I ept etes   1   bi t tel
+jobbra   I ept   1   bi tt.el
+J obbra   1k p t etes   1   bi t tel   m—ben
+J obbr-a   I éptetC•E   1   bi t tel   m—ben
+J0bbra   1   bit tel   m—ben
+Lit As i t a s
+or
+or   m
+c-jr
+
+--- PAGE 79 ---
+LEV
+NV   FDIZC.
+or
+a:
+or
+or
+ver embe: a
+ver-embe: fel t Ciel regi s: ten
+a: ver emb& 1
+fel tetel regi szter: ver emb'l
+bell r El forgat-is I b i t tel m—ben
+balra forqatSs I bit tel a—ban
+r-ol   balr-a f ctrgat-ae 1 bi t tel m—ben
+rol   balra for gat4•z bit tel m—ben
+bc-sir-a forgatés I bi t tel m—ben
+forgatSs bi t tel m—ben
+r cor   obbra forgat4E 1 bi t tel
+yobbra forget Ss 1 bi t tel m—ben
+r or   .jobbr•a for-gatas I bi t tel m—ben
+ors   abs,'   jobbr•a for qat.ås I bi t tel m—ben
+r•ti
+v 1552 at.érés
+sbc:
+5b c:   abs
+sbc:
+91.3 c:
+Eli c   abs, y
+c*bs ,
+%ecd   1
+gæi   1   meqszakitas t. i i t. Sset
+s t-.ét
+1.1
+aloe , y
+t CAY
+76
+
+--- PAGE 80 ---
+1 RODALOM
+G Sbon   — I Etvan:
+Lez ddkneE   es hal ad'knak
+t..Sqépre
+r Ade   1987.
+198,'.
+r. j b Ot mutate.
+bel —p i'té•se
+Tamas:
+L-Äsz14:
+Ss
+aEi ,
+C-16, C-1 ROM   —J i sta
+J 906.
+Ia:.r.yv
+190b •
+a Commodore   64—esen
+tucjvot.rade, i 986.
+Y.}.t-hrté M4rxassy Eva:
+n Sl.f.i proqr-amok
+C pfoLon
+i 997 -
+fel adatok   2000
+77
+
+--- PAGE 81 ---
+den ±.sszefoql juk a BASIC— C 5 gepi
+pr i t. i gen hét!-zznos JCL f e JI Grend—
+I etesebb (b Ar
+h 1 ne.tn mente€) 1 e {r Ss t A1 S. i p ld.
+pr oar ettrccscunaq qepe\tre i s hasz—
++4SYS nevO programfi I e—ja +ut,   ame y a
+hel yet t Ärb.±.l. BOOT —tal va—
+t e. I Sn cat-tt.omati kv.tsan, • ha c sab:. a +4SYS—t tjük be,
+FA•E-GET Lit ani ncnt.S.ga SVS 41 II—qyel
+Adva: a program legi r-jk.Abb Kezel e-shez
+vo for r szerkesztSsehez, for cht-åsa—
+no: ill.   seqitséget. A rendszer ben
+t-ovSbbra (eredet.å .jei meqfe—
+rendszer a i r J a. Fe,viuit-k•—
+el gei- I ( plc.: . SCROLL.
+I a ill. a   jel e—
+Mag•tjart b ér-rr.el yi h i bacsatorna
+leg meghajt-   I apotS.t   (BASIC-ben DS$-t)
+Hä eqy eqyütt a I kal maz
+küldi E. i parancscsatorr-tån. I gy p ld.
+idles. , €1, QV par arac.sobf. rendre formattÄl ashoz ,   Stne—
+S '—ti0Z, te.r-l   in i c 1 alxzålashoz ill.   val i —
+Sj hat.3k .   Neaqy has: na v art par ancsnab::   az F Z.
+i en t hel yet tet5iti (DIRECTORY), f i I I a
+Freqr-amfi I bet .31 tese a
+, (a mentesi c injte.i fo.qget.l enol) EIASIC
+ter;.i.let eie.iCre, a
+% f 1 erié•v' roar at icc: sal a mente•si c x mr•e,
+, c i m' pedi q a (decima. lig + ormSban meg—
+adott-) o j c i mre E   (uqyancsah a men t esa c im—
+tol fogqetl enol ) .
+en J pr ter- jedelme a SIZE' • filene•v
+nyei •.'iÅ program tovibbl aP.ban + orrassz.öveqként
+ii.'.k:) s: er EDIT par-ant: 5 be i r-ésa u t Sn lehetse—
+3.baci I e•ve. I e—ként
+en.ezr-e PIJV   kazett-Sra pedi q F•UTC' • filene•v•
+tnertti. forr-Assze,veq bet .41 t e•se a GET • 'fi I er-,ev•   ill.
+GET '   seq it t. ur ten i k.
+file I i   a mem.sri S ban
+
+--- PAGE 82 ---
+JCL-SEGÉDLET
+d.9.ui) a nC•z
+meg .jegyzé•s
+ocasi tasoE sorrend hat Ärozza
+a szerkes:•. seqiti   ( I ehet
+HAS i GOTO—rlSl
+I i i vat. r S).
+en y I eqfel JE•bb 6 karab$ter•es, bet.üvel
+zzÄmokat tartelmazé.),
+i kus r-,ev.   Enr-teE
+seqit%6qevel hi vat kozhatunk a t Är azon reke—
+c fmére, amel yre f ordit4sEor meg—
+c: Lit as it Ss keriÅI. HasznSI ata r tern
+eqy a processzor ete—
+11 J. eqy on. p szeudoutasl•tas (direl:.ti—
+c.itvSbbiak.re.l EC•sé.bb I esz
+t-Sshoz s.2ö.EsE•qes c: itn vaqy
+meghat (ak.år szimbol i nev is
+A decima lis sz smoF.at kulön jel
+nClV•ül i r juk, bit-jar-iecjk. % ,   a hex ade—
+ci mi. 1 i ele $—jelet karak€er-eket
+(91 d . CL.C. F:OR, TXA ) erte—
+I emsz s: en, e: é•rt eI mar ad.
+sz i nten
+Jit   Eel eI val tani
+9 err   hasznos par-ancsok:
+is—hexadecimälis S talaki'tSs
+eau,' acjot.t szévegrész kerese•Ee. A
+Lat 2 %é.ra a program a ke•pernySr-e ja file
+* s-sorait, amel yben a szeveq el'fordul .
+ad ot ft. E2övenrC•52 c sera
+trtJ t/ mi r e/
+fil e—ban a •mi t • sz•öveget mi nde—
+•cr;ire• cseréli-
+e. sorai nak St.sz Smoz ve•gzi
++ orr- Sssz.*veg tesbulÄl—
+t. art   i.i.1 4 t leg. i n theta for-m4ban key-ore.
+79
+
+--- PAGE 83 ---
+JCL-SEGÉDLET
+SCROLL   forråsszoveg i stÄzas4t seg it' parancs.
+LehetSvé a tel J es sz sveqben történg
+a Eurzor•mozgat6 gombok segitségével .
+funkcié.bil lent yiik hatasa:
+a Eépernyan 01 dalt Ojra listazza,
+a kur 2 ort t artal maze. sor kezdSdé. 01 dal t
+1 i st4zza,
+ECpen I reszt Eöveté. listäzza
+t j a az ss sorban ; —vel kez dédS
+par ancssort.
+seqx as: that juk k i a meqfel e16
+n yomtatat .
+vagy d i rekt ivÅk 01 yan utasft-asok, amel yek
+nem a process: h anem forditéprogramnaE nak,
+for-ditast vezer-liE. A legfontosabbak a ksvetk:ez
+értekaci*s; az el Ezerep1S szi mbé.l•am ertéke az
+K.:svet.é 524m I esz .
+hat Srozhatjuk meg vele.
+end forrås:prograjrj veget jelzi.
+. byte é.t E avet..±. egy vagy Ee.bb sz S.m   (sz i mb.Sl um) értékét
+sor rencjben tarba i r
+word a2 at k.Svet.S kétbyte—os sz Amot   c ertel mezve
+(azaz for tott sorrendben) a tarba
+f orrasprogr am sz er Kesz teset Eävet6en   az ASM parancs
+seqit-seqevel E.ezdhet-onk a ford i tashoz. Az   egyes opci 6k:
+a k.épernySr-e
+p   ford i t .4.$ a nyomtat4ra
+m   a leforditott program a lemezre keriÅl mod kiegész itéssel
+ford i t Ss a
+c   for ditas
+el I ensrze•st a c opci 'val vegezhetunk. A iefor—
+ditott program bel övéset ,   tesz tel éset ,   jav i tasat: seg t i a
+SE r BRE par-artcs. Seqi tséqevei   forr Ssszöveg a. tiräsa i II
+o jabb for d it. Ssa nel kiÅl   töré•spont i k tathat.s be a gepi k6dO
+pr amba, majd a CLRBRK seqitse•gevel a program ugyani I yen
+eqy5zerOE•rt vi sszaÄl h that' eredeti Al I apot4ba-
+
+--- PAGE 84 ---
+A PEOAGÖGIAI MCHELY SOROZATBAN ÆGJELENT KIAOVÅNY(X JEGYZÉKE:
+I.   Mikus Katalin:
+Ki? Mir61? Kinek?
+Térna- és elåad6ajånIås tovåbbképzések szervezéséhez   1987
+2.   Szöllåsi Zsuzsanna:
+A filoz6fiaoktatås helyzete Pest regyåen az 1986/87.
+tanévben végzett felmérés tanulségai elapjån   1988
+3.   Az osztå1yf6nd<i neve16n-J*a tapasztalatainak összeg-
+zése
+Összeållftotta: Or .Deåk Bélåné, Oléh Mihélyné   1988
+4.   Az åltalénos iskolai fakuItåci6 szerepe 8 differenciélt
+képességfejlesztésben /Az 1987-ben rer&zett szézhalom-
+battai orszågos tanécskozås rövidftett közlése/
+Szerkesztette: Bottlik Istvén, dr.Szab6 Imre   1988
+5.   Fürstné dr. K61yi Erzsébet:
+kNaközösségek az iskolåban   1988
+6.   Båzisintézmények Pest megyében   1938
+Összeållftotta: Mikus Katalin
+7.   bOskovits Låsz16né:
+Kozéptåvü pedag6giai program   1989
+8.   Ykmenisztikus iskola
+Szerkesztå: Benda J6zsef-Matu1a J6zsefné   1989
+9.   Farkas Kår01y—Kårösné Mikis Mårt8:
+Jåtszd el a tekn5cöt!   1989
+IO.   Ferenc :
+Szåmftåstechnika fakul tåci6   1989

@@ -1,0 +1,5783 @@
+# OCR text of Commodore_C16_Plus4_Reference_Book.pdf
+# Windows OCR (en-US); accents and digits may be misread (0/O, 8/B, 1/l).
+# Use it to locate pages, then open the PDF page itself to verify.
+
+--- PAGE 1 ---
+
+
+--- PAGE 2 ---
+PREFACE
+There has been a growing demand for a book that will give detailed
+information required to make effective use of the PLUS 4 and the
+C-16. This book originally published in Germany has enjoyed a huge
+success and excellent reviews. ANCO took an early decision to give
+these computers our whole hearted support. Towards this objective, we
+decided to get this book translated and publish it. We hope that you
+will make good use of mine of information available in this book.
+ANCO
+August 1986.
+
+--- PAGE 3 ---
+C16 AND PLUS 4 REFERENCE BOOK
+CONTENTS
+1.   INTRODUCTION   1
+2.   GRAPHICS
+2.1 Standard   Graphics   3
+2.2 Graphic Possibilities Of TED   6
+2.3 Free Programmable Character   Set   7
+2.4 High Resolution Graphics   10
+2.5 Multicolour Graphics   17
+2.6 Extended Colour Graphics   30
+2.7 Soft Scrolling   .33
+2.8 Raster Interrupt   .35
+2.9 Technical Details   Of TED-   Chip   .44
+3. SOUND
+3.1 Music Using BASIC Commands   .47
+3.2 The Sound Registers Of TED   .50
+3.3 Interrupt Controlled Music   .51
+
+--- PAGE 4 ---
+MACHINE CODE
+4.1 Introduction To Machine Code
+• .55
+4.2 Examples Of The Most Important Commands   . .56
+4.3 The Commands Of The 7501 Processor
+.. 70
+4.4 Use Of The Kernal Routines   ..79
+4.5 Memory Map   • 155
+4.6 TED Chip Memory Map   • 180
+4.7 KERNAL Jump Table   .184
+4.8 Comparison Chart CBM-64   and   C— 16
+• 187
+5.   UTILITIES
+5.1 Random Selection Generator In   Machine   Code   .196
+5.2 Joystick Selection In Machine   Code
+• 199
+5.3 Turbo Mode For The C-16   .200
+5.4 OLD (Recovery Of A Programe After NEW)   .201
+5.5 MERGE (Linking Of Programmes)   • 203
+5.6 VARLIST (List OF All used Variables)   • 205
+5.7 CROSS (Gives Cross Reference   For BASIC   Commands ). 206
+6.   APPENDIX
+6.1 Tokens Of BASIC Keywords   .208
+o   O
+
+--- PAGE 5 ---
+1. INTRODUCTION
+In Commodore introduced two computer models the C--16 and the
+Plus 4, which inspite of excellent performance remain in the shadow
+of the bestseller C-64. In this book, we would like to show you that
+these models are grossly underestimated, because they offer among
+other things an extremely efficient BASIC (much better than that of
+the C-64), excellent graphic possibilities (320 x 200 points in 121
+colours), expansion facilities and an ever increasing software base
+at very reasonable prices.
+The main points in this book are subjects which are insufficiently or
+not at all dealt with in the manual supplied with the computers.   It
+is, therefore, for all those people who want to broaden their
+knowledge of BASIC and by using the machine code want to make use of
+all the possibilities of the C-16, specially with regard to graphics
+and sound.
+To make things easier, I will only talk about the C-16 in this book
+since the Plus/4 is identical (keyboard, RAM) apart from small
+differences. Should differences OCCUT, I will point them out to you.
+After reading this book you will know your computer better and will
+be able to programme more effectively. I have endeavoured to make the
+subjects more interesting with numerous examples since, as everybody
+knows, one picture says more than a thousand words.
+FRITZ SCHAFFER 1986
+Page I
+
+--- PAGE 6 ---
+2. GRAPHICS
+One of the most impressive characteristics of all home computers are
+without doubt the graphics which can be created with these machines.
+This is one of the C-16ts strongest points, because which other home
+computer offers a resolution of 320 x 200 points in 121 colours
+supported by a very efficient BASIC command set. The only handicap of
+the C-16 without memory expansion when programming graphics is the
+limited work store of 16K RAM of which 12K is available for BASIC.
+Very detailed graphics in many colours need a lot of space in any
+computer. When working in the high resolution graphics mode, the C-16
+has to reserve 10K for the graphics memory which only leaves 2K RAM
+for the actual BASIC programme.   If you want to write larger
+programmes in high resolution graphics (and don't have a Plus/4 with
+64K built in RAM), you should consider buying a 16 K or 64 K RAM
+expansion. In the following chapters, I want to show you that you can
+also programme excellent graphics with the C-16 with the normal
+memory of 16K RAM. After all, almost all commercial game programmes
+are based on the basic version and amongst them are surely a few
+which appear to have a large memory but in fact don't.
+Page 2
+
+--- PAGE 7 ---
+2.1 STANDARD-GRAPHICS
+The easiest way to create graphics on the C-16 is to use the existing
+character set which can be obtained from the keyboard by using the
+COMMODORE- and the SHIFT key. The graphics do not use any additional
+store space and are therefore mainly suitable for longer programmes
+with simple graphic requirements. You can display all symbols on the
+keyboard in 121 different colours, either reverse or flashing. By
+choosing the right symbols, many things can be displayed easily and
+quickly e.g. playing cards, rectangles etc.
+Normally these graphics are programmed in BASIC with PRINT commands,
+consisting of the graphic symbols and the colour etc. In some cases
+it may be more convenient (or unavoidable) to write the required
+characters directly into the graphics store of the C-16. If for
+example you try to write a character at bottom right hand corner of
+the screen (line 25, column 40), you will find that the screen scrolls
+back to the top after the PRINT command, and the bottom right-hand
+corner becomes free again.   This problem, however,   can be solved
+easily and quickly with a direct entry into the graphics store.
+Let us first have a look at how the C-16 administers the screen
+internally. Two memory spaces belong to each of the 1000 (40x25)
+representable characters in the RAM of the C-16.   In one is the
+internal sign code (the so-called Video-RAM) in the other one the
+colour (Colour-RAM).   The Video-RAM is in the memory from 3072
+onwards, the Colour-RAM from 2048 onwards; the code of the first
+character (top left, so-called HOÆ-position) is stored at 3072 and
+the colour at 2048. The next code in Ram is for the character to the
+right of the first position and so on to the end of the first line.
+The easiest way to illustrate this is with the following sumary:
+Page 3
+
+--- PAGE 8 ---
+VIDEO-RAM (3072-4071)
+Column :   1   2   3   38   39   40
+Line :
+1   3072   3073   3074   3110   3111
+• 3109
+2   3112   3151
+3   3152   3191
+23   3952   3991
+24   3992   4031
+25   4032   4033   4034   4069   4070   4071
+COLOUR-RAM   (2048-3047)
+Column   1   2   3   38   39   40
+Line :
+1   2048   2049   2050   2086   2087
+• 2085
+2   2088   2127
+3   2128   2167
+23   2928   2967
+24   2968   3007
+25   3008   3009   3010   3046   3047
+. 3045
+Page 4
+
+--- PAGE 9 ---
+You will find the coding of the individual characters in the appendix
+of your manual. The letter A is stored in Video-RAM as value l. The
+value which is stored in the Colour RAM, consists of the colour,   the
+brightness and the information whether the character is to be
+flashing or not. The following short programme erases the screen and
+writes a red flashing heart at the bottom right corner of the screen:
+100 SCNCLR
+110 POKE 4071,83
+120 POKE 3047, 184
+The   current cursor position is not changed by direct   writing on to
+the   screen and colour memory;   also the unwelcome   scrolling (see
+above) ceases.
+Page 5
+
+--- PAGE 10 ---
+2.2 THE GRAPHIC POSSIBILITIES OF TED
+In this chapter, we will mainly deal with the TED registers which are
+responsible for the graphics. Before we go into the details,   1 will
+give   you an idea of the graphic possibilities the TED-chip of the
+c-16   offers:
+*   Free programmable character set with 256 characters
+*   Creation of reverse characters by software or hardware
+*   Standard- and Multicolour Characters
+*   Extended Colour Mode
+*   Standard Hires Bitmap Mode
+*   pulticolour Bitmap Mode
+* Programmable Scanning Interrupt
+In the following chapters we will discuss all these possibilities and
+explain them with example programmes.
+Page 6
+
+--- PAGE 11 ---
+2.3 FREE PROGRAMMABLE CHARACTER SET
+As you have already learnt in chapter 2.1 the easiest and least
+memory space consumiccccccphics possibility of the C-16 is the use of
+the existing graphics characters. With this you can display max.   128
+characters as well as further 128 reverse characters, totalling 256.
+Unfortunately you may not often find the required character even
+among these 256 and might ask yourself if it is possible to define a
+character yourself. The answer in short is YES   it is possible!
+because you can tell the TED-chip where to get it's information for
+creating own characters.
+Normally TED receives its information for the character set from a
+special ROM, the so-called Character-ROM, whiich contains   the
+standard characters. If you now tell the TED-Chip to retrieve its
+information from RAM, you can define your own characters. Luckily the
+TED-Chip offers two possibilities for a character set of your own:
+firstly you can define the complete character set,   i.e. 256 new
+characters or it is possible to only define 128 characters new and
+the reverse characters can be created by the TED-Chip itself. The
+latter has the big advantage that storing space is saved which is
+very limited in our C-16. Therefore instead of 2K RAM for a complete
+256 character set,we only need 1K RAM for 128 characters.
+Let us therefore mainly deal with the second possibility because with
+128 self-defined characters almost every problem can be solved. Let's
+have a look how a character is made up:   it always consists of a
+Matrix of 8x8 points. If we look at the   letter   A it gives the
+following picture:
+An asterisk * always stands for a visible,   and   a   point   for   an
+Page 7
+
+--- PAGE 12 ---
+invisible pixel. Within this 8x8 Matrix we can create all sorts of
+characters. Before creating and trying out new characters it is
+advisable to first copy the existing characters from ROM into RAM and
+then replace some of the characters which won't be needed with your
+own characters. In the following chapter, first the character set is
+copied into RAM and then the relevant area protected from overwriting
+by a BASIC Programme. The "9" sign of the standard Ch. set is
+replaced by the degree symbol and demonstrated in a short sentence.
+Please key in the following example:
+100 POKE 55,0 : POKE 56,60 : CLR
+110 POKE 1177,62
+120 FOR TO 1023
+130 : POKE
+140 NEXT 1
+150 POKE 1177,63
+160 POKE 65299,60
+170 POKE 65298, 192
+180 POKE 1351, 128
+190 FOR TO 7
+200 :   READ A
+210 :   POKE
+220 NEXT 1
+230 SCNCLR
+240 CHAR "TEMPERATURE IS 24ec"
+250   CHAR "PLEASE KEY FOR NORMAL CHARACTER SET"
+260 GETKEY K$
+270 POKE 65299,208
+280 POKE 65298,196
+290 POKE 1351,0
+300 DATA
+Now   a line by line explanation of this programme:
+100   Reserve memory space for character set
+110   Switch PEEK-routine to ROM-Read
+120-   140 Copy character set (1K) into RAM
+150   Switch PEEK-routine to RAM-Read
+160   Character-Set address to 60*256 =   15360 ("COO hex)
+170   Read character set from RAM instead of ROM
+180   Switch-off CBM/SHIFT key (make it non-optional)
+Page 8
+
+--- PAGE 13 ---
+190-220   Poke character definition into RAM
+230   Erase screen
+240-250   Print text on screen
+260   Wait for key
+you   press any key, your degree symbol   is   replaced   by   9   from
+normal Ch. set.
+270-280 Back to normal character set
+290   Switch-on CBM/SHIFT key
+300   Character definition for degree symbol.   This data is used by
+lines 190-220.
+Page 9
+
+--- PAGE 14 ---
+2.4 HIGH RESOLUTION GRAPHICS
+When writing games, drawing schedules for business use or writing
+other programmes, you will sooner or later require a high resolution
+screen presentation.
+The Commodore C-16 is tailor made for this: High Resolution is
+possible by "Bit-Mapping" the screen.   "Bit-Mapping" is the method
+whereby each pixel on the screen gets its own Bit in the memory.
+this memory bit is one, the corresponding pixel is switched on. If
+bit is a zero, the pixel is switched off.
+hOrking with high resolution graphics   has,   however,   a few
+disadvantages and is therefore not always used. By Bit-Mapping the
+whole screen, considerable memory space is taken up. Each pixel
+requires a memory bit   i.e. you need I Byte for 8 pixel. Since each
+character consists of a 8x8 Matrix and 40 lines x 25 columns are
+available   the resolution is 320 x 200 pixel. That makes 64000
+pixel, of which each requires a memory bit. For Bit-Mapping the whole
+screen you will therefore need 8000 Bytes.
+In order to understand the disadvantages of the Hires-Mode, please
+key xn the following example. You will see that you get unwanted
+colour effects. This happens because the C-16 can in Hires-Mode only
+show one foreground and one background colour in each 8x8 field.
+you try to write on an already used 8x8 field again it changes
+colour. This is exactly what our demo does:
+100 GRAPHIC 1 1
+110 FOR TO 190 STEP 10
+120 :   COLOR   1, ((xno)
+130 BOX
+140 NEXT X
+150 FOR TO 192 STEP 8
+160 : COLOR
+170 : BOX
+180 NEXT X
+190 COLOR 1, : PLEASE"
+200 GETKEY K$: GRAPHIC O
+Page 10
+
+--- PAGE 15 ---
+A possible remedy for   this   problem is   supplied by   the
+Multicolour-Mode which will be discussed in the next chapter. As an
+example for the Hires-Mode we will   present   you with a
+Mini-Drawing-Program in rnachine language. All those, who know little
+or nothing about machine language, should now study chapter 4 before
+starting with the following program. If you are familiar with
+computer language and the C16 built-in monitor as far as being able
+to key in the program and store it   then you should have no problem
+with the following program. We have provided a disassembled listing
+for easier understanding of the program. You can start the program in
+rrachine language by: GIOOO. Please remember to SAVE the machine
+program first before trying it out! The operation of the drawing
+program is very simple: you can draw lines in all directions with the
+joystick (in port 2). Keeping the FIRE button pressed on the
+joystick, you can erase the lines again by going over them. You can
+erase your whole work of art by using the SPACE bar.
+For advanced machine language programers, this program can be used
+as a starting point for own creations.
+Dont   be   shy, the   C-16 can't do more than crash.
+>1000 00 0B 10 00   00   9E   34 31   4
+>1008 31 32 00 00 oo 00 oo 00
+>1010 A9 36 8D   06
+>1018   12   FF 20 EA   10   00   A9 : j. "e)
+>1020   33   08   09
+>1028 oo   05 9D
+>1030 00   9D 00   OE   •r
+>1038 9D   OF CA DO El 86   D6 •r
+>1040   AO 85 D5   64   85   D4 •.r) .u)$.t
+>1048 Ed 86 D2   20   20
+>1050 DO 03 20 EA 10 20 C5
+>1058 DO 02 E6 D2 A5   33 :rp.&r%p03
+>1060 30   A5 D5 18 69 01 85
+>1068   69 00 85   D6
+>1070 FO 21   40   90   A9 00 :r0!
+Page II
+
+--- PAGE 16 ---
+>1078 85 05 85   FO 15 38   A5
+>1080 05 E9 01   85   05 A5   06   E9 :ru). eu%v)
+>1088 OO BO   06   3f 85   A9
+>1090 01 85 06 A5   FO 1B   30   .v%qO.O
+>1098   A4   D4 cg CO ce DO   02 :r.$thOhp.
+>IOAO AO   00   84   D4   4C 82 10   A5 :r .   .t12.%
+>10A8 04   38   E9 01 BO   02   C7
+>IOBO 85   4A 20 02   11 .
+>10B8   OF   FF 88   CA :r".
+>loco   F8   4C   4B   10   78   FD
+>10C8 8D   08   AD   08   AO 00
+>IODO A2   00   4A BO 01   88
+>10D8 01   4A BO 01   CA   BO :r.hjO.jjO
+>IOEO 01 E8 86   DO   84 DI 29   08
+>10E8 58   60   A9 OO 85 D7 A9   20 :rx )..w)
+>IOFO 85 DB A2 20 AO   00   98   91 :r.x't
+>10F8 D7 88   FB E6 DB CA   DO   :rw.p;&xjp
+>1100 F6 60 BO 0B 20 IA 11   BD :r6 0
+>1108 64 11   31   D7 91 D7 60   20 :r$.lw.w
+>1110 IA 11 BD 5C 11 11   91
+>1118 D7 60   D4 29 07 A8   A5   :rw %t).(%
+>1120 04   29   68 85   06
+>1128 D7 2A   2A w*
+>1130 85 D8 85 D3   OA   26
+>1138 D3 OA 26 D3 65 D7   85   D7
+>1140 A5 D8   65   D3 85 DB A5 D5
+>1148 29   07   AA A5 D5   29   F8 65
+>1150 D7 85   D7   A5 D6 65   D8   69 :rw.w%v%x)
+>1158 20 85 D8 60   80   40 20   IO :r .x .9
+>1160 08   04 02   EF •r
+>1168   FE DB 20 37 20 7
+Now SAVE   the programme on a cassette or disc by the command.
+(Cass.)
+S"HIGHRESDRAW" , 116C (Disc)
+A9 36   LDA +$36
+. 1010
+06   FF STA
+• 1012
+• 1015   LDA +$C8
+12   FF STA $FF12
+• 1017
+. IOIA   20 EA 10 JSR $10EA
+A2 00   I-DX #$00
+. IOID
+Page 12
+
+--- PAGE 17 ---
+A9 33   LDA *$33
+. IOIF
+. 1021   9D OO 08 STA   $0800,x
+• 1024   00   09 STA   $0900,x
+• 1027   9D OO OA STA $OAOO,x
+. 102A   90 00 0B STA $OBOO,x
+. 102D   A9 05   LDA +$05
+. 102F   9D OO OC STA $OCOO,X
+• 1032   90 00 OD STA $ODOO,x
+. 1035   9D OO OE STA $OEOO,x
+. 1038   OF STA $OFOO,x
+CA   DEX
+. 103B
+DO El   BNE $101F
+. 103C
+86 D6   STX $D6
+. 103E
+. 1040   LDA #$A0
+85 D5   STA $D5
+. 1042
+A9 64   LDA
+• 1044
+85 D4   STA $D4
+. 1046
+INX
+• 1048
+86 D2   STX $D2
+• 1049
+20   FF JSR $FFE4
+. 104B
+104E   C9 20   CMP +$20
+DO 03   BNE $1055
+. 1050
+20 EA 10 JSR $10EA
+. 1052
+. 1055   20 C5 10 JSR $10C5
+DO 02   BNE $105C
+• 1058
+E6 02   INC $D2
+. 105A
+A5 DO   LDA $D0
+• 105C
+FO 33   BEQ $1093
+. 105E
+30   BMI $107E
+• 1060
+LDA
+. 1062
+18   CLC
+• 1064
+69 01   ADC #$01
+• 1065
+1067   85 D5   STA $D5
+TAX
+• 1069
+A5 06   LDA $D6
+. 106A
+69 oo   ADC {f$oo
+• 106C
+. 106E   85 D6   STA $D6
+FO 21   BEQ $1093
+. 1070
+EO 40   CPX
+• 1072
+90 ID   BCC $1093
+. 1074
+A9 OO   LDA #$OO
+. 1076
+85 D5   STA $D5
+• 1078
+Page 13
+
+--- PAGE 18 ---
+85 D6   STA $D6
+. 107A
+• 107C   FO 15   BEQ $1093
+. 107E   38   SEC
+. 107F   LDA $D5
+E9 01   sac +$01
+• 1081
+85 D5   STA $05
+• 1083
+• 1085   LDA $D6
+• 1087   SBC #$00
+BO 06   BCS $1091
+. 1089
+. 108B   A9 3F   LDA {f$3F
+85 D5   STA $D5
+• 108D
+A9 01   LDA
+. 108F
+85 D6   STA $D6
+• 1091
+• 1093   LDA $DI
+• 1095   BEQ $10B2
+30 OE   BMI $10A7
+• 1097
+A4   D4   LDY $D4
+• 1099
+INY
+. 109B
+co C8   cpy #$C8
+• 109C
+DO 02   BNE $10A2
+. 109E
+. IOAO   LDY #$OO
+84 D4   STY $D4
+. IOA2
+4C 82   $10B2
+A5 D4   LDA $D4
+. IOA7
+38   SEC
+. IOA9
+E9 01   SBC
+. IOAA
+BO 02   BCS $10B0
+. IOAC
+. IOAE   LDA #$C7
+85 D4   STA $D4
+. IOBO
+. 1082   LDA $D2
+I-SR
+. 1084
+• 1085   20 02 11 JSR $1102
+I-DX #$0F
+. IOB8
+LDY
+88   DEY
+. IOBC
+BNE $10BC
+. IOBD
+CA   DEX
+. IOBF
+. loco   BNE $10BA
+. 10C2   4B 10 JMP $104B
+78   SEI
+. IOC5
+. IOC6   LDA #$FD
+80   08   FF STA $FF08
+• 10C8
+Page 14
+
+--- PAGE 19 ---
+AD 08 FF LDA
+. IOCB
+AO 00   LDY +$OO
+. IOCE
+. IODO
+. IOD2   LSR
+BO 01   BCS $10D6
+. IOD3
+88   DEY
+. IOD5
+LSR
+. IOD6
+BO 01   BCS $10DA
+. IOD7
+. IOD9   INY
+LSR
+. IODA
+BO 01   BCS $10DE
+. 100B
+CA   DEX
+. IODD
+LSR
+. IODE
+BO 01   BCS $10E2
+. IODF
+INX
+. IOEI
+86 DO   STX $D0
+, IOE2
+84 DI   STY $DI
+. IOE4
+29 08   AND #$08
+. IOE6
+58   CLI
+. IOE8
+60   RTS
+. IOE9
+A9 00   LDA #$00
+. JOEA
+. IOEC   85 D7   STA $D7
+A9 20   LDA #$20
+. IOEE
+• IOFO   85 DB   STA $D8
+A2 20   LDX 620
+. IOF2
+LDY {f$oo
+. IOF4
+98   TYA
+. IOF6
+91 D7   STA
+. IOF7
+88   DEY
+. IOF9
+. IOFA   BNE $10F7
+. IOFC   INC $D8
+CA   DEX
+. IOFE
+DO D6   BNE $10F7
+• IOFF
+60   RTS
+• 1101
+BO 0B   BCS $110F
+• 1102
+20 IA 11 JSR $111A
+. 1104
+BD   64 11 LDA $1164,x
+• 1107
+31 D7   AND   (07) , Y
+. 110A
+91 07   STA
+. noc
+60   RTS
+. 110E
+. IIOF   20 IA 11 JSR $111A
+• 1112   BD 5C 11 LDA $115C,x
+Page 15
+
+--- PAGE 20 ---
+• 1115   ORA
+91 D7   STA
+• 1117
+60   RTS
+• 1119
+A5 DO   LDA $D4
+. IIIA
+29 07   AND   +$07
+. Ilic
+A8   TAY
+. 111E
+A5 DO   LDA
+. 111F
+29 F8   AND $$F8
+• 1121
+• 1123   85 D7   STA $D7
+A9 00   LDA #$OO
+• 1125
+ASL
+• 1127
+ROL
+• 1129
+112A   ASL $D7
+ROL
+• 112C
+06 D7   ASL $D7
+. 112D
+ROL
+. 112F
+• 1130   85 DB   STA $D8
+• 1132   85 03   STA $03
+• 1134   LDA $D7
+ASL
+• 1136
+• 1137   26 D3   ROL $D3
+ASL
+• 1139
+26   ROL $03
+. 113A
+65 D 7   ADC $D7
+• 113C
+. 113E   85 D7   STA $07
+• 1140   LDA $D8
+65 D3   ADC $D3
+• 1142
+85 D8   STA $D8
+A5 D5   LDA $D5
+• 1146
+29   AND +$07
+• 1148
+TAX
+. 114A
+. 114B   LDA $05
+. 114D   29 F8   AND #$F8
+114F   65 D7   ADC $D7
+• 1151   STA $D7
+• 1153   A5 06   LDA $D6
+65 DB   ADC $D8
+. 1155
+69 20   ADC #$20
+• 1157
+• 1159   85 DB   STA $08
+60   RTS
+. 115B
+>115c 80 40 20 10 08 04 02 01 :r.e
+Page 16
+
+--- PAGE 21 ---
+2.5 MULTICOLOUR-GRAPHICS
+Because of the standard high resolution graphics, you can even
+address individual pixels on the screen. There are two values for
+each pixel in the character memory: a I for "on" and O for "off".   If
+a pixel has the value l, it will be shown in the colour chosen by you
+at the chosen screen position. With high resolution graphics all
+pixels within an 8x8 matrix can be shown either in the foreground or
+background colour, Thus the colour resolution within this area is
+limited. There could for example be problems if two lines with
+different colours cross (see last example in previous chapter).
+This problem is solved by the Multicolour-Mode. Each pixel can have
+one of four colours: screen colour (background register O, 65301),
+background colour I (65302),   background colour 2 (65303) or the
+character colour. The only restriction is in   the horizontal
+resolution, since in the Multicolour-Mode each pixel is twice as wide
+as in Hires-Graphics. The advantages of the Multicolour-Mode,
+however,prevail by far. Here is a first example:
+100 GRAPHIC
+110 COLOR : COLOR :   COLOR :
+120 FOR to 1 STEP -1
+130 : FOR TO 180 STEP 10
+CIRCLE „A,20
+150 :   REX T A
+160 NEXT C
+170   COLOR : "PLEASE KEY"
+180 GETKEY K$ : DRAW to 159,100
+190 GETKEY K$ : GRAPHIC O
+EXPLANATION LINE BY LINE:
+110 Definition of background colour O,   foreground colour , back-
+ground colours I & 2
+120 Draw in each of the three colours
+Page 17
+
+--- PAGE 22 ---
+130 Draw ovals at different angles
+140 Draw oval
+150 Next angle
+160 Next colour
+170 Character colour on white, print text
+180 Wait for key. Draw line.
+190 Wait for key. Back to normal text mode.
+As you can see the three circles are drawn in different colours
+without showing after-colourings. This effect appears only if you key
+in another colour. In practice (and in most commercial games) mostly
+this graphic mode is mostly used. It among other things also allows
+for the programming of Software-sprites (more about this later).
+Because of the limited memory it is also useful in this rnode to work
+with self-defined characters. But you have to consider that text
+fade-ins are not so easily possible since the integral character set
+in the C-16 is designed for the normal mode. That is why the letters
+often look a bit odd. This can be avoided by a character set of your
+own. In contrast to the normal mode the multicolour characters do not
+use a Bit for a pixel each, but 2 Bits determine the colour.
+Therefore only 4 pixel are available widthwise (hence the resolution
+of 160x200). The coordination of the colours to the Bit combinations
+table is shown below.
+BITS   COLOUR SOURCE
+Background   o   (65301)
+01   Background   1   (65302)
+10   Background   2   (65303)
+11   Foreground
+Page 18
+
+--- PAGE 23 ---
+Let 's look at the following self defined character, where we   have
+chosen as background colour O (HO) black, background colour I
+red, background colour 2 (H2) yellow and foreground colour
+green :
+BIT SAMPLE   COLOUR SOURCE   COLOURS
+oo 01 10 oo   black red   yellow   black
+00 11 11 oo   HO VO   black green   green   black
+01 10 01 10   red   yellow   red   yellow
+01 11 11 10   VO VO H2   red   green   green   yellow
+01 10 01 10   HI   red   yellow   red   yellow
+01 10 01 10   red   yellow   red   yellow
+01 10 01 10   HI H2   red   yellow   red   yellow
+HO   HO HO   black black   black   black
+The   following example copies again the normal character set into RAM
+and   then creates own Multicolour-Characters for a butterfly:
+100 POKE 55,0 : POKE 56,60 : a-R
+110 POKE 1177,62
+120 FOR TO 1023
+130 :   POKE
+140 NEXT 1
+150 POKE 1177,63
+160   POKE   65299, 60
+170   POKE   65298, 192
+180   POKE   65287,24
+190 POKE 1351, 128
+Page 19
+
+--- PAGE 24 ---
+200 POKE 65302,0 :   POKE 65303, 93
+210 FOR TO 15
+220 :   READ A
+230 : POKE
+240 NEXT 1
+250 SCNCLR
+260 PRINT BUTTERFLY"
+270 PRINT :PRINT TAB(IO) " ( )
+280 CHAR "KEY FOR NORMAL CHARACTER SET"
+290 GETKEY K$
+300 POKE 65299,208
+310   POKE   65298, 196
+320   POKE   65287,8
+330   POKE   1351,0
+340 DATA
+350 DATA
+EXPLANATION LINE BY LINE
+100   Reserve memory space for character set
+110   Switch PEEK-routine to ROM-read
+120-140   Copy character set (1K) into RAM
+150   Swi tch PEEK-routine to RAM-read
+160   Character set address to 60*256 = 15360 ($3C00)
+170   Read character set out of RAM instead of ROM
+180   Switch-on Multicolour-Mode
+190   Switch-off CBM/SHIFT key
+Page 20
+
+--- PAGE 25 ---
+200   Background colour I on black, 2 On light blue no.   5
+210-240   Poke character definition of butterfly into RAM
+250   Erase screen
+260-280   Print text and butterflies
+290   Wait for key
+300-320   Restore standard values
+330   Switch-on CBM/SHIFT key
+340-350   Character definition for Multicolour butterfly
+Finally two examples for animated graphics as well as a Multicolour
+version of the mini drawing program. First we alter the previous
+butterfly demo by defining 3 different butterflies and portray these
+alternately, i.e. in the sequence:   12321   thereby
+creating the impression that the butterfly is moving.
+The 2nd example shows the use of the SHAPE*commands of the C-16 which
+allow a Sprite-like animation in the Multicolour-Mode.
+The 3rd example is a Multicolour-variant of the mini drawing program
+which you saw in the previous chapter. This time you can choose
+between the 3 Multicolour-Colours by pressing a button and clear the
+screen by using the space bar.
+Page 21
+
+--- PAGE 26 ---
+100 POKE 55,0 : POKE 56,60 : a-R
+no POKE 1177,62
+120 FOR TO 1023
+130 :   POKE
+NEXT 1
+150 POKE 1177,63
+160   POKE   65299 , 60
+170   POKE   65298, 192
+180   POKE   65287,24
+190 POKE 1351,128
+200 POKE 65302,0 :   POKE 65303,93
+210   FOR 1=0 TO 47
+220 :   READ A
+230 :   POKE
+240 NEXT 1
+250 SCNCLR
+260 PRINT "HALLO BUTTERFLY"
+270 CHAR "KEY FOR NORMAL CHARACTER SET"
+280 Y-24   : YI-24
+290 GET K$ : IF THEN PRINT CHR$(144)   : goto 360
+300   : GOSUB 410
+310   : GOSIB 410
+320   't : GOSLB 410
+330
+. COSI-B 410
+340 GOTO 290
+350 GETKEY K$
+360   POKE   65299, 208
+370 POKE 65298, 196
+380   POKE   65287, 8
+390 POKE 1351,O
+400 END
+CHAR   l, 12, YI
+420 CHAR
+430   CHAR
+440   CHAR
+450   YI-Y : Y-Y-I :   IF THEN Y=24
+460   RETURN
+470   DATA 196,241,237,237,253,253,241,193
+480 DATA
+500   DATA 4 3 3 3 3 3 3
+520   DATA 0 0 O
+Page 22
+
+--- PAGE 27 ---
+Explanation line by line:
+100   Reserve memory space for character set
+110   Switch PEEK-routine to ROM-read
+120-140   Copy character set (1K) into RAM
+150   Switch PEEK-routine to RAM-read
+160   Character set address at 60*256 15360 ($3C00)
+170   Read character set from RAM instead of ROM
+180   Switch-on Multicolour-Mode
+190   Switch-off CBM/SHIFT key
+200   Background colour 1 : black, 2 : blue no. 5
+210-240   Poke character definition of butterfly into RAM
+250   Erase screen
+260-270   Print text
+280   Start of butterflies on bottom scpeen edge
+290   Wait for key. If yes, finish program.
+300   l. Create variant of butterfly
+310   2.
+320   3.
+330   4.
+340   Back to start of loop
+350-400   Normal colours, end of program
+Page 23
+
+--- PAGE 28 ---
+410   Write two spaces in previous posi ion of right butterfly
+420   Colour blue, show right butterfly
+430   Write two spaces in previous posi ion of left butterfly
+440   Colour green, show left butterfly
+450   Move YI one line. If at top, then s art again at bottom.
+460   Sub-program finish
+470-520   Definition of the 3 variants of b tterfly.
+Here is the 3rd example, the mini drawing rogram,   which you   already
+know from the Hires chapter, in Multicolou :
+>1000 OO 0B 10 OO   00   9E   34   31 :r   41
+>1008 31 32 OO 00 OO OO OO OO :r12
+>1010 A9 36 8D   06   FF   18
+>1018   07   12   20
+>1020 CE   A2 00 A9   33   90   00 :rn. .
+>1028   08   00   09   9D •r
+>1030 oo   52   9D
+>1038 00   9D 00   OF •r
+>1040 CA DO   El   A9 n 80   15   FF
+>1048 A9 77 8D   16   FF E8 86   D2
+>1050 A9 50 85 D6   64 85   D5
+>1058 20   C9 20 DO 03   20 :r p.
+>1060 CE 10   20   A9 10 DO 08   E6 :rn.
+>1068 D2 A5 D2 29 03 85   D2   A5
+>1070 DO 18 65   06   DO   04
+>1078   9F m 06 c9   90   02
+>1080 A9 00 85 D6 A5 DI   18   65 :r).
+>1088 D5   FF DO   04   DO )gp
+>1090   06   90   02   85 :r.ih )
+>1098 D5 20 E6 10   OF
+Page 24
+
+--- PAGE 29 ---
+>IOAO 88   FD CA   58
+>10A8 .10   78   08   AD : 8) ?
+>IOBO   08   FF AO 00 A2   00   BO .
+>10B8 01   88   4A BO 01
+>10C0 01   CA   4A BO 01 E8 86   r. jjo.(.p
+>10C8 84 DI 29 08 58   60   00 :   r.q).x
+>IODO 85   A9 20 85   r.
+>10D8   98   D7 88
+>IOEO E6 DB CA   F6 60 A5   D5 :r&xjp6 %u
+>10E8   29   07 A5 D5 29 f8   85
+>IOFO   D7   85   04   06   07   2A
+>10F8 06 D7 2A 06 D7 2A 85   DB
+>1100 85   D3   A5 D7 OA 26 D3   OA
+>1108 26   D3   65   85   D8 :r&s%w.w%x
+>1110 65 D3 85   D6   29   FC :r%s.x%v)<
+>1118 OA   26   65   D7 85   A9
+>1120 20 65 DB   65   D4 85 08 A5 •.r
+>1128 D6 29   03   42
+>1130 11   85 D3   42   49   FF .s=b.i?
+>1138 A6 D2   46 11   05   91 s
+>1140 D7   FC 00 55 .•rw
+>1148
+SAVE the   prog.   on   Cass.   or   Disc
+114A   (Cass. )
+, 01 , 1001 ,
+S"MULTIDRAW"   (Disc)
+A9 36   LDA +$36
+. 1010
+06   FF STA   $FF06
+• 1012
+• 1015   A9 18   LDA #$18
+07   FF STA   $FF07
+• 1017
+. IOIA   LDA +$C8
+12   FF STA $FF12
+• 101C
+20 CE   10 JSR $10CE
+. IOIF
+. 1022   I-DX +$00
+A9 33   LDA #$33
+. 1024
+• 1026   9D OO 08 STA $0800,X
+Page 25
+
+--- PAGE 30 ---
+1029   9D OO 09 STA   $0900,x
+• 102C   9D 00 OA STA   $OAOO,X
+. .102F   9D OO 0B STA   $OBOO,X
+• 1032   A9 52   LDA
+• 1034   9D OO OC STA   $ocoo,x
+• 1037   91) 00 OD STA $ODOO,X
+. 103A   9D 00 OE STA $OEOO,X
+. 103D   OF STA $OFOO,X
+CA   DEX
+• 1040
+DO El   BNE $1024
+• 1041
+A9 30   LDA df$30
+• 1043
+80   15   FF STA $FF15
+. 1045
+A9 77   LDA $$77
+• 1048
+8D   16   FF STA $FF16
+. 104A
+INX
+. 104D
+86 D2   STX $D2
+. 104E
+A9 50   LDA   df$50
+• 1050
+• 1052   85 D6   STA $D6
+A9 64   LDA #$64
+• 1054
+85 D5   STA $D5
+• 1056
+20   FF JSR FFE4
+• 1058
+C9 20   CMP
+. 105B
+. 105D   DO 03   BNE $1062
+20 CE   10 JSR $10CE
+. 105F
+20   A9 10 JSR $10A9
+. 1062
+DO 08   BNE $106F
+• 1065
+E6 02   INC $D2
+• 1067
+• 1069   LDA $D2
+29 03   AND #$03
+. 106B
+85 D2   STA $D2
+. 106D
+. 106F   A5 DO   LDA $DO
+18   CLC
+• 1071
+• 1072   65 D6   ADC $D6
+CMP
+• 1074
+• 1076   DO 04   BNE $107C
+LDA
+. 1078
+. 107A   DO 06   BNE $1082
+CMP
+• 107C
+90 02   BCC $1082
+. 107E
+• 1080   LDA #$OO
+85 D6   STA $D6
+• 1082
+1084   LDA $01
+Page   26
+
+--- PAGE 31 ---
+. IODO   85 D7   STA $D7
+. IOD2   A9 20   LDA {'$20
+. IOD4   85 D8   STA $D8
+A2 20
+. IOD6
+. IOD8   LDY #$OO
+. IODA   98   TYA
+. IODB   STA
+. IODD   88   DEY
+. IODE   BNE $10DB
+. IOEO   E6 08   INC $D8
+. IOE2   CA   DEX
+. IOE3   BNE $10DB
+. IOE5   60   RTS
+. IOE6   LDA $D5
+29 07   AND #$07
+. IOE8
+. IDEA   TAY
+. IOEB   LDA $05
+29 F8   AND
+. IOED
+85 D 7   STA $D7
+. IOEF
+. IOFI   LDA +$OO
+85 D4   STA $D4
+. IOF3
+06 07   ASL $D7
+. IOF5
+ROL
+. IOF7
+06 D7   ASL $D7
+. IOF8
+ROL
+. LOFA
+06 D7   ASL $07
+. IOFB
+ROL
+. IOFD
+85 D8   STA $D8
+. IOFE
+85 D3   STA $D3
+. 1100
+. 1102   LDA $D7
+ASL
+. 1104
+26 03   ROL $D3
+. 1105
+ASL
+. 1107
+26 D3   ROL $D3
+. 1108
+ADC $D7
+STA $D7
+. noc
+LDA $D8
+. 110E
+65 D3   ADC $D3
+. 1110
+85 DB   STA $D8
+. 1112
+LDA $D6
+. 1114
+29 FC   AND #$FC
+. 1116
+ASL
+. 1118
+Page 28
+
+--- PAGE 32 ---
+26 D4   ROL
+• 1119
+65   ADC $D7
+. 111B
+85   STA $D7
+. 111D
+A9 20   LDA {'$20
+• 1115
+65 08
+• 1121
+65 D4   ADC $D4
+• 1123
+• 1125   85 D8   STA $D8
+• 1127   LDA $D6
+29 03   AND
+• 1129
+TAX
+. 112B
+. 112c   LDA
+. 112E   3D 42   11   AND   $1142,x
+• 1131   85 D3   STA $D3
+• 1133   BD 42 n LDA   $1142,x
+49 FF   EOR
+• 1136
+• 1138
+. 113A   3D   46 11 AND   $1146,x
+05 D3   ORA $D3
+. nn
+91 D 7   STA   (07), Y
+. 113F
+60   RTS
+• 1141
+>1142 3F F3 FC 00   55 AA FF
+Page 29
+
+--- PAGE 33 ---
+2.6 EXTENDED COLOUR-GRAPHICS
+In this unfortunately little known mode, you can use one of the four
+background colours for each character on the screen. It is for
+example possible to show a blue character with a yellow background on
+a white screen. This choice of colours has Of course also its price:
+we can only use 64 different characters since the two top Bits of the
+character have to be used for definition of the background colour.
+The following chart should make this clear:
+SCREEN CODE   CHARACTER   BACKGROUt+COLOUR REGISTER
+o- 63   o - 63   65301
+64 - 127   0-63   65302
+128 - 191   o - 63   65303
+192 - 255   o - 63   65304
+Program below will show you the practical application of this mode:
+100 SCNCLR
+no COLOR
+120 COLOR
+130 COLOR
+140 COLOR
+150   POKE
+160 FOR TO 63
+170 : POKE 3072+1,1
+180 :   POKE 3136+1, 1+64
+190 :   POKE 3200+1, 1+128
+200 : POKE 3264+1, 1+192
+210 NEXT 1
+220 1 0
+Page 30
+
+--- PAGE 34 ---
+230 FOR TO 15
+240 :   FOR TO 7
+250 :   POKE
+260 :   POKE
+270 :   1=1+1
+280 :   tEXT L
+290 NEXT C
+300 CHAR "PLEASE   GETKEY   POKE
+65286, PEEK (65286)AND191
+310 COLOR
+EXPLANATION LINE BY LINE:
+100   Erase screen
+110-140   Choose background colours
+150   Switch-on Extended Colour Mode
+160   For each possible character:
+170   Create one set with background colour I
+180   2
+190   3
+200   4
+210   Next character
+220   Put variant I to O
+230-240   For each colour and brightness:
+250-260   Write colour and brightness into colour memory
+270   Increment pointer
+280-290   Next brightness and colour
+Page 31
+
+--- PAGE 35 ---
+300   Print text, wait for key, normal mode.
+310   Switch-on normal background colour (white).
+Page 32
+
+--- PAGE 36 ---
+2.7 SOFT SCROLLING
+When the last line of the C-16's screen is filled with text,   the
+whole picture is automatically scrolled one line up. That means   the
+top line is removed and all other lines move towards the top by   one
+position. This scrolling happens normally line by line but there   are
+other situations where it would be desirable for this scrolling to be
+soft, i.e. only by one pixel.
+The TED-Graphic Chip offers even this possibility and at least the
+vertical scrolling is programable in BASIC. Firstly the no. of
+screen lines has to be reduced to 24 (Bit 3 of register 65286) .   The
+bottom 3 Bits of the same register define the scroll-position from O
+to 7. As soon as this value has reached 7, a completely new line
+becomes visible. We then have to set this Value to O again and get
+the   next line. The following BASIC-Program demonstrates this effect:
+100 SCNCLR
+110 FOR TO 24
+120 :   GOSI.E 240
+130 NEXT 1
+140 SR=65286
+150 FOR TO 20 : tEXT T
+160   POKE SR, 7
+170 GOSUB 240
+180 FOR TO O STEP -1
+190 :   FOR TO 60 : t•EXT T
+200 :   POKE SR, 1
+210 NEXT 1
+220 GET K$ : IF K$="" THEN 150
+230   POKE SR, 11 : END
+240 PRINT ANY KEY"' : RETURN
+Page 33
+
+--- PAGE 37 ---
+LINE BY LINE EXPLANATION:
+100   Erase screen
+110-130   Print text on screen
+140   Put SR on address of Scroll-Register (vertical)
+150   Time loop
+160   Put on 24 lines and Scroll-Value on 7
+170   Print message on presently invisible line 25
+180   Decrement Scroll-Value
+190   Time loop
+200   Put Scroll-Value
+210   Next value
+220   Check key
+230   Put on 25 lines again and normal Scroll-Value (3)
+240   Subroutine, to print message
+In the next chapter you will find another example of horizontal
+scrolling (in machine code), which together with the Raster Interrupt
+is responsible for good effects.
+Page 34
+
+--- PAGE 38 ---
+2.8 THE RASTER-INTERRUPT
+The C-16 has the possibility to interrupt the processor dependant on
+the screen beam (raster) which creates the TV-picture. This can be
+used to write data on the screen while the raster beam is not on the
+screen, thus avoiding a flicker. Furthermore it is possible to
+subdivide the screen into different working areas. This is also used
+by the C-16 s BASIC in order to utilise the divided screen in graphic
+modes 2 and 4.
+In order to create a Raster Interrupt you have to put Bit I of the
+Interrupt Enable Register ($FFOA) to l. The lower 8 Bits of the line
+in which an interrupt is to be created has to be written into
+register $FFOB and the 9th Bit in Bit O of register $FFOA. As soon as
+the raster beam arrives at the selected line a raster interrupt is
+genrated and Bit I of the Raster Interrupt Status Register ($FF09)
+set to l. To facilitate things you best look at the next example
+which   creates a black band   on   the screen background.
+>1000 oo oc 10 oo   00   9E   34   31 •r   41
+>1008 31 32 00 00 00 OO 00 OO :r12
+>1010   78   A9   29   14   03   IO :r8))
+>1018 8D 15   03   A9 02 8D   FF•r )
+>1020 A9 30 8D   58   4C   26
+>1028 10 AD   09   09   FF AD
+>1030   C9 50 90   0B   30
+>1038 81)   EE   15   49
+>1040   A9 50 80   FF CE   15
+>1048 FF   68   68   AA   68   40   AA
+SAVE prog. on Cass. or Disc
+S"RASTER-DEMO" , 01 , 1001 , 104F   (Cass. )
+S"RASTER-DEMO" , 08 , 1001 , 104F   (Disc)
+Page 35
+
+--- PAGE 39 ---
+78   SEI
+• 1010
+• 1011   A9 29   LDA +$29
+• 1013   8D   14 03 STA $0314
+A9 10   LDA +$10
+• 1016
+8D   15 03 STA $0315
+• 1018
+A9 02   LDA +$02
+. 101B
+• 1010   FF STA
+A9 30   LDA
+• 1020
+• 1022   STA $FFOB
+58   CLI
+• 1025
+• 1026   4C 26   JMP $1026
+• 1029   AD   09   FF LDA
+09   FF STA
+. 102C
+AD   FF LDA
+. 102F
+• 1032   C9 50   CMP #$50
+90 0B   Bcc $1041
+• 1034
+• 1036   A9 30   LDA #$30
+• 1038   FF STA
+15   INC $FF15
+. 103B
+49   IO   JMP   $1049
+. 103E
+• 1041   A9 50   LDA #$50
+FF STA   $FFOB
+• 1043
+CE   15   FF DEC FF15
+• 1046
+68   PLA
+• 1049
+TAY
+. 104A
+68   PLA
+. 104B
+TAX
+• 104C
+68   PLA
+. 104D
+40   R Tl
+• 104E
+Finally we   would   like to show you a program which shows the graphic
+possibilities of   TED with Soft Scrolling and Raster Interrupt quite
+impressively. The combination of these two functions is used in many
+comercial games, e.g. to see a moving landscape. In our example we
+will put 3 texts onto the screen of which the middle one can be moved
+gently across the screen with the joystick - in both directions with
+variable speed. When you have analysed and understood this example,
+it shouldn't be too difficult anymore for you to write excellent
+graphic effects and programs of your own.
+Page 36
+
+--- PAGE 40 ---
+>1000 00 0B 10 00   00   9E   34 31
+>1008 31 32 oo oo 00 oo oo   00 :r12
+>1010   CF 80   15   00   A9
+>1018   20   9D OO OC 9D OO   9D :r
+>1020 00   9D •r
+>1028 00   08   9D 00   09   9D 00   OA •r
+>1030 9D 00 0B CA DO El AO   12 : ..JP! .   r.
+>1038   99 82   99 2A
+>1040   11   99 D2   99 :r.92 r .
+>1048   OF   11   99 C2 OD .B.
+>1050 89 08   11   99 62   26 :r9x..
+>1058 99   09   99 62 OA 88
+>1060 D7 86 DO 86 DB   85
+>1068 20 Bl   08   FF :r
+>1070 AD   08   00   4A
+>1078 BO   01   CA   4A BO 01 E8 8A
+>1080 18 65 DO
+>1088   09   FO DD 85 DO DO D9 78
+>1090 A9 73   8D   14   03   A9 11   8D ' )
+>1098 15   03   A9 02 8D   A9 •r )
+>IOAO 00 85 DA   85   8D
+>10A8   07   58
+>IOBO 60 A5   DB   FC A9 00 85 •.r
+>10B8 DB   D9 18 65 DO A8 29
+>10C0 07 85   98 29 08 DO   01 : I'..Y.).p.
+>10C8   60   05   A9 OD 85 D2   85 ) r
+>IODO   D4   A9 09 85 D6 85   A9
+>10D8 90 85   98 10 31   FF :r..q..l ?
+>IOEO A5 DI   18   69   28   85   85
+>10E8 D3 85   85   90 08   E6
+>IOFO 02   E6   D4   E6   D8   E6 :rr&t&v&x&
+>10F8 D3 E6 07 C8   BI   91   DI :rs&whls.q
+>1100   91 D5 CO 27   F3 :r1w.ue'P3
+>1108 CA DO   D3   84   FO 20   AO :rJPs.zO-
+>1110 26 A5 DI   18   69 28 85   DI
+>1118 85 03 85 D5   90   08 :r.s u w
+>1120 E6 D2   E6   D8 :r&r&t&v&x
+>1128 E6 D3 E6 07 Bl   91   D3
+>1130 Bl   D7 88   10   F5 CA :rlu.w. .53
+>1138 DO D5 86   05   DA
+Page 37
+
+--- PAGE 41 ---
+>1140 A9 OD 85   A9 09 85   D6
+>1148 A9 90 85 DI 85 D5 A5   DI
+>1150 18 69 28 85 DI   85   90
+>1158 04 E6 D2 E6   98   49   27
+>1160 A8 Bl DI 85 DC   Bl   A4
+>1168   91 05 A5   DC   91 DI   CA
+>1170 DO DC 60   AD   09   09
+>1178 FF AE   FF A9 40 EO   83 .
+>1180 FO 08   05   09 A2 83 86 DB
+>1188 DO 02 A2 5A 8E   29 :rP. "Z. e?)
+>1190 07 EC   07 •r
+>1198   FF   68 A8   68   68   40   20
+>11A0   04   09 05   13 05 12   20   14
+IA8   05   09 oc 20   08   09 05   12
+>11B0 20 20 20 20 20 02 OC   05
+>11B8 09   02   14 20   14 05   08
+>11C0 05 OE 20 20 20   16   05   12 'R
+>11C8 13 03 08 09 05 02 05   20 : R
+>IIDO 04 01   13 20 08   09   05   12 'R
+>11D8   09   14 20 05 09 OE   05
+>11E0 OD 20   OF   19   13   14   09
+>11E8 03 0B   21
+• 1010   LDA #$CF
+15   FF STA $FF15
+• 1012
+• 1015   I-DX +$OO
+• 1017   A9 20   LDA *$20
+• 1019   90 OO OC STA OCOO,X
+• 101C   9D OO OD STA $ODOO,X
+. IOIF   90 00 OE STA $OEOO,X
+. 1022   90   OF STA $OFOO,X
+A9 00   LDA #$OO
+• 1025
+, 1027   9D OO 08 STA $0800,X
+. 102A   90 00 09 STA $0900,X
+. 102D   90 00 OA STA $OAOO,X
+. 1030   90 00 0B STA $OBOO,X
+CA   DEX
+. 1033
+DO El   BNE $1017
+. 1034
+AO 12   LDY #$12
+• 1036
+89   9F 11 LDA $119F,Y
+• 1038
+99 82 OC STA   $0C82,Y
+. 103B
+. 103E   99   OF STA $OF2A,Y
+Page 38
+
+--- PAGE 42 ---
+• 1041   89 B2 11 LDA   $11B2,Y
+• 1044   99 D2 OC STA   $0CD2, Y
+99   OF STA $OF7A,Y
+• 1047
+. 104A   89 C5 11 LDA   $11t5,Y
+. 104D   99 C2 OD STA $ODC2,Y
+• 1050   89 DB 11 LDA $11D8,Y
+. 1053   99 62 OE STA $OE62,Y
+A9 26   LDA #$26
+• 1056
+99   09 STA $09C2,Y
+• 1058
+. 105B   99 62 OA STA $OA62,Y
+88   DEY
+. 105E
+10 D7   BPL $1038
+• 105F
+86 DO   STX $D0
+• 1061
+86 DB   STX $DB
+• 1063
+20   8F 10 JSR $108F
+• 1065
+20 Bl   10 JSR $10B1
+• 1068
+. 106B   LDA {f$FD
+08   FF STA $FF08
+. 106D
+AD   08   FF LDA $FF08
+• 1070
+• 1073   LDX #$00
+• 1075   LSR
+• 1076   LSR
+• 1077   LSR
+BO 01   BCS $107B
+• 1078
+CA   DEX
+• 107A
+LSR
+. 107B
+BO 01   BCS $107F
+• 107C
+INX
+. 107E
+TXA
+. 107F
+18   CLC
+• 1080
+65 DO   ADC $D0
+• 1081
+• 1083   CMP +$F7
+• 1085   FO El   BEQ $1068
+C9 09   CMP
+• 1087
+. 1089   BEQ $1068
+• 108B   85 DO   STA $D0
+. 108D   DO D9   BNE $1068
+78   SEI
+• 108F
+• 1090   A9 73   LDA #$73
+14   03 STA $0314
+. 1092
+A9 11   LDA #$11
+• 1095
+, 1097   8D 15 03 STA $0315
+Page 39
+
+--- PAGE 43 ---
+109A   A9 02   LDA
+80   FF STA   $FFOA
+. 109C
+. 109F   LDA #$OO
+85 DA   STA $DA
+. IOAI
+85 D9   STA $D9
+. IOA3
+LDA {f$5A
+. IOA5
+. IOA7   FF STA $FFOB
+A9 OO   LDA #$OO
+07   FF STA $FF07
+. IOAC
+58   CLI
+. IOAF
+60   RTS
+. IOBO
+A5 DB   LDA $DB
+. IOBI
+. 1083   BEQ $10B1
+LDA
+. IOB5
+. 1087   85 DB   STA $DB
+A5 D9   LDA $D9
+. 1089
+18   CLC
+. 108B
+65 DO   ADC $00
+. IOBC
+TAY
+. IOBE
+. IOBF   29 07   AND #$07
+85 D9   STA $D9
+98   TYA
+29 08   AND
+. IOC4
+DO 01   BNE $10C9
+. 10C6
+60   RTS
+• 10C8
+A2 05   LDX *$05
+. IOC9
+. IOCB   LDA +$OD
+85 D2   STA $02
+. IOCD
+85 D4   STA $D4
+. IOCF
+A9 09   LDA
+. IODI
+. IOD3   85 D6   STA $D6
+. IOD5   85 DB   STA $D8
+. IOD7   A9 90   LDA +$90
+85 DI   STA $DI
+. IOD9
+98   TYA
+. IODB
+10 31   BPL $110F
+. IODC
+LDY
+. IODE
+. IOEO   LDA $DI
+18   CLC
+. IOE2
+69 28   ADC
+. IOE3
+85 DI   STA $DI
+. IOE5
+85 D3   STA $D3
+. IOE7
+Page 40
+
+--- PAGE 44 ---
+• IOE9   85 D5   STA $D5
+85 D7   STA $D7
+. IOEB
+90 08   BCC $10F7
+. IOED
+. IOEF   INC $D2
+. IOFI   E6 D4   INC $D4
+E6 D6   INC $D6
+. IOF3
+. IOF5   INC $D8
+E6 D3   INC $D3
+. IOF7
+IOF9   E6 D7   INC $D7
+. IOFB   INY
+LDA
+. IOFC
+. IOFE   91 DI   STA   (01), Y
+LDA
+• 1100
+• 1102   91 D5   STA
+co 27   CPY #$27
+. 1104
+. 1106   BNE $10FB
+CA   DEX
+. 1108
+DO D3   BNE $10DE
+. 1109
+84 DA   STY $DA
+. 110B
+. 110D   BEQ $113C
+AO 26   LDY +$26
+. 110F
+A5 DI   LDA $DI
+18   CLC
+. 1113
+• 1114   69 28   ADC +$28
+85 DI   STA $DI
+. 1116
+. 1118   85 D3   STA $D3
+85 D5   STA $D5
+. IIIA
+85 D7   STA $D7
+. Ilic
+. 111E   90 08   BCC $1128
+. 1120   INC $D2
+E6 D4   INC $D4
+. 1122
+• 1124   INC $D6
+• 1126   INC $D8
+• 1128   INC $D3
+E6 D7   INC $D7
+. 112A
+Bl DI   LDA
+. 112c
+91 D3   STA
+. 112E
+Bl D5   LDA
+. 1130
+91 D7   STA
+. 1132
+88   DEY
+• 1134
+10 F5   BPL $112C
+• 1135
+CA   DEX
+. 1137
+Page 41
+
+--- PAGE 45 ---
+DO D5   BNE $110F
+. 1138
+. 113A   86 DA   STX $DA
+A2 05   I-DX #$05
+. 113c
+. 113E   LDY $DA
+• 1140   LDA #$0D
+• 1142   85 D2   STA $D2
+A9 09   LDA #$09
+85 D6   STA $D6
+. 1146
+A9 90   LDA #$90
+• 1148
+85 DI   STA $DI
+. 114A
+85 D5   STA $D5
+• 114c
+. 114E   A5 DI   LDA $DI
+18   CLC
+• 1150
+69 28   ADC +$28
+. 1151
+. 1153   85 DI   STA $DI
+. 1155   85 D5   STA $D5
+90 04   BCC $115D
+. 1157
+. 1159   INC $D2
+. 115B   INC $D6
+98   TYA
+. 115D
+49 27   EOR *'$27
+. 115E
+TAY
+• 1160
+LDA
+. 1161
+• 1163   85 DC   STA $DC
+Bl D5   LDA
+. 1165
+• 1167   I-DY $DA
+91 05   STA
+• 1169
+A5 DC   LDA $DC
+. 116B
+91 DI   STA
+. 116D
+CA   DEX
+. 116F
+DO DC   BNE $114E
+• 1170
+60   RTS
+. 1172
+AD   09   FF LDA   $FF09
+• 1173
+8D   09   FF STA   $FF09
+. 1176
+LDX   $FFOB
+. 1179
+A9 40   LDA
+. 117c
+EO 83   cpx #$83
+. 117E
+FO 08   BEQ $118A
+• 1180
+. 1182   05 D9   ORA $D9
+A2 83   I-DX 683
+. 1184
+86 DB   STX $DB
+. 1186
+DO 02   BNE $118C
+• 1188
+Page 42
+
+--- PAGE 46 ---
+. 118A   I-DX If$5A
+FF STX   $FFOB
+• 118c
+29 07   AND   +$07
+. 118F
+EC   FF CPX $FFID
+• 1191
+• 1194   BEQ $1191
+07   FF STA   $FF07
+• 1196
+• 1199   68   PLA
+A8   TAY
+. 119A
+68   PLA
+. 119B
+• 119C   TAX
+68   PLA
+. 119D
+40   RTI
+. 119E
+>119F   20   04 09 05 13 05 12   20 : R
+>11A7 14   05   09 oc 20   08   09   05 •R
+>IIAF 12 20 20 20 20 20 02
+>11B7   05   09   02   14 20   14   05 • R
+>IIBF 08 05 OE 20 20 20 16 05 •R
+>11c7 12 13 03   08   09 05 02   05 • R
+>11cF   20   04 01   13 20   08   09   05
+>11D7 12 OD   14 20 05 09
+>IIDF 05 OD 20   OF   19   14
+>11E7   09   03 0B   21
+Page 43
+
+--- PAGE 47 ---
+2.9 TECHNICAL DETAILS OF TED-CHIP
+In all different modes the TED-Chip   isplays 25 lines of 40
+characters. Each character on the screen   can accept 16 different
+colours in 8 different brightness levels.   urthermore the characters
+can be shown flashing.
+The values in the Video-RAM determine whic   character is to be   shown
+in a certain place.   To this belongs a   certain attribute   which
+supplies colour, brightness and flashing.
+The TED-Chip receives this information   from the Video-RAM or
+Colour-RAM. The Video-RAM consists of 1000   memory places which each
+consist of an 8 Bit pointer (see also chap   er 2.1). The Video Matrix
+Register in the TED-Chip determines where   he Video-RAM is located in
+the memory plan of the C-16. The registers   of the TED-Chip are found
+in the memory plan of the C-16 from $FFOO   decimal: 65280). The Video
+&trix Register is the TED register   O, the complete address
+is (hex: $FFOO+$14 = $4FF14).   If we want to change the
+position of the Video-RAM in the C-16's me   ory we have to manipulate
+this register.   The TED-Register 20 looks a   follows :
+Bit:   7   6   5   4   3   2   1
+Function: VM4   VM3   VM2   VMI   VMO   NIJ
+NIJ means "Not   Used"   and   can be ignore   VM4-VMl determine   the
+position of the Video-   RAM   in the memory, s   e the following table:
+Page 44
+
+--- PAGE 48 ---
+VM4-VMl   Video-RAM   VM4-VMl   Video-RAM
+00000   $0400   10000   $8400
+00001   $0COO (standard)   10001   $8C00
+00010   $1400   10010   $9400
+00011   $1C00   10011   $9C00
+00100   $2400   10100   $A400
+00101   $2C00   10101   $ACOO
+00110   $3400   10110   $B400
+00111   $3C00   10111   $acoo
+01000   $4400   nooo   $C400
+01001   $4C00   11001   $ccoo
+01010   $5400   11010   $D400
+01011   $5coo   11011   $DC00
+01100   $6400   11100   $E400
+01101   $6C00   11101   $ECOO
+01110   $7400   $F400
+$7C00   $FCOO
+If you possess a C-16 without memory expan   ion you can in principle
+put your Video-RAM in 8 different position   ($0400...$3C00). Please
+nake sure that the Colour-RAM is always in   talled exactly 1K below
+the Video-RAM. If you (as after switching-   n) have the Video-RAM at
+$OCOO, the Colour-RAM will be at $0800.
+Each memory place in the Video-Matrix is u   ed as a pointer for the
+character definition of the corresponding   character. The 8th Bit
+(MSB) of this pointer can be interpreted i   2 different ways. When
+the RVS-Bit (Bit 7) of TED-Register 7 ($FF   7) is O, the MSB of   the
+Video-Matrix (VM7) is used to decide wheth   r the character should   be
+reverse or normal. If VM7 is O, it is norm 1   if it is l,   it   is
+reverse, whereby the TED-Chip will create   he reverse character   by
+the hardware . Thus 128 characters can   e user defined.   If   the
+RVS-Bit of the TED-Chip is 1, 256 own char   cters can be defined.
+Page 45
+
+--- PAGE 49 ---
+VIDEO MATRIX ADDRESS
+A15 A14 A13 A12 All AIO A9 A8 A7 A6 A5   A4 A3 A2 A1 AO
+VM4 VM3 VM2 VMI VMO   1 vc9 vc8 vc7 vc6 vc5 vc4 vc3 vc2 vcl vco
+The Attribute-Memory   also consists of 1000   onsecutive memory places
+and contains the Flash-Bit (Bit 7), the bri   htness (Bit 4-6) and the
+colour (Bit 0-3). The position of the Attr   bute-   or Colour-RAM is
+also determined by the Video-Matrix-Registe .   But since AIO always
+equals 0, the Attribute-RAM is always 1K be   ow the Video-RAM.
+ATTRIBUTE ADDRESS
+A15 A13 A12 All AIO A9
+VM4 VM3 VM2 WI VMO O   vc9 vc8 vc7 VC6 vc5   vc3 vc2 vcl vco
+Each character consists   of a matrix of 8x8   ixels which are stored in
+ROM as 8 consecutive Bytes. The address of   his character memory is
+determined by CB4-CB0 of the TED-Register I   ($FF13). These Bits are
+the higher value Bits of the Character-Set-   ddress.
+A15 A14 A13 A12 All AIO A9   4 A3 A2 A1 AO
+CB5 CB4 CB3 CB2 CBI VM7 VM6 VM5 VM4 VM3 VM2 MI WO
+CBO (if RVS-Bit is 1)
+Page 46
+
+--- PAGE 50 ---
+3.1 MUSIC WITH THE BASIC-COMMANDS
+The Commodore C-16 has simple but good fa   ilities of sound creation.
+It has two independent sound channels   hich can be very easily
+programmed with the corrosponding BASIC   ommands VOL (volume) and
+SOUND (voice, frequency, duration). We do   't want to go into too much
+detail about these BASIC commands (for th   s you have the manual), but
+would like to show you with a small examp   e how to programme small
+music pieces for two voices in BASIC.
+100 VOL 8
+110 DIM
+120
+130 READ IF THEN   50
+140 1=1+1 :GOTO 130
+150 Tl=l
+160   READ THEN   80
+170 1=1+1 : GOTO 160
+180 11=-1
+190 IF DI > O THEN 220:ELSE SOUND
+200   11=11+1:   IF 11 < Tl THEN :ELSE 270
+210 IF NI>O THEN SOUND
+220 IF D2>O THEN 250:ELSE SOUND
+230 12=12+1 :   12)
+240   IF N2>O   THEN SOUND
+250 DI-DI-I
+260 FOR TO 80: NEXT 1 : GOTO 190
+270 VOL O
+280 DATA
+290 DATA
+300 DATA
+310 DATA
+320 DATA   I , 834 , I
+330 DATA
+340 DATA   854, 1
+350 DATA
+360 DATA 704,2,
+370 DATA
+380 DATA
+Page 47
+
+--- PAGE 51 ---
+390 DATA
+400   DATA   854,
+704,   2,834,   2,834,
+420 DATA
+430   DATA
+440   DATA
+450 DATA -1,-1
+460   DATA   485,2
+470 DATA
+480 DATA
+490   DATA   2,485,
+500 DATA
+510 DATA
+520 DATA   596 ,
+530 DATA
+540 DATA   17 1 169,1
+550 DATA   2, 453,
+560 DATA 571,   I 453,
+570
+580 DATA   7,   2, 169 ,
+590 DATA
+600 DATA
+610 DATA
+620 DATA
+630 DATA 596,6
+640 DATA -1,-1
+EXPLANATION LINE BY LINE
+100   Volume on max.
+no   Dimension data fields
+120   I counts the number of notes
+130   Key note and duration for first vo•ce in;   a negative
+figure means: Ready!
+140   Increment counter I and continue.
+Page 48
+
+--- PAGE 52 ---
+150   Tl is the total number of notes or voice l. Put I
+back to O.
+160   Key in note and duration for voi e 2 ; a negative
+figure means: Ready!
+170   Increment counter I and continue
+180   II and 12 are pointers for the d ta fields.
+190   When voice I is ready, go to 220 otherwise stop voice l.
+200   Increment pointer of voice l. Wh n ready, leave loop;
+otherwise put note and duration.
+210   If no pause, start note.
+220   When voice 2 is ready go to 250; otherwise stop voice
+2.
+230   Increment pointer of voice 2 and put note and du-
+ration,
+240   If it is no pause start note.
+250   Decrement duration.
+260   Wait a short while. In this line you can play all
+notes shorter or longer.
+270   Switch volume off.
+280-440   Data for voice l.
+450   End of data for voice l.
+460-630   Data for voice 2.
+640   End of data for voice 2.
+Page 49
+
+--- PAGE 53 ---
+3.2 THE SOUND REGISTERS OF TED
+The Sound Registers are on the same chip a the Graphic Registers in
+TED. Because of the simple sound possibili ies, only 5 registers are
+required which have the following function :
+ADDRESS   BITS   FUNCTION
+Low Byte of voice 1   requency
+$FFOF
+0-1   Top 2 Bits of voice 1   frequency
+0—3   Volume
+4   Select voice 1 (O=off   1=on)
+5
+6   noise for voic
+7   Sound switch (Ozon, 1 off)
+FF12   0-1   Top 2 Bits of voice   frequency
+In order to create a sound, choose first th   voice or voices and the
+volume with register FFII. Normally you se   Bit 7 of this register
+to I for no sound. Next you choose the freq   encies which you should
+note that Bits 2-7 of register $FF12 are us   d for other purposes and
+rust not be changed. Now you can switch on   he sound with Bit 7 of
+FFII and or switch it off.
+Page 50
+
+--- PAGE 54 ---
+3.3 INTERRUPT PROGRAMMED MUSIC
+In this chapter we would like to inves   igate the possibility of
+creating music on the C-16 which does not   interfere with the rest.
+This kind of background music is often fo   nd in games and it is very
+practical to concentrate on the game and   not on the music.   This
+automatic background music can be created   very easily on the C-16. As
+you perhaps know there is a so-called Int   rrupt every 1/60 th of a
+second in the C-16. This is a short inter   upt of the normal program
+during which the C-16 does routine tasks   ike checking if any key has
+been pressed. We can use this interrupt s   that C-16 besides doing
+other tasks also actuates the releva   t sound parameters.   To
+facilitate things, it is best you key in   he following program and
+see for yourself. There will be a more de   ailed explanation of this
+program in the next pages.
+100 FOR 1=1536 TO 1536+173
+110 :   READ A
+120 :   POKE
+130 :   C=C+A
+140 NEXT 1
+150   IF THEN PRINT "ERROR" :STOP
+160 FOR 1=1712 TO 1712+119 STEP 3
+170 :   READ
+180 :   POKE : POKE   6)
+190 :   POKE
+200 :   D=D+A+B
+210 NEXT 1
+220   IF THEN PRINT "ERROR" :STOP
+230   POKE 208,176 : POKE 209,6
+240 VOL 7 : SYS 1536
+250 :
+260 DATA
+270 DATA
+280 DATA
+290 DATA   , , , 245, 165,208 , 105
+300 DATA
+310 DATA
+315 DATA
+Page 51
+
+--- PAGE 55 ---
+320 DATA
+325 DATA
+330 DATA
+340 DATA
+350 DATA
+360 DATA   55,24 , 144,162
+370 :
+380 DATA   , 254, 1712
+390 DATA   40, , 20, , 20 , 685
+400 DATA   20 , 739 ,   40 , 739
+410 DATA 20,643
+420 DATA
+430 DATA 796,20,   739   40 , 770
+440 DATA 253,0
+MACHINE CODE PROGRAM
+SEI
+• 0600 78
+• 0601   A9 24   LDA $24
+8D   14 03 STA $0314
+• 0603
+. 0606 A9 06   LDA 606
+. 0608 8D 15 03 STA $0315
+LDA
+. 060B
+FC   04 STA $04FC
+. 060D
+• 0610   FE 04 STA $04FE
+CLI
+• 0613 58
+RTS
+. 0614 60
+SEI
+• 0615 78
+. 0616 A9 OE   LDA +$0E
+• 0618   8D   14 03 STA $0314
+. 061B A9 CE   LDA #$CE
+. 061D 8D 15 03 STA $0315
+CLI
+• 0620 58
+RTS
+. 0621 60
+. 0622 EA
+. 0623 EA
+04   LDA $04FC
+• 0624
+. 0627   CMP df$FF
+. 0629 FO 03   BEQ $062E
+CE   OMP $CEOE
+. 062B 4C OE
+• 062E AO OO   LDY #$OO
+Page 52
+
+--- PAGE 56 ---
+e 0630 A2 00   LDX
+• 0632 Bl DO   LDA
+. 0634 95 D2   STA   $D2,x
+• 0636 C8   INY
+. 0637 E8   INX
+. 0638 8A   TXA
+. 0639 C9 03   CMP
+. 063B   BNE $0632
+• OOD A5 DO   LDA $D0
+063F 69 02   ADC #$02
+. 0641 85 DO   STA $D0
+• 0643 90 02   BCC $0647
+. 0645 E6 DI   INC $DI
+. 0647 A5 D2   LDA $D2
+• 0649   CMP   i'f$FF
+. 064B DO 06   BNE $0653
+. 064D 20   15   06 JSR $0615
+• 0650 18   CCC
+• 0651 90 DB   Bcc $062B
+• 0653   CMP #$FE
+. 0655 DO 13   BNE $066A
+. 0657 A5 DO   LDA $D0
+. 0659 85 D5   STA $D5
+. 065B A5 D3   LDA $D3
+. 065D 85 DO   STA $D0
+LDA
+. 065F
+. 0661 85 D6   STA $D6
+A5   D4   LDA $D4
+. 0663
+85 DI   STA $DI
+• 0665
+CLC
+• 0667 18
+90   BCC $062E
+. 0668
+. 066A   CMP 4k$FD
+. 066C DO 0B   BNE $0679
+. 066E A5 D5   LDA $D5
+• 0670 85 DO   STA $D0
+• 0672 A5 D6   LDA $D6
+85 DI   STA $DI
+• 0674
+CLC
+• 0676 18
+BCC $062E
+. 0677 90 85
+• 0679   CMP +$FC
+. 067B DO OD   BNE $068A
+11   FF LDA
+• 067D AD
+Page 53
+
+--- PAGE 57 ---
+29   AND
+• 0680
+. 0682 05 D3   ORA $D3
+11   FF STA $FFII
+. 0684 8D
+CLC
+• 0687 18
+• 0688   BCC $062E
+49   EOR
+. 068A
+• 068C   FC 04 STA $04FC
+LDA
+. 068F
+• 0691   FE 04 STA $04FE
+AD   12   FF LDA $FF12
+• 0694
+29 FC   AND   4f$FC
+• 0697
+05 D4   ORA $D4
+. 0699
+12   FF STA FF12
+. 069B 8D
+. 069E A5 D3   LDA $D3
+FF STA   $FFOE
+. 06AO 8D
+11   FF LDA $FFII
+• 06A3 AD
+ORA
+. 06A6 09 10
+11   FF STA
+. 06A8 8D
+CLC
+. 06AB 18
+90 A2   acc $0650
+. 06AC
+Our interrupt-player's syntax is relatively simple: The volume level
+and length are stored. Additionally some   Bytes   have   special
+functions :
+$FC (252) Volume. The volume within a piece   can be changed.   The
+Low-Byte of the frequency contains the new   volume O to 8.   The
+High-Byte is not used.
+$FD (253) This is a kind of GOSUB-command. It   branches off to   the
+address which is given instead of the frequency. Furthermore the   old
+address is stored to allow a return of the sub-program.
+FE (254) This is the RETURN-command which finishes a sub program.
+The two frequency Bytes have to be there but are not used.
+(255) End of sequence.
+1
+Page 54
+
+--- PAGE 58 ---
+4.1 INTRODUCTION TO MACHINE CODE
+If you want to really master your computer ( who want's it to be the
+other way round), you cannot avoid programming in computer language
+(MACHINE CODE). The nice thing is actually the tremendous speed and
+unlimited control over the hardware possibilities of the computer.
+hat often frightens the BASIC-Programmer is the alleged complexity
+of Machine Code and the fact that when you make a mistake,   the
+computer can crash.   This, however, never causes lasting damage.   Even
+an absolute beginner can write small routines in machine code   with
+the integrated machine code monitor within a short period of   time.
+This introduction should, with a few examples help to inspire   some
+experimenting.
+WHAT IS MACHINE CODE
+The heart of C 16 is a Micro-Processor (7501) which can follow a
+series of commands.   These commands are similar to those of a
+programmable calculator (T I, HP, etc.   The programmer has the
+following at his disposal: a calculating register (accumulator), 2
+Index-Registers (X-Register and Y-Register) and the 16384 bytes of
+memory in the C-16. Many memory places of the C-16 have a certain
+function which you have to know as a Machine Code Programmer.
+Therefore the knowledge of a Memory Map is indispensable (see chapter
+4.4). The memory places in the C-16 can only accept values between O
+and 255 (try from BASIC: POKE 82,256 or similar). A no. in a memory
+space can be a machine Code command which is understood by the
+processor and carried out, or some other data; this has to be decided
+by the user. You don't have to remember which figure denotes which
+machine code command, this is done by the integral Mini-Assembler in
+the built-in Machine CODE Monitor of the C-16. You only have to
+remember the so called Mnemonics, which are memory aids with 3
+letters for the individual computer commands. From this the Assembler
+generates the values between 0 and 255 and stores them in the memory.
+Page 55
+
+--- PAGE 59 ---
+4.2 EXAMPLES OF THE MOST IMPORTANT COMMANDS
+l. The commands LDA and STA, the first program
+Let's assume the C-16's frame colour is to; be changed to black. In
+BASIC you could either use the COLOUR-Commånd or transfer the value
+directly into the background register of the Video-Chip with a
+POKE-Command. The BASIC-Line would be:
+1 COLOR 4,
+or:
+1 POKE 65305,0
+Let 's now programme the last line in machine language instead of
+BASIC. First you have to know where the ma#hine program should run or
+stored (e.g.   called with: SYS 818).   The Cassette-Buffer   (at
+$0332-03F2 or 818-1010) is suitable for our little demonstrations
+because it is only used during a cassette Operation.
+If you want to poke O into memory space 65305 you have to obtain a 0
+first. For this you can use the command LDA which means load
+accumulator. The value, in this case O with which the computer
+register is to be loaded is put directly after the command in the
+memory. In machine language this is shown py a # sign followed by the
+required figure. To inform the Mini-ASsemb1er that it   is a
+hexa-decimal number (it cannot use any others), you have to put a $
+in front of every number and it has to be two figure number.   The
+complete command now reads: LDA #$OO. Now you have the value in the
+accumulator and have to store it in memory location 65305 (hex.
+$FF19). To do this, command STA can be used (STore Accumulator).   The
+required address has to follow, i.e. STA $FF19. Finally you have to
+go back to BASIC with the command RTS (ReTurn Subroutine) :RTS.
+Page 56
+
+--- PAGE 60 ---
+In order to programme this small routine (and the following demos)
+into the C-16, type the BASIC command: MONITOR. When you enter a
+machine code proramme, you must always use CAPITAL letters only and
+end each line with the RETURN key.
+MONITOR (RETURN)
+The screen will display.
+MONITOR
+PC   SR   AC   XR
+; 3AB3   00   00
+Now Type
+A 0332   LDA #$OO   (RETURN)
+A 0334   STA   $FF19   (RETURN)
+A 0337   RTS   (RETURN)
+A 0338   (RETURN)
+x   (RETURN)
+READY.
+Since our program ends with the RTS-command we can leave the
+Mini-Assembler. When it shows: A 0338, simply press RETURN and leave
+the machine code monitor by typing X (RETURN).
+You can now start your first machine code ptogram with the command:
+SYS 818. If you haven't given up yet you cah look at the programming
+of a loop in the next chapter.
+Page 57
+
+--- PAGE 61 ---
+2. A PERMANANT LOOP (INC, JMP)
+If you wanted to change the frame colour continually, you would   have
+to write the following program in BASIC:
+1 FOR TO 127
+2 : POKE 65305, 1
+3 NEXT 1
+4 GOTO 1
+In order to change the frame colour, you can always increment the
+content of memory space 65305 by one. Use command: INC address
+(INCrement). This command increments the contents of address by one.
+If the memory space is full (>255), it automatically reverts to zero
+again. Our first command is: INC $FF19. Since we want to increment
+the content of $FF,19 always by one we have to jump back to this
+command. For this, we can use the command JYP address (JuMP). As our
+program is to start at $0332, the second (and last) line reads: JYP
+$0332. Once again,   type MONITOR to enter monitor and type the
+following:
+A 0332 INC $FF19
+A 0335 JMP $0332
+With: SYS 818 you will see the first effect which cannot be realised
+in BASIC.
+Since there is no program end, so you cannot return with RTS into
+BASIC and will have to use the RESET key.
+Page 58
+
+--- PAGE 62 ---
+3. DECEISION LOOP
+The example above is now to be extended by; a time loop.   In   order   to
+programme a time loop, we can for example
+l. Set a counter to certain no.
+2, Decrement counter by one
+3. Check if the counter is O
+4. If not, repeat the process until 0.
+The time taken by computer to do this is time loop   and is very
+short. The program first must have a coun±r and secondly make a
+deceision if the counter is zero.
+For this purpose one of the two Index-Regi$ters (X or Y) come in
+useful. The content can be between 0 and 295 (hex. $FF).
+Qur program is to start again with the co and: INC $FF19, i.e. it is
+to increment the frame colour by one. Nex   the Index-Register X,
+which we want to decrement is loaded with the start value similar to
+the LDA-command with: LDX address; in our ase: LDX #$BI, where LDX
+means LoaD X register. Decrementing the X- egister by one is simple
+and is done with the command DEX (DEOrement Xregister). After
+decrementing we have to check whether the X-Register has reached O.
+For this we use the command: BNE (Branch Not Equal). BNE tests
+whether the previous machine command (DEX) has set a certain Flag,
+the ZERO-Flag. This flag is set (=1) when X reg. contains a O after
+DEX operation. If not, the program jumps ba k to the address after
+BNE: BNE $0337 i.e. it jumps back to the cpmmand DEX and forms a
+loop.
+In order to wait a short while the command kop (No OPeration) can be
+utilised. At the end of our program we lant to start from the
+beginning, i.e. JtvP $0332. The complete pro ram looks now as follows:
+A 0332 INC $FF19
+A 0335 LDX 4f$B1
+A 0337 DEX
+Page 59
+
+--- PAGE 63 ---
+A 0338 BNE $033i
+A 033A NOP
+A 033B JMP $0332
+Try the program with: SYS 818.
+Instead of the X-Register, the Y-Register dan also be used. Instead
+of LDX, use LDY (LoaD Yregister) and DEY (DEcrement Yregister)
+instead of DEX.
+4. USING THE OPERATING SYSTEM (JSR)
+If the machine program is to talk to the o tside world e.g. operate
+printer or show information on the screen, the easiest way to do this
+is to use the existing routines in the ope$ating system of the C-16.
+A summary and an operating instruction of friese KERNAL-Routines can
+be found in chapter 4.4 of this book. A$ an example,   erase the
+machine code from the screen. In BASIC thiS would look as follows:
+1 PRINT CHR$(147)
+This routine, which brings a character from the current cursor
+position to the screen, begins in the ope#ating system at address
+FFD2 (hex.) and requires the ASCII-Value lof the character to be
+printed in the accumulator. We obtain the haracter with the familiar
+LDA command for the accumulator and call t e routine with the command
+JSR (Jump SubRoutine) .   The Kernel sub routine has all   the
+instructions needed to print the character in the accumulator on the
+screen. You can therefore effectively usf Kernel routines to do
+mundane tasks like adding, subtracting etc.. The program for erasing
+the screen in machine code is.
+Page 60
+
+--- PAGE 64 ---
+A 0332 LDA *$93
+A 0334 JSR $FFD2
+A 0337 RTS
+With SYS 818 you can now erase the screen.
+5. PRINT ÆSSAGE (TABLE ADDRESSING)
+If you want to print more than one character on the screen it is best
+to programe a loop which refers to a table. The next character will
+be obtained automatically from the table. The end of the table should
+contain a zero, so that your program knows where to finish the loop.
+The table can accessed by the command LDA address, X. This command
+loads the accumulator with the CONTENTS of memory address indexed by
+X register. The value in the X-Register plus the value of the address
+equals the memory address from which the contents are loaded into the
+accumulator- e.g. LDA $0341,X. If X=2, then the acc. will be loaded
+with contents of meme addr. $0343. If a zero (the self-defined end of
+the table) is loaded into the accumulator, another Flag (the
+ZERO-Flag) is set which can be tested with the command: BEQ address
+(Branch if EQa1). The value in the X-Register can be changed with DEX
+or INX (INcrement Xregister) in order to be able to call the next
+address with another LDA address, X.
+A 0332 LDX +$00
+A 0334 LDA $0341,X
+A 0337 BEQ $0340
+A 0339 JSR $FFD2
+A 033C   INX
+Page 61
+
+--- PAGE 65 ---
+A 033D JMP $0334
+A 0340 RTS
+The above routine loaded the acc. with thel contents of meme addr.
+$0341, which in our case is letter H, As i is not O, it jumped to
+sub routine at $FFD2, The X reg. is increm nted by I and loops back
+to get the contents of address $0341+1 i.e $0342. The contents are
+$41 It carries on like this until it I ads the contents of meme
+addr. $0347 and finds it to be 0. It sets flag, and the routine
+jumps to RTS.
+To enable us to key in the table with the   equired message we   type
+into the monitor the command: M 0341, whic   has the effect of a   hexa
+decimal print out of the memory location f   om $0341 onwards. We   move
+with the cursor to the first memory locati   n and key in the   hexa
+decimal ASCII values of our message. Our m   ssage is to be HELLO,   the
+corresponding ASCII values are: 48 41 4C 4   4F. After you have typed
+these figures (don't forget to press RETUR   ) the screen   should   look
+as follows (your input in bold type):
+M0341
+>0341 48 41 4C 4C 4F 00 00 00 :HELLO
+Leave the machine code monitor with: X (RE+JRN), erase   screen   with
+the CLEAR-key and test your program with: $YS 818,
+6. INDIRCT ADDRESSING
+In the following example, we want to fil   the whole   screen   with
+hearts. In BASIC the program would look as follows:
+1 FOR 1=3072 TO 4071
+2 : POKE 1,83
+Page 62
+
+--- PAGE 66 ---
+3 NEXT 1
+Watch the speed and compare later to our corresponding M/C program.
+Writing on a larger area in machine code is best done with indirect
+addressing; the use of a certain memory locations is carried out with
+the commands:
+LDA (pointer), Y
+STA (pointer), Y
+The content of addressed pointer plus the content of the Y-Register
+equals the address from which a figure is loaded into the accumulator
+(LDA) or where it will be stored (STA).
+The "Pointer" consists of two consecutive memory locations, each
+address is less than 256. As you know the contents of a single memory
+location can only accept values between O and 255. The computer has,
+however, 65535 possible memory locations. Therefore the required
+address has to be divided into two parts. The lower one is stored in
+the first of the   two memory locations, the higher one in the
+following. After that the command can be used,   see the following
+program :
+The value $53 is stored into video RAM (screen) whose start address
+is $0COO + Y, Y is inc. by I until Y=256($FF) and $53 is stored from
+$0COO to $0CFF. The Y reg. becomes O as I is added to $FF and the
+prog jumps   to RTS.
+A 0332 1-DY #$00
+A   0334   LDA #$00
+A 0336 STA $D0
+A 0338 LDA #$0C
+A 033A STA $DI
+A 033C LDA #$53
+Page 63
+
+--- PAGE 67 ---
+A 033E STA
+A 0340 INY
+A 0341 BNE $033E
+A 0343 RTS
+After call-up with SYS 818, 256 hearts wil be printed on the screen.
+As only a block of 256 can be written on, n order to write the next
+block, you have to increment the upper byte of pointer by one and
+repeat the process. Since the screen me ory is 1K long and 1K
+consists of 4 blocks, the above loop has tp be repeated 4 times. The
+X-Register   can be used as counter.
+Change   the   above program as follows:
+A 033E LDX +$04
+A 0340 STA
+A 0342 INY
+A 0343 BNE $0340
+A 0345   INC $DI
+A 0347 DEX
+A 0348 BNE $0340
+A   034A RTS
+The four   blocks are   $OCOO-$OCFF, $ODOO-$ODFF,   $OEOO-$OEFF ,
+$0FOO-$OFE7. INC $DI increments the of $DO by   I i.e. from
+$0C to $0D. The X reg. acts as a loop count)er.
+Make sure that the program was programmed correctly   (with monitor
+command: D 0332 034A). Return to BASIC and try it with   SYS 818.
+Page 64
+
+--- PAGE 68 ---
+everything is o.k. the speed will surely convince you of the speed of
+M/C programming. For comparison: our BASIC program requires for this
+task approx. 5.9 seconds, the M/C program approx.   16 Milli-seconds
+(=16/1000 seconds); i.e. it is in this case 370 times faster than the
+corresponding BASIC-program!
+7. SUB-ROUTINES (JSR,RTS)
+You can write small sub routines to do mundane tasks i.e. move a
+sprite X a no. of pixels. You can then call this routine from main
+prog. whenever you need it. The sub routine must have RTS, so that
+the prog. returns to the next instruction in the main prog..   The
+command is JSR address. This was already used for printing a message
+on the screen. The return from this routine is done with the command
+RTS (ReTurn from Subroutine). This does not jump back into BASIC but
+to the next address after JSR address.
+Erasing the screen can also look as follows:
+A 0332 JSR $0336
+A 0335 RTS
+A 0336 LDA +$93
+A 0338 JSR $FFD2
+A 033B RTS
+You can now test your first sub-routine with the familiar SYS 818.
+8. COMPARISON COMMANDS
+Often the content of certain memory addresses has to be compared with
+constants or the contents of other memory locations. This is
+automatically done with the ZERO Flag when comparing to ZERO (see
+Page 65
+
+--- PAGE 69 ---
+paragraph 3). When comparing something else you have to use one of
+the comparison commands CF (CoMPare accu. ) , CPY (ComPare Yregister)
+or CPX (ComPare Xregister).
+After the command it needs to know, what to compare it with. With the
+{f sign, the contents of the corresponding processor register are
+compared with the indicated number. Without the # sign, with the
+contents of the addressed memory location.
+If the contents of the accumulator are greater or equal to the
+indicated number or the contents of the addressed mem. location, a
+certain flag, the CARRY Flag, is set to l. On equality the ZERO Flag
+is set to I and on unequality to 0.
+If the contents of the accumulator are less,   the CARRY-Flag is set to
+o.
+CARRY   ZERO
+Acc.> or   = Ind.   1
+Acc.   = Ind.   No.   1
+Acc.< or   = Ind.   No.
+The information   in the Flags can now   be   used   by   the   branching
+commands :
+BNE Branch if Not Equal   ---Zero Flag
+BEQ Branch if Equal
+BCC Branch if Carry Clear ---Carry Flag
+BCS Branch if Carry Set
+Here is an example to test branching:
+A 0332 LDA #$FI
+A 0334 CMP $FF19
+Page 66
+
+--- PAGE 70 ---
+A 0337 Bcc $033c
+A 0339 INC $FF19
+A 033C RTS
+As long as the acc. is less than or equal to the contents of $FF19,
+CARRY flag is 0, the program loops back changing the frame colour.
+A   further example of a comparison test:
+A 0332 LDX $OCOO
+A 0335
+A 0337 BEQ $0340
+A 0339 BCS $0341
+A 033B LDA #$00
+A 033D STA $FF19
+A   0340 RTS
+A 0341 LDA
+A 0343 STA
+A 0346 RTS
+If an A is   shown in the top left screen corner, the program doesn't
+do anything, it jumps immediately back into BASIC. Characters with a
+larger code switch the frame to white, the smaller ones (e) to black.
+Anybody who has reached this stage and tried all examples and
+modified a bit can be sure to enjoy the Assembler-Programming.   For
+Page 67
+
+--- PAGE 71 ---
+more thorough introduction to Machine Code programming, you should
+study some of many books publihed on the subject. We can recommend
+the book "Programming the 6502" by Rodney Zaks, published by SYBEX
+publishers (the 6502 has exactly the same command set as the 7501 in
+the C-16), as well as many other books which deal with the 6502.   The
+next chapter will give you a good idea of all the commands of the
+6502/7501. And now: keep up your courage! ! !
+Page 68
+
+--- PAGE 72 ---
+A Few More Tips For Beginners
+Whchine language is best learnt by studying other machine language
+programs. Such programs are published in magazines. Familiarise
+yourself with the program even if it refers to a different computer
+but uses the Micro-Processor 6502 (or 6510). Make sure,   you
+understand the code. This requires persistence, specially if it deals
+with a technique unknown to you. This can prove extremely tiresome but
+with enough patience you will be the winner.
+Once you have looked at other machine language programs, you have to
+start writing some of your own. They can be utility programs for your
+BASIC-programs or a pure machine language program. Remember
+Practice makes perfect!
+You should also use the routines available in the computer in a
+program which helps you to write, prepare and check machine programs.
+An example is KERNAL (see chapter 4.4) which allows keyboard scan,
+text display, control of peripherals such as cassette player,   disc
+drives, printer, etc.. KERNAL is extremely powerful and its usage is
+highly recommended.
+Page 69
+
+--- PAGE 73 ---
+THE COMMANDS OF THE 7501-PROCESSOR
+The integral Micro Processor 7501 in   the C-16 is a further
+development of series 6502 (Atari, Apple; PET, VC-20) and 6510
+(C-64). It is therefore fully software compatible to them and
+possesses exactly the same command set. This facilitates   the
+re-writing of programs of these computers tremendously.   The only
+difference is the different programming df input/output (Floppy,
+Cassette), graphics or sound. If you have a program for the Commodore
+C-64 you can consult our comparison table i chapter 4.6.
+For all beginners, as an introduction and for all   advanced
+programmers for consultation, we now list a phabetically all commands
+of the 7501 (6502/6510 resp.). A detai ed description of each
+individual command would be too elaborate fqr this book. For this
+purpose there are already enough books in   the bookshops.
+The list shows the command and a short   escription,   the way of
+addressing, the assembler language format,   he OPC-Code, the no. of
+Bytes and clock cycles (+ signifies that,   depending on memory pages,
+1 or 2 cycles are used).
+COMMAND Description Addressing Assembler   op No.Of No.Of
+Format   Code Bytes Cycles
+ADC Add To Acc.
+With Carry
+Immediate   ADC   #0perané   69   2   2
+Zero Page   ADC   Operand   65   2   3
+Zero Page, X   ADC   Operan   ,x   75   2   4
+Absolute   ADC   Operan   3   4
+Absolute, X   ADC   Operan   3
+Absolute, Y   ADC   Operan   79   3   4+
+(Indirect,X)   ADC   (Operan   , x) 61   2   6
+( Indirect , Y)   (Operand ,   Y) 71   2
+Page 70
+
+--- PAGE 74 ---
+AND   Logical AND
+To Accumulator
+Immediate   AND   #0perand   29   2   2
+Zero Page   AND   Operand   25   2   3
+Zero Page, X   AND   Operand,   x   35   2   4
+Absolute   AND   Operand   20   3   4
+Absolute , X   AND   Operand,   x   3
+Absolute, Y   AND   Operand,   Y   39   3   4+
+(Indirect, X)   AND   (Operand,   x) 21   2   6
+(Indirect, Y)   AND   (Operand,   Y) 31   2   5+
+ASL Accumulator
+Shift Left
+Accumulator   ASL   1   2
+Zero Page   ASL   Operand   06   2   5
+Zero Page, X   ASL   Operand,   X   16   2   6
+Absolute   ASL   Operand   3   6
+Absolute , X   ASL   Operand ,   x   3   7
+BCC   Branch On
+Carry Clear
+Relative   BCC Operand   90   2
+Branch On
+Carry Set
+Relative   BCS Operand   2   2+
+BEQ Branch On
+Result = 0
+Relative   BEQ Operand   2
+BIT   Test Meme
+Bits
+Zero Page BIT Operand   24   2   3
+Absolute   BIT Operand   3   4
+BMI   Branch On
+Result Minus
+Relative   BMI   Operand   30   2
+Page 71
+
+--- PAGE 75 ---
+BNI   Branch On   Result
+Not Equal   to O
+Relati ve   BNE Operad   DO   2
+BPL   Branch On
+Result   Plus
+Relative   BPL Operand   10   2
+BRK   Force
+Break
+Implied   BRK Operand   1   7
+BVC   Branch On
+Overflow Clear
+Relative   BVC   Operand   50   2
+CLC   Clear Carry
+Flag
+Implied   CLC   18   1   2
+CLD Clear   Decimal
+Mode
+Implied   CLD   08   1   2
+CLI   Clear IRQ Int.
+Disable Bit
+Implied   CLI   58   1   2
+CLV   Clear Overflow
+Flag
+Implied   CLV   88   1   2
+Compare Meme
+And Acc.
+Immediate   CMP   #0perand   2   2
+Zero Page   Operand   2   3
+Zero Page, X   CPP   Operand $ X   2   2
+Absolute   CMP   Operand   CD   3   4
+Absolute, X   CPP   Operand , X   3
+Absolute, Y   CMP   Operand, Y   3
+(Indirect, X)   CMP   ( Operand, X)   2   6+
+(Indirect, Y)   CMP   (Operand, Y)   2   5+
+Page   72
+
+--- PAGE 76 ---
+CPX   Compare Meme
+And Index X
+Immediate   CPX #0perand   2   2
+Zero Page   CPX Operand   2   3
+Absolute   CPX Operand   EC   3   4
+Compare Meme
+And Index Y
+Immediate   CPY *Operand   co   2   2
+Zero Page   CPY Operand   2   3
+Absolute   CPY Operand   cc   3   4
+DEC Decrement Meme
+By One
+Zero Page DEC   Operand   2   5
+Zero Page,x DEC   Operand, X D6   2   6
+Absolute   DEC   Operand   CE   3   6
+Absolute, X DEC   Operand, X DE   3   7
+DEX Decrement
+Index X By I
+Implied   DEX   CA   1   2
+DEY Decrement
+Index Y By 1
+Implied   DEY   88   1   2
+EOR Exclusive OR
+Meme With Acc.
+Immediate   EOR   2   2
+Zero Page   EOR   Operand   45   2   3
+Zero Page, X   EOR   Operand ,   X   55   2   4
+Absolute   EOR   Operand   40   3   4
+Absolute, X   EOR   Operand   50   3
+Absolute, Y   EOR   Operand   59   3
+(Indirect, X)   EOR   (Operand) ,   X 41   2   6
+(Indirect) , Y   EOR   (Operand) ,   Y 51   2   5+
+Page   73
+
+--- PAGE 77 ---
+INC Increment Meme
+By One
+Zero Page   INC   Operand   E6   2   5
+Zero Page,X INC   Operand, X F6   2   6
+Absolute   INC   Operand   3   6
+Absolute, X INC   Operand, X FE   3   7
+INX Increment Index
+X By One
+Implied   INX   1   2
+INY Increment Index
+Y By One
+Implied   INY   1   2
+JMP Jump To
+An Address
+Absolute   JMP Operand   3   3
+Indirect   (Operand)   3   5
+JSR Jump To
+Sub-Routine
+Absolute   JSR   Operand   20   3   6
+LDA Load Acc.
+With Meme
+Immediate   LDA #0perand   2   2
+Zero Page   LDA   Operand   A5   2   3
+Zero Page, X   LDA   Operand ,   x   85   2   4
+Absolute   LDA   Operand   AD   3   4
+Absolute, X   LDA   Operan4,   x   3
+Absolute, Y   LDA   Operanä,   3
+(Indirect, X)   LDA   (Operand,   2   6
+(Indirect) , Y   LDA   (Operand), Y Bl   2   5+
+I-DX Load X Reg.
+Immediate LDX #0perand   2   2
+Zero Page LDX Operand   2   3
+Zero Page, Y LDX Operand, Y   86   2   4
+Absolute   LDX Operand   3   4
+Absolute, Y LDX Operand, Y   BE   3
+Page 74
+
+--- PAGE 78 ---
+LDY   Load Y Reg.
+Immdiate   LDY   +0perand   2   2
+Zero Page   LDY   Operand   2   3
+zero Page,X LDY   Operand, X   B4   2   4
+Absolute   LDY   Operand   3   4
+Absolute,X LDY   Operand , X   BC   3
+LSR Shift 1 Bit
+Right
+Accumulator LSR   1   2
+Zero Page LSR   Operand   46   2   5
+Zero Page, X LSR   Operand , X   56   2   6
+Absolute   LSR   Operand   3   6
+Absolute, X LSR   Operand, X   3   7
+NOP No Operation
+Implied   NOP   1   2
+ORA Logical OR Acc.
+With Meme
+Immediate   ORA #0perand   09   2   2
+Zero Page   ORA   Operand   05   2   3
+Zero Page, X   ORA   Operand ,   x   15   2   4
+Absolute   ORA   Operand   3   4
+Absolute , X   ORA   Operand , X   3
+Absolute , Y   ORA   Operand,   Y   19   3
+(Indirect, X)   ORA   (Operan<,   x) 01   2   6
+(Indirect) , Y   ORA   (Operand), Y II   2
+PHA Push (Store)
+Acc. In Stack
+Immediate PHA   48   1   3
+PHP   Store Status
+Word in Stack
+Immediate PHP   08   1   3
+PLA   Get Acc.
+From Stack
+PLA   68   1   4
+Page 75
+
+--- PAGE 79 ---
+PLP Get Prog. Sta.
+Word From Stack
+PLP   28   1   4
+ROL Rotate Left
+Accumulator ROL   1   2
+Zero Page ROL   Operand   26   2   5
+Zero Page,X ROL   Operand , X   36   2   6
+Absolute   ROL   Operand   3   6
+Absolute,X ROL   Operand , X   3E   3   7
+ROR Rotate Right
+Accumulator ROR   1   2
+zero Page ROR   Operand   66   2   5
+Zero Page,X ROR   Operand , X   76   2   6
+Absolute   ROR   Operand   3   6
+Absolute,X ROR   Operand , X   7E   3   7
+RTI Return From
+Interrupt
+Implied   RTI   40   1   6
+RTS Return From
+Sub-Routine
+Implied   RTS   40   1   6
+SBC Subtract From
+Acc. With Carry
+Immediate   SBC   åf0perand   2   2
+Zero Page   SBC   Operand   2   3
+Zero Page, X   SBC   Operand,   2   4
+Absolute   SBC   Operand   ED   3   4
+Absolute, X   SBC   Operand,   3
+Absolute, Y   SBC   Operand,   3   4+
+(Indirect, X)   SBC   (Operand,   X) El   2   6
+(Indirect) , Y   SBC   (Operand), Y Fl   2
+Page   76
+
+--- PAGE 80 ---
+SEC   Set Carry
+Flag
+Implied   SEC   38   1   2
+SED   Set Decimal
+Mode
+Implied   SED   1   2
+SEI   Set IRQ
+Disable Bits
+Implied   SEI   78   1   2
+STA Store Acc.
+In Memory
+Zero Page   STA   Operand   85   2   3
+Zero Page, X   STA   Operand,   x   95   2   4
+Absolute   STA   Operan<   3   4
+Absolute,X   STA   Operand,   3   5
+Absolute, Y   STA   Operand ,   Y   99   3   5
+(Indirect, X)   STA   (Operand, X) 81   2   6
+(Indirect) , Y   STA   (Operand) , Y   91   2   6
+STX   Store X Reg.
+In Memory
+Zero Page STX Operand   86   2   3
+Zero Page, Y STX Operand, Y   96   2   4
+Absolute   STX Operand   3   4
+STY   Store   Y Reg.
+In Memory
+Zero Page STY Operand   84   2   3
+Zero Page, X STY Operan4,X 94   2   4
+Absolute   STY Operand   3   4
+TAX Transfer Acc.
+To X Reg.
+Implied   TAX   1   2
+TAY Transfer Acc.
+To Y Reg.
+Implied   TAY   A8   1   2
+Page 77
+
+--- PAGE 81 ---
+TSX   Transfer Stack
+Pointer To X REG
+Implied   TSX   1   2
+TXA   Transfer X Reg.
+To Acc.
+Implied   TXA   1   2
+TXS   Transfer X Reg.
+To Stack Pointer
+Implied   TXS   1   2
+TYA Transfer Y Reg.
+To Acc.
+Implied   TYA   98   1   2
+Page   78
+
+--- PAGE 82 ---
+4.4 THE USE OF KERNAL-ROUTINES
+There is one question which worries all programmers : What to do if
+the manufacturer changes the computer operating system? Lengthy
+machine language programs possibly won't function properly without
+extensive modifications. In order to reduce this problem,   Commodore
+has developed a principle to ease the prog#ammerts lot. This is the
+so called KERNAL. Essentially KERNAL is a standard jump table for
+input, output and memory management programs in the operating system.
+If the system program is improved or modified, the location of the
+individual programs in ROM can change, but the KERNAL jump table is
+also altered accordingly.
+KERNAL is the operating system of the Commodore 16. All inputs,
+outputs and the memory controls are controJ1ed by the KERNAL.
+There are 39 input/output routines and other very useful utilities
+which can be accessed via the table. Using these, you not only save
+time but can also adapt your programs from one Commodore computer to
+the other. In the C-16,   the jump table is on the last page of the
+memory in ROM
+To use the KERNAL jump table, first you set up th parameters that the
+KERNAL routines needs to work. Then you jump to the suitable position
+in the KERNAL jump table using JSR instrucltion. After finishing the
+routine, KERNAL transfers the control to your m/c program.
+Depending on the KERNAL-Routine used, paratneters are returned to your
+program in certain registers. You will f irid the relevant registers
+for the individual KERNAL routine in the description of the KERNAL
+subroutine.
+KERNAL FUNCTIONS ON POWER UP OR RESET
+1) After switching on the power the Stack Pointer is initially set to
+O, and the decimal mode is erased.
+2) Then KERNAL checks if a ROM with auto start (e.g.   a game
+Page 79
+
+--- PAGE 83 ---
+cartridge) is available at address $8000   (dec. 32768).   If it is,   the
+rormal initialisation is interrupted and   the control   transferred to
+the program stored in ROM. If not,   then the   normal   system
+initialisation is continued.
+3) Next KERNAL initialises all input/output facilities.   The serial
+bus is initialised, the cassette motor switched off and the TED Chip
+is loaded with the default values.
+4) Now KERNAL checks, if the STOP key is pressed. If yes, it branches
+to the machine language monitor.
+5) As the next step KERNAL carries out a RAM test and sets the RAM
+Pointers at the top and the bottom. Also the Zero Page is initialised
+and the cassette buffer prepared.
+6) Finally KERNAL carries out the f0119wing routines: The 1/0
+Vectors are set to default values. The screen erased and all screen
+editor variables set to zero. Then the BASIC Interpreter is started
+at $8000.
+WORKING WITH KERNAL
+When writing programs in machine code, it often convenient to use
+operating system routines. These consist of input/output, access to
+the system clock, memory management and similar functions.   It is a
+waste of time to write them yourself as it is so easy to access the
+operating system, It helps to speed up the programming too.
+In order to work with a KERNAL routines, filist you have to make all
+the necessary preparations. If,   for exampJe, a routine initially
+requires the call up of another KERNAL rout!ne, then you have to call
+this first. If the routine requires a number in the accumulator, then
+this number must be there. If the conditions are mt fulfilled then
+Page 80
+
+--- PAGE 84 ---
+the routines cannot work properly.
+After carrying out all preparations you c$l the routine via the JSR
+command. All accesible KERNAL routines are structured sub routines
+with RTS. When the KERNAL routine has fini hed its task, the control
+is returned to your program at the instruc ion after the JSR.
+Many KERNAL routines return error codes in the status word or
+accumulator when faults occur. If you want Ito program well and create
+acceptable machine programs these fault indicators must not be
+ignored.
+That's all there is in using the KERNAL.   THREE steps.
+l) Set Up
+2) Call Routine
+3) Error Handling
+The following conventions are used   for   the   description   of   KERNAL
+routines:
+NAME: Name of KERNAL routine.
+PURPOSE: Short description of purpose of the KERNAL routine.
+ADDRESS: This is the call address of the KERNAL routine in hexa
+decimal.
+TRANSFER: Registers under this heading are used for transferring
+parameters to and from KERNAL routines.
+PREPARATION: Certain KERNAL routines require a data to be setup
+before they can operate. They may also rpquire calling of other
+KERNAL routines beforehand.
+Page 81
+
+--- PAGE 85 ---
+ERRORS: A return from KERNAL routine with the CARRY Flag set
+indicates that an error was encountered. The accumulator contains the
+error no..
+STACK REQUIREMENT: This is the actual no of stack bytes used by the
+KERNAL routine.
+REGISTER: All registers used by the KERNAL routine are listed here.
+DESCRIPTION: Here you will find a short deScription of the functions
+of the KERNAL routine.
+PROCEDURE: I-bw to use the routine.
+EXAFLE: Illustrates operation with a smau example.
+Page 82
+
+--- PAGE 86 ---
+NAME: ACPTR
+PURPOSE: Get data from the serial bus
+ADDRESS: $FFA5
+TRANSFER: A
+PREPARATION: TALK, TKSA
+ERRORS: see READST
+STACK REQUIREMENT: 13
+REGISTER: A, X
+Description :
+This routine is used to receive data from device on the serial bus,
+e.g. a disc drive. This routine gets a dat@ byte directly from the
+serial bus. This data is transferred to the accumulator.
+preparation, the TALK routine has to be called to command the device
+on the serial bus to send data on bus. If the input device needs a
+secondary command, it must be sent using the KERNAL routine TKSA
+before calling this routine. ERRORS are re?urned in the status word.
+Use READST routine to read the status wordk
+PROCEDURE :
+l) Command the device on the serial bus to prepare to   send   data   to
+the C-16. (Use KERNAL routines TALK and TK$A. )
+2) Call this routine (via JSR).
+3) Use or store data.
+EXAMPLE :
+$1010   ;Fetch a byte from bus
+$1010   20   JSR ACPTR
+$1013   85 DO   STA DATA
+Page 83
+
+--- PAGE 87 ---
+NAME: CHKIN
+PURPOSE: Open a channel for input
+ADDRESS: $FFC6
+TRANSFER: X
+PREPARATION:   (OPEN)
+ERRORS:
+STACK REQUIREMENT:   None
+REGISTER: A, X
+Description :
+Each logical file that has already been ope ed by the KERNAL routine
+(PEN can be defined as an input channel by this routine. Naturally
+the device has to be an input device otherw se an error will occur
+and the routine will abort.
+If the data is not via the keyboard, this r utine has to be called
+before usin CHRIN or GET IN. If the input is via the keyboard and no
+other input channels are open, then this ro tine and the OPEN routine
+are not required.
+If this routine is used with a device on the serial bus,   it
+automatically sends the talk address via th bus and the secondary
+address, if one was specified by the OPEN r utine.
+Page 84
+
+--- PAGE 88 ---
+PROCEDURE :
+1) Open logical file.
+2) Load register X with the number of logidal file to be used.
+3) Call this routine (with JSR).
+Possible Errors:
+File not open
+Device Not Present.
+File is not an input file.
+EXAMPLE :
+$1010   ;Preparatkion for input
+$1010   ;From logical file 2
+$1010   A2 02   LOX +2
+$1012   20   C6 FF   JSR CHKIN
+Page 85
+
+--- PAGE 89 ---
+NAME: CHKOUT
+PURPOSE: Open a channel for output
+ADDRESS: $FFC9
+TRANSFER: X
+PREPARATION: (OPEN)
+FAULT INDICATION: O, 3,   5,   7 (see READST)
+STACK REQUIREMENT: 4+
+REGISTER: A, X
+Description :
+A logical file number created by the KERNAL routine OPEN can be
+defined as an output channel. Naturally it has to be an output device
+otherwise an error will occur and the routine will be aborted.
+Before data can be sent to an output device you have to call this
+routine unless you want to use the screen of the C-16 as an output
+device. If so and no other output channel are defined, then this
+routine and the OPEN routine are not needed.
+When opening the channel for serial bus this routine automatically
+sends the LISTEN address specified by the OPEN routine (and possibly
+also a secondary address).
+Page 86
+
+--- PAGE 90 ---
+Procedure :
+l) Use the KERNAL OPEN routine to specify a logical file no, a listen
+address and a secondary address (if required).
+2) Load register X with the logical file number used in the OPEN
+command.
+3) Call this routine (via JSR).
+Possible Errors:
+Fil not open
+Device Not Present.
+BbT an output file.
+EXAMPLE :
+$1010   A2 03   LDX   ;Define logical file 3
+$1012   20 C9 FF   JSR CHKOUT   ;as output channel
+Page 87
+
+--- PAGE 91 ---
+NAME: CHRIN
+PURPOSE: Get A Character From Input.
+ADDRESS: $FFCF
+TRANSFER: A
+PREPARATION: (OPEN, CHKIN)
+ERRORS: O (see READST)
+STACK REQUIREMENT: 7+
+REGISTER: A, X
+Description :
+This routine will get a data byte from the channel already set up as
+the input channel by the KERNAL CHKIN. If CHKIN was not used to
+define another input channel, a keyboard input is expected. The data
+byte is returned in the accumulator. After calling,   the channel
+remains open.
+Inputs with the keyboard are dealt in a special way. First the cursor
+is switched on and flashes until a CR (Carriage Return) is typed. All
+characters in one line (max. 88 characters) are stored in the BASIC
+input buffer. These characters can be received one at a time by
+calling this routine for each individual character. When "Carriage
+Return" is retrieved, the whole line has been processed. When this
+routine is called again, the procedure is repeated, i.e.   flashing of
+the cursor.
+Procedure (from the keyboard):
+l) Call this routine (Use JSR).
+Page 88
+
+--- PAGE 92 ---
+2) Retrieve a   data   byte   by   calling   this   routine
+3) Store Data Byte
+4) Check, if it Ii the last data byte (is it a CR?).
+5) If not, go to step 2.
+EXAFLE :
+$1010   A2 00   LDY +$00   ;prepare Y Register
+$1012   JSR CHRIN
+$1015   99 DO O   STA DATA, Y   ;store data
+$1018   INY
+$1019   C9 13   CMP   ; Is it a "Carriage Return"?
+$101B   BNE $1012   ;No,fetch next byte
+Procedure (From Other Devices) :
+1) Use KERNAL routines OPEN and CHKIN.
+2) Call this routine (via JSR).
+3) Store data.
+EXAMPLE :
+$1010   20 CF FF   JSR CHRIN
+$1013   STA DATA
+Page 89
+
+--- PAGE 93 ---
+NAME :   CHROUT
+PURPOSE :   Output A Character
+ADDRESS :   $FFD2
+TRANSFER: A
+PREPARATION: (CHKOUT, OPEN)
+ERRORS: O (see READST)
+STACK REQUIREMENT: 8+
+REGISTER: A
+Description:
+This routine will output a character to an already open channel. Use
+the KERNAL OPEN and CHKOUT routines to set up the output channel
+before calling this routine. If this call is omitted, data will be
+sent to default output device (3, screen). The data byte to be sent
+is loaded in the accumulator and this routine called.   The data is
+then sent to the stipulated output device. After call the   channel
+remains open.
+Be careful if this routine is used for data transfer to a   serial
+device, since data will be sent to all open output channels   on the
+bus. If you do 'nt want it to happen, all output channels of   serial
+bus ,apart from the required channel, have to be closed with   KERNAL
+routine CLRCHN.
+Procedure :
+1) If necessary use KERNAL routine CHKOUT (see above).
+Page 90
+
+--- PAGE 94 ---
+2) Load data to be sent into accumulator.
+3) Call this routine.
+EXAMPLE:
+$1010   ;Replace BASIC command:CMD 4 "A" •
+$1010   A2 04   LDX   ;Logica1 File #4
+$1012   20   JSR CHKOUT   ;Open output channel
+$101   A9 41   LDA
+$1017   20   JSR CHROUT   ;Send character
+Page 91
+
+--- PAGE 95 ---
+NAME :   CIOIJT
+PURPOSE :   Output A Byte Over a Serial Bus
+ADDRESS :   $FFAB
+TRANSFER: A
+PREPARATION: LISTEN,   (SECOND)
+ERRORS: see READST
+STACK REQUIREMENT: 5
+REGISTER: None
+Description :
+This routine is used for information transfer to devices on serial
+bus. By calling this routine a data byte is transferred to serial bus
+with full serial Handshake. Before calling this routine, LISTEN has
+to be called to command a device on serial bus to get ready to
+receive data. (If a secondary address is required, it has to be sent
+using KERNAL routine SECOND. )
+The accumulator is loaded with a Byte which is sent as data via the
+serial bus. A device has to be ready for data receipt, otherwise the
+status word will show "Timeout". This routine buffers one character
+i.e holds the previous character to be sent back. If you call KERNAL
+routine UNLSN to end data transfer„ the buffered character is sent
+with EOI. Then the command UNLSN is sent to the device.
+Page 92
+
+--- PAGE 96 ---
+Procedure:
+1) Use KERNAL routine LISTEN (and possibly SECOND).
+2) Load one Data Byte in the accumulator.
+3) Call this routine to send the data byte.
+EXAMPLE :
+$1010   A9 58   LDA   ;Send an X to serial bus
+$1012   20 A8 FF   JSR CIOUT
+Page 93
+
+--- PAGE 97 ---
+NAME :   CINT
+PURPOSE: Initialise Screen Editor And TED chip
+ADDRESS: $FF81
+TRANSFER: None
+PREPARATION: None
+ERRORS: None
+STACK REQUIREMENT: 4
+REGISTER: A, X, Y
+Description :
+This routine initialises TED Chip in the Commodore 16, Also the
+I<ERNAL screen editor is initialised. This routine can be called via a
+program module of the C-16.
+Procedure :
+1) Call this routine.
+EXAMPLE :
+$1010   20 81 FF   JSR CINT   ; Initialise TED chip
+$1013   20 00 20   JMP RUN   ;Start main program
+Page 94
+
+--- PAGE 98 ---
+NAME: CLALL
+PURPOSE :   Close All Files
+ADDRESS :
+TRANSFER: None
+PREPARATION: None
+ERROR : None
+STACK REQUIREMENT: 11
+REGISTER: A, X
+Description :
+This routine closes all open files, the pointers in the open file
+table are reset and all files closed. The routine CLRCHN will be
+automatically called for resetting the input/output channels.
+Procedure :
+l) Call this routine.
+EXAFLE :
+$1010   20 E7 FF   JSR CLALL   ;C10se all data banks and
+$1013   ;Reset 1/0 channels
+$1015   20 00 20   ;Start main program
+Page 95
+
+--- PAGE 99 ---
+NAME:   CLOSE
+PURPOSE: Closing a logical file
+ADDRESS: $FFC3
+TRANSFER: A
+PREPARATION: None
+ERRORS: O, 240 (see READST)
+STACK REQUIREMENT: 2+
+REGISTER: A, X, Y
+Description:
+This routine is used for closing a logical file after all
+inputs/outputs operations on the file are finished. The routine is
+called after the accumulator is loaded with the logical file number.
+It is the same number which was used on opening the file with the
+OPEN routine.
+Procedure :
+l) Load accumulator with the number of the logical file to be closed
+2) Call this routine.
+Page 96
+
+--- PAGE 100 ---
+EXAMPLE :
+$1010   ;Close channel 15
+$1010   LDA
+$1012   20 CC FF   JSR CLOSE
+Page 97
+
+--- PAGE 101 ---
+NAME :   CLRCHN
+PURPOSE: Clear Input/Output Channels
+ADDRESS: $FFCC
+TRANSFER: None
+PREPARATION: None
+ERRORS :
+STACK REQUIREMENT: 9
+REGISTER: A, X
+Description :
+This routine is called to clear all open channels and restore the
+input/output channels to their default values. Normally it is called
+after opening other input/output channels (e.g. Cassette or Disk) and
+using them for 1/0 operations. The default input device no. is 0
+(keyboard) and the default output device is 3 (screen).
+If one of the channels to be closed is the serial port,   an UNTALK
+signal is sent first to clear the O/P channel or an UNLISTEN is sent
+to clear the output channel. If this routine is not called (and all
+connected devices on the serial bus stay active) then several units
+can receive the same data from the Commodore 16 at the same time. One
+way to take advantage of this would be for the printer to TALK and
+for disk to listen. In this way a disk data file can be printed
+directly.
+When using the KERNAL routine CLALL, this routine will be called-up
+automatically.
+Page 98
+
+--- PAGE 102 ---
+Procedure :
+l) Call this routine via the JSR-instruction.
+EXAMPLE :
+$1010   20 CC FF   JSR CRCHN
+Page 99
+
+--- PAGE 103 ---
+NAME :   GETIN
+PURPOSE: Get A Character From The Keyboard
+ADDRESS: $FFE4
+TRANSFER: A
+PREPARATION: CHKIN,   OPEN
+ERRORS: see READST
+STACK REQUIREMENT: 7+
+REGISTER: A (x, Y)
+Description:
+The routine takes a character from the keyboard queue and transfers
+it as an ASCII value to the accumulator. If the queue is empty,   the
+value O is loaded in the accumulator. Characters are put in the queue
+automatically by an interrupt driven keyboard scan routine which
+calls routine SCNKEY. A maximum of IO characters can be stored in the
+keyboard memory. If the memory is full then additional characters are
+ignored until at least one character has been removed from the queue.
+If RS-232 0/P is used then only register A is used and a single
+character quoted. For checking see READST. If the O/P is the serial
+bus, the cassette or the screen, call the BASIN-routine.
+Page 100
+
+--- PAGE 104 ---
+Procedure :
+l) Call this routine with a JSR-instruction.
+2) Check, if a O is stored in the accumulator (empty memory).
+3) Process data.
+EXAMPLE:
+$1010   Wait for a character
+$1010   20   JSR GETIN
+$1013   C9 00   CMP
+$1015   BEQ $1010
+Page 101
+
+--- PAGE 105 ---
+NAME:   IOBASE
+PURPOSE :   Define 1/0 Memory Page
+ADDRESS :   FFF 3
+TRANSFER: X,
+PREPARATION:   None
+ERROR :
+STACK REQUIREÆNT: 2
+REGISTER: X, Y
+Description:
+This routine sets the X and Y registers to the address of the memory
+section where the memory mapped 1/0 devices are located. This address
+can then be used, together with relative addresses to access the
+rremory mapped 1/0 devices of the Commodore C-16. Register X contains
+the lower order address byte and register Y the upper   order address
+byte.
+With this routine the compatibility between the VC-20,   the C-64 and
+the C-16 is guaranteed. If the input/output registers   for a machine
+code program are set by calling this routine, they   will also be
+compatible with future versions of the Commodore C-16   with regard to
+KERNAL and BASIC.
+Page 102
+
+--- PAGE 106 ---
+Procedure :
+1) Call this routine with the JSR-instruction.
+2) Store registers X and Y in consecutive positions.
+3) Load the Y register with the offset
+4) Access the input/output location.
+EXAMPLE:   (only PLUS/4)
+$1010   ;Data direction register of User-Port on O
+$1010   20   JSR IOBASE
+$1013   86 DO   STX POINT   ;Place BASIS-register
+$1015   84 DI   STY POINT+I
+$1017   A2 02   LDY
+$1019   A9 00   LDA   ;Offset for DDR of User-Port
+$101B   91 DO   STA   DDR on O
+Page 103
+
+--- PAGE 107 ---
+NAME :   IOINIT
+PURPOSE :   Initialise   1/0 Devices
+ADDRESS:   $FF84
+TRANSFER: None
+PREPARATION: None
+ERROR :
+STACK REQUIREMENT:None
+REGISTER:
+Description:
+With this routine all input/output devices and routines are
+initialised. It is normally called as part of the initialising
+program module of the Commodore 16.
+Procedure :
+l) Call this routine with JSR
+EXAMPLE:
+$1010   20 84 FF   JSR IOINIT
+Page 104
+
+--- PAGE 108 ---
+NAME :   LISTEN
+PURPOSE :   Command A Device To Listen
+ADDRESS:   SFBI
+TRANSFER: A
+PREPARATION: None
+ERROR : see READST
+STACK REQUIREMENT: None
+REGISTER: A
+Description :
+This routine commands a device on serial bus to receive data. A
+device number between O and 31 is loaded into the accumulator before
+calling this routine. LISTEN will OR the number bit by bit to convert
+to a LISTEN address. The addressed device will then go into listen
+mode and be ready to accept data.
+Page 105
+
+--- PAGE 109 ---
+Procedure:
+l) Load the accumulator with   the   number   of   device   commanded   to
+listen.
+2) Call this routine with JSR.
+EXAFLE :
+$1010   ;Unit no.   8 on LISTEN
+$1010   A9 08   LDA
+$1012   20 Bl FF   JSR LISTEN
+Page 106
+
+--- PAGE 110 ---
+NAME:   LOAD
+PURPOSE :   Load RAM From Device
+ADDRESS:   $FFD5
+TRANSFER:
+PREPARATION: SETLFS, SETNAM
+ERRORS:   READST
+STACK REQUIREMENT:   None
+REGISTER:
+Description:
+This routine directly loads data byte from an input device into the
+memory of the Commodore 16. It can also be used for comparing data
+from a device with the data in the memory while the data stored in
+RAM remains unchanged (VERIFY).
+Accumulator is set to O for loading or to 1 for VERIFY. If input
+device was OPENed with a secondary address of 3, the header will be
+ignored. In that case registers X and Y must contain the start
+address for loading. If secondary address 1, O or 2 are selected, the
+data will be loaded into the memory from the position specified by
+the header. This routine returns the address of the highest RAM
+location which was loaded.
+Before calling this routine KERNAL routines SETLFS and SETNAM have to
+be called-up.
+A LOAD with keyboard (O), RS-232 (2) or screen (3) is not possible.
+Page 107
+
+--- PAGE 111 ---
+Procedure :
+1) call SETLFS and SETNAM. If a relocated load   is   required,   use
+routine SETLFS to send the secondary address O.
+2) Load acc. with 0 for LOAD or I for VERIFY.
+3) If loading is to relocated address, registers X and Y must be   set
+to the start address   for the load.
+4) Call this routine   using the JSR-instruction.
+EXAFLE :
+$1010   ;Load a program from cassette
+$1010   A9 01   LDA #DEVICEI   ;Set device no.
+$1012   A2 00   LDX "FILENO   ;Set logical file no.
+$1014   AO 00   I-SY CMDI   ;Set secondary address
+$1016   20   FF JSR SETLFS
+$1019   A9 OC   LDA #NAMEI-NAME   ;Load acc. with no. of
+$1019   ; characters in file name
+$101B   A2 32   LDX   ;Load X and Y with address
+$101D   AO 10   LDY   ;of program name ($1032)
+$101F   20   FF JSR SETNAM
+$1022   A9 00   LDA   ;Set Flag for load
+Page 108
+
+--- PAGE 112 ---
+$1024   LOX   ; Default start
+$1026   LDY
+$1028   20 D5 FF JSR LOAD
+$102B   86 20   STX VARTAB   ;End address ot program
+$102D   84 ZE   STY VARTAB+I
+$102F   4C 00 20 JMP   START
+$1032   50 52 4F .BYT "FILE NAME"
+$1035   47 52 41
+$1038   40 OE
+$103B   41 4D 45
+Page 109
+
+--- PAGE 113 ---
+NAME:   MEMBOT
+PURPOSE: set Bottom Of Memory
+ADDRESS: $FF9C
+TRANSFER: X, Y
+PREPARATION: None
+ERROR : None
+STACK REQUIREMENT:   None
+REGISTER: X, Y
+Description:
+This routine is used to set the bottom memory pointer. If, on call up
+of this routine, the accumulator carry bit is set then the pointer to
+the bottom RAM byte is returned in registers X and Y. The pointer
+start value ot the Commodore C-16 without additional memory expansion
+is $1000 (4096 decimal). If the accumulator carry bit is 0 on call up
+of this routine, then the values of registers X and Y are transferred
+to the low and high bytes of the pointer to the start of RAM.
+Procedure: (Read the bottom of RAM) :
+l) Set carry flag
+2) Call this routine
+Page 110
+
+--- PAGE 114 ---
+Procedure (Set the bottom of memory):
+l) Clear the carry flag
+2) Call this routine
+EXAMPLE
+$1010   ;Move bottom ot memory
+; up I page (256 Bytes)
+$1010   38   SEC   ;Read memory bottom
+$1011   20   JSR MEMBOT
+$1014   INY
+$1015   18   CLC   ;Set memory bottom to new value
+$1016   20   OSR MEMBOT
+Page Ill
+
+--- PAGE 115 ---
+NAME :   MEMTOP
+PURPOSE :   Setting pointer to the top of memory
+ADDRESS :   $FF99
+TRANSFER: X, Y
+PREPARATION: None
+ERRORS; None
+STACK REQUIREMENT: 2
+REGISTER: X, Y
+Description :
+This routine is used to set the top of RAM. If, on call up of this
+routine, the carry bit is set, then the pointer to the top of RAM is
+loaded into registers X and Y. If the accumulator carry bit is clear
+on call up   of   this routine then the contents of the registers X and Y
+are loaded   in   the top memory pointer, changing the top of memory.
+EXAMPLE :
+$1010   ;Release RS-232 Buffer
+$1010   38   SEC
+$1011   20   99   JSR MEMTOP   ; Read memory top
+$1014   88   DEX
+$101'   CLC
+$1016   20   99   JSR MEMTOP   ;Set new top of memory
+Page 112
+
+--- PAGE 116 ---
+NAME:   OPEN
+PURPOSE :   Opening A Logical File
+ADDRESS :
+TRANSFER: None
+PREPARATION: SETLFS, SETNAM
+ERRORS:
+STACK REQUIREMENT: None
+REGISTER: A, X, Y
+Description:
+This routine is used to open a logical file. After opening a logical
+file, it can be used for 1/0 operations, This routine is called by
+most KERNAL input/output routines to create the relevant logical data
+files. No parameters are required setting, but ÆRNAL routines SETLFS
+and SETNAM have to be called beforehand.
+Procedure :
+1) Use routine SETLFS.
+2) Use routine SETNAM.
+3) Call this routine.
+Page 113
+
+--- PAGE 117 ---
+EXAMPLE :
+$1010   ; This routine simulates the BASIC
+$1010
+$1010   A9 02   LDA #NAMEI-   NAME ;Length ot file name (2)
+$1012   A2 25   LDX df<NAME   ;Address of file name in
+$1014   AO 10   LDY   ;X and Y Reg. ($1025)
+$1016   20 BD FF JSR SETNAM
+$1019   A9 OF   LDA +15
+$101B   A2 08   I-DX
+$101D   AO OF   LDY
+$101F   20 BA FF JSR SETLFS
+$1022   20 CO FF JSR OPEN
+$1025   49 30   .BYT "10"
+Page 114
+
+--- PAGE 118 ---
+NAME: PLOT
+PURPOSE :   Read/Set Cursor Position
+ADDRESS :   $FFFO
+TRANSFER:
+PREPARATION: None
+ERRORS: None
+STACK REQUIREMENT: 2
+REGISTER:
+Description:
+It accumulator carry flag is set when this routine is called, then
+the present cursor position on the screen (in X and Y coordinates) is
+returned in registers X and Y. X is the row number (0-24) of the
+cursor position, Y the column number (0-39). If on call, the carry
+bit is clear, the cursor moves to the position X, Y (according to
+registers X and Y).
+Procedure (reading cursor position) :
+l) Set carry flag
+2) Call this routine
+3) Read X and Y positions from registers X and Y resp.
+Page 115
+
+--- PAGE 119 ---
+Procedure (placing cursor position) :
+l) Clear carry flag
+2) Write required cursor position in registers X and Y.
+3) Call this routine.
+EXAMPLE:
+$1010   ;Place cursor in
+$1010   ;row IO, column 5
+$1010   LDX
+$1012   AO 05   LDY
+$1014   18   CLC
+$1015   20   JSR PLOT
+Page 116
+
+--- PAGE 120 ---
+NAME :   RAMTAS
+PURPOSE :   RAM Test
+ADDRESS :   $FF87
+TRANSFER:
+PREPARATION: None
+ERRORS: None
+STACK REQUIREMENT:   2
+REGISTER:
+Description :
+With this routine,   RAM is tested and the top/bottom memory pointers
+set. Also the memory locations $0000 - $0101 and $0200   $07FF are
+cleared. Furthermore the cassette buffer is initialised and the
+screen start positioned at $0C00. Normally this routine is called as
+part of the power on module of the Commodore 16.
+Procedure :
+l) Call this routine.
+EXAMPLE :
+$1010   20 87 FF   JSR RAMTAS
+Page 117
+
+--- PAGE 121 ---
+NAME:   RDTIM
+PURPOSE :   Read system clock
+ADDRESS :   $FFDE
+TRANSFER:
+PREPARATION: None
+ERROR : None
+STACK REQUIREMENT: 2
+REGISTER:
+Description :
+This routine is used to read the system clock. The clock resolution
+is 1/60 s. This routine returns 3 bytes. The accumulator contains the
+most significant byte, the X-register the next significant byte and
+the Y-register the least significant Byte.
+Procedure :
+l) Call this routine.
+Page 118
+
+--- PAGE 122 ---
+EXAPPLE :
+$1010   20 DE FF   JSR RDTIM
+$1013   84 DO   STY TIME
+$1015   86 DI   STX TIME+I
+$1017   85 D2   STA TIME+2
+Page 119
+
+--- PAGE 123 ---
+NAME:   READST
+PURPOSE :   Read Status Word
+ADDRESS:   FFB7
+TRANSFER: A
+PREPARATION: None
+ERRORS: None
+STACK REQUIREMENT: 2
+REGISTER: A
+Description :
+This routine returns the current status of the 1/0 devices in the
+accumulator. Normally this routine is called after new communication
+to an 1/0 device. It gives you information about device status or
+errors which occurred during input/output.
+The bits transferred to the accumulator contain the following
+information:
+Page 120
+
+--- PAGE 124 ---
+ST   ST   READ   SERIAL   TAPE LOAD/VERIFY
+BIT   NUMB.   FROM   READ/
+POSITION   VALUE   CASSETTE   WRITE
+Write
+Timeout
+Read
+Timeout
+Short Block   Short Block
+Long Block   Long Block
+16   Unrecoverable   Unrecoverable
+Read Error   Read Error
+32   Checksum   Checksum
+Error   Error
+64   End Of file   End of line
+128   Tape end   Device not   End Of Tape
+present
+Page   121
+
+--- PAGE 125 ---
+Procedure :
+l) Call this routine.
+2) Decode program information in registre A.
+EXAMPLE:
+$1010   ;Check for file-end
+$1010   ;during reading
+$1010   20 B7 FF   JSR READST
+$1013   49 40   AND +64   ;Test for EOF (End Of File)
+$1015   DO 25   BNE   EOF   ;Branch when placed
+Page 122
+
+--- PAGE 126 ---
+NAME:   RESTOR
+PURPOSE :   Reset normal status of system
+ADDRESS :   $FF8A
+PREPARATION: None
+ERROR : None
+STACK REQUIREMENT: 2
+REGISTER: A,x,Y
+Description:
+This routine restores the default values of all system vectors used
+in KERNAL and BASIC routines and Interrupts are reset. The individual
+system vectors can be read and prepared with KERNAL-routine VECTOR.
+Procedure :
+l) Call this routine.
+EXAMPLE :
+$1010   20 8A FF   JSR RESTOR
+Page 123
+
+--- PAGE 127 ---
+NAME :   SAVE
+PURPOSE :   Transfer RAM Contents To A DEVICE
+ADDRESS:   $FFD8
+TRANSFER:
+PREPARATION: SETLFS, SETNAM
+ERRORS:
+STACK REQUIREMENT: None
+REGISTER:
+Description :
+This routine saves a section   of memory.   The memory is saved from an
+indirect address in the zero   page given in the accumulator to the
+fixed address in registers X   and Y. Before calling this routine,   the
+routines SETLFS and SETNAM   must be called. Saving on device I
+(cassette), file name is not   necessary (Though recommended).   If you
+try to save on a different device without file name, an error will
+result.
+It is not possible to save on device 0 (keyboard), 2 (RS-232) and 3
+(screen), as an error will occur and the routine aborted.
+Procedure:
+l) User routines SETLFS and SETNAM   not   to   be   saved   on   tape
+without file name. )
+Page 124
+
+--- PAGE 128 ---
+2) Load two consecutive locations of zero page with the   pointer to
+the start of save (as a standard in the 7501 the lower   Byte comes
+first and then the higher Byte).
+3) Load address of pointer in zero page in the accumulator.
+4) Load low and high byte respetively of end address of   save   in
+registers X and Y.
+5) Call this routine.
+EXAMPLE :
+$1010 A9 01   ;Device I (cassette)
+$1012   20   JSR SETLFS
+$1015   LDA   ; No name
+$1017   20   JSR SETNAM
+$101A   LDA START   ;Load start address ($3COO)
+$101C   85 2B   STA TXTTAB   ; (LOW BYTE)
+$101E   LDA START+I
+$1020   85 2C   STA TXTTAB+I   ; (HIGH BYTE)
+$1022   I-DX END+I   ;Load end address ($4000) (LOW)
+$1024   AO 40   LDY END+I   ; (HIGH BYTE)
+$1026   A9 2B   LDA TXTTAB   ;Load acc. with zero page addr.
+$1029   20   JSR SAVE
+Page 125
+
+--- PAGE 129 ---
+NAME :   SCNKEY
+PURPOSE :   Keyboard Scan
+ADDRESS:   $FF9F
+TRANSFER: None
+PREPARATION: IOINIT
+ERRORs: None
+STACK REQUIREMENT: 5
+REGISTER:
+Description :
+This routine will scan the Commodore 16' s keyboard and check for
+pressed key. If yes, which keys were pressed. This is the same
+routine which is called at each Interrupt. After pressing a key,   the
+relevant ASCII-value is stored in the keyboard memory.
+This routine is only called if the normal IRQ-interrupt is ignored.
+Procedure :
+l) Call this routine.
+Page 126
+
+--- PAGE 130 ---
+EXAMPLE :
+$1010   20   JSR SCNKEY   ;Keyboard scan
+$1013   20   JSR GETIN   ;Fetch character
+$1016   CMP   ;Key pressed?
+$1018   BEQ GET   ; Yes, scan again
+$101A   20   JSR CHROUT   ;Print character
+Page 127
+
+--- PAGE 131 ---
+NAME :   SCREEN
+PURPOSE :   Identify Screen Format
+ADDRESS:   $FFED
+TRANSFER:
+PREPARATION: None
+STACK REQUIREMENT: 2
+REGISTER:
+Description:
+This routine shows the screen format,e.g. 40 columns and 25 lines in
+Y. It can be used to determine on which machine a program is running.
+This function was introduced for the Commodore 64 to make your
+programs more easily compatible with other computers.
+Procedure :
+l) Call this routine.
+Page 128
+
+--- PAGE 132 ---
+EXAMPLE :
+$1010   20 ED FF   JSR SCREEN
+$1013   86 DO   STX MAXCOL
+$1015   84 DI   STY MAXROW
+Page 129
+
+--- PAGE 133 ---
+NAME:   SECOND
+PURPOSE :   Transfer of secondary address for LISTEN
+ADDRESS :   $FF93
+TRANSFER: A
+PREPARATION: LISTEN
+ERRORS: see READST
+STACK REQUIREMENT: 8
+REGISTER: A
+Description :
+This routine sends a secondary address to an 1/0 device after calling
+the LISTEN routine and device commanded to LISTEN. This routine
+cannot be used for transferring a secondary address after calling the
+TALK routine.
+Preparation :
+l) Load secondary address to be sent in the accumulator,   OR   it   with
+$60
+2) Call this routine.
+Page 130
+
+--- PAGE 134 ---
+EXAMPLE :
+$1010   ;Address unit no. 8
+$1010   ; (Floppy) with secondary
+$1010   ;address 15
+$1010   A9 08   LDA
+$1012   49 60   EOR
+$1014   20   JSR LISTEN
+$1017   LDA
+$1019   20   93 FF   JSR SECOND
+Page 131
+
+--- PAGE 135 ---
+NAME:   SETLFS
+PURPOSE :   Opening A Logical Data File
+ADDRESS :   $FFBA
+TRANSFER:
+PREPARATION: None
+ERRORS: None
+STACK REQUIREMENT: 2
+REGISTER: None
+Description :
+This routine will set the logical file no. ,   device address and a
+secondary address (command number) for other KERNAL routines.
+The logical file no. is used by the system as a kind of key for the
+file table, created by the OPEN routine. Device addresses can range
+from 0-31. The following codes are used .
+ADDRESS :   ITEM:
+Keyboard
+1   Cass. Recorder
+2   RS-232C
+3   Screen
+4   Printer on Serial Bus
+8   Disc Drive
+Page 132
+
+--- PAGE 136 ---
+A device number of 4 or above refers automatically to devices on the
+serial bus.
+A command to the device is sent as secondary address via the serial
+bus after the device number has been sent during the serial
+handshake. If no secondary address is being sent, the Y register must
+be set to 255.
+Procedure :
+l) Load logical file number in accumulator.
+2) Load device number into X register.
+3) Load command into Y register.
+4) Call this   routine.
+EXAFLE :
+$1010   ;Logica1 file 32, device no 4
+$1010   ;and no command no.
+$1010   A9 20   LDA +32
+$1012   A2 04   LDX
+$1014   LDY #255
+$1016   20 BA FF   JSR SETLFS
+Page 133
+
+--- PAGE 137 ---
+NAME :   SETMSG
+PURPOSE :   Print Out Of System Messages
+ADDRESS :   $FF90
+TRANSFER: A
+PREPARATION: None
+ERRORS: None
+STACK REQUIREMENT: 2
+REGISTER: A
+Description:
+This routine controls the printing of error and control messages by
+the KERNAL. When called, the errors message or control message can be
+selectedd according to the contents of the accumulator.
+Error message example -FILE NOT FOUND.
+control message example - PRESS PLAY ON TAPE
+Bit 7   = Error Message
+Bit 6 -   - Control Message
+Page 134
+
+--- PAGE 138 ---
+Procedure :
+l) Set accumulator to required value.
+2) Call this routine.
+EXAMPLE :
+$1010   A9 40   LDA +$40   ; Control messages
+$1012   20   90   JSR SETMSG
+$1015   A9 80   LDA +$80   ;Error messages
+$1017   20   90 FF   JSR SETMSG
+$101A   A9 00   LDA   ; All KERNAL messages off
+$101C   20   90 FF   JSR SETMSG
+Page 135
+
+--- PAGE 139 ---
+NAME: SETNAM
+PURPOSE :   Set Up File Name
+ADDRESS :   $FFBD
+TRANSFER:
+PREPARATION: None
+ERRORS: None
+REGISTER: None
+Description :
+This routine sets up the file names for the routines OPEN, SAVE or
+LOAD. The no. of characters in the file name is loaded into the
+accumulator. The address of the file name is loaded into registers X
+and Y, The standard lower byte/higher byte format applies. The
+address can be any valid system memory address from which the file
+name is stored as a string.   If no file name is required, the
+accumulator is loaded with 0. In this case registers X and Y can be
+set to any memory address.
+Procedure :
+l) Load length of file name into accumulator.
+2) Load lower value address byte of file name into X register.
+3) Load higher value address byte of file name into Y register.
+Page 136
+
+--- PAGE 140 ---
+4) Call this routine.
+EXAMPLE :
+$1010   A9 04   LDA #NAMEI-NAFE   ;Load length of file name
+$1012   LDX {KNAPE   ;Load address of file name
+$1014   AO 10   LDY
+$1016   20 BD FF   JSR SETNAM
+Page 137
+
+--- PAGE 141 ---
+NAME:   SETTIM
+PURPOSE :   Set System Clock
+ADDRESS:   $FFDB
+TRANSFER:
+PREPARATION: None
+ERRORS: None
+STACK REQUIREMENT: 2
+REGISTER: None
+Description :
+A system clock maintained by the interrupt routine is updated every
+1/60 s ("Jiffy"). The clock is 3 Bytes "long",   so that it can show up
+to 5,184,000 "Jiffies" (24 hrs.). Then the clock resets to 0.   Before
+calling this routine, the accumulator has to be loaded with the most
+significant (highest) byte, the X Register with the next significant
+byte and the Y Register with the least significant byte of the start
+up time (in Jiffies).
+Procedure :
+l) Load the most significant   Byte   of   the   3   Byte   number   in   the
+accumula tor.
+Page 138
+
+--- PAGE 142 ---
+2) Load next Byte in the X Register.
+3) Load the least significant Byte in the Y Register.
+4) Call this routine.
+EXAMPLE:
+$1010   ;Set clock to IO minutes
+$1010   ; Jiffies)
+$1010   LDA +0   ;Most significant Byte
+$1012   LDX +>3600   ;Next Byte
+$1014   AO 10   L DY   ;Lowest Byte
+$1016   20   DB FF   JSR SETTIM
+Page 139
+
+--- PAGE 143 ---
+NAME :   SETTMO
+PURPOSE :   Set Timeout Flag for Serial bus
+ADDRESS :   $FFA2
+TRANSFER: A
+PREPARATION: None
+ERRORS: None
+STACK REQUIREMENT: 2
+REGISTER: hone
+Description :
+This routine is exclusively used with an additional Bus-Card and is
+practically of no importance for the Commodore 16.
+With this routine the Timeout-Flag for the IEC-Bus is set, When this
+is done the Commodore C-16 waits 64 ms for the message from a device
+on IEC-Bus. If the device does not answer to the DAV-Signal (valid
+data address) of the Commodore 16 within this period of time then the
+computer recognizes an error and leaves the Handshake sequence. If on
+call up of this routine Bit 7 in the accumulator is set to O, then
+Timeouts are effective. Accordingly Timeouts are ineffective if Bit 7
+is set to l.
+Page 140
+
+--- PAGE 144 ---
+Procedure (Set Timeout-Flag):
+l) Set Bit 7 of accumulator to O.
+2) Call this routine.
+Procedure (Clearing Timeout Flag) :
+l) Set Bit 7 of accumulator to l.
+2) Call this routine.
+EXAMPLE :
+$1010   ;Put Timeout-Flag
+$1010   A9 00   LDA "0
+$1012   20 A2 FF   JSR SETTMO
+Page 141
+
+--- PAGE 145 ---
+NAME: STOP
+PURPOSE :   STOP Key Scan
+ADDRESS :   $FFEI
+TRANSFER: A
+PREPARATION: NONE
+ERRORS: None
+STACK REQUIREMENT:   None
+REGISTER:
+Description :
+If during an UDTIM call up the STOP key was pressed,   then after
+call-up of this routine the Zero Flag is set. Furthermore the
+channels are reset to the default values. All other Flags remain
+unchanged. If the STOP key was not pressed, the accumulator contains
+I byte of the last keyboard scan, so the operator can also check if
+certain other keys were pressed.
+Procedure :
+l) Before this routine,   UDTIM has to be called.
+2) Call this routine.
+3) Check for Zero Flag.
+Page 142
+
+--- PAGE 146 ---
+EXAMPLE:
+$1010   20   JSR UDTIM   ;Check for STOP
+$1013   20   JSR STOP
+$1016   BNE LOOP   ;Wait for STOP key
+Page 143
+
+--- PAGE 147 ---
+NAPE :   TALK
+PURPOSE :   Command A Device On Serial Bus To Talk
+ADDRESS :   $FFB4
+TRANSFER : A
+PREPARATION: None
+ERRORS: see READST
+STACK REQUIREMENT: 8
+REGISTER: A
+Description:
+In order to use this routine,   a device no. between O and 31 has to be
+loaded into the accumulator.   When called, this routine does a logical
+bit by bit to convert the   device no. to talk address. This data is
+then sent as command via the   serial bus.
+Procedure :
+l) Load accumulator with device no
+2) Call this routine.
+Page 144
+
+--- PAGE 148 ---
+EXAFLE:
+$1010   ; TALK command for device 4
+$1010   A9 04
+$1012   20 B4 FF   JSR TALK
+Page 145
+
+--- PAGE 149 ---
+NAME :   TKSA
+PURPOSE :   Send a secondary address to a device commanded to talk
+ADDRESS:   $FF96
+TRANSFER: A
+PREPARATION: TALK
+ERRORS: see READST
+STACK REQUIREMENT: 8
+REGISTER: A
+Description :
+This routine sends a secondary address via the serial bus to a TALK
+device, This routine must be called with a number between 4 and 31 in
+the accumulator. This no, is then sent as secondary address command
+via the serial bus. It is vital to call the TALK routine before hand.
+TKSA is not effective after LISTEN.
+Procedure :
+1) Use TALK-routine.
+2) Load secondary address into accumulator,   OR with 96.
+3)Ca11 this routine.
+Page 146
+
+--- PAGE 150 ---
+EXAMPLE:
+$1010   ; Tell device no 4 to talk with command 7
+$1010   A9 04   LDA
+$1012   JSR TALK
+$1015   A9 07   LDA $7
+$1017   49 60   EOR +96
+$1019   20   96 FF   JSR TKSA
+Page 147
+
+--- PAGE 151 ---
+NAME :   UNTLK
+PURPOSE :   Send an UNTALK command
+ADDRESS :   $FFAB
+TRANSFER: None
+PREPARATION: None
+ERRORS: see READST
+STACK REQUIREMENT: 8
+REGISTER: A
+Description:
+With this routine an UNTALK command is sent via serial bus.   All
+commands which received a TALK command before stop data transfer.
+Procedure :
+l) Call this routine.
+EXAFLE:
+$1010   20 AB FF   JSR UNTLK
+Page 150
+
+--- PAGE 152 ---
+NAME :   VECTOR
+PURPOSE :   Manage RAM Vectors
+ADDRESS :   $FF8D
+TRANSFER: x,Y
+PREPARATION: None
+ERROR MESSAGE: None
+STACK REQUIREMENT: 2
+REGISTER:
+Description:
+This routine manages all jump vectors stored in RAM. If on call up of
+this routine, the accumulator carry bit is set,   then the current
+contents of the RAM Vectors are stored in a table whose address is
+given by the contents of registers X and Y.
+hen working with this routine you have to be extremely careful.
+First of all the entire vector contents should be read in the user
+area, the required vectors changed and then copy the content back to
+the system vectors.
+Page 151
+
+--- PAGE 153 ---
+Procedure (Reading the System RAM Vectors) :
+l) Set Carry
+2) Load registers X and Y with the required Vector Address.
+3) Call this routine.
+Procedure (Load System RAM Vectors) :
+l) Clear Carry
+2) Set registers X and Y   to   the   RAM   Address   Vector   table   to   be
+loaded.
+3) Call this routine.
+EXAMPLE :
+$1010   ;Change input routine
+$1010   A2 30   LDX
+$1012   AO 10   LDY +>USER
+$1014   38   SEC
+$1015   20   JSR VECTOR   ;Read old vectors
+$1018   LDA df<MYINP   ;Own input routine
+$101A   8D   3A 10   STA USER+IO
+$101D   A9 20   LDA +>MYINP
+Page 152
+
+--- PAGE 154 ---
+$101F   8D 3B 10   STA USER+II
+$1022   A2 30   LDX +<USER
+$1024   AO 10   LDY +>USER
+$1026   18   CLC
+$1027   20   8D FF   JSR VECTOR   ;Change vectors
+Page 153
+
+--- PAGE 155 ---
+KERNAL ERROR MESSAGES
+Listed below, you will find a list of error messages which can appear
+when working with the KERNAL routines. If one of these errors occur,
+the carry bit of the accumulator is set and the no.   of the error
+message transferred to the accumulator.
+Some KERNAL 1/0 routines do not work with these codes of error
+messages. Instead the errors are identified by the KERNAL routine
+READST.
+NIJPGER:   MEANING:
+o   Routine finished by STOP key
+1   Too many open files
+2   File already open
+3   File not open
+4   File not found
+5   Device not present
+6   File is not an input file
+7   File is not an output file
+8   File name is missing
+9   Illegal device no
+Page 154
+
+--- PAGE 156 ---
+4.5 MEMORY MAP
+ADDRESS   ADDRESS   LABEL   DESCRIPTION
+(hex)   (dec)
+nooo   PDIR   7501 Data Direction Register
+$0001   1   PORT   7501 8 Bit 1/0-port
+$0002   2   SRCHTK   Flag for loops
+$0003-0004   3—4   ZPVECI   New Start Address (RENUMBER)
+$0005-0006   5-6   ZPVEC2   step Width (RENUMBER)
+$0007   7   CHARAC   Search Character
+$0008   8   ENDCHR   Flag:Searching for inverted
+comma at end of a String
+$0009   9   TRMPOS   Screen column from last TAB
+$000A   10   VERCK   Flag: O=LOAD, I-VERIFY
+$000B   11   COUNT   Input buffer counter, No.
+of elements
+$000C   12   DIMFLG   Flag:Standard-Field Dimensioning
+$000D   13   VAL T yp   Variable Flag: FF=String
+$00=Numerical
+$000E   14   INTFLG   Numeric Flag: $80=Integer
+$00=Floating Point
+Page 155
+
+--- PAGE 157 ---
+$000F   15   DORES   Flag:Data Scan
+$0010   16   SUBFLG   Flag: User Function Call-Up
+$0011   17   INPFLG   Flag: $OO=INPUT, $40=GET
+$98= READ
+$0012   18   TANSGN   Flag: ATN Sign/Comparison
+$0013   19   CHANNL   Flag:Current 1/0 Prompt
+$0014-0015   20-21   L INNUM   Store For BASIC Integers
+$0016   22   TEMPPT   Pointer: Temporary String Stack
+$0017-0018   23-24   LASTPT   Last Temporary String Vector
+$0019-0021   25-33   TEMPST   Stack For Temp. String Vector
+$0022-0023   34-35   INDEXI   Store For Auxiliary Pointer I
+$0024-0025   36-37   1 NDEX2   Store For Auxiliary pointer 2
+$0026   38   RESHO   Product Area For Multiplication
+$0027   39   RESMOH
+$0028   40   RESMO
+$0029   41   RESLO
+$002A   42
+$002B-002C   43-44   TXTTAB   Pointer:   Start BASIC
+$002D-002E   45—46   VARTAB   Pointer :   Start BASIC Variables
+$002F-0030   47—48   ARYTAB   Pointer :   Start of BASIC Arrays
+$0031-0032   49-50   STREND   Pointer :   End of Arrays
+Page 156
+
+--- PAGE 158 ---
+$0033-0034   51-52   FRETOP   Pointer: Start Strings
+( Moving Down )
+$0035-0036   53-54   FRESPC   Auxiliary Pointer for Strings
+$0037-0038   55-56   MEMSIZ   Pointer: Top Of RAM
+Available For Basic
+$0039-003A   57-58   CURLIN   Current BASIC Line No.
+$003B-003C   59-60   TXTPTR   Previous BASIC Line No.
+$003D-003E   61-62   FNDPNT   Pointer:BASIC Statement For CONT
+$003F-0040   63—64   DATLIN   Current DATA Line No.
+$0041-0042   65—66   DATPTR   Pointer: Current DATA Address
+$0043-0044   67-68   INPPTR   Vector: INPUT Routine
+$0045-0046   69-70   VARNAM   Current BASIC Variable Name
+$0047-0048   71-72   VARPNT   Current Variable Address
+$0049-004A   73-74   FORPNT   Variable Pointer For FOR/NEXT
+$004B-004C   75-76   opp1R   Y Save;Operator Save
+Basic Pointer Save
+$004D   77   OPMASK   Comparison Mask: Larger,
+Equal, Smaller
+$004E-004F   78-79   DEFPNT   Pointer:Variab1e Of DEF FN
+$0050-0051   80-81   DSCPNT   Pointer:String Descriptor
+$0052   82
+$0053   83   HELPER   Flag: I-ELP or LIST
+$0054-0056   84—86   JFER   Jump Vector For Functions
+Page 157
+
+--- PAGE 159 ---
+$0057-0060   87-96   TEMPFI   Numeric Work Area
+$0061   97   FACEXP   Accumulator I-Exponent
+$0062-0065   98—101   F ACHO   I-Mantissa
+$0066   102   FACSGN   I-Sign
+$0067   103   SGNFLG   Pointer:Series Evaluation Const.
+$0068   104   BITS   Accumulator 1 Hi-Order(Overf10w)
+$0069   105   ARGEXP   2   Exponent
+$006A-006D   106-109   ARGHO   2   Mantissa
+$006E   110   ARGSGN   Sign
+$006F   111   ARISGN   Sign Comp. Acc I Vs Acc 2
+$0070   112   FACOV   Accumulator l: Lo Order Rounding
+$0071-0072   113-114   FBUFPT   Pointer: Cassette Buffer
+$0073-0074   115-116   AUTINC   Increment On AUTO-Command, 0=0ff
+$0075   117   MVDFLG   Reserved For Graphics
+$0076-0078   118-120   KEYNUM   Temporary store for MID$-Command
+$0079-007B   121-123   DSDESC   Descriptor for DS$
+$007C-007D   124-125   TOS   Top Of Run-Time Stacks
+$007E-007F   126-127   TPPTON   Working Area (Sound)
+$0080   128   VOICNO
+$0081   129   RIJNMOD   Flag For RUN ($00=No,   $80=Yes)
+$0082   130   POINT   Flag for DOG—Command
+Page 158
+
+--- PAGE 160 ---
+$0083   131   GRAPHM   Current Graphics Mode ($00=Text,
+$20=Hires, $60=Sp1it Hires, $AO=
+Multicolour, $EO=Split Multi Col.
+$0084   132   COLSEL   Current Chosen Colour
+$0085   133   MCI   Multicolour-Colour 1
+$0086   134   Foreground-Colour
+$0087   135   SCXMAX   Max. No. Of Columns
+$0088   136   SCYMAX   Max. No. Of Rows
+$0089   137   LTFLAG   Flag: PAINT Left
+$008A   138   RTFLAG   Flag: Paint Right
+$008B   139   STOPNB   Flag: Paint Stop
+Different) As Background Colour
+$008C-008D   140-141   GRAPNT   Pointer: Bit Map Colour
+$008E   142   VTEMPI   Temporary Intermediate Memory
+$008F   143   VTEMP2
+$0090   144   STATUS   KERNAL 1/0 status Word:ST
+$0091   145   STKEY   Flag: STOP/RVS Key
+$0092   146   SPVERR   Temporary Memory
+$0093   147   VERFCK   Flag: O=LOAD, I-VERIFY
+$0094   148   C3PO   Flag: Serial Bus Character In
+Buffer ($OO=N0, $80=Yes)
+$0095   149   BSOUR   Ch. In Buffer For serial Bus
+$0096   150   RSAV   Temporary memory for BASIC
+Page 159
+
+--- PAGE 161 ---
+$0097   151   LDTND   No. Of Open Files / Index
+For File Tables
+$0098   152   DFLTN   Default Input Device(Norm. O)
+$0099   153   DFLTO   Default O/P Device (Norm. 3)
+$009A   154   MSGFLG   Flag: $80=BASIC-Direct Mode,
+$CO=M/C Monitor, $00=Program
+$009B-009C   155-156   SAL   Pointer: Tape Buff. /Scroll Screen
+$009D-009E   157-158   EAL   Pointer: Tape End/Program End
+$009F-OOAO   159-160   Temporary Memory
+$OOA1-OOA2   161-162
+$00A3-OOA5   163-165   TIME   Clock (approx. 1/60 s)
+$00A6   166   R2D2   Register for serial bus
+$00A7   167   TPBYTE   Register for cassette routine
+$00A8   168   BSOURI   Register for serial bus
+$00A9   169   FPVERR   Temporary Colour-vector
+$00AA   170   DCOIJNT   Register for cassette routine
+$00AB   171   FNLEN   Length of file name
+$00AC   172   LA   Logical file number
+$00AD   173   SA   Current secondary address
+$00AE   174   Current device no.
+$OOAF-OOBO   175-176   FNADR   Current file name
+$00B1   177   ERRSUM   Cass. error counter
+Page 160
+
+--- PAGE 162 ---
+$00B2-OOB3   178-179   STAL   1/0 Start Address
+$00B4-OOB5   180-181   MEMUSS   Basic loading address
+$00B6-OOB7   182-183   TAPEBS   Pointer:Load end addr.   (tape)
+$OOB8-OOB9   184—185   TMP2   Address for VECTOR
+$OOBA-OOBB   186-187   WRBASE   Pointer: Cassette buffer data.
+$OOBC-OOBD   188-189   IMPARM   Pointer : String for Primms
+$OOBE-OOBF   190-191   FETPTR   Pointer:Long Fetch Routine
+$ooco-00C1   192-193   SEDSAL   Temp. Meme :Scr011 Register
+$00C2   194   RVS   Flag: RVS-Ch.
+$00C3   195   INDX   Pointer: End of line for input
+$00C4-ooc   196-197   LSXP   Cursor X/ Y-Position for input
+$00C6   198   SFDX   Flag: Pressed key ($40=none)
+$00C7   199   CRSW   Flag: INPUT or GET from K/B
+$00C8-00C9   200-201   PNT   Pointer:Current scr. line add.
+$00CA   202   PNTR   Cursor position current line
+$00CB   203   QTSW   Flag: Editor in inverted comma
+mode (0=No)
+$oocc   204   SEDTI   Length of current screen line
+$00CD   205   TBLX   Current pos.of cursor line ro
+$00CE   206   DATAX   Last character (1/0)
+$00CF   207   INSRT   Flag: of ins.
+Page 161
+
+--- PAGE 163 ---
+$OODO-OOD7   208-215   for speech synthesizer
+$OOD8-OOE8   218-232   for application software
+$00E9   233   CIRSEG   Working area
+$OOEA-OOEB   234-235   USER   Pointer:Current screen colour
+$OOEC-OOEE   236-238   KEYTAB   Vector: K.B. Decoding Tab.$E026
+$00EF   239   NDX   No of char. in key board buffer
+$00F0   240   STPFLG   Flag:Pause (CTRL-S/T)
+$OOF1-OOF2   241-242   TO   Register for M/C. Monitor
+$00F3   243   CHRPTR   Zero-Page-Address for M/C.Mon.
+$00F4   BUFEND
+$00F5   245   CHKSUM   Register for check sum
+$00F6   246   LENGTH
+$00F7   247   PASS
+$00F8   248   TYPE   Block-Type
+$00F9   249   USEKDY   bit7=l: Write, bit6=l: read
+$00FA   250   XSTOP   Register for X on STOP Key Test
+$00FB   251   CURBNK   Present Bank-Configuration
+$00FC   252   XON   Character   to be sent for X-On
+$00FD   253   XOFF   x—Off
+$00FE   254   SEDT2   Work   area   for Editor
+$00FF   255   LOFBUF
+Page 162
+
+--- PAGE 164 ---
+$0100-010F   256-271   FBUFFER
+$0110   272   SAVEA   Intermed.mem. for SAVE & ESTORE
+$0111   273   SAVEY
+$0112   274
+$0113-0122   275-289   COLKEY   col.   /Luminiscence Table in RAM
+$0123   290
+$0124-01FF   291-511   SYSSTK   Processor Stack
+$0200-0258   512-600   BUF   Basic I/P or Monitor Buffer
+$0259-025A   601-602   OLDLIN   Previous BASIC Line No.
+$025B-025C   603-604   OLDTXT   Pointer: BASIC Command for CONT
+$025D-02AC   605-684   BASIC/DOS Work Area
+$025D   605   XCNT   DOS Loop Counter
+$025E-026D   606-621   FNBUFR   Area for file names
+$026E   622   DOSFIL   Length of first file name
+$026F   623   DOSDSI   DOS (æVICE 1)
+$0270-0271   624-625   DOSFIA   Address of first file name
+$0272   626   DOSF2L   Length of second file name
+Page 163
+
+--- PAGE 165 ---
+$0273   627   DOSFA   DOS (Device 2)
+$0274-0275   628-629   DOSF2A   Address of second file name
+$0276   630   DOSLA   DOS logical address
+$0277   631   DOSFA   device address
+$0278   632   DOSSA   secondary address
+$0279-027A   633—634   DODDID   Disk-ID
+$027B   635   DIDCHK   ID-F1ag
+$027C   636   DOSSTR   DOS Output Buffer
+$027D-02AC   637-684   DOSSPC   Work Area
+$02AD-02AE   685-686   XPOS   Current X Pos:Graphic Cursor
+$02AF-02BO   687-688   ypo   Current Y Pos :Graphics Cursor
+$02B1-02B2   689-690   XDEST   X Target-Co-ordinate
+$02B3-02B4   691-692   YDEST
+$02B5-02B6   693—694   XABS   Absolute value of X
+$02B7-02B8   695-696   YABS
+$02B9-02BA   697-698   XSGN   Sign of X
+$02BB-02BC   699—700   YSGN   Sign of Y
+$02BD-02BE   701-702   FCTI
+$02BF-02CO   703-704   FCT2
+$02C1-02C2   705-706   ERRVAL
+$020   707   LESSER
+Page 164
+
+--- PAGE 166 ---
+$02C5   709   ANGSGN   Stat Value of angle
+$02C6-02C7   710-711   SINVAL   Sines of angle
+$02C8-02C9   712-713   COSVAL   Cosines of angle
+$02CA-02CB   714-715   ANGCNT   Temp. Reg. for angle
+$02CD   717   BNR   Pointer : Start (PRINT USING)
+$02CE   718   ENR   Pointer : End
+$02(F   719   DOI-R   Flag: Dollar
+$02D0   720   FLAG   Flag: Comma
+$02D1   721   SWE   Counter
+$02D2   722   USGN   Value of exponent
+$02D3   723   UEXP   Pointer .   exponent
+$02D4   724   VN   No of of Ch. before dec. point
+$02D5   725   CHSN   Flag: Adjustment
+$02D6   726   No of Ch. before dec. point
+$02D7   727   No of Ch. after dec. point
+$02D8   728   POSP   Flag: +/-(Fie1d)
+$02D9   729   FESP   Flag: Exponent (Field)
+$02DA   730   ETOF   Switch
+$02DB   731   CFORM   Character Counter (Field)
+$02DC   732   SNO   Preliminary Character No.
+Page 165
+
+--- PAGE 167 ---
+$02DD   733   BLED   Flag: Space Bar/ *
+$02DE   734   BEGFD   Pointer to beginning of field
+$02DF   735   LEOR   Length of Format String
+$02E0   736   ENDED   Pointer to end of field
+$02CC-02CD   716-717   XCENTR
+$02CE-02CF   718-719   YCENTR
+$02DO-02D1   720-721   XDISTI
+$02D2-02D3   722-723   YDISTI
+$02D4-02D5   724-725   XDIST2
+$02D6-02D7   726-727   YDIST2
+$02D8-02D9   728-729   DISEND
+$02DA   730   COLCNT   Column Counter:   CHAR Command
+$02DB   731   ROWCNT   Row
+$02DC   732   STRCNT   For CHAR   Command
+$02CC-02CD   716-717   XCORDI   Pixel 1,   X Co-ordinate
+$02CE-02CF   718-719   YCORDI   Pixel l,   Y Co-ordinate
+$02DO-02D1   720-721   BOXANG   Rotating   Angle-Box
+$02D2-02D3   722-723   XCOUNT
+$02D4-02D5   724-725   YCOUNT
+$02D6-02D7   726-727   BXLENG   Length of one side
+Page 166
+
+--- PAGE 168 ---
+$02D8-02D9   728-729   XCORD2   Pixel 2,   X Co-ordinate
+$02DA-02DB   730-731   YCORD2   Pixel 2,   Y Co-0rdinate
+$02CC-02CD   716-717   XCIRCL   Centre of circle-X co-ordinate
+$02CE-02Cf   718-719   YCIRCL   Centre of circle-Y co-ordinate
+$02DO-02D1   720-721   XRADUS   X-Radius
+$02D2-02D3   722-723   YRADUS   Y-Radius
+$02D4-02D5   724-725   ROTANG   Rotating Angle
+$02D6-02D7   726-727
+$02D8-02D9   728-729   ANGBEG   Circle-segment-Angle Start
+$02DA-02DB   730-731   ANGEND   End
+$02DC-02DD   732-733   XRCOS   X Radius   * Cosine of
+rotating   angle
+$02DE-02DF   734—735   YRSIN   Y Radius   * Sine of
+rotating   angle
+$02EO-02E1   736-737   XRSIN   X Radius   * Sine Of
+rotating   angle
+$02E2-02E3   738-739   YRCOS   Y Radius   * Cosine of
+rotating   angle
+$02CD   717   KEYLEN
+$02CE   718   KEYNXT
+Page 167
+
+--- PAGE 169 ---
+$02CF   719   STRSZ   Length of String Variables
+(SHAPE)
+$02D0   720   GETTYP   Set Shape-Mode
+$02D1   721   STRPTR   Counter for String Position
+$02D2   722   OLDBYT   Old Bitmap byte
+$02D3   723   NEWBYT   Variable for new string or
+Bi tmap-Byte
+$02D4   724
+$02D5-02D6   725-726   XSIZE   Length of Shapes in X-Direction
+$02D7-02D8   727-728   YSIZE   " Y-Direction
+$02D9-02DA   729-730   XSAVE   Temporary memory for X size
+$02DB-02DC   731-732   STRADR   Memory for Shape or
+string descriptor
+$02DD   733   BITIDX   Pointer to a Bit in a Byte
+$02DE-02E1   734-737   SAVSIZ   Temporary Memory
+$02E4   740   CHRPAG   High byte of a Character ROM
+address for CHAR-Command
+$02E5   741   BITCNT   Register for GSHAPE
+$02E6   742   SCALEM   Flag: SCALE Mode ($00=Off)
+$02E7   743   WIDTH   Flag: Double Pixel Size
+$02E8   744   FILFLG   Flag: Colour a rectangle
+(BOX Command)
+$02E9   745   BITMSK   Temporary Memory for Bit Mask
+Page 168
+
+--- PAGE 170 ---
+$02EA   746   NUMCNT   Length of String
+$02EB   747   TRCFLG   Flag: TRACE Mode ($OO=Off)
+$02EC   748   Intermediate Meme   for DIRECTORY
+$02ED-02EE   749-750
+$02EF   751   VTEMP3   Temporary Memory for Graphics
+$02F0   752   No. of Graphic Parameters
+$02F1   753   VTEMP5   Parameter: $01=relative
+$00 = absolute
+$02F2-02F3   754-755   ADRAYI   Pointer to conversion routine
+Comma after Integer
+$02F4-02F5   756-757   ADRAY2   Pointer to conversion routine
+Integer after Comma
+$02FE-02FF   766-767   BNKVEC   Vector: Function Module (cart. )
+$0300-0301   768-769   IERROR   Vector:BASIC Error Mess. ($8686)
+$0302-0303   770-771   IMAIN   Vector:BASIC Warm Start ($8712)
+$0304-0305   772-773   ICRNCH   Vector :BASIC Token gener. $8956
+$0306-0307   774-775   IQPLOP   Vector: BASIC Text list ($8B6E)
+$0308-0309   776-777   IGONE   Vector BASIC Command exec.$8BD6
+$030A-030B   778-779   IEVAL   Vector:BASIC Token Eval. ($9417)
+$030C-030D   780-781   IESCLK   Vector :BASIC User Token
+generation $896A
+$030E-030F   782-783   IESCPR   Vector:   Create keyword   $8B88
+$0310-0311   784-785   IESCEX   Vector :   Prepare User Token $8C8B
+Page 169
+
+--- PAGE 171 ---
+$0312-0313   786-787   ITIME   Vector :   Interrupt (Clock) $CE42
+$0314-0315   788-789   CINV   Vector :   l-ärdware Interrupt $CEOE
+$0316-0317   790-791   CBINV   Vector :   BRK-Interrupt
+$0318-0319   792-793   IOPEN   Vector : Kernal   æEN Routine $EF53
+$031A-031B   794—795   ICLOSE   Vector : Kernal   CLOSE   $EE5D
+$031C-031D   796—797   ICHKIN   Vector : Kernal   CHKIN   $ED18
+$031E-031F   798—799   ICKOUT   Vector : Kernal   CHKOUT   $ED60
+$0320-0321   800-801   ICLRCH   Vector : Kernal   CLRCHN   $EFOC
+$0322-0323   802-803   IBASIN   Vector : Kernal   CHRIN   $EBE8
+$0324-0325   804-805   IBSOUT   Vector: Kernal   CHROUT   $EC4B
+$0326-0327   806-807   ISTOP   Vector :Kernal   STOP   $F265
+$0328-0329   808-809   IGETIN   Vector : Kernal   GETIN   $EBD9
+$032A-032B   810-811   ICLALL   Vector : Kernal   CLALL   $EF08
+$032C-032D   812-813   USRCMD   Vector :Monitor Break   $F44C
+$032E-032F   814-815   ILOAD   Vector.   •Kernal LOAD Routine $F04A
+$0330-0331   816-817   ISAVE   Vector:Kerna1 SAVE Routine $FlA4
+$0332-03F2   818-1010   TAPBUF   Tape Buffer
+$0332   818   File
+$0333-0334   819-820   Start Address (low/high)
+$0335-0336   821-822   End Address (low/high)
+$0337-0346   823-838   Program-Name (16 characters)
+Page 170
+
+--- PAGE 172 ---
+$03F3-03F4   1011-1012   WRLEN   Data Counter (Write)
+$03F5-03F6   1013-1014   RDCNT   Data Counter (Read)
+$03F7-0436   1015-1078   INPQUE   RS-232 Input Buffer (64 Bytes)
+$0437-0454   1079-1108   ESTAKL   Tape Error Stack (Low Bytes)
+$0455-0472   1109-1138   ESTAKH   (High Bytes)
+$0473-0478   1139-1144   CHRGET   Subroutine: Read next Byte from
+BASIC-Text
+$0479-0484   1145-1156   CHRGOT   Read again same Text-Byte
+$0485-0493   1157-1171   QNUM
+$0494-04A1   1172-1185   INDSUB   Subroutine for loading from
+optional bank
+$04A2-04A4   1186-1188   ZERO   Numerical constant for BASIC
+$04A5-04AF   1189-1199   INDTXT   Text pointer
+$04BO-04BA   1200-1210   INDINI   Index I
+$04BB-04C5   1211-1221   INDIN2   Index 2
+$04C6-04DO   1222-1232   INDSTI   String I
+$04D1-04DB   1233-1243   INDLOW   Lowtr
+$04DC-04E6   INDEMO   Facmo
+$04E7   1255   PUFILL   Fill Character by PRINT USING
+(Standard: Space Bar)
+$04E8   1256   PUCOMA   Comma symbol
+$04E9   1257   PUDOT   Dot Symbol
+$04EA   1258   PUMONY   Currency Character
+Page 171
+
+--- PAGE 173 ---
+$04EB-04EE   1259-1262   TMPDES   Temporary memory for INSTR
+$04EF   1263   ERRNIJM   Last Error Number
+$04FO-04F1   1264-1265   ERRLIN   Row no. in which last
+error occurred ($FFFF=NO error)
+$04F2-04F3   1266-1267   TRAPNO   Reference to row no. for
+ON ERROR GO TO
+$04F4   1268   TMPTRP   Temporary register for TRAP
+$04F5-04F6   1269-1270   ERRTXT   Intermediate Memory for TRAP
+$04F7   1271   OLDSTK   BASIC Text Pointer to last error
+$04F8-04F9   1272-1273   TMPTXT   DO-Memory for BASIC Text Pointer
+$04FA-04FB   1274-1275   TMPLIN   DO-Memory for row no.
+$04FC-04FD   1276-1277   MTIMLO   Low byte of sound 1/2 length
+$04FE-04FF   1278-1279   MTIMHI   High byte of sound 1/2 length
+$0500   1280   USRPOK   USR Jump Command
+$0501-0502   1281-1282   USRADD   USR Address (low/high)
+$0503-0507   1283-1287   RNDX   Start Value for RND
+$0508   1288   DEJAVU   Flag: Cold or warm start
+$0509-0512   1289-1298   LAT   Table of logical file numbers
+$0513-051C   1299-1308   FAT   Table of device numbers
+$051D-0526   1309-1318   SAT   Table of secondary addresses
+$0527-0530   1319-1328   KEYD   Keyboard Buffer (FIFO)
+$0531-0532   1329-1330   MEMSTR   Pointer: Start address of
+Page 172
+
+--- PAGE 174 ---
+RAM for operating system
+$0533-0534   1331-1332   MSIZ   Pointer:End of RAM Op. system
+$0535   1333   Flag: Timeout (overrun) of
+(optional) IEC-Bus
+$0536   1334   FILEND   I-end of file reached
+othewise O
+$0537   1335   CTALLY   No. of characters in buffer
+(for Read and Write)
+$0538   1336   CBUFVA   No. of all valid characters
+in buffer (read only)
+$0539   1337   TPTR   Pointer: next Ch. in buffer R/W
+or Read and Write)
+$053A   1338   FLTYPE   Type of tape file
+$053B   1339   COLOR   Active Attribute Byte (colour,
+brightness, flashing)
+$053C   1340   FLASH   Flag: Character flashes ($00=No)
+$053D   1341   Unused
+$053E   1342   HIBASE   Video RAM start (Page)
+$053F   1343   XMAX   Size of keyboard buffer
+$0540   1344   RPTFLG   Flag: Key repeat ($80=a11
+$40=none
+$0541   1345   KOUNT   Counting speed for repeat
+$0542   1346   DELAY   Counter for repeat delay
+$0543   1347   SHELAG   Flag: Keys key
+$0544   1348   LSTSHF   Last SHIFT Sample of keyboard
+page   173
+
+--- PAGE 175 ---
+$0545-0546   1349-1350   KEYLOG   Pointer: K.B Decoding Table
+$0547   1351   MODE   Flag:SHIFT
+$0548   1352   AUTODN   Flag : Aut. Scroll. (down
+$0549   1353   L INTMp   Intermediate meme -in scr.Pr-out
+$054A   1354   ROLFLG
+$054B   1355   FORMAT   Work Mem.of Machine Code Monitor
+$054C-054E   1356-1358   MSAL   For assembler
+$054F   1359   WRAP   Temporary Memory for assembler
+$0550   1360   TMPC
+$0551   1361   DIFF
+$0552   1362   PCH   Program-Counter (high)
+$0553   1363   PCL   (low)
+$0554   Fl-GS   Processor-Flags
+$0555   1365   ACC   Accumulata   of Processor
+$0556   1366   XR   X-Register
+$0557   1367   Y-Register
+$0558   1368   Processor Stack Pointer
+$0559   1369   IWL   Memory for Machine-Moni tor
+$055A   1370   INVH
+$055B   1371   CMPFLG
+$055C   1372   BAD   Used by various Monitor Routines
+Page 174
+
+--- PAGE 176 ---
+$055D   1373   KYNDX   Character counter: Function Key
+$055E   1374   KEYIDX   Pointer: Strings function key
+$055F-0566   1375-1382   KEYBUF   Length of function key strings
+$0567-05E6   1383-1510   PKYBUF   Memory for Function key strings
+$05E7   1511   KDATA   Temp. Meme For data after DMA
+$05E8   1512   KDYCMD   Selection, if DMA. Read or Write
+$05E9   1513   KDYNUM   DMA device no,
+$05EA   1514   KDYPRS   $FF=DMA present, otherwise $00
+$05EB   1515   KDYTYp   Temporary Memory for DMA.
+$05EC-06EB   1516-1771   SAVRAM   Banking routines page
+$05EC-05EF   1516-1519   PAT   Physical Address (Table)
+$05FO-05F1   1520-1521   LNGJMp   Long-Jump (Address )
+$05F2   1522   FETARG   (Accumulator)
+$05F3   1523   FETXRG   (X-Register)
+$05F4   1524   FETSRG   (Status-Register)
+$05F5-065D   1525-1629   AREA   RAM-Field for Bank-Switching
+$065E-06EB   1630-1771   APECH   for Speech Synthesizer
+$06EC-07AF   1772-1967   STKTOP   Pseudo Stack: BASIC Interpreter
+$07BO-07CC   1968-1996   TAWKVA   Tape working values
+$07B0   1968   WROUT   Byte to be written on cassette
+$07B1   1969   PARITY   Temporary Memory for parity
+Page 175
+
+--- PAGE 177 ---
+$07B2   1970   TTI   Temporary Memory
+$07B3   1971   TT2   Temporary Memory
+$07B5   1973   RDBITS   Local Index for READBYTE-Routine
+$07B6   1974   ERRSP   Pointer: Error-Stack
+$07B7   1975   FPERRS   No of errors on pass 1
+$07B8-07B9   1976-1977   DSAMPI   Time Constant
+$07BA-07BB   1978-1979   DSAMP2
+$07BC-07BD   1980-1981   ZCELL
+$07BE   1982   SRECOV   Stack Pointer for STOP-Key
+$07BF   1983   DRECOV   DROP—Key
+$07C0-07C3   1984-1987   TRSAVE   Parameters sent after RDBLOK
+$07C4   1988   RDETMp   Temporary Memory for RDBLOK
+$07C5   1989   LDRSCN
+$07C6   1990   CDERRM   No of errors on RD Countdown
+$07C7   1991   VSAVE   Temporary Memory for VERIFY
+$07C8-07CB   1992-1995   TIPIPE   Temporary Memory for Tl
+$07cc   1996   ENEXT   Read Error
+$07CD   1997   IJOUTQ   User Char. to be sent (RS-232)
+$07CE   1998   UOUTFG   (O=empty, I-full)
+$07CF   1999   SOUTQ   System Character to be sent
+$07D0   2000   SOUNFG   (O=empty, I-full)
+Page 176
+
+--- PAGE 178 ---
+$07D1   2001   INQFPT   Pointer to start of input buffer
+$07D2   2002   INQRPT   end Of
+$07D3   2003   INQCNT   No of Char. in Input Buffer
+$07D4   2004   ASTAT   Temporary status of ACIA
+$07D5   2005   AINTMp   Temporary memory for INPUT
+$07D6   2006   ALSTOP   Flag:   Local Pause
+$07D7   2007   ARSTOP   Flag:   Remote Control Pause
+$07D8   2008   APRES   Flag:   tvärks presence of ACIA
+$07D9-07E4   2009-2020   KLUDES   Indirect Routine (downloaded)
+$07E5   2021   SCBOT   Screen window: bottom edge
+$07E6   2022   SCTOP   top edge
+$07E7   2023   SCLF   left edge
+$07E8   2024   SCRT   right edge
+$07E9   2025   SCRDIS
+$07EA   2026   INSFL   Flag: automatic inserting
+$07EB   2027   LSTCH   Last printed character
+$07EC   2028   LOGSCR   Memory for Screen Administration
+$07ED   2029   TCOLOR   Temp.reg. for color on INST & DEL
+$07EE-07F1   2030-2033   BITABL   Row Link Table for Screen
+$07F2   2034   SAREG   Accumulator on SYS-Command
+$07F3   2035   SXREG   X-Register
+Page   177
+
+--- PAGE 179 ---
+$07F4   2036   SYREG   Save Y-Register
+$07F5   2037   SPREG   Save SP-Register
+$07F6   2038   LSTX   Currently pressed key: CHR$(n),
+$07F7   2039   STPDSB   Flag: CTRL-S (O=open, 6=c10sed)
+$07F8   2040   RAMROM   RAM/ROM-Switch over to machine
+code monitor ($OO=ROM, $80=RAM)
+$07F9   2041   COLSW   RAM/ROM-Switch over for colour
+Brightness-Table :
+$07FA   2042   FFRMSK   ROM-Mask for divided screen
+$07FB   2043   VMBMSK   Video RAM RGsk for 't
+$07FC   LSEM   Motor control tape recorder
+$07FD   2045   PALCNT   Auxiliary counter for clock on
+PAL-System
+$07FE-07FF   2046-2047   Unused
+BEFORE CALLING HI-RES.   GRAPHICS
+$0800-OBE7   2048-3047   TEDATR   Colour-RAM (Text Mode)
+$0COO-OFE7   3072-4071   TEDSCN   Video-RAM (Text Mode)
+$1000-3FFF   4096-16383   BASBGN   Basic   RAM   -C16
+$1000-7FFF   4096-32767   BASBGN   BASIC RAM   C16+16K
+$IOOO-FCFF   4096-64767   BASBGN   BASIC RAM   C16+64k or PLUS4
+Page 178
+
+--- PAGE 180 ---
+AFTER CALLING HI-RES GRAPHICS
+$1800-1BE7   6144-7143   TEDATR   Luminscence Table (Graphics
+Wbde )
+$1COO-1FE7   7168-8167   TEDSCN   Colour Table (Graphics Mode)
+$2000-3F3F   8192-16191   GRBASE   Bitmap Graphics Screen
+$1000-17FF   4096-6143   BASBGN   BASIC RAM
+C16
+$4000—7FFF   16384-32767   BASBGN   BASIC   RAM
+C16+16K
+$4000-FCFF   16384-64767   BASBGN   BASIC   RAM
+PLUS4:C16+64K
+PLUS 4 ONLY
+$8000-CFFF   32768-53247   BASIC Interpreter
+$DOOO-D3FF   53248-54271   Character ROM (Capitals/Graphics Ch. set
+$D400-D7FF   54272-55295   Character ROM (Small /Capita1 Character
+$D800-FBFF   55296-64511   Operating System
+SCOO-FCFF   64512-64767   ROM Banking Routines
+FDOO-FDOF   64768-64783   ACIA (only PLUS/4)
+$FDIO-FDIF   64784-64799   6529   Parallel Port (Only PLUS/4)
+$FDDO-FDDF   64976-64991   Module Bank Port
+FEOO-FEFF   65024-65279   DMA Disk System
+Page 179
+
+--- PAGE 181 ---
+4.   6 TED CHIP ADDRESSES   ($FFOO-$FF3F)
+REG.   ADDRESS   ADDRESS   BITS   DESCRIPTION
+HEX.   DEC,
+$FFOO   65280   Timer l, Reload Low
+$FF01   65281   Timer 1, Reload High
+2   $FF02   65282   Timer 2, Low
+$FF03   65283   Timer 2, High
+$FF04   65284   Timer 3, Low
+$FF05   65285   Timer 3, High
+$FF06   65286   0-2   Vertical Scroll Position (Y)
+Selection of 24/25 rows (1=25)
+Switch screen off
+Switch Bitmap Mode (1=0N)
+Switch Ext. Colour Mode(l=ON)
+Testbit (always O)
+$FF07   65287   0-2   Horizontal Scroll Position (X)
+Choice of 38/40 columns (1=40)
+Switch Multicolour Mode on ( I-on)
+Switch Freeze Mode on (l=on)
+PAL/NTSC-Mode (O=PAL, 1=NTSC)
+RVS-Video (0=Hardware, I-Software)
+$FF08   65288   Keyboard Matrix
+page   180
+
+--- PAGE 182 ---
+9   $FF09   65289   Interrupt-Sources
+Not used
+1   Raster Interrupt
+2   (Light Pen, not possible with C-16)
+3   Timer I Interrupt
+4   Timer 2 Interrupt
+5   Not used
+6   Timer 3 Interrupt
+7   Interrupt Bit
+10   FFOA   65290   Interrupt Fäsking
+Bit 8 of Raster Comparison
+(Reg. 11)
+1   Raster-Interrupt
+2   (Light Pen, not possible with
+c-16
+3   Timer I Interrupt
+4   Timer 2 Interrupt
+5   Not used
+6   Timer 3 Interrupt
+7   Not used
+11   65291   Raster Comparison (Bit 0-7)
+12   F FOC   65292 0-1   Bit 8-9 of Cursor Position
+(Reg. 13)
+2-7   Not Used
+13   F FOD   65293   Hardware Cursor Position (Bit 0-7)
+FFOE   65294   Frequency Voice I (Bit 0-7)
+15   FFOF   65295   2 (Bit 0-7)
+16   65296   0-1   Frequency Voice   2 (Bit 8-9)
+Not used
+page   181
+
+--- PAGE 183 ---
+FFII   65297   0-3   Volume   (O=off,   15=10ud)
+4   Swi tch   voice I   (I-on)
+5   Swi tch   voice 2   rectangular on
+( I-on)
+6   Switch   voice 2 noise on ( I-on)
+7   Sound Reload Bit
+18   65298 0-1   Bit 8-9 Frequency Voice 1
+(Reg. 14)
+2   RAM/ROM Bank (O=RAM, I-ROM)
+3-5   Address of Bitmap RAM (Bit 13-15)
+6—   Not used
+19   6529   ROM-Bank Status Bit (Read only)
+1   Force Single Clock Bit (I-pro-
+hibits double time frequency)
+2-7   Address of character set (Bit
+10-15)
+20   FEI 4   65300 0-2   Not used
+3-7   Address of Video-RAM (Bit 11-15)
+21   FF15   6530   0-3   Background O Colour
+4—6   Background 0 Luminiscence
+7   Not used
+22   FF16   65302 0-3   Background I Colour
+" Luminiscence
+7   Not used
+23   FF17   65303 0-3   Background I colour
+4—6   " Luminiscence
+7   Not used
+24   6530   0-3   Background 3 Colour
+4—6   Luminiscence
+7   Not used
+25   65305 0-3   Frame Colour
+Luminiscence
+7   Not used
+page 182
+
+--- PAGE 184 ---
+26   FFIA   6530   0-1   Bit 8-9 of Bit Map Reload (Reg.27)
+Not used
+27   FFIB   65307   Bit Map Reload of Character
+Position (Bit 0-7)
+28   F FIC   65308   Bit 8 of Raster-Row (Reg. 29)
+1-7   Not used
+29   FFID   65309   Current Raster Row (Bit 0-7)
+FEI E   65310   Current raster Column (Bit 1-8)
+31   FFIF   65311 0-2   Vertical Sub Address
+3-6   Flash Rate
+Not used
+62   FF3E   65342   ROM-Select (Write only)
+FF3F   65343   RAM-Select (Write only)
+page   183
+
+--- PAGE 185 ---
+4.7 KERNAL JUMP TABLE ($FF49-$FFFF)
+ADDRESS ADDRESS   CODE   NAME   DESCRIPTION
+(HEX)   (DEC)
+$ F 49   65353   JMP   $B7C2   Define FUNCTION key no.
+after $76,addr. after $22-23,
+length in accumulator)
+$FF4C   65356   JMP $DC49   Print
+$FF4F   65359   JF $FBD8   Print message
+$FF52   65362   JMP $F445   Call M/C Monitor
+$FF55—   65365   Not used
+$FF7E   65406   Not used
+$FF7F   65407   Not used
+$FF80   65408   $84
+$FF81   65409   JMP $D84E   CINT   Initialise Editor
+$FF84   65412   JMP $F30B   IOINIT   Initialise 1/0
+$FF87   65415   JMP $F352   RAMTAS   Initialise RAM, open cassette
+buffer, screen to $0COO
+$FF8A   65418   $F2CE   RESTOR   Restore vectors
+$FF8D   65421   JMP   $2D3   VECTOR   Vector RAM
+$FF90   65424   JMP $41A   SETMSG   Control KERNAL Messages
+$FF93   65427   JMP   $EE4D   SECOND   Send sec. addr. to LISTEN
+Page 184
+
+--- PAGE 186 ---
+$FF96   65430   JMP $EEIA   TKSA Send sec. addr. to TALK
+$FF99   65433   JMP $F427   MEMTOP Set/read top RAM Pointer
+$FF9C   65436   $F436   MEMBOT Set/read bottom RAM Pointer
+65439   JMP $DBII   SCNKEY Scan keyboard
+65442   $423   SETTMO Set Timeout for (optional)
+IEC-Bus
+65445   JMP $EC8B   ACPTR   Input byte from serial port
+$FFA8   65448   JMP   $ECDF   CIOUT   Output byte via serial port
+65451   JMP $EF3B   UNTLK   Command serial bus to UNTALK
+$FFAE   65454   JMP   $EF23   UNLSN   Com. serial bus to UNLISTEN
+65457   JMP   EE2C   LISTEN   Como all dev. on bus to LISTEN
+65460   $EDFA   TALK   Corn. dev. on serial bus to TALK
+$FFB7   65463   $F41C   READST   Read 1/0 Status Word
+$FFBA   65466   JMP   $413   SETLFS   Set Logical, Primary and
+Secondary Address
+FFBD   65469   JMP $F40C   SETNAM   Determine file names
+$FFCO   65472   JMP ($0318)   OPEN   Open a logical file   $EF53
+65475   JMP   ($031A)   CLOSE   Close a logical file   $EE5D
+65478   JMP ($031C)   CHKIN   Open channel for input $ED18
+$FFC9   65481   ($031E)   CHKOUT   Open channel for output $ED60
+SFCC   65484   JMP   ($0320)   CLRCHN   Close 1/0 channels   $EFOC
+$FFCF   65487   JMP   ($0322)   CHRIN   Input Character   $EBE8
+$FFD2   65490   JMP   ($0324)   CHROUT   Output Character   $EC4B
+Page185
+
+--- PAGE 187 ---
+$FFD5   65493   JMP $043   LOAD   Load from peripheral device
+$FFD8   65496   JMP   $194   SAVE   Store on peripheral device
+$FFDB   65499   $CF2D   SETTIM   Set time
+$FFDE   65502   JMP   $CF26   RDTIM   Read time
+FFEI   65505   JMP   ($0326)   STOP   scan STOP Key   $F265
+FFE4   65508   JMP   ($0328)   GETIN   Read ch. from K.B. buffer $EBD9
+$FFE7   65511   JMP   ($032A)   CLALL   Close all channels
+& logical files   $EF08
+FFEA   65514   JMP   $CEF0   UDTIM   Increment Time
+FFED   65517   JF $D834   SCREEN   Identify X, Y Screen Set-Up
+$FFFO   65520   JMP $D839   PLOT   Read/set X, Y Cursor Positiong
+65523   $FC19   IOBASE   Base address-Reports back
+on 1/0 devices.
+FFF 6   65526   STA   $FF3E   Switch-on ROM
+FFF 9   65529   JMP $F2A4   Jump to Reset Routine
+$FFFC   65532   $FFF6   Processor Reset
+65534   $FCB3   Processor Interrupt
+Page 186
+
+--- PAGE 188 ---
+4.8 COMPARISON TABLE C-64 AND C-16
+In many newspapers, programs for the CBM 64 are published which could
+also be of interest to the C-16 owner. While the programs to some
+extent try to teach the C-64 BASIC Commands, which the C-16 has
+built-in anyway   (e.g.   Graphics-Commands)   and are   therefore
+uninteresting for you, there are surely some programs which you would
+also like to have on your C-16. To facilitate the re-writing, we have
+compiled a comparison chart of all identical addresses. Since many
+C-64 programs have numerous PEEK and POKE commands, you can look for
+the corrosponding C-16 Address in this table. You cannot, of course,
+re-write everything (e.g. programs with Sprites) but what   is
+comparable is listed in the following table. The explanation of the
+rreaning of the address is very short; a more detailed description can
+be found in the previous chapter.
+ADDRESS ADDRESS   ADDRESS ADDRESS   LABEL   MEANING
+C64 hex C64 dec   C16 hex C16 dec
+$0000   $0000   o   D6510   Data Direction Register
+$0001   1   $0001   1   R6510   1/0-port
+$0003   3   $02F2   754   ADRAYI   Pointer to Conv.   GK>IN
+$0005   5   $02F4   756   ADRAY2   IN>GK
+$0007   7   $0007   7   CHARAC   Search Character
+$0008   8   $0008   8   ENDCHR   FL :Search for inv. COMMA
+$0009   9   $0009   9   TRMPOS   Screen col. from 1. TAB
+$000A   10   $OOOA   10   VERCK   I-VERIFY
+Page 187
+
+--- PAGE 189 ---
+$000B   11   $000B   11   COUNT   Input buffer pointer
+$oooc   12   $000C   12   DIMFLG   FL:Standard field dimen.
+$000D   13   $000D   13   V AL TYP   Data type: $FF=String
+$000E   14   $000E   14   INTFLG   Data type: $80=Integer
+$0010   16   $0010   16   SUBFLG   FL:User Function
+$0011   17   $0011   17   INPFLG   FL $40=GET
+$0012   18   $0012   18   TANSGN   FL: TAN sign
+$0013   19   $0013   19   CHANNI-   FL:INPUT Comment
+$0014-   20-   $0014-   20-   L INNUM   Total num. value
+$0016   22   $0016   22   TEMPPT   PTR:Temp. string stack.
+$0017-   23   $0017-   23-   LASTPT   Last String Address
+$0019-   25-   $0019-   25-   TEMPST   Stack for temp.String
+$0022-   $0022-   34-   INDEX   Field for aux. pointer
+$0026-   38-   $0026-   38-   RESHO   Field for rrultiplier.
+$002B-   43-   $002B-   TXTTAB   PTR:Start BASIC text
+$002D-   45-   $002D-   45—   VARTAB   PTR:Start BASIC Variable.
+$002F-   $002F-   47_   ARYTAB   PTR:Start BASIC Arrays.
+$0031-   $0031-   STREND   PTR:End BASIC Strings(+l)
+$0033-   51-   $0033-   51-   FRETT   PTR:Start of Strings
+$0035-   53_   $0035-   53_   FRESPC   PTR :Aux. Strings
+$0037-   55-   $0037-   55-   MEMSIZ   PTR:Top BASIC Address
+Page 188
+
+--- PAGE 190 ---
+$0039-   57 _   $0039-   57 _   CURLIN   current BASIC Line
+$003B-   59 _   $0259-   601-   OLDLIN   Previous BASIC Line
+$003D-   61-   $025B-   602-   OLDTXT   PTR:BASIC for CONT
+$003F-   63_   $003F-   63-   DATLIN   Current DATA Line
+$0041-   65-   $0041-   65—   DATPTR   PTR:Current DATA Address
+$0043   $0043   67-   INPPTR   V: INPUT Routine
+$0045   $0045-   VARNAM   Curr. BASIC Var. Name
+$0047-   71-   $0047-   71-   VARPNT   Address of curr. vari.
+$0049-   73-   $0049-   73_   FOFNT   Var. ch.for FOR/NEXT
+$004B-   75_   $004B-   75-   oppTR   Int. ch.for BASIC
+$0061   97   $0061   97   FACEXP   Floating Point I Expo.
+$0062-   98 _   $0062-   FACHO   I Mant.
+$0066   102   $0066   102   FACSGN   1 sign
+$0067   103   $0067   103   SGNFLG   PTR :P01ynom. Evaluation
+$0068   104   $0068   104   BITS   Floating Point I overfl.
+$0069   105   $0069   105   ARGEXP   2 Expo.
+$006A-   106-   $006A-   106-   ARGHO   2 Mant.
+$006E   no   $006E   110   ARGSGN   2 sign
+$006F   111   $006F   111   ARISGN   Sign Comp. Acc I & 2
+$0070   112   $0070   112   FACOV   Floating pt. 1 rounding
+$0071-   113-   $0071-   113-   FBUFPT   PTR :Cassette Buffer
+Page 189
+
+--- PAGE 191 ---
+$0073-   115-   $0473-   1139-   CHRGET   Read sub routine
+$0079   121   $0479   1145   CHRGOT   Repeat read
+$007A-   122-   $003B-   59-   TXTPTR   PTR:Current Byte of Text
+$008B-   139-   $0503-   1283-   RNDX   Start value for RND
+$0090   144   $0090   STATUS   Kernal 1/0 Status Word
+$0091   145   $0091   145   STKEY   PTR : STOP/RVS-Key
+$0093   147   $0093   147   VERFCK   I-VERIFY
+$0094   $0094   148   C3PO   FL:Ser. Bus, Character
+$0095   149   $0095   149   BSOUR   Character in buffer
+$0098   152   $0097   151   LDTND   No. of open files
+$0099   153   $0098   152   DFLTN   Input device (Defaul=3)
+$009A   154   $0099   153   DFLTO   Output dev. (Default=O)
+$009D   157   $009A   154   MSGFLG   $00=Pr.
+$OOAO-   160-   $00A3-   163-   TIME   Clock (approx. 1/60)
+$OOAC-   172-   $009B-   155-   SAL   PTR:Cass. buf/Scn. scroll
+$OOAE-   174-   $009D-   157-   EAL   PTR:Cassette end/Program
+end
+$00B7   183   $OOAB   171   FNLEN   Lnth. of curr. file name
+$00B8   184   $00AC   172   Logical Data file No.
+$00B9   185   $00AD   173   SA   Current Second. Address
+$00BA   186   $00AE   174   Current device no.
+$OOBB-   187-   $OOAF-   175-   FNADR   PTR:Current file Name
+Page 190
+
+--- PAGE 192 ---
+$00C1-   193-   $OOB2-   178-   STAL   1/0 Start Address
+$00C3-   195-   $00B4-   180-   MEWS   Basic Loading Address
+$00C5   197   $07F6   2038   LSTX   Currently pressed key
+$00C6   198   $00EF   239   NDX   No of Ch. in K.B. buffer
+$00C7   199   $00C2   194   RVS   FL:RVS Character (I-yes)
+$00C8   200   $00C3   195   INDX   PTR:End of logical line
+$00C9-   201   $00C4-   196-   LSXP   Cursor X/ Y for Input
+$00CB   203   $00C6   198   SFDX   FL:Pressed key
+$00D   208   $00C7   199   CRSW   FL: Input INPUT or GET
+$OODI-   209-   $00C8-   200-   PNT   PNT:Current Screen Char.
+$00D3   211   $OOCA   202   PNTR   Cursor column in current
+$00D4   212   $00CB   203   QTSW   FL: Inverted comma mode
+$00D6   214   $00CD   205   TBLX   Cursor line
+$00D8   216   $00CF   207   INSRT   FL:INST Mode
+$00F3-   243-   $OOEA-   234-   USER   PTR:Current Colour RAM
+$00F5-   245-   $OOEC-   236-   KEYTAB   V: Keyboard Decode
+$0100   256-   $0100-   256-   Processor Stack
+$0200   512-   $0200-   512-   BUF   System Input Buffer
+$0259-   601-   $0509-   1289-   LAT   Table of log. file no.
+$0263-   611-   $0513-   1299-   FAT   Table of device nos.
+Page 191
+
+--- PAGE 193 ---
+$026D-   621-   $051D-   1309-   SAT   Table of sec. addr.
+$0277-   631-   $0527-   1319-   KEYD   Keyboard Buffer (FIFO)
+$0281-   641—   $0531-   1329-   MEMSTR   PTR:Start Address RAM
+$0283-   643-   $0533-   1331-   MSIZ   PTR:End Address RAM
+$0285   645   $0535   1333   TIMOUT   Fl: Time overrun IEC
+$0286   646   $053B   1339   COLOR   Character colour
+$0288   $053E   1342   HIBASE   Video RAM Start, Page
+$0289   649   $053F   1343   XMAX   Size of Keyboard Buffer
+$028A   650   $0540   1344   F TFLG   FL:Key repeat
+$028B   651   $0541   1345   KOUNT   Counting speed for repeat
+$028C   652   $0542   1346   DELAY   Counter for repeat delay
+$028D   653   $0543   1347   SHELAG   FL:Keys SHIFT, CTRL
+$028E   654   $0544   1348   LSTSHF   Last SHIFT Sample
+$028F-   655   $0545-   1349_   KEYLOC   Pointer to key decode
+$0291   657   $0547   1351   MODE   Fl ineffective
+$0292   658   $0548   1352   AUTODN   FL:Automatic Scrolling
+$0300-   768-   $0300   768-   IERROR   V:   BASIC-Error Message
+$0302-   770-   $0302-   770-   IMAIN   V:   BASIC Warm start
+$0304-   772-   $0304-   772-   ICRNCH   V:   BASIC Token gener.
+$0306-   774-   $0306-   774—   IQPLOP   V:   BASIC Text listen
+$0308   776-   $0308-   776-   IGONE   V:   Execute BASIC-Command
+Page 192
+
+--- PAGE 194 ---
+$030A-   778-   $030A-   778-   IEVAL   V: BASIC Token Evaluation
+$030C   780   $07F2   2034   SAREG   Acc. for SYS-Command
+$030D   781   $07F3   2035   SXREG   X-Reg. for SYS-Command
+$030E   782   $07F4   2036   SYREG   Y-Reg. for SYS Command
+$030F   783   $07F5   2037   SPREG   SP-Reg. for SYS command
+$0310   784   $0500   1280   USRPOK   USR Jump
+$0311-   785-   $0501-   1281-   USRADD   USR-Address (low/high)
+$0314-   788-   $0314-   788-   CINV   V:   Hardware-Interrupt
+$0316-   790—   $0316-   790-   CBINV   V:   BRK-Interupt
+$031A-   794—   $0318-   792-   IOPEN   V:   Kernal OPEN
+$031C-   796-   $031A-   794—   ICLOSE   v:   KERNAL CLOSE
+$031E-   798-   $031C-   796-   ICHKIN   v:   KERNAL CHKIN
+$0320-   800-   $031E-   798—   ICKOUT   CHKOUT
+$0322-   802-   $0320-   800-   ICLRCH   V:   CLRCHN
+$0324-   804—   $0322-   802-   IBASIN   CHRIN
+$0326-   806-   $0324-   804- IBASOUT   CHROUT
+$0328-   808-   $0326-   806-   ISTOP   STOP
+$032A-   810-   $0328-   808-   ICETIN   GETIN
+$032C   812-   $032A-   810-   1 CLALL   CLALL
+$032E-   814—   $032C-   812-   USRCMD   User IRQ (Monitor)
+$0330-   816-   $032E-   814-   ILOAD   V: Kerna1-LOAD
+Page 193
+
+--- PAGE 195 ---
+$03332- 818   $0330-   816-   ISAVE   V: Kemal-SAVE
+$033C-   828-   $0332-   818-   T APBUF   Cassette-Buffer
+$0400-   1024-   $ocoo-   3076   VICSCN   Video-RAM
+$0800-   2048-   $1000-   BASBGN   BASIC-RAM
+53265   $FF06   65286   Bit 7 is different!
+0012   53266   $FFOB   65291   Raster Interrupt
+9016   53270   $FF07   65287   Bits 5-7 different!
+0020   53280   $FF19   65305   Frame Colour
+$D021   53281   $FF15   65301   Background O colour
+$D022   53282   $FF16   65302   1
+0023   53283   $FF17   65303   2
+$D024   53284   $FF18   65304   3
+$D800   55296   $0800   2048   COLSCN   Colour-RAM
+Page 194
+
+--- PAGE 196 ---
+MEMORY MAP OF THE CBM 64
+ADDRESS   ADDRESS   DESCRIP ION
+(hex)   (dec)
+$OOOO-OOFF   255   Zero-Pag
+$0100-01FF   256-   511   Processo   -Stack
+$0200-03FF   512- 1023   Differen   Variables, Cassette Buffer
+$0400-07E7   1024- 2023   Video-RA
+$0800-9FFF   2048-   40959   BASIC-RA
+$AOOO-BFFF   40960-   49151   BASIC-In erpreter
+$COOO-CFFF   49152-53247   Free RAM (for sub-routines etc. )
+$DOOO-D3FF   53248-54271   Video-Co troller (Reg.up to $D02E)
+$D400-D7FF   54272-55295   Sound-Co troller (Reg.up to $D41C)
+$D800-DBE7   55296-56295   Colour-R M
+$DCOO-DCFF   56320-56575   CIA   : Keyboard, Joystick,   Timer
+$DDOO-DDFF   56576-56831   CIA   Timer
+. erial Bus, RS-232,
+$DEOO-DFFF   56832-57343   Not   used; free for 1/0-Extensions
+$EOOO-FFFF   57344-   65535   Kernal-RO
+Page 195
+
+--- PAGE 197 ---
+5.   UTILITIES
+5.1 RANDOM VALUE GENERATOR IN MACHINE CODE
+The following example demonstrates how to create random values in
+machine code. This is of special interest o games programmers, who
+frequently needs random values. In our exariple, a throw with two dice
+is simulated. When you press the space bar the dice are played and
+the result of our throw   will be shown on t e top of the screen. As
+random start value, the   raster beam is use
+>1000 OO 0B 10 OO   9E   34   31   •r   4
+>1008 31 32 00 OO 00 00 00 00 :r12
+>1010   93 20   20   46   10 :r). r? f
+>1018   OF 8D 11 08 8D 13   08 :r)
+>1020   20   C9 20   20 :r $?i p9
+>1028 35   10 8D 11 OC 20 35   IO :r5   5
+>1030 8D 13 OC DO EB 20 50   IO •r
+>1038   07   07
+>1040   18   69 30 60 AD 0B -
+>1048 FF   04   95 DO CA
+>1050 A9 EO   25   DO 09 20   85   DO :r) .
+>1058 18 A2 04 85 DO 75   95 .   " 5p5p
+>1060 D5 CA   18   A2   04   B5
+>1068 DO 75   95 DO CA   F 7 :rp5u.pj.
+>1070   18   A2 02 85 DO 75   95 .   5p5W
+>1078 DO CA   10   F7 A5 DO   60   AA :rpj.
+A9 93   LDA
+• 1010
+20   FF JSR $FFD2
+. 1012
+20   46 10 JSR $1046
+. 1015
+LDA #$0F
+. 1018
+. IOIA   8D 11 08 STA $0811
+. IOID   8D 13 08 STA $0813
+20   FF JSR   $FFE4
+. 1020
+C9 20   +$20
+. 1023
+. 1025   BNE $1020
+20 35 10 JSR $1035
+. 1027
+Page   196
+
+--- PAGE 198 ---
+. 102A   8D 11 OC STA $0C11
+. 102D   20 35 10 JSR $1035
+. 1030   8D 13 OC STA $0C13
+. 1033   DO EB   BNE $1020
+. 1035   20 50 10 JSR $1050
+• 1038   BEQ   $1035
+C9 07   CMP
+. 103A
+• 103C   BCS $1035
+C9 07   CMP #$07
+. 103E
+• 1040   BCS $1035
+18   CCC
+• 1042
+• 1043   69 30   ADC +$30
+• 1045   60   RTS
+• 1046   AD   FF LDA   $FFOB
+A2 04   LDX #$04
+• 1049
+. 104B   95 DO   STA   $D0,x
+CA   DEX
+. 104D
+10   BPL $104B
+. 104E
+• 1050   LDA
+25 D4   AND
+• 1052
+09 20   ORA +$20
+• 1054
+85 D4   STA $04
+• 1056
+18   CLC
+• 1058
+A2 04   LDX
+. 1059
+85 DO   LDA $D0,x
+. 105B
+75 DO   ADC $D0,x
+. 105D
+95 D5   STA $D5,x
+. 105F
+CA   DEX
+• 1061
+• 1062   BPL $105B
+18   CLC
+• 1064
+A2 04   I-DX #$04
+. 1065
+B5 DO   LDA $D0,x
+. 1067
+75 D5   ADC   $D5,x
+• 1069
+95 DO   STA   $D0,x
+. 106B
+CA   DEX
+. 106D
+BPL   $1067
+. 106E
+18   CLC
+. 1070
+A2 02   LDX +$02
+. 1071
+• 1073   B5 DO   LDA   $D0,x
+75 D7   ADC   $D7,x
+. 1075
+95 DO   STA $D0,x
+. 1077
+CA   DEX
+. 1079
+Page 197
+
+--- PAGE 199 ---
+10 F7   BPL $1073
+. 107A
+A5 DO   LDA $00
+• 107C
+60   RTS
+. 107E
+Page 198
+
+--- PAGE 200 ---
+5.2 JOYSTICK SCAN IN MACHINE CODE
+The following routine scans a joystick in machine code.   We have
+already used this program several times in the Graphics Chapter as
+sub routine.   It can,   however, also be integrated in your own program.
+>1000 00 oc 10 00   9E   34   31   •r   41
+>1008 31 32 00 00 00 00 OO 00 :r12
+>1010   FD 80   08   AD   08   FF
+>1018 AO OO A2   00   4A BO 01   88 :r .".jO..
+>1020 4A BO 01   4A BO 01   CA :rjO.hjO.j
+>1028 4A BO 01 E8 86   84   DI
+>1030 29 08   60
+• 1010   LDA +$FD
+08   FF STA $FF08
+. 1012
+AD   08   FF LDA   $FF08
+. 1015
+LDY
+. 1018
+. IOIA   LDX {f$oo
+LSR
+BO 01   BCS $1020
+. IOID
+88   DEY
+. IOIF
+LSR
+. 1020
+BO 01   BCS $1024
+• 1021
+INY
+• 1023
+LSR
+. 1024
+BO 01   BCS $1028
+• 1025
+CA   DEX
+• 1027
+LSR
+, 1028
+BO 01   BCS $102C
+. 1029
+INX
+. 102B
+86 DO   STX $00
+• 102C
+. 102E   84 DI   STY $DI
+29 08   AND +$08
+. 1030
+60   RTS
+. 1032
+Page 199
+
+--- PAGE 201 ---
+5.3 TURBO MODE FOR THE C 16
+For all those, who think the C 16 is too slow•, we can show you a
+trick with which it will become about 30% faster. Since we live in a
+Turbo age, we simply call it the Turbo Mode. The trick is to switch
+the screen off. Of course this is impractical if you want to create
+Graphics and see them at the same time, but not if you have
+rnathematical problems to solve, where you don't always have to look
+at the screen. The speed advantage arises from the fact that the
+Video-Chip TED doesn't slow down the Micro Processor anymore once the
+screen is switched off. A small demo program, first in Turbo Mode and
+then in the normal mode, will show you how it works and how much time
+you   can save.
+100 POKE AND 239
+110 GOSUB 150
+120 POKE OR 16
+130 GOSIJB 150
+140 END
+150 T Tl
+160 FOR TO 1000
+170 :   B=B+I
+180 NEXT 1
+190   PRINT USING
+200 RETURN
+Page 200
+
+--- PAGE 202 ---
+5.4 OLD (RESTORING A PROGRAM AFTER NEW)
+If you accidently type NEW or press the RESET button without having
+saved the program beforehand, all is not lost. We will show you how
+you can retreive the program using OLD Program. After NEW or a Reset,
+you only have to type SYS 1630 and your program is back again.   The
+mchine program is stored in an area which is not erased on Reset. If
+you load the OLD Program before you start programming, it will then
+be available any time you need it.
+ROCEDURE
+Type in the following BASIC Program and store it on a cassette   or
+disc before you test it. Enter the monitor to save theprogram.
+S"OLD" , 01 , 065E , 06C9
+S"OLD" , 08, ,   -Disc
+When you run it and there is no error then it is ready for use. You
+can try it on the Basic programme you just wrote. Type BEW and then:
+SYS 1630. It should now be back again (try LIST).   The only thing
+which might not be correct is the first line number.
+To load the program, enter monitor and load the program   with L
+command.
+The Basic program is no longer required as it has been saved
+program.
+100 FOR 1=1630 to 1630+106
+110 :   READ A
+120 :   POKE
+130 :   C=C+A
+140 NEXT 1
+150   IF THEN PRINT "ERROR" : STOP
+160   DATA
+170   DATA
+180   DATA 43
+Page 201
+
+--- PAGE 203 ---
+190 DATA
+200 DATA
+210 DATA
+220 DATA
+Page 202
+
+--- PAGE 204 ---
+5.5 MERGE (LINKING OF PROGRAMS)
+Although the C-16's BASIC is very comprehensive and leaves little to
+be desired, there is unfortunately one command missing which is very
+practical: PERGE. This allows linking of two BASIC programs.   If you
+have a library of sub routines, you can always load these and link
+them to your current program using MERGE routine.
+PROCEDURE
+Type in the following program and save it on a cassette or   disc   by
+first entering the MONITOR. Use the following instructions.
+S"MERGE" , 06C9 , 06E8   Cass.
+S"MERGE " , 08 , , 06E8   Disc
+Type RUN. If there is an error message, check your listing.   OLD   is
+stored in the part of memory which is not effected by RESET.
+To link two programmes
+1.   Load MERGE
+2.   Load your first program from Cassette or Disk.
+3.   Type: SYS 1737
+4.   Load your second program.
+5.   Type: SYS 1759
+Both your programs are now linked. You rnay have to re-number the new
+program. Avoid using low line numbers in your sub routines. It's best
+to give your sub-routines high line numbers (e.g. 62000, 63000).
+Page 203
+
+--- PAGE 205 ---
+100 FOR 1=1737 TO 1737+30
+110 :   READ A
+120 :   POKE
+130 :   C=C+A
+140 NEXT 1
+150 IF THEN PRINT "ERROR" :STOP
+160 DATA
+170   DATA
+Page 204
+
+--- PAGE 206 ---
+5.6 VARLIST (LIST OF ALL USED VARIABLES)
+If you have created a program in BASIC and lost track of the
+variables you have already used, then this auxiliary program is
+useful. It gives a list of all variables so far used and states their
+type: FLOATING POINT (FLO), INTEGER (INT) or STRING (STR).
+PROCEDURE
+Type in the BASIC Program and store it. If there is no error, you can
+try it out. Type: SYS 16100 and the variables I, A and C used in the
+BASIC Loader will be printed.
+100 POKE 55,227 : POKE 56,62 : CLR
+110 FOR 1=16100 TO 16100+273
+120 :   ÆAD A
+130 :   POKE
+140 :   C=C+A
+150 tEXT 1
+160   IF THEN PRINT "ERROR" :STOP
+170 DATA
+180 DATA   197 141,227 , 63 , 201 , 128,176, 30,200
+190 DATA
+200 DATA
+210 DATA 141,227
+220 DATA
+230 DATA   13, 63 , 169 , 32, 76,49 , 63 , 240, 24 , 56, 233, 128, 141 , 228 , 63 , 32
+240 DATA
+250 DATA
+260 DATA
+270   no, 63 , 173 , 227 , 63 , 32 , 183, 63 , 173 , 228 , 63 , 32 , ,96, 162
+280 DATA
+290 DATA
+300 DATA   208,240 , 96, 141 , 243 , 63 , 140 , 245 , 63 , 142 , 244 , 63 ,
+310 DATA
+320 DATA
+330 DATA
+Page 205
+
+--- PAGE 207 ---
+5.7 CROSS (PRODUCES CROSS ÆFERENCE FOR BASIC COMMANDS
+This auxiliary program produces a list of all BASIC Keywords and
+indicates in which lines they were used.   In the lines from 63460
+onwards, you can indicate the keywords which interest you and their
+codes (the Codes or Tokens of the BASIC Keywords are listed in
+chapter 6.1). If you want to add one of your own, type it in from
+63480 together with the Token and increment the value in line 63450.
+PROCEDURE
+Type in the program and store it. Load the program which interests
+you and MERGE it with the CROSS Program (see 5.5 MERGE).   Type :   RUN
+63000 and answer the question if output is be on screen or
+printer. Be a little patient because the program has to go through
+the whole BASIC Program for each keyword.
+63000   RESTORE 63450 : READ NU : DIM
+63010   FOR TO NIJ : READ : NEXT 1
+63020 SCNCLR : INPUT "SCREEN OR PRINTER
+63030 IF THEN OPEN : CMD 4 : aTO 63060
+63040 IF then 63020
+63050 :
+63060 FOR to NIJ
+63070 :
+63080 :   PRINT Kw$(l) : CN=o : CO-O
+63090 :   PT=PEEK (43 )+PEEK (44) *256
+63100 : LN O
+63110 :   DO WHILE
+63120 :
+63130 :
+63140 :   IF LN=63000 THEN EXIT
+63150 :   EZO
+63160 :   J=PT+4
+63170 :   DO WHILE
+63180 :   CH-PEEK (J)
+63190 :   IF CH=34 THEN GOSLB 63320 :   IF E THEN EXIT
+63200 :   IF THEN COSI-JB 63390
+Page 206
+
+--- PAGE 208 ---
+63210 :   IF CH-O THEN EXIT
+63220 :   j=j+l
+63230 :   LOOP
+63240 :   p T=NL
+63250 : LOOP
+63260 :   IF THEN PRINT
+63270 :   PRINT :   pRlNT
+63280 NEXT 1
+63290 IF THEN PRINT+4 :   CLOSE 4
+63300 END
+63310 :
+63320 DO WHILE
+63330 :   J=J+I : CH-PEEK(J)
+63340 :   IF CH=34 THEN EXIT
+63350 :   IF CH=O THEN : EXIT
+63360 LOOP
+63370 RETURN
+63380 :
+63390 IF CO=6 THEN CO=O : PRINT
+63400 co=C0+1 : :
+63410   IF THEN , 1, (5-LEN(LN$)) )+LN$
+63420 PRINT LN$•"   'l; : CN=CN+I
+63430 RETURN
+63440 :
+63450 DATA 10
+63460   DATA DO, 235 ,EXIT , 237,FOR, 129,
+63465 DATA
+63470 DATA RETURN, 142, WHILE,253
+Page 207
+
+--- PAGE 209 ---
+APPEDIX
+6.1 THE TOKENS OF BASIC KEYWORDS
+As you perhaps know, each BASIC command is stored in the program as
+so called token i.e. it appears in the memory of the C 16 as a byte
+and not   as a whole word, which saves a lot of memory. Listed below
+are all   the keywords and their tokens.
+TOKEN   TOKEN   BASIC KEYWORD
+(DEC. )   (HEX. )
+128   $80   END
+129   $81   FOR
+130   $82   NEXT
+131   $83
+132   $84   INPUT}}
+133   $85   INPUT
+134   $86   DIM
+135   $87   READ
+136   $88   LET
+137   $89   GOTO
+138   RUN
+139   $88
+140   RESTORE
+141   $80   GOSUB
+142   RETURN
+143   REM
+$90   STOP
+145   $91   ON
+146   $92   WAIT
+147   $93   LOAD
+$94   SAVE
+$95   VERIFY
+150   $96   DEF
+151   $97   POKE
+152   $98   PRINT#
+Page 208
+
+--- PAGE 210 ---
+153   $99   PRINT
+154   CONT
+155   $98   LIST
+156   CLR
+157   CMD
+158   SYS
+159   OPEN
+160   CLOSE
+161   GET
+162   NEW
+163   TAB(
+164   TO
+165
+166   SPC (
+167   THEN
+168   $A8   NOT
+169   $A9   STEP
+170
+171
+172
+173
+174
+175   AND
+176   $30   OR
+177   $81
+178
+179   $83
+180   $84   SGN
+181   INT
+182   $86   ABS
+183   USR
+184   $88   FRE
+185   $89   POS
+186   SQR
+187   RND
+188   LOG
+189   EXP
+190   cos
+191   SIN
+192   $co   TAN
+193   ATN
+194   $c2   PEEK
+Page 209
+
+--- PAGE 211 ---
+195   LEN
+196   STR$
+197
+198   ASC
+199   CHR$
+200   LEFT$
+201   RIGHT$
+202   MID$
+203
+204   scc   RGR
+205   RCLR
+206   RI-UM
+207   JOY
+208   RDOT
+209   DEC
+210   $D2
+211   ERR$
+212   INSTR
+213   ELSE
+214   RESUME
+215   TRAP
+216   TRON
+217   TROFF
+218   SOUND
+219   VOL
+220   AUTO
+221   PUDEF
+222   GRAPHIC
+223   PAINT
+224   CHAR
+225   BOX
+226   CIRCLE
+227   GSHAPE
+228   SSHAPE
+229   $E5   DRAW
+230   LOCATE
+231   $E7   COLOR
+232   SCNCLR
+233   SCALE
+234   HELP
+235   DO
+236   LOOP
+Page 210
+
+--- PAGE 212 ---
+237   EXIT
+238   DIRECTORY
+239   DSAVE
+240   DLOAD
+241   HEADER
+242   SCRATCH
+243   COLLECT
+244   $F4   COPY
+245   RENAME
+246   BACKUP
+247   DELETE
+248   RENUMBER
+249   KEY
+250   MONITOR
+251   USING
+252   UNTIL
+253   WHILE
+254   NOT USED
+255
+Page 211
+
+--- PAGE 213 ---
+Thc bools contains all the essential thgt you need to
+know when using your Plus 4 Cl B. Ali the important ecis
+€rre explained in detail the items already covered in the manual
+received with the computers have bean omit-ked.
+graphics machine lcmguage are specially stressed
+demonstrated with example program-mgs
+Graphics
+Graphic possibilities of built in video chip TED
+High-Res, multicolour extended colour mode in machine
+code and btrsic.
+Prograrnrning the raster interrupt.
+Sound
+with b cornrna:nd-
+Sound prograrnm.i.ng of TED in machine code,
+Interrupt control of music.
+Machine Code
+Introduction course.
+Tips and Tricks far Beginners.
+Commands of 7501 Micro Processor-
+{Or us;ixig rcRNA.L ro
+Useful Data
+Detailed memory map v.åth exact description of each
+peak/ poke
+I-large cornparison chart of CBM64 ancl CIS for ea.-gy con-
+version.
+Utilities.
+PRICE €7 95
+.5 012717 001015
+ANCO SOFTVVARE, 4 WEST GATE HOUSE,
+SPITAL STREET. DARTFORD, KENT DAI 2EH-
+Telephone: 0322 92513/92518

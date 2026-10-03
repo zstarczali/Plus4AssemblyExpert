@@ -1,0 +1,2041 @@
+# OCR text of assembly_es_gepi_szintu_programozas_commodore_16_plus_4_szamitogepen.pdf
+# Windows OCR (en-US); accents and digits may be misread (0/O, 8/B, 1/l).
+# Use it to locate pages, then open the PDF page itself to verify.
+
+--- PAGE 1 ---
+SZAMiTASTECHNiKAl OKTATÅSI FÜZETEK
+Gyetvai Kåroly
+ASSEMBLY És GÉPI sz1NTij
+PROGRAMOZÅS COMMODORE 16,
+PLUS/4 SZÅMiTÖGÉPEN
+1991
+
+--- PAGE 2 ---
+Gyetvai Kåroly
+ASSEMBLY És GÉPI sz1NTij
+PROGRAMOZÅS COMMODORE 16,
+PLUS/4 SZÅMiTÖGÉPEN
+FÜzet sorszarna:   9.
+1991.
+
+--- PAGE 3 ---
+572222
+Szerzo:
+Gyetvai Kåroiy
+Mechwart Andrås Gépipari Miiszaki Középiskola
+Debrecen
+Lektorålta:
+Huszår Gåbor
+Neumann Jånos Közgazdasågi Szakközépiskol*
+Budapest
+Ez a fiizet az ÉGSZI - SCOLA Alapitvdny
+szervezésében készült.
+
+--- PAGE 4 ---
+TARTÄLOMJEGYZÉK
+1.   BEVEZETÉS   5.
+11.   HÄRDVER ÄLÄPISMERETEK
+i.   Regiszterek   6.
+2.   Az 41 lapotregiszter flag   —jei   6.
+3.   Memör i akeze I és
+4.   Input/output eszközök
+5.   Megszaki t ésok   12.
+111.   VTASITASOK, CIMZÉS
+1. Utasitéskégzlet   13.
+2. Cimzési rn6dok   15.
+lv.   SZOFTVER ESZKöZöK
+i. A TEDMON MONITOR parancsai   18.
+2. Az ASS—16 assembler program   hasznd I ata   20.
+v.   ASSEMBLY ALAPFELADATOK   23.
+VI.   LEBEGöPONTOS ARITIETIKA   26.
+VII.   A GYAKRÄBBAN HASZNALT KERNAL RUTINOK LEIRASA   27.
+VIII.   GÉPI K6Dü PROGRAMOK BEÉPITÉSE BASIC KöRNYEZETBE   30.
+rx.   BASIC RUTINOK BEÉPfTÉSE ASSEMBLY KORNYEZETBE   31.
+x.   FELÄDATOK. PROGRAMOK   32.
+X1 . • FuGGELÉK
+1.   Alfanumerikus karakterek képernyö és   ASCII   ködjai   41.
+2.   Szi nk6dok   41.
+3.   Utasltagok gépi k6dja
+4.   Az utasltésok hatésa az SR bitjeire   43.
+5.   Fontosabb mem6riacimek   44
+6.   Ari tmetikai rutinok belépé3i cimei   45.
+7.   BASIC utasit&sok belépési cimei   45 •
+111.   1 RODALOMAJANLAT   46 .
+
+--- PAGE 5 ---
+
+
+--- PAGE 6 ---
+-5.-
+1.   BEVEZETÉS
+Ä Corwnodore 16 és Plus/ 4 szåmftögépek nagyon fejlett BASIC ér—
+telmezOvel rendelkeznek. Mégis elöfordul hatott mér tmndenkivel
+hogy lassunak érezte a BASIC program végrehajtåsat, vagy a megol—
+dandO feladatéhoz nem talålt megfelelO BASIC eszközt.   I Iyenkor
+kell vélasztanunk a gépi kOdü vagy az assembly szintü programozås
+eszközeit. FUzetunkkeI azoknak kfv6nunk segftséget adni, akik ar—
+ra adtåk a fejUket. hogy meg ismerkednek a gépi k6du és assembly
+sznntü programozåssal .
+Feltételezzük. hogy aki ebbe bel evag, az mar ismeri az adott gép—
+tipus BASIC nyelvü programozåsåt. Megismert o Iyan szémftdstechni—
+kai alapfoga lmakat, mint:   algori tmus. kOd.   program.   a I program,
+függvény, bit béjt,   bi naris—   és hexadecimél is szämrendszer ,
+f ixpontos—   és lebegöpontos szåmåbrézolås. log ikai müveletek. d i—
+gitdlls és ana16g sz6mitögépek elvi felépitése stb. Az assembly
+tanulmanyok megkezdége e lött cé lszerü ezeket az ismereteket f el—
+idézm .
+A digitalis szåmit6gép kozponti vezérlö egységét ég az aritmeti—
+kai.   log ikai mi-iveleti egységet magéba integra IO processzor log i—
+kai   fe lépltésével a regiszterek ég zobi tek ismertetésével
+kezdjük anyagunkat. Megbeszél ji-ik a memOria ég a peri fériék föbb
+kérdéseit is. Ezut6n sorra vesszük a processzorunk utasltåsait.
+a cfmzési mOdokat. Az assembly programozås két segédeszközét; a
+MONITOR programot ég az assembler t megtanul juk hasznélni. Ezutén
+mar 1 rhatunk egyszeru assembly programokat. Alapfeladatokat tar—
+ta ImazO fejezetünkben több egyszeru algori tmust ismertetünk. A
+szämftögép ROM memOri&j8ban I évö BASIC rutinok és KERNAL rutinok
+hasznålatét is bemutatja füzetünk. A gépi ködü programjaink és a
+BASIC nyelvü programjaink kapcsolat&t is targyal juk. Ä feladat—
+gyüjteményben sok—gok feladattal, programmal eI lenörizhetjük meg—
+szerzett tudåsunk mé lységét.
+A tuzet közreadésakor feltételezzUk, hogy az assembly programozåg
+alapjaival szervezett oktat83 forméjåban ( tanl Ora. szakkör,
+fakultéciö, tanfolyam gtb.) ismerkedik az o IvasO. Tehåt a tanåri
+magyaräzatok nélkülonözhetetlenek a füzet feldolgozåsåhoz. Az ön—
+4110 tanulés és programirås segftésére a függelékben közölt téb—
+låzatokat szåruuk. Az érdeklodöbb o Ivasönak egy, a témåt tel jes—
+ségében étfogö szakirodalom ajénléssal kedveskedünk
+Az anyag tårgyalåsa elött szeretnénk rögziteni. hogy a füzetben
+letrtak a Corrunodore 16 ég a Convnodore P I us/ 4 t i pusu szémi tOgépre
+vonatkoznak csak. Aki més t i pugü Corrmodore gépre szeretné adap—
+télni a lefrtakat, annak több he Iyen (cimek, értékek) mödosftania
+kell az anyagot. Az utasitdskészlet. a clmzési rnödok, a KERNAL
+rutinok és még sok egyéb més véltoztatåg nélkül érvényes pl. a
+Cormodore 64 tipusü gépre is.
+VégUl eredményes tanulåst. j6 programozést klvånunk !
+
+--- PAGE 7 ---
+—6.-
+11 . HARDVER ALAPISMERETEK
+1. REGISZTEREK
+AC akkurnulåtor regiszter: 8 bites kitUntetett munkaregiszter. Az
+an tmetikai ég a log ikai rnüveletek az egY1k operendusukat ezen
+tär016b61 vegzlk és a muvelet eredményét is Ide 1 r Jdk v 1 ssza.
+A legtobb utasitdg hasznålja az AC—t.
+XR X 1 ndexregxszter   8 bites munkaregiszter, f el—
+hasznålåsi területe az indexelés.
+YR Y indexregiszter   8 bites munkareglszter. szerepe ugyan—
+az mint az XR—é.
+SR stétuszreglszter   8 bites. a szåmitögép rmndenkori d I la—
+potat jelzö un. Ilapotregigzter. Ä gépi utagltäsok végrehaj—
+tdga utan az eredmény paramétereitöl fuggoen II it.ödnak a re—
+g lszter   jelzobitjei, a FLAG—ek.   Az egyes bi tek jelolése:
+N, V, 1, B, D, I, Z, C. Jelentésuk I e 1 résat alébb kozoljuk.
+SP Stack Po Inter   8 bites, a veremtår mutat6ja . A leg—
+utöl be Irt adat clmének als6 félb6JtJåt tartalmazza. cim
+felsö félbdjtja mind ig $01. A ver em J ndu16 cime $0 IF F.   tehét
+az SP indulO értéke $FF.
+PC Program Counter   16 bi tes, un. programszdrnlå IO regisz—
+ter. Tartalma   mind ig az aktu&l igan végrehajtand6 utasitég uta—
+s i tåsk6dJdnak   t8rbeIi cime (2 béjt!).
+2. AZ ALLAPOTREGISZTER FLAG-JEI
+N NEGATIV   1   ha egy rnüvelet eredménye nagyobb rrnnt 127.
+0   ha ugyanez kisebb vagy egyenlö 127 —tel .
+(az eredmény 7. bitJét jelenti)
+V OUERFLOW   1   ha az összeadåsi vagy kivonési muvelet közben
+tulcsordulés történt.
+O   ha nem volt tülcsordulås.
+B BREAK   1   ha a megszakftést a BREAK utasftds okozt.a,
+O   kül önben.
+D DECIMALIS   1   ha az an tmetikai muve let ek operandusait BCD
+szdmokként akarjuk kezelni .
+O   ha ugyanezeket hexadecnrndl is szämoknak tekintjük.
+1 INTERRUPT   I   megszakités leti I tva.
+O   megszakltds engedélyezve .
+Z ZERO   1   ha a rnüvelet eredménye zérus volt.
+O   ha az eredmény nem volt zérus .
+C CARRY   I   ha az ari tmetikai rnUvelet eredménye   255—nél na-
+gyobb,
+O   ki-i I önben .
+
+--- PAGE 8 ---
+3 . MEMORIAKEZELÉS
+A processzor mel lett 37-érn1t6gép magi k nag yon font os egysége a
+memoria. Az adatok. programok t6rolåséra szolg610 mem6ria szinte
+rmndegyik assembly utagftdsban szerepel val arni Iyen rn6don. ezért
+az utasltasok részletezése elött tekintsük at a memoriakezelé3
+alapjait!
+BAJT, CIM. NULLASLAP
+A memoria legkisebb c Irnezhetö egyséqe a haj t.. Mint tudjuk egy
+bé)t 8 bit bbl 611,   igy az egy bå)tba i rhat.6 érték 0 és 235 közé
+esik (hexadecimal is szåmrendszerben $00 és $FF). Az egyes båjto—
+kat azonosIt6 sorszåmokat c Irneknek nevezzük. Ä 64 K—s rnernöriåjü
+(64   1024   65536 b6Jt) tarak eset.én a cimek O és 65535 kozé es—
+nek ( hexadecimal 13 szåmrendszerben $ 0000 és $ FFF F) Ä tovåbbiak—
+ban egy c 1m ta16nos jelölésére a $cccc alakot hasznél juk.
+Arnenny'lben a c fm e lsd két 576m jegye (haxadecim61is alak.l) null a.
+Akkor a cfm Alta länos alakja $cc I esz. Az i Iyen c Irnrnegadést a
+processzor értelmezi, a programok és a vegrehajtési idö rovidebb
+lesz. osszesen 256 db o Iyan bé)t van a memorlåban. arne ly nek a ci—
+mét i gy y-Ovid ft. hetjük. Az t mondjuk, hogy ezek a båjtok a nul I as—
+lapon helyezkednek el
+SZO. C 1M TARO! ,ASÄ
+memoriånak a béjtnål nagyobb egysége a SZOL Egy s•zO két darab
+egymA$t követö béjtot jelent.   fgy k 1 vå)öan alkalmas egy clm téro—
+ISs4ra. A 37„6 e 130 båjtJånak cimét. azaz a gzÖ c fino t a toväbbiak—
+ban ( $c.ccc) vagy ( $cc) fog ja jelezni, zhrOjel lel megkülönböz—
+t e tvo c lmétol Ä gzÖ két båJtja un. béJtfordItott sorrend—
+ben tartalmaz rnern6ria cfmet. Teh8t a clm a 130 felét   (LB) a szÖ
+e Isa, a c Irn felsö felét (HB) a szö méaodlk béDtja tartalmazza,
+Egy péld&v'dl rnegv'l lågftva: legyen   a $00 c Imci bäJt. tar talma $33.
+cfmüé pedi g $40. Ekkor a ($DO)
+c imi-i   gzöbar,   t6rolt c 1m $4033 1 esz.
+IARFELC)3ZTÅS
+Ä Commodore 16 és a Plus/ 4 mem6ri4ja csak méretben tér el egymås—
+t O l. Az e IObhi t. i pus 16 K RAM ( {r hat O és o IvashatO mem6ria) az
+lit Obbi 64 R RAM területtel rendeikezik. ROM (csak o Ivashatö
+t6r) mindkét t ipusnål 32 K méretü (a Plus/ 4 heépitett '1 program—
+'ét nem i devéve)
+Egy våzlatos tértérkép tehåt az aldbbiak szennt adhatö meg:
+RAM   soooo   - $07FF   rendgzervdl toz6k
+$OBFF   sz f nmemör ia
+socoo -   SOFFF   képernyömemöria
+$1000 -   $3FFF   BASIC programok szabad területe.   C 16—03
+$1 ooo -   $FFFF   BASIC programok szabad teriålete,   C Plus/
+ROM   $BOOO   - $CFFF   BASIC ROM
+$DOOO -   $D7FF   karaktergeneråtor
+- $FFFF   KERNAL rutinok
+
+--- PAGE 9 ---
+MEMÖRIÄLAPOZAS
+Grafikusan ébräzolva a mern6ria egységeket.   még i nkåbb szembetunö.
+hogy t Obb tarteriåleten is van azonos c imu   béjt az alapkiépitésü
+C Plus/ 4 t 1 pusü szåmftögépben:
+RAM   ROM   ROM
+$FFFF
+$C000
+SYSTEM ROM   BEÉPiTErr
+PROGRAMOK
+$4000
+$0000
+Felvetödik a kérdés. hogy pl. a $D200 c irn rnelyik területre vo-
+natkozik? Alapäl lapotban az fro utasitåsok mind ig a RAM területre
+vonatkoznak, mig az o Ivasåsnål a $800() f e lett a ROM—0t olvashat—
+juk, alatta a RAM—ot ( ld. MONITOR program). Ezt az a lapértelme—
+zést vd I toztathatjuk meg a RAM—ROM I apozåssal. A RAM—ot ügy tud—
+juk felülre lapozni, ha az $FF3F c frnU bäjtba val ami Iyen értéket
+betrunk (mindegy. hogy m it). A ROM felülre lapoz6séhoz az $FF3E
+cfrnu tar he ly tartalrnét kell megvål toztatnunk ( szintén mi ndegy,
+hogy mit frunk ide). A RAM—ROM lapozås természetesen nem érinti a
+a tar als6 felét. hiszen Ott mind ig RAM terület talålhatö. Ugyan—
+cgak nem våltoztathatö meg az $FD00—$FF3F terület funkciöja gem,
+amelyik az 1/0 eszközökhoz rendelt spec 1611 s tdrterület.
+Itt em I it juk meg, hogy az assembly programoz6s egyik segédeszko-
+ze. a késöbbi ekben ismertetésre kerülö T EDMON MONITOR program en—
+nél egyszerübben valösitja meg a RAM—ROM lapozdst. Ha a tar $07F8
+c imu båjtjäban a 7. bit 1. akkor a MONITOR a "magas c Imek" esetén
+a RAM—ot, el lenkezo esetben a ROM—0t olvassa .
+VER Et01EMöRIÄ
+A mernörla spec i 61 1 g teruletével . a verernrnemöriåval mar a BASIC
+nyelvU programoz8s sorån a GOSUB. RETURN utasft6sok t Sr gyaldgdn61
+megismerkedtünk. Ernl ékeztetöül e Imondjuk. hogy a veremtér o Iyan
+speciålis terület. amelynél mind ig a legutöljéra be Irt adat ut6n
+Irhatunk csak, o Ivasni is a legut61 jara elhelyezett értéket le-
+het. A ver em kezelését verernrnutatö (SP regiszter) konnyiti meg.
+Értéke m indig a soronkövetkezö Ures verernhely c Smének a I so fele.
+A veremtdr $0100—tOl $01FF—ig terjedO tarterulet.   fgy a clm felsö
+f ele mind ig   $01, amit a rendszer automatikusan az SP regiszter
+tartalrnåhoz   illeszt.
+A ver emtar   föbb alka Imazåsi területei az assembly programozds
+sordn is az   al programhivås, a vezérlésétadäs és a megszakftésok
+kezelése.
+
+--- PAGE 10 ---
+4.   INPt-rr/OUTPUT ESZKöZOK
+A digitalis szémitOgép +1 v i séméjéban em) f tett 1/0 vezérlöröl
+még nem sz61tunk. A kid lvi 16ggal val 6 kapcsolatteremtés sokrétü
+voltåröl egyszerüen meggyözödhetünk, ha egy pil lantést vetünk a
+szérnftOgépünk hdt—,   és oldallapj&ra. Itt az alébbi   csat I akozö—
+kat taléljuk:
+moni tor csatlakozO   (2 db:   VIDEO RF)
+kazettés egység csatlakoz6ja   (CÄSETTE)
+soros busz   (SERIAL)
+felhasznélöi kapu   (USER PORT)
+memöriabovftés he lye   (MEMORY EXPANSION)
+botkorm6ny csat Iakoz6k   (2 dB: JOYO és JOYI)
+Nem 16tszik kivülröl, de a bil lentyüzet is egy csatlakoz6n ke—
+resztül komrnunikål a szåmftögéppel. Vegyuk sorra az egyes 1/0
+eszközökre •vonatkozö legal apvetöbb ismereteket !
+BILLENTYUZET
+Az elsödleges input eszközünk 66 db bil lentyüt kezel. közulük
+a RESTORE nem ' programozhatö' ,   a SHIFT LOCK pedig a baloldali
+SHIFT—re van kötve. A 64 db bi I lentyüt egy 8 dr6thålö fö—
+lött képzeljük el. Ä billentyü él, ha éppen az alatta lévö he—
+Iyen érintkezik a sor és oszlop dröt.
+Ä billentyüzet matrix az aldbbi:
+o   1   2   3   4   5   6   7
+o   DEL   3   5   7   9   fel   1
+1   RET   w   R   Y   1   p   HOM
+2   D   G   J   L   CTRL
+3   HELP   4   6   8   le   2
+Fl   z   c   B   M   ESC   SPC
+5   F2   S   H   K   c-
+6   U   o
+7   @ SHIFT   x   STOP
+A bi I lentyuzet programozåsåra kényelmes KERNÄL rutinok I I nak
+a rende Ikezésünkre :   egyet I en bi I I entyu I enyomésåt f igye lö
+SCNKEY rutin ($FF9F), a bi I lentyüpuffert olvas6 GETIN rutin
+($FFE4) ,   több billentyü egyidejü I enyom6sét a $DB70 cfmen kez—
+dödö rutin vizggél ja. A KERNAL rutinok I eirås&ra a tovébbiak—
+ban kerül sore
+MONITOR
+A moni tor, vagy kevésbé gzerencgés esetben a TV készülék karak—
+teres és grafikus üzernmödban haszné IhatO. Mint tudjuk karakte—
+res üzerrmödban a képernyöre 25 sorban, soronként 40 karaktert
+frhatunk. A haszndlhatö karakterek mindegyike egy méretü
+pontmåtrixban he lyezkedik el. Nagyitöval szemlélve a képernyöt
+j61 ldtszik a karakter felépftése.
+
+--- PAGE 11 ---
+-10.-
+A hasznélhatO karakterek a lakjåt is a ROM egy összefUggö terü—
+lete, az un. karaktergenerétor hatérozza meg. Egy—egy karakter—
+nek 8 b6jt Orzi a lefråsdt az aldbbiak szerint.
+Legyen a vizsgélt karakter az • A' és a '2' !
+cfm   érték   bi tmi nta   cim   érték   bi tmi nta
+$D008   $18   ...11...   $D190
+$D009   $D191   $66   .11. .11.
+$D00Ä   $66   .11. .11   $1)192   $06   ...11.
+$DOOB   $D193   soc   .11..
+$DOOC   $66   .11. .11   $D194   $30   .11....
+$DOOD   $66   .11. .11   $1)195   $60   11.... .
+$DOOE   $66   .11. .11.   $D196
+$DOOF   $00   $D197   $00
+Figyel jük meg, hogy az utoIsO béjt értéke mind ig O, a sorok kö—
+zötti Ures Sév miatt. HasonIOan minden béjt O. bit je is O. a
+karakterek közötti tévolsåg mi att. A beépltett karaktergeneré—
+tor mérete 2K ( 2048 : 8—256 db különbözö jel k6doläsdra elegendö
+he ly), kezdöcfme pedig $DOOO. A karakterek a képernyo ködjaik
+szerinti rendben követik egymést.
+Ha sajét tervezésü karaktereket akarunk haszné Ini. akkor a RAM—
+ba kell mésolnunk a karaktergeneråtort. Itt lehet rn6dosItani a
+megfelelö pontmétrixot. Természetesen közölni kel I a rendszer—
+rel. hogy a sajåt karaktergeneråtoråt vagy az talunk készf—
+tettet akarjuk hasznålni .
+A képernyö minden egyes karakterhe lyéhez a képernyOmem6ria és a
+szfnmemöria egy—egy béjtja tartozik (ld. Függelék) .
+KAZETTAS EGYSÉG
+Az adatok és programok tdroldsåra szolgå16 egység és a szåmftO—
+gép közötti adatforgalom éppen ügy pufferezett. mint a bil I en—
+tyüzet kezelése. Ä pufferezési technika I ényege, hogy a szåmf—
+tögép és a periféria közötti adatforga lomban egy közbülsö tar—
+terUlet, a puffer vesz részt. A szémitögép is és a periféridlig
+eszkoz is a pufferrel van kapcsolatban. ide irjdk és innen 01—
+vassåk az adatokat. A puffer gzerepe a processzor ég a perifé—
+ria müködési sebessége közötti különbség kiegyenl Itése .
+A kazettés egység puffer területe: $0333—$03F2.
+A kazettés berendezés egységszdma 1 .
+Itt kell megeml fteni, hogy a szérnf tögép meghibésodåsånak leg—
+gyakoribb Oka az. ha müködés kozben cgatlakoztatjuk a géphez a
+kazettås egységet. vagy kihüzzuk a magnetofon csatlakozöjåt a
+gépböl .
+SOROS BUSZ
+A magneslemezeg egység (egységszåma 8, 9. IO, 11 lehet) ,   és a
+nyomtatö (egységszéma 4 vagy 5 lehet) az un. soros buszon ke—
+resztül csatlakozik a szémftögéphez. A soros buszra he lyezett
+egységek ( egyidöben természetesen több is) héromféle funkciöt
+tölthetnek be:
+
+--- PAGE 12 ---
+-11.-
+Vezérlö:   kiosztja a 'hal IgatO' vagy a 'beszélö' szerepet.
+I Iyen funkciöja éltaléban csak a széml tögépnek
+lehet.
+Beszé lö :   01 yan funkci6. amikor az eszköz képeg adatokat
+adni a soros buszra .   Érte I emszerüen egy idöben
+csak egy eszköz lehet i Iyen a I lapotban.
+Hal Igat6:   o Iyan funkci6, amikor az eszköz képes fogadni az
+adatokat a soros buszrOl
+Ä soros adatåtvitel   lényege, hogy az étviendö adatbåjt bitjei
+egymés utan ha ladnak az egyet I en vona Ion. Természetesen az
+adatåtvitel ide je fgy jelentösen nagyobb. mi ntha parhuzamo—
+san 8 vona Ion futna egy béjt tarta Ima. Mi vel a soros buszra
+több egység is ré van kötve, ezért mindegyiket egy—egy azonosf—
+to eszkOzgzdrnmal 16ttak el
+BOTKORMANYOK
+Ä Commodore Plus/ 4 szårnftögépet két speciél is. 8 POI usu csatla—
+koz6val låttak el. ame lyekhez botkormdnyok csat IakoztathatOk.
+Ä botkorményok 1 lapotånak kiolvaséséra a JOY BASIC függvényen
+kfvül gépi k6dü rutinok is hasznålhat6k. A botkormånyokkal kap—
+csolatos mem6riahelyeket ég jelentéstartalmukat közöl jük:
+O . botkormåny   1 . botkormé ny
+k i vd Iaszt6s:   $FF08 2. bit   $FF08 1. bit
+tüzgomb :   $FF08 4. bit   $FF08 4. bit
+irånykapcsolö:   $FF08 0.-3. bit   $FF08 0.-3. bit
+FELHASZNAL61 KAPU
+A USER PORT jelölésü csat Iakoz6ra kivezetett jelek elsösorban
+a sz6mitOgép funkciOinak a felhasznålO Itali bövitésére szol—
+gålnak (pl   vezérlési, szabé lyozåsi. érzéke lési. mérési   fela—
+datok megoldåsa stb.) .   Itt kaptak he I yet egy 8 vona las pérhu—
+zamos kapudramkör kivezetései ég a gzabvånyos RS 232 i I lesztö
+is. Muködésük megértése mé lyebb i gmereteket igényel. Szémunkra
+most elegendö tudni, hogy a ROM—ban 50k rutin szolgél a f el—
+haszndlOi kapu programozés6ra.
+MEMORIA BöViTÉSE
+Ä memOria bövitése két okböl szokégos: vagy a C 16 alapgépet
+bövftjük ki RAM memOri6val. vagy pedig va lami Iyen kész progra—
+mot tarta Imazö ROM memöriabövftöt haszn6 lunk a C 16 vagy a
+Plus/ 4 esetében. Mindkét tipusü bövftésnél a lapszabå ly. hogy a
+bövltö modult csak a gép kikapcgolt él lapotéban il Ieszthetjük
+a géphez, vagy vehetjük le arrOI! Ha a Plus/4 szérnl tögéphez
+ROM memöriåt bovitünk, akkor a gép mar 128 K memöréval rendel—
+kezik.
+
+--- PAGE 13 ---
+-12.-
+5. MEGSZÄKITASOK
+A BASIC nyelvU programozés sorén hasznål tuk a szåmf togép belsö
+Ord Jåt. Az Ora I éptetése érdekében az éppen fut6 programunk rnå—
+sodpercenként hat vanszor megszakadt, csak mi ezt nem vettük égz—
+re. A szérnft6géphez kapcsolt külsö eszközök is kérhetik a pro—
+cesszor rnüködésének fel függesztését, azaz megszakltdst kérhetnek.
+Ä megszakitåsnak egyszerüen fogalmazva az a szerepe. hogy az ép—
+pen futO programtöl függetlenül, vele p6rhuzamosan ellässon bizo—
+nyos feladatokat. Mi vel a gépben csak egy processzor van.   ezért
+egyidöben vagy csak az aktuålis program fut. vagy a megszakfté3—
+kérés feldolgozdsa történik. Alapvetöen häromféle megszakitågke—
+zelést a Ika Imaznak a Cornmodore szémftögépekben:
+1.   ki.ilsö eszköz megszakftåskérése
+2.   futö program megszakftéskérése
+3.   RESET gomb megszakftdskérése
+NézzUk meg hogyan kezeli a processzor az egyes tipugu megszakft8—
+sokat!
+KüLSo ESZKOZ MEGSZAKITASKÉRÉSE
+A külsö eszköz a processzor un. IRQ vezetékén kér megszakitåst.
+A kérés hatdsåra a processzor
+— befejezi az aktuålis utasftds végrehajtåsét
+— ha az I jelzöbit értéke I. akkor nem foglalkozik a kéréssel
+— ha az i jelzöbit értéke O, akkor a verembe mentl az SR és a
+PC regiszterek értékeit
+— az I jelzöbitet I—re dllitja. fgy letiltja a tovåbbi meg—
+szakf tåsokat
+— beolvassa PC—be a megszakit8st kezelö a I program kezdöci—
+mét, ég végrehajtja azt az RTI utasftésig. Az utasitas ha—
+tåsdra a veremböl kiolvassa a PC és az SR elment.ett értéke—
+it.
+—e a PC tarta Irnånak megfelelöen folytatJa tevékenységét
+FUTO PROGRAM MEGSZÄKfTASKÉRÉSE
+Az IRQ—hoz hason16an fut6 programböl i g kérhetünk megszakitést.
+Erre szolgål a BRK utas1tSs, amelyet az I jelzobit ållltåsåval
+nem tudunk letiltani.   Ilyenkor a PC az elmentése elött kettövel
+novekszik. Tovdbbi külOnbség az elozo pontban leirtakhoz képest
+az, hogy a BRK végrehajtåsakor a B JelzObit értéke 1 lesz. Ha
+megszakitåst a BRK okozta, akkor a rutin végrehajtésa utån a
+MONITOR programba ugrik a rendszer. Az assembly program Jainkban
+nagyon gokszor a Ikalmazzuk a programok befejezésére a BRK uta—
+sitåst.
+RESET GOMB MEGSZÄKITASKÉRÉSE
+A megszakitdgok harmadik rn6dja, amit a gép jobboldalån talålha—
+to RESET gombot benyomva aktiviz6 Ihatunk. A gépet I ényegében
+alapål lapotba helyezzük ezzel. A processzor megszakltja rnUködé—
+sét, majd végrehajtja az $FFFC cimen kezdOdO RESET rut int.
+
+--- PAGE 14 ---
+-13.-
+111.   UTASfTASOK, CIMZÉS
+1.   UTASITASKÉSZLET
+ÄDMMOZGÄTO UTASfTASOK
+LDA   op   egy érték beolvasåsa az AC—ba   op
+LDX   op   egy érték beolvasåsa az XR—be   < —— op
+LDY   op   egy érték beolvasésa az YR—be   < — op
+STA   op   az   tarta Irn8nak k i f rasa   a memöriéba
+STX   op   az   XR   tartalmånak kifréga   a memoriéba
+STY   op   YR   tartalménak ki i rasa   a mem6ri dba
+TAX   az   tarta lmåt befrja az   XR-be
+TXA   XR   tarta Imat befrja az   AC-ba   <—— XR
+TAY   tartalmét befrja az   YR-be
+TYA   YR   tarta Im6t befrja az   AC-ba   YR
+TXS   XR   tartalmét befrja az   SP-be   < —— XR
+TSX   SP   tarta Imat befrja az   XR-be
+PLA   a veremtérböl fras az AC—ba   < -— VT
+PLP   a veremtérböl fras az SR—be   < —— VT
+PHA   az AC tartalmånak f rasa a veremtdrba   VT
+PHP   az SR tartalménak f rasa a veremtårba   < -— SR
+ARITMETIKÄI UTÄSiTASOK
+ADC   op   AC értékének, az operandusnak és a C   AC+op+C
+bitnek az összegét az AC—ba frja
+SBC   értékéböl kivonja az   operandust   AC<-   ÄC—op— ( i —C )
+és   a C bit e I lentetjét. az eredményt
+az   AC—be frja
+INC   op   az   operandust eggyel növel i   OP+I
+INX   az   XR értékét eggyel növeli   XR+I
+INY   az   YR értékét eggyel növeli   YR+I
+DEC   op   az   operandust csökkenti eggyel   op 1
+DEX   az   XR értékét csökkenti eggyel   <—— XR 1
+DEY   YR értékét csökkenti eggyel   <-- YR-I
+LOG IKAI,   ELTOLASI UTASiTASOK
+AND op   log ikai ÉS müvelet az AC ég az ope—   AND op
+randus között . Eredmény az AC—ban.
+BIT op   az operandus teszte I ége az ÄC—ral   op 7. bit
+log ikai ÉS müvelet az operandug ég az   op 6. bit
+AC között. Az eredményt nem i r ja se—
+hovå sem. csak a Z—t éllitja.
+ORA op   log ikai VÄGY müvelet az AC és az ope—   OR op
+randus között. Eredmény az ÄC—ban.
+EOR op   log ikai K I ZARO V AGY müvelet az AC és   AC <-   XOR op
+az operandus között. Eredmény az AC—
+ban .
+ASL op   bitenkénti léptetés balra, leesö bit
+a C bit be kerül a jobbr61 hiényz6
+bit értéke O lesz.
+
+--- PAGE 15 ---
+-14. —
+LSR op   bitenkénti I éptetés jobbra a leesö
+bit a C—be kerül . a ba IrOl hidnyzö   0->: 76543210
+bit értéke O I esz
+ROL op   bit forgatés balra a C biten ét
+ROR op   bit forgatés jobbra a C biten ét
+C->: 76543210
+ALLAPOTREGISZTER unsfTAsA1
+SEC   a C (åtvitel) bit bedllftésa I—re
+SED   a D (decima lis mod) bit bedllftåsa I—re
+SEI   az I (megszakftås) bit bedllltdsa I—re
+CLC   a C (dtvitel) bit nullåzésa
+CLD   a D (decimålis mod) bit nul låzéga
+CLI   az I (megszakftås) bit nul låzésa   1
+CLV   a V (tülcsordulés) bit nul Idzdsa
+FELTÉTELES ELAGAZO tJTASfTASOK
+BCS   op   ugrås   ha   a C bit   1   A feltételes elågaz6 utasftés
+BEQ   op   ugrés ,   a Z bit   1   operandusa m I nd ig egy abszo—
+BMI   op   ugrés ,   ha   az N bit   1   I ult c fm, ahovå ugrunk. Bizo—
+BVS   op   ugrås ,   ha   a V bit   1   nyos okok miatt az 'ugrås
+BCC   op   ugrés ,   ha   a C bit   tdvolsåga kor16tozott: e löre
+BNE   op   ugrås ,   ha   a Z bit   $7 E, visszafelé $81 a tåvol—
+BPL   op   ugrås,   ha   az N bit   Ség a feltételes elégazO   uta—
+BVC   op   ugrés ,   ha   a V bit   sitåstOI mérve.
+öSSZEHASONLfTO UTASITASOK
+CMP ep   hasonl f tdsa   az operandussa I ,   > op
+az   SR   bitjeinek éllftésa
+cpx   az   XR   hagonl ftésa az operandussal ,   > op
+SR   bitjeinek 61 Iftdsa
+CPY op   YR   hasonl ftåsa az operandussal ,   > op
+SR   bitjeinek 6 II f tasa
+UGRO UTASfTASOK
+UMP op   a megadott cfmre történö fel tétel nélkuli ugrA3
+JSR op   alprogram hfvåsa feltétel nélkül
+RTS   visszatérés az alprogramb61 a hfvås utdni he lyre
+RTI   visszatérés a megszakitåst kezelö alprogramb61
+EGYÉB UTÄSfTASOK
+NOP   Ures utagitåg
+BRK   szoftveres megszakft&s utasitdsa
+
+--- PAGE 16 ---
+-15.—
+2. CfMZÉS1 MODOK
+Commodore sz6mit6gépekbe épftett mikroprocesszornak viszonylag
+kevés mUveletet f rhatunk e lö. gzémszerint 56 db mnemonik van. A
+vål tozatos cfmzési rnOdoknak köszönhetöen viszont az alkalmazhatO
+kUlönbözö utasftåsok széma 150. A cfmzési rnOdok sokszinüsége ta—
+län nehéz tudoménynak tünik. de részletes megértése utan a hagz—
+nd IhatO utasitésok k6rp6tolnak minket. Néhåny egyszerü Pé Idéval
+szemléltetve megadjuk a hasznd Ihat6 clmzési mödokat. Azt, hogy
+me ly ik utasités melyik cfmzési m6ddal hasznå Ihat6, a fuggelékben
+talélhat6 tdblåzatböl o Ivashatjuk k i.
+KöZVETLEN   2 båjt
+Az operandust a mnemonik ut6n frjuk # jel lel bevezetve. Az ope—
+randus lehet egy szåm (hexadecimélis. binéris. okta I is vagy de—
+cima I is   szémrendszerben megadva), de I ehet egy ASCII karakter
+is.
+LDA   #$41   A9.41   tölts az ÄC—ba $41 —t!
+CPY   co. 14   hasonl ft sd össze az YR—t 20—szal !
+EOR   49, DB   végezd el a kizdrö—vagy I ogikai mu—
+veletet az AC tar talma és a $DB gzém
+között! Az eredményt Ird vissza az
+AC-ba !
+ABSZOLULT   cccc   3 båjt
+A mnemonik utån szereplö tårcfm vagy annak tar talma I esz a mi-i—
+velet alanya.
+LDA   $3AOE   AD,OE,   3A   töltsd az ÄC—ba a $3ÄOE c imi-i tårhely
+tarta Imat !
+STX   $400B   40   ird ki az XR tartalmét a tar $400B
+cfmü helyére!
+LSR   $30ÄC   4E,ÄC.   30   végezd el a bl tenkénti   I éptetégt
+jobbra a $30AC c Irnü térhely tartal—
+rnéval !
+JMP   $3000   4C,oo.   30   ugorj a $3000 c imü he lyre! Lényegé—
+ben a PC regisztert 61 1 It ja ét ez az
+utasftås .
+NULLISLAPOS ABSZOLULT   2 b8jt
+Megegyezik az abszolult cfmzéssel, de a tårcimek itt $00cc a la—
+küak. fgy az utasltås is rövidebb lesz.
+LDA $90   A5.90   töl tsd az AC—ba a $0090 c Imu tårhely
+tartalm6t (az ST rendszervål tozöt) !
+ORA $98   05.98   végezd el a VAGY müveletet az AC ég
+a $0098 cfmü tdrhely tar talma között.
+Az eredményt f rd az ÄC—ba !
+STY $DA   84 , DA   Ird ki az YR tartalmét a $00DA c
+tårhe lyre !
+
+--- PAGE 17 ---
+—16.—
+IMPLIED. BELEÉRTETT   i båjt
+Sok utasft&snak a mnemonikjéböl következik. hogy mi vel kell az
+adott muveletet elvégezni. Az i Iyen utasftåsoknål tehåt nincs
+cfmrész .
+CLC   18   nul Idzd az SR C bitjét!
+PHA   48   az AC tarta Irnét i rd a verembe!
+TXS   az XR értékét helyezd eI az SR—ben!
+X REGISZTERREL INDEXELT ABSZOLULT   cccc,X   3 béjt
+Az. operandus tényleges cfmét ügy szémftjuk k i. hogy a (cfmrész)—
+ben megadott cirnhez hozzdadjuk az XR aktuål is értékét. Ha a
+(cfmrész) —   $4Ä02 az XR tartalma pedig $C9. akkor a tény leges
+cfm $4ACB lesz.
+Pl..   AND $30k), x   végezd el az ÉS log ikai müveletet az
+AC tarta Ima ég azon memOriahely tar—
+ta Ima között. me lynek c fme az XR
+tartalménak és $30ÄO—nak az osszege!
+Az eredményt az AC—ba Ird v i ssza !
+CMP $3000,X   DD, 00, 30 hasonlftgd ögsze az AC—raI azon tér—
+he ly tartalmåt, amelynek c ime az XR
+tartalménak és $3000—nak az összege!
+Az SR—t megfeleloen 611 ftsd be!
+Y REGISZTERREL INDEXELT ABSZOLULT   cccc. y   3 béjt
+Anal Og az e lözöhöz, csak a cfm kiszémitåsånål az YR aktuålis
+értékét kell figyelembe venni .
+Pl..   LDA $4000,Y töltsd be az ÄC—ba azt az értéket,
+amelynek c Ime az YR tarta Irnénak ég
+$4000—nak az öggzege !
+X REGISZTERREL INDEXELT NULLASLAPU   cc,X   2 båjt
+Az operandus tényleges clmét itt IS egy osszead6s adja meg; az
+XR értékéhez ad juk hozzé a (cfmrész) —ben megadott nul Idslapü
+értéket .
+DEC $D8.X   csökkentsük eggyel azon tårhely tar—
+talmét, amelynek a cime $D8 és az XR
+tartalmånak az összege!
+Y REGISZTERREL INDEXELT NULLASLÄPU   cc,Y   2 båjt
+Anal Og az e lözövel.   csak itt az YR tartalma adja meg az e Ito—
+lési szåmot .
+Pl..   STX $DC,Y   96. DC   az XR tartalm6t frjuk ki a tår azon
+helyére. amelynek a cime $DC ég az
+YR aktuålis tartalmånak összege!
+
+--- PAGE 18 ---
+— 17 _
+LDX $DO.Y   mésold be az XR—be azt a tårtartal—
+mat. ame lynek a clmét ügy kapod meg.
+hogy $D0—hoz hozz8adod az YR tartal—
+mat !
+INDIREKT   (cccc)   3 béJt
+A cimet a megadott c imi-i sz6 tartalmazza. A rend—
+szer teh6t kiolvassa a cccc és a cccc+l cfmU térhelyek tartal—
+mét   (pl.   $40 é3 $3D), majd elö&l I ft ja a tényleges cimet (a
+példa szerint $3D40—ét) .
+JMP ( $4000) 6C.OO.40 6 tad ja a vezérlést a $3A45 c irnre, ha
+$4000   $45 és $4001   $3Ä volt.
+INDIREKT Y REGISZTERREL INDEXELT   2 b6jt
+Az i nd) rekt és az Y regiszterrel indexelt clmzési   m6d együtte—
+se. Elöbb meghatårozzuk az indirekt cfmet. ma jd   ehhez ad juk
+hozzå az   indexregiszter (csak YR lehet) tartalmét.   Ez a clmzési
+mÖd csak   a nul ldglappal kapcgolatban haszn&lhatö.
+LDA   az ÄC—ba tölti a $3079 tar-he ly tar—
+ta Irnét. ha $00D9   $45
+$OODA   $30
+YR .. $34,
+hiszen $3079   - $3045 + $34.
+ADC   71. EO   az AC—ba helyezi a $40CD c fmen I évö
+gzåmnak, az AC tarta Ima nak
+bitnek az összegét, ha $00EO
+$OOEI   $40
+$23,
+hiszen $40CD   - $40AA + $23.
+X REGISZTERREL INDEXELT INDIREKT   (cc,X)   2 båjt
+Az X' regiszter értékét hozzåadjuk a zåröjelbeli cimhez. az fgy
+kapott cfrnu szo adja meg a ténylegeg cimet, a lsö/felsö félcfm
+formé jåban. Ez a   cirnzési m6d ig csak a nul Iåslappal kapcsolat—
+ban hasznd IhatO.
+SBC   ($B2,X)   El.B2   utagftés d I tal meghatdrozott c fm
+$42A3, ha   XR : $23
+$OOD5
+$00D6   $42,
+hiszen $23 + $B2   - $D5. A $42A3 cf-
+men I évö szérnot és a C bit negétj&t
+vonja ki az AC—böl a gép, az ered—
+ményt visszafrja az AC—ba .
+STA   ($DO,X)   81, DO   kifrja az AC tartalmét a $4000 cfmre.
+ha   XR : $11
+$00E1   $00
+$00E2   $40.
+higzen $11 + $DO   - SEI.
+
+--- PAGE 19 ---
+-18.-
+lv. SZOFTVER ESZKöZöK
+1. A TEDMON MONITOR PARANCSAI
+Ä TEDMON MONITOR-ba lépés kulcsszava MONITOR. vagy M és SHIFT O.
+-ASSEMBLE-   A (cimJ (mnemonik) (operandusJ
+Egy assembly sort I efordft gépi szintre, a k6dot a tarba irja,
+az• adott kezdöcfmtöl ki indulva. Cimet csak az elsö alkalorrrnal
+kell befrni, azutén automatikusan megadja a gép a kovetkezö ci—
+met. Ha a forditåsnål hibåt talål, akkor a sor végére egy kér—
+döjelet helyez el a rendszer.
+Példa:   A 3000 STA $4000
+c   -COMPARE-   C (cim1J Icim2) (cim3)
+összehasonl f tds a tar két összefüggö területe között. Az egyik
+terül et (ciml ) —töl   (cim2J—ig terjed, a mésik terület elejét a
+(cim3) adja meg. Azonossdg esetén nincs visszajelzés, eltéré3
+esetén az eltérö értékek cfmét adja vissza a rendszer.
+Példa:   C DOOO D400 3000
+D   -DISASSEMBLE-   D (c fml) (cfm2)
+A fordftés inverze, a (cirnl ) —töl kezdödö tartar ta I makat gépikO—
+dü utasftdsoknak vélve ki frja az assembly mnemonikot. és clm
+részt. Ha a tdrtartalom nem értelmezhetö utasltås résznek. ak—
+kor ???   jelzést kapunk. A visszafordités a történik,
+annak hiånyéban 20 db båjtra korlétozödik a tevékenység. A ka—
+pott assembly I istéban javitåsokat végezhetUk a kurzormozgatO
+bi lentyük és a RETURN segftségével .
+Példa:   D F400 F4AO
+-FILL-   F (c fml) (cim2) (értékJ
+összefüggö tarterület feltoltése azonos értékkel (pl . nul Iåzås) .
+Ä terUlet hatårait a (c fml I és ( cirn2) paraméterek adjåk meg.
+Példa:   F 3000 30FF 00
+-GO-   G (cirn)
+GépikOdU, a tårban a (c fml —töl kezdve elhelyezkedo program vég—
+rehajtésånak el inditésa. Ha a ( c 1m) rész nincs megadva. akkor a
+PC regiszter tartalma a mérvad6.
+Példa:   G 3000
+-HUNT-   H (c fml) (cim2J tadatokl
+A tar egy ogszefüggö területén ( keres egy adat—
+együttest. Ha talél i I yet, akkor kifrja a kezdöcimet, ha nem,
+akkor nem jelez serrgnit.
+
+--- PAGE 20 ---
+Pé Ida :   H 3000 30FF 86 45
+-LOAD-   L "file név" (egységszårn)
+Mågneses adathordozOr61 betölti a tarba az adott nevü f i .
+Az egységszåm a kazettés berendezésnél 1. a lemezes egysegnél 8
+és 11 közötti érték. Egységszåm elhagyésa esetén a kazettås be—
+rendezésröl o Ivas a rendszer. A betöl tési cfm megegyezik azzal
+a cfrrvnel, ahonnan kimentettük az 81 lom6nyt .
+Példa:   L "program12" . 8
+-MEMORY-   M (c fml) tcfm2J
+Tdrtartalom megjelenftése a képernyön hexadecimélis és karakte—
+res a Iakban. Ä kurzormozgatO és a RETURN bi I lentyükkel lehetö—
+ségünk van mOdosftésra is (RAM) .
+Példa:   M 3000 30FF
+-REG 1 STERS—
+Ä regiszterek jelzéseit ég tarta Imukat megjelenfti a képer—
+nyön .
+s   -SAVE-   S "file név". (eszköz szäml . ( c fml J , tcfm2)
+Egy összefüggö t6rterUlet ( kilrésa az adott egy—
+ségsz6mü berendezésre. Az 61 lornény PRG tipusjel zot kap, nevét
+az utasftdsban kell megadni. Az egységszåmok lefråsét I asd a
+LOAD-nål !
+Példa:   S "program12" , 8, 3000.30FF
+-TRANSFER-   T (ciml) (cirn2J (cim3)
+Térterulet mésolåsa a tar egy måsik helyére. Ä måsolandO rész
+hat6rait az elsö két c fm. az üj terület elejét a harmadik cfm
+hatérozza meg .
+Pé Ida:   T DOOO D800 4000
+-VERIFY-   V "file név" . (egységszåml
+Gépi ködü program kimentésének el lenörzésére szolgålO utasftås.
+Ä magneses adattårolö adott nevü d I loményét hasonlltja össze a
+tar tartalmåval. A tårterület kezdöcimét az 61 lomånyb61 01 vassa
+ki a rendszer.
+Példa:   V "program12" . 8
+x   -EXIT-   x
+Ki lépé3 a MONITOR programbOI a BASIC rendszerbe .
+
+--- PAGE 21 ---
+-20
+2. AZ ASS-16 ASSEMBLER PROGRAM HASZNALATA
+Az ASS—16 assembler eredeti leg Cornmodore 16 t ipusU szérnltögépre
+frt fordft.6program, de haszné IhatO a Connodore Plus/ 4 —en is, s
+alig tér el a Cornmodore 64—re frt PROFI—ÄSS 64 programtöl. Elö—
+ször be kell töl teni az ASS—16 forditöprogramot, majd a BASIC—ben
+szokésos szerkesztési rnödokkal Irhatjuk az assembly forrésprogra—
+munkat. Az elsö nem BASIC utasitås elött szerepelnie kell a for—
+dités inditdsät e Irendelö SYS 12224 utasftåsnak. Ä kész progra—
+munkat a BASIC—beli SAVE. LOAD parancsokkal rögzfthet jük az adat—
+hordoz6ra vagy töl thetjük be a tårba. A tdrban lévö programot a
+RUN paranccsal el inditva a BASIC utasftésok végrahajtåsa megkez—
+dödik, i II. a forditås elindul. CélszerU egy sorba egy assembly
+utasit6st frni, de a   karakter több utasftdst is elvålaszthat
+egyrnåstOI. Egy sor alakja a következö:
+(sorszém) (cirnkel (mnemonikJ (operandug) (meg jegyzésl
+ahol (sorszåml   azonos a BASIC—ben al ka ImazhatO sorszérnrnal ,
+(cimke)   8 karakterre azonosi to egyedi név   ame I yik
+csak betüvel kezdödhet.   (Hasznå lata nem köte—
+lezö.)
+(mnemonik)   a processzor utasftåskészletének megfelelöen,
+( operandus )   a cimzési mOdok valamelyikének megfelelö al—
+ka Imaz&s, vd I tozatos   alakban fel Irva:
+decimélis szém:   LDA   #223
+binaris szåm:   LDA   #810001110
+hexadecimélis szém:   LDA
+ASCII jel:   LDA
+kifejezés:   LDA   $3000+200
+sz irnbö I um :   LDA   TARI
+programszéml I :   BCC
+tmegjegyzés)   karakterrel kezdödö je Isorozat,   ame ly ik a
+program jobb olvashatOgégdt segiti .
+Tehåt .egy minta:
+200 IDE LDA TAROLO ; az AC—ba tölt az atrneneti pufferböl
+Az operandusban alkalmazhat6 müveletek felsorolåsa:
+A+B összeadés   A—B kivonås   B szorz6s
+A 2B VAGY   ÉS   V B KIZAR6 VAGY
+A<B A értéke B db bittel balra tolva
+A értéke B db bit tel jobbra tolva
+< A a kétbéjtos cfm als6 båjtja
+> A a kétbéjtos cfm felsö bdjtja
+Ä FORDiT6 DIREKTIVAI
+programszémlélö regisztert vezérlö direktiva
+A PC regiszter feltöltésére ill. olvasdsåra hasznålhat6 kOd.
+Alakja:   (operandus) vagy (cimkeJ
+
+--- PAGE 22 ---
+-21.-
+200   $3000   a gépi kOdü program elejének meghatéroz&ga
+300   CIMI $3C00   egy terület kezdöcfmének kijelölése
+301   *+128   az elözö terület alapjån mésik jelölése
+400   BCC *+20   feltételes ugrås a PC+20 c Imre
+értékadO direktfva
+SzimbOlum feltöl tése értékkel ügy, hogy azt késobb meg I e—
+hessen vdltoztatni.
+.Példåk:
+200 ciklv <- $01   ci I usvål tozö kezdöértékének bedl I f tasa
+300 ciklv < — cikIv+2   ciklusvål toz6 növelése a I épésközzel
+BYTE direktlva
+A direktfva kifejezések értékeit helyezi el a tarba. az ér—
+vényes cfmtöl kezdve, folytonosan. Lényegében DATA mezö Iét—
+rehozését eredményezi .
+Példa:
+200 TAR . BYTE   egy tårterületre 5 db zérug érték
+elhelyezése, a tar elejét a TAR
+jelzi
+. ASC direktfva
+Szöveges adatok tdrbeli   el he lyezésére szolgålO direkt Iva
+(ASCII k0d) .
+Példa:
+200 TAR2 . ASC   "TELAPO"   a TELAPO szöveget e lhe lyezi a TAR2—
+vel jelzett cirntöl kezdödoen
+WORD direktiva
+Bérmi Iyen 2 båjtos adat elhelyezése a térba. ford f tott béjt—
+61 låsban.
+Példa:
+200 TAR3 . WORD * ; a PC tartalmånak mentése a TAR3—mal jelzett
+memöria he lyre
+. END direktfva
+A forditöprogramnak jelzi, hogy a forrdsprogramnak vége van.
+Ekkor a fordftés eredménye vagy a tdrban, vagy a fordftönak
+elöfrtaknak megfelelö héttértér016n talålhatO meg.
+Példa:
+1000 VEGE . END; a forrasprogram vége
+
+--- PAGE 23 ---
+-22.-
+BAS direktiva
+A fordftås megszakftåsa, és a BASIC interpreter muködésbe he—
+lyezése a funkciOja. Ha ismét assemblélni akarunk, akkor al—
+kalmazni kell a SYS 12230 utasitést.
+Példa:
+1000 vege . END; a forrésprogram vége
+1010
+. BÄS; vissza a BASIC—be
+1020   REM * assembly program—23
+. GOTO direktiva
+A fordit6s sordn az assembly program néhény sorénak fordftå—
+sat elhagyhatjuk (pl .   program 'belövés') ezen direktiva al—
+kalmazéséval. Az   azonosftö utan frt sorszémon fog folytat6d—
+ni a forditås.
+Példa:
+300 Kl .GOTO 400   300-400   —ig nem ford ft ja az assembly prog—
+ramot
+. OPT direktfva
+A fordft6program szåmåra f r ja e lö, hogy a fordités eredmé—
+nyét hovä, mi Iyen alakban helyezze el. Az egyes parancsokat
+OPCIöK — kal lehet e löfrni. Ha egy direktfvéban több opciöt
+alkalmazunk, akkor azokat a . karakternek kell elvélasztania.
+P opciO   a képernyöre kérjük a liståt
+P (szérn) opci6   a nyomtatöra kérjük a I i stat. ahol a (széml
+a log ikai file—szém
+00 opciö   a térnak a di rekt fvåval meghatårozott
+helyére kerül jön a tårgyprogram
+O opciö   a forrdsprogram uténi szabad területre ke—
+rul jön a térgyprogram
+@ (szåm)   a fordftås nem a tdrba. hanem egy elözöleg
+megnyitott 61 lornényba torténik. Ä (szåm) az
+él lomånyhoz rendelt file szäma
+N opciö   a . OPT direktiva elözöleg e Irendelt opciöi—
+nak hatåsa megszünik, ujakat lehet elöirni
+AZ ASS-16 ASSEMBLER SYNTAX HIBAuZENETE1
+O   utasftés nélkül szereplö cimke
+1   érvénytelen operåciös kOd
+2   érvénytelen cfmzési mod
+3   nem megengedett karakter
+4   zdröjel hiba
+5   nem megengedett kifejezég
+6   hi ånyzö   karakter
+7   a direktiva nem létezik
+8   a szimbOIum érvénytelen
+9   a mi-iveleti kOd fgy nem cimezhetö
+
+--- PAGE 24 ---
+—23
+V. ASSEMBLY ÄLÄPFELÄDATOK
+Ä fejezetben o Iyan egyszeru alapfeladatokat kOzlünk, amelyekkel
+az assembly szintü programozds sorén gyakran talélkozunk. A fela—
+dat megfogalmazésa utan a megold6 a I program következik, az egyes
+utasitåsok funkciöjdnak megadåsåval. Magyardzatot csak akkor köz—
+lünk, ha a megoId6 program nehezen érthetö. Ä fejezetben ismerte—
+tett feladatokhoz hasonlöakat tarta Imaz a Feladatgyüjtemény is.
+EGYBAJTOS ARITYETIKA
+1.   FELADAT: ad juk össze a $34 és az $AC szämokat, az eredményt a
+$3000 cfmre frjuk be!
+$2000 LDA *$34   egyik szåm ki 1 råsa
+STA $1)0
+LDA #$ÄC   rnåsik szérn az AC—ba
+CLC   a C bit nulldzésa
+ADC $DO   az összeadås elvégzése
+STÄ $3000   az összeg kifr6sa a k 1 vånt he lyre
+RTS
+2.   FELADÄT: vonjuk ki $D3—böl az $A4—t, az eredményt f r Juk be az
+$EO c imi-i he lyre!
+$3000 LDA   a kivonandO kifrésa $2000—ra
+STA   $2000
+SEC   a C bit I—re ållftésa
+LDA   #$D3   a kisebbftendö beål I f tasa
+SBC   $2000   az aritmetikai rnüvelet elvégzése
+STA   a különbség kifrésa a k Ivant he lyre
+RTS
+KÉTBAJTOS ÄRITMETIKA
+1. FELADAT: Ad juk össze az $1234 és az $ABCD szåmokat, az ögsze—
+get a ($3000) cfmü szöba frjuk ki bdjtforditott sor—
+rendben !
+$2000   LDA   az elsö szåm elhelyzése a ($3100) szO—
+STÄ   $3100   ba
+LDA
+STÄ   $3101
+LDA   a måsodik szäm elhelyezése a ($3200) ci—
+STÄ   $3200   mu sz6ba
+LDA
+STA   $3201
+CLC   a C bit nullézdsa
+ADC   $3101   a szårnok alsO båjt jainak összeadåsa
+STÄ   $3001   az összeg kiirésa a szÖ 2. béjtjåba
+LDA   $3200   a szémok felsö båjtjainak összegzése
+ADC   $3100
+STA   $3000   az összeg kiirésa a sz6 1. båjtjåba
+RTS
+Ä két osszeadås   között a C bitet nem szabad nul Idzni, nehogy
+a belsö at vitel   értéke elvesszen!
+
+--- PAGE 25 ---
+-24 .
+2.   FELADÄT: vonjuk ki az $ÄBCD—böl az $1234 szdrnot, az eredményt
+a   ($DO) c Imi-i szöba béjtfordftott sorrendben Irjuk!
+$3000 LDX   #$34   a kivonandO ki Irdsa a ($2000) sz6ba
+STX   $2000
+LDX
+STX   $2001
+LDA   a kisebbltendo alsO båjtja az AC—ba
+SEC   a C bit I—re d I I it asa
+SBC   $2000   alsO båjtok kivonåsa
+STA   eredmény a 130 båJtja a helyére
+LDA   *SAB   a kisebbitendö felso béjtja az ÄC—ba
+SBC   $2001   felsö båjtok kivonåsa
+STÄ   eredmény felsö béjtja a helyére
+RTS
+Ä két kivonåsi müvelet között nem szabad a C bit értékét
+dosftani !
+EGYBAJTOS SZAM SZORZASÄ 2 HÄTVANYÄIVÄL
+1.   FELADAT: szorozzuk meg a $03—t   nyolccal.   az eredményt az $EO—
+ra Irjuk k i!
+$2000 LDA $03   szorzand6   az AC—ba
+ASL   szorzås 2—vel
+ASL   szorzås 2—vel
+ASL   szorzés 2—vel
+STA $D0   szorzat a   kivånt he lyre
+RTS
+2.   FELADAT: osszuk el   az $A4—t néggyel. az eredményt   XR-be
+kérjük !
+$2000 LDA *$A4   osztand6 az AC—ban
+LSR   osztås 2—ve I
+LSR   osztås 2—veI
+TAX   eredmény az XR—be
+RTS
+ELAGÄZÅSOK
+1. FELÄDÄT:   vizsgdl juk meg a $DO cfmü tar he ly tarta Irnét! Ha nem
+nul I a, akkor csökkentsük eggyel a tartar ta Imati rnås—
+kulönben novel jük meg eggyel azt !
+$2000   LDX   a ku lcs érték az XR—be
+CPX   a hasonlités
+BNE   $2020   ha nem nul la. akkor ugras a csokkentésre
+INC   növelég és vége
+RTS
+$2020   DEC   csökkentés és vége
+RTS
+
+--- PAGE 26 ---
+-25.-
+CIKLUSOK SZERVEZÉSE
+1.   FELADAT: Elöirt Iépésszåmü, håtultesztelö ciklus .
+8 darab A betüt frassunk ki a képernyO elsö   soråba !
+$2000   JSR   $C567   képernyo letörl ése
+LDA   az A betü kOdja
+LDX   ciklusvél tozö kezdöértéke
+$2007   STÄ   $0C00.x   c ik I usmag
+INX   ciklusvål tozO növe I ége a lépésközzel
+CPX   végértekhez hasonl
+BNE   $2007   ciklusmag üjböli végrehajtåsa
+RTS   kilépés a ciklusbOl
+2.   FELÄDAT: Nern elölrt I épésszåmü, hétul tesztelö ciklus .
+Keressuk meg a nul léslap elsö o Iyan béjtjénak a ci—
+mét, amelyikben az $FC van. Az Iletö béJt clmét az
+tarta Imazza a program végén!
+$2000   LDX   a nul 163 lap aktuålis båJtjénak c Ime
+$2002   LDY   $00,x   c i k I usmag
+INX
+CPY   $FC   ki lépési feltétel vizsgålata
+BNE   $2002   ciklusmag u Dra lejåtszésa
+DEX   a ciklus utdni utasft6sok
+TXA
+RTS
+MASZKOLASI FELADATOK
+Mint tudjuk a mem6ria I egkisebb cimezhetö egysége a båjt. Ezt
+tudjuk olvasni,   irni közvetlenül. Az un. maszkolåsi feladatokkal
+az egyes bitek értékeit is tudjuk olvasni,   illetve Irni. A fela—
+datoszté lyban a log ikai alapmüveleteket hasznåljuk fel .
+1.   FELÄDÄT: dl lapftsuk meg a $3000 cfmü tårhely legmagasabb bit—
+jének értékét, a bit értékét irjuk az XR—be!
+$2000   LDA   maszk befråsa   1000 0000
+AND   $3000   bi tvizsgélat   bbbb bbbb
+STA   az eredmény vizsgélata   bOOO 0000
+LDX
+CPX   $1)0
+BNE   $2020   ha a vizsgélt bit O, akkor ugrés
+LDX   a vizsgålt bit I volt
+RTS
+$2020   LDX   a vizsgélt bit O volt
+RTS
+2.   FELÄDAT: a $3000 c Imi-i b6jt legalacsonyabb bitjét nul Idzzuk ki
+de   a többi értékét ne våltoztassuk!
+$2000   LDA   a maszk beirésa az AC—ba
+AND   $3000   a bit O—ra ållftésa   bbbb bbbO
+STÄ   $3000
+RTS
+
+--- PAGE 27 ---
+-26.
+VI. LEBEGöPONTOS ARITMETIKÄ GÉPI KODBÄN
+A szåmft6gépes feladatmegoldågok j 6 részében mat.ematikai rnüve--
+letek sokasågdt végeztetjük eI a szdmftögéppel. Most azt {r juk
+I e, hogy hogyan dolgozik a gép a valOg szarnokkal. Mint tudjuk a
+val 6s szémokat a Cornmodore BASIC 5 båjton dbrdzol ja: elsO b6jt a
+binaris kitevö 128—as tobblettel. a tovdbbi négy b6jton a bind—
+ris mantissza szerepel, a legmagasabb bit az elöjelé. A ROM—ban
+a I ebegöpontos szåmokkal kapcsolatban több eszköz is talélhatö,
+de mind közul a legfontosabb az un. FAC (Floating point ACcumu—
+låtor). melynek cime $61—$65. Ä $61 a kitevö båjt. a többi 4 db
+a mantisszåé. Az aritmetikai müveletek majdnem mindegyike hasz—
+nd Ija a FAC—t. Tovébbi i Iyen lebegöpontos va IOS szåmok kezelésé—
+re alka lmas tårhe lyek is ismertek :   ARG $69-$6D (FAC2)
+kUIön név nélkül: $57—$5B ill. $5C—$60. Az ari tmetikai rutinok
+val 6s operandusait elhelyezhetjük a RAM tetszoleges. de Ossze—
+f Uggö területén is. I Iyenkor az operandus kezdöclmét az ÄC, és
+az YR tarta Imazza (AC   - also, YR   — felsO bdjt). Ezt a tényt (YÄ)
+jelöléssel fog juk leirni a tovébbiakban. Természetesen a ROM—ban
+is elhelyeztek val 6s szåmkonstansokat (pl. $AO()F cfmen kezdödik
+a négyzetgyök 2 értéke). Äzt is kulon jelol jük majd, hogy az
+(Y A) a ROM. vagy a RAM teruletre vonatkozik—e. Az arl tmet ikai
+rutinok belépési c Ime it tarta Imaz6 tåblåzatban mi nden tovåbbi
+Iényeges i nformåci6 megtalålhat6 a lebegopontos ari tmetikåröl .
+Most egy példaprogramon keresztül mutatjuk be a rutinok alka Ima—
+zåsånak technikåjåt.
+Feladat: szorozzuk össze a egy. a bi I lentyuzetröl beadott
+egész   szdrrunal !
+Program :   100   SYS 12224
+110   .OPT P,OO
+120
+130   JSR   $885Ä   : INPUT BILLENTYUZETRöL
+140   LDA   $3B
+, BASIC nrrÄT0 A VEREMBE
+150   PHÄ
+160   LDA
+170   PHA
+180   LDA   SZöVEG ELEJE BASIC MUTATOBÄ
+190   STA   $3B
+200   LDA
+210   STA
+220   JSR   $0479   ; CHRGOT RUTIN Hi VASA
+230   JSR   $A37F   ; ASCII KONVERZ16 A FAC-BÄ
+240   LDA   ALSO CfME
+250   LDY   FELSO CIME
+260   JSR   $AODC   ; ARG- (YA) ROM-BOL
+270   JSR   $A07B   ; FÄC-ÄRG*FÄC
+280   PLA
+, A BASIC MUTATO VISSZAALLITASÄ
+290   STA
+300   PLA
+310   STÄ   $3B
+320   LDY   ; ELöKÉSZ fTÉS
+330   JSR   $A469   ;FAC KliRASA ASCII ÄLM<BÄN
+340   RTS
+350   END
+
+--- PAGE 28 ---
+-27.-
+VII. Ä GYAKRÄBBÄN HASZNALT KERNAL RUTINOK LEIRASA
+A KERNAL rutinok az operåciös rendszer nagyon fontos részét je—
+lent i k. Az input/ output mi-iveletek, az Oraidözftés, a memoria ke—
+ze és programozésakor a programoz6 kész ruti nokka I do Igozhat .
+Ä KERNÄL programok alka Imaz&sa nagy figyelmet kivén. Az egyes ru—
+tinok h 1 vasa elött vagy egy mésik rut int kell a Ikalmazni. vagy
+az egyes regiszterekbe kel I alkalmas értékeket e lhe lyezni. Ä
+KERNAL ruti nok egy szabvényos ugr6t6bl azaton (mi nden Cornrnodore
+gépen azonos) keresztül érhetök eI a legkénye Irnegebben. Az ugrö—
+täblézatban egy—egy JMP utagftås talélhatö, amel lye I elérhetjük
+a tényleges programrészletet.
+FIGYELEM: a rutinok leirésånål megadjuk a belépési cimet, az elö—
+készlto rut in (0k) azonositöit, a hasznålt regigzter(ek) jelét!
+OPEN   $FFCO   (SETLFS, SETNÄM)   XR. YR)
+Egy file megnyi tdséra szolgélO program. A   SET LFS (a file paramé—
+tereket beållitö). a SETNAM ( file nevét   beél I Ito ) elökészl tö
+rutin hasznålata az OPEN e lott kötelezö!
+SETLFS   $FFBA
+A file paramétereket beållftö rut in. A log ikai file—szémot az AC
+az egységszåmot az XR mfg a megnyi rnödot az YR tartalmazza
+a rutin meghivésa elött.
+SETNÄM   $FFBD
+A file   nevét   bedllftO rut in. Elözöleg az AC—ba kell tölteni a
+név karaktereinek a szåmåt. Az XR, YR tartalmazzdk a név elsö
+karakterének térbeli clmét (LB,HB) .
+CHKOUT $FFC9   (OPEN)   XRI
+Az output csatorna kijelölésére szoIgålO alprogram. Elözöleg az
+OPEN rutinnal megnyitjuk az 61 Iomanyt, majd a log ikai   fi I e—szé—
+mot az XR—be töltjük. Ezutdn hfvhatO a CHKOUT.
+CHROUT   $FFD2   (OPEN. CHKOUT)
+Egy karaktert helyez eI az elözöleg OPEN—nel megnyitott. CHKOtrr—
+tal outputra 611 f tott csatornéra. Ha a CHKOUT elökészitö rutin
+elmarad, akkor a képernyöre ki-ildi a karaktert . A karakter kOd—
+jat az ÄC—b61 olvassa ki a rendszer.
+CHKIN   $FFC6   (OPEN )   (AC. XRJ
+Ugyanaz mint a CHKOUT. csak itt   input csatornåt definidlunk.
+Älapértelmezésben a bil lentyüzet az   input eszköz.
+CHRIN   $FFCF   (OPEN. CHKIN)   tÄC, XR)
+Az input csatornéröl egyetlen karaktert 01 vas be az ÄC—ba .
+READST   $FFB7
+Az ÄC—ba tölti a $90 cfmü rendszervåltozö (az ST) értékét. Az
+1/0 müveletek sorén esetlegesen elöfordulö hibékat vagy az adat—
+él lornåny végének elérését lehet fgy figyelni .
+
+--- PAGE 29 ---
+-28.-
+CLRCHN   $FFCC (-)
+Visszaållitja az 1/0 csatornék kezdeti (default) értékét. Azaz
+az aktuålis input eszköz a billentyüzet az aktuålis out—
+put eszköz a képernyö (3) Iesz.
+CLOSE   $FFC3 (-)   (AC. xn. YRJ
+Nyi tott file lezéréséra szolg61ö program. A log ikai file—szåmot
+elözoleg az akkumulétorba kell to I teni .
+PLOT   $FFFO (—)   (AC, XR. YRI
+Ha a C bit 1, akkor a kurzor pozfciöit tolti az indexregiszte—
+rekbe ( XR a vizszintes, YR a fuggöl eges koordinétåkat fog ja
+tartalmazni). Ha a C bit O. akkor a kurzor beållftåséra szol—
+gål a rut in. Elözöleg a megfelelö indexregisztereket be kell
+a II f tan i.
+PRINT   $FF4C (PLOT)
+Ä kurzor aktuålis helyére ( ld. PLOT) k iir egy karaktert. A ka—
+rakter ködjét elözöleg az AC regiszterbe kell tölteni. Ez a ru—
+tin mind ig a képernyöre {r, függetlenül atto I. hogy mi az ak—
+tuålis output eszköz. A vezérlök6dokat a szokésos mOdon kezeli.
+TALK   $FFB4 (-)
+Ä soros buszra helyezett eszközt ' beszélo' 6 1 lapotba hozza. Az
+eszköz egységszåmåt e lözöleg az AC—ba kel I töl teni. Az eszköz
+ezutén input berendezésként fog funkcionålni .
+TKSA   $FF96 (TALK)
+Megnyitåsi m6d e Irendelége az input eszköznek. Az eszkozt elö—
+zöleg a TALK rutinnal 'beszélö' lapotba kell hozni. A megnyi—
+tdsi rnÖd   szårnét az ÄC—bÖI olvassa ki a gép.
+ACPTR   $FFA5 (TALK. TKSA)   (AC. XRI
+Ä soros   buszröl beolvas a gép egy bdjtot az AC—ba.   A buszon
+kell egy   ' beszélö' eszköznek I enni (TALK, TKSA) !
+UNTLK   $FFÄB (-)
+A soros buszon Iévö, elözöleg 'beszélö' dl lapotba hozott eszköz
+alapél lapotba ( 'figyelö') helyezése.
+LISTEN   $FFBI
+A soros buszra füzött val amelyik eszköz   'hall gato•   él lapotba
+helyezése. Az eszköz egységsz&mdt elözöleg az ÄC—ba kel I   irni.
+A rutin lefutésa utén az eszköz output berendezésként fog mu—
+ködni .
+SECOND   $FF93 (LISTEN)
+Ä 'hal IgatO' 61 lapotba hozott eszköznek a megnyltåsi mod szårnåt
+ezen rutin alkalmazågåval tudjuk elölrni. Az AC—bOI veszi a
+szémot a rendszer .
+CIOUT   $FFÄ8 (LISTEN. SECOND)   (ACI
+A soros buszon keresztül egy béjtot ku ld ki az elözöleg 'hal l—
+gatO' 61 lapotba helyezett (LISTEN, SECOND) eszköznek. Az output
+adatot az AC—ba kell tölteni a rutin meghfvésa elött!
+
+--- PAGE 30 ---
+-29.-
+UNLSN   $FFAE
+A soros   buszra történö adatforgalmazås befejeztével ezen rutin
+kiüriti   a puffer t. ég megszünteti minden eszköz 'hal Igat6'   Btå—
+tuszét.
+GETIN   $FFE4   (OPEN, CHKIN)   (AC, xn. YRI
+Egyetlen båjt belr6ga az AC—ba a bil lentyuzetröl vagy az RS 232
+csatornäröl. Ha a puffer üres, akkor O kerül az akkumulåtorba .
+Ha az i nput csatorna a kazettås egység vagy a soros busz, akkor
+a megfelelö CHRIN rutin kerül végrehajtåsra .
+SCNKEY   $FF9F
+Billentyüzetet kezelö rut in. Ha a megszakltåst letiltottuk ég a
+bil lentyüzetröl vdrunk adatot, akkor ezt a rut int hasznél juk.
+Meghfvéskor a lenyomott bi I lentyü ködja a pufferbe kerül, ég a
+a visszatéréskor ez az érték van az   akkumulétorban. Az AC $FF
+lesz,   ha nincs lenyomva senvni .
+RESTOR   $FF8Ä   XR, YRJ
+Visszaål 1 1 tja az operdciOs rendszer   $0312-$0331   terü I eten   I évö
+vektorai t .
+RDTIM   $FFDE   XR. YR)
+Az Ora beolvasåsåra szolgélO rut in.   Ä memöriéban a $A3—$A5   te—
+ruleten lévö Ora aktuålis értékét helyezi el a munkaregiszterek—
+be az alébbiak szerint:
+XR : $A4 YR : $A3.
+SETTIM   $FFDB
+Az elözö rutin fordltottja, a munkaregiszterek értékeinek megfe—
+lelöen beållftja az Ord t. A regiszter   mem6ria megfe I el tetést
+az RDTIM rutinnål lefrtuk.
+UDTIM   $FFEÄ   (AC. XRJ
+Szintén az 6råval kapcsolatos rut in, eggyel n0veli az Ora érté—
+két. Iap61 lapotban a megszakftåsi rendszer rnåsodpercenként 60—
+szor hivja meg az UDTIM rut int. A rutin f igyeli a STOP bi i I en—
+tyüt is.
+KERNAL HIBÄKEZELÉSE
+Hiba esetén vagy az AC—ba kerül a hibak6d, vagy maga az ST   rend—
+szervåltozö értéke tdjékoztat a hiba jel legéröl .
+HIBÄKODOK AZ AC-BAN
+O   a program futésåt a STOP bil lentyü szakitotta meg
+1   sok fi I nyitottunk meg egyszerre
+2   a file mar nyitva van
+3   a file nincg megnyitva
+4   nem talélja a file—t a rendszer
+5   az egység nincs jelen
+6   nem INPUT file
+7   nem ocrrpvr file
+8   hidnyzik a file neve
+9   il legålis egységszdm
+
+--- PAGE 31 ---
+-30.-
+VIII.   GÉPI KODü PROGRÄMOK BEÉPfTÉSE BASIC KöRNYEZETBE
+Legtöbbször nem gépi k6dü programokat futtatunk. hanem a BASIC
+nye Ivu programunkba integrélunk gépi k6dü betéteket . A gépi
+k6dü alprogramjaink minden esetben az RTS utasftéssal fejezödnek
+be, fgy az alprogram végrehajtåsa utan a BASIC nye Ivu hfvO rész—
+re keri.il a vezérlés vissza. Ä gépi k6dü a Iprogramok hivdsa két—
+féleképpen történik:   SYS utasftéssal vagy USR fuggvénnyel .
+SYS UTASiTAS
+Szintaxisa: SYS decimélis c fm.
+Hatésdra étad6dik a vezérlés a cfmben meghatårozott he lyre. Az
+itt kezdödö gépi kOdü alprogram végreha jtåsa megkezdödik. Az
+alprogramböl val 6 visszatérés cimét a rendszer automatikusan
+megörzi .
+legyen a gépi ködü programunk az aldbbi :
+$2000 A9 01   LDA #$01
+81) oc oo   STÄ sOCOO
+60   RTS
+ezt   az alprogramot beépithet jük az alåbbi BASIC programba :
+100   SCNCLR
+110   SYS 8192
+120   END
+Ä SYS utasftéssal I ehetöségünk van a processzor regisztereinek
+értéket étadni a BASIC programböl, még a gépi kOdü rutin hivésa
+elött. Äz értékeket a POKE utasftåssal kell elhelyezni az alåb—
+biak szerint:
+AC $07F2 azaz 2034
+XR $07F3   2035
+YR $07F4   2036
+• SR $07F5   2037.
+Pl. åz elözö feladathoz hasonlOan most is egy A betü jelenik
+meg a képernyö bal felsö sarkdban:
+gépi kOdü rutin   BASIC program
+$2000   81) OC OO STÄ $0C00   100 SCNCLR
+60   RTS   110 POKE 2034.1
+120 SYS 8192
+130 END
+Meg jegyzendo, hogy a visszatéréskor a regiszterek tartalmåt   a
+rendszer bemåsolja a fent eml I tett térhelyekre .
+USR FUGGVÉNY
+Szintaxisa: USR (paraméter) , ahol a paraméter tetszöleges arit—
+met ikai kifejezés lehet. Vigyézat az USR függvény és nem utasi—
+tés! A függvény alkalmazéga elött a meghfvandö gépi ködü rutin
+kezdöcfmét a ($0501) cfmü szöba kell beirni béjtforditott sor—
+rendben .
+
+--- PAGE 32 ---
+-31.-
+Ha az USR paraméterét is ét akarjuk adni a hivott gépi k6dü
+rutinnak, akkor a rut int a JSR $9DE4 utasltéssal kell kezdeni.
+Ennek hatås8ra az USR paraméterének felsö béjtja az AC—ba,   mig
+alsO b6jtja az YR—be més016dik. Ekkor termégzetesen a paraméter
+O és 65535 közötti érték lehet csak. Ha a gépi ködü rut int az
+RTS helyett a JMP $9A76 utagltés zarja I e, akkor az USR függ—
+vény értéke az AC/YR regiszterpér utolö értéke lesz, béjtfordf—
+tott értelemben. Ä fentieket megvildgltja egy egyszeru Pé Ida:
+Gépi k6dü program:
+$2000 20 E4 9D   JSR   $9DE4   paraméter étvétele
+INY
+99 00 oc   STÄ   $OFIF.Y
+4C 76 9A   JMP   $9A76   ÄC/YR értékének visszaadåsa
+BASIC program:
+10   SCNCLR : X-O
+20   POKE 1281.0   R EFI   a cfm alsö f ele
+30   POKE 1282.32   REM   a cim felsö f ele
+40   X-X+USR(512)   REM   AC—ba 2. YR—be O kerül a rutin elött
+50   PRINT X   REM   az X az ÄC/YR utols6 értékét örzi
+60   END
+IX. BASIC RUTINOK BEÉPiTÉSE ASSEMBLY KORNYEZETBE
+Az e IOzö feladat fordftottja, amikor az assembly programunkba
+épitunk be BASIC rutinokat a ROM—MI. A BASIC rutinok hasznåla—
+ta nagy figyelmet kivån. Az alébbiakban bemutatjuk a CIRCLE
+utasités beépftését egy assembly programba. Az utasftås belépé—
+si cime $COIE (ld. függelék). A rutin meghfvdsa elött a verembe
+f r juk a BASIC mutatö értékét ($3B, $3C), majd a rajzolds utén
+visszaéllftjuk azt az eredeti értékre.
+A kör paraméterei: szfnköd I, középpont koordinétåi 100, 100 su—
+gar 50.
+100   sys 12224
+110
+. OPT P .00
+120
+Iao   LDA   BASIC MUTATO ELMENTESE
+140   PHA
+150   LDA
+160   PHA
+170   LDA   PAR   BASIC MUTATO ATfRASA
+180   STA
+190   LDA   PAR
+200   STA
+210   JSR   $0479   CHRGOT RUTIN HI VASA
+220   JSR   $COIE   CIRCLE RUTIN HfVASA
+230 PLA   Ä BASIC MUTATO VISSZÄALLITASA
+240   STA
+250   PLA
+260   STA
+270   RTS   RI-rr1N VÉGE
+280   PAR   ASC   "1.100.100,50"
+290   BYTE O
+300
+. END
+Fordftds utan a GRAPHIC : SYS 5632 paranccsal hivhatO a rut in.
+
+--- PAGE 33 ---
+-32.-
+x.   FELADATOK.   PROGRAMOK
+ADAIMOZGÄTO UTASITASOK
+1.   Töl tsük fel közvetlen cfmzéssel   az AC-t. majd a TEDMON MONI-
+TOR parancsainak alkalmazés&val nézzük meg az ÄC ég az SR
+tartalmåt! Pröbéljunk ki több értéket is (pl. $32.$00, $FF) !
+2.   Töl tsük fel közvetlen cfmzéssel az AC. az XR . az YR tårhe—
+lyeket. majd a T EDMON MONITOR R parancsot alka Imazzuk!
+3.   Ä T EDMON MONITOR M parancsåval f r junk hérom értéket a $3000—
+to I kezdödö helyekre, majd abszolult cfmzést alka Imazva a hé—
+rom értéket f r juk be rendre az AC az XR és az YR tårhelyekre!
+Ä mUvelet he Iyességéröl az R parancs a Ikalrnazdsåval gyözod—
+junk meg!
+4.   TO Itsuk fel közvetlen cfmzéssel az AC—t az XR és az YR tarhe—
+lyeket, majd i Iyen sorrendben f r juk ki azok tarta Imat a tar
+—tOl kezdödö összefüggö területére! A mi-ivelet helyessé—
+géröl most is a TEDMON MONITOR M parancsdval gyözodhetunk meg .
+5.   Az alåbbi program elemzésével töltsd ki a téblézatot! A (cim)
+jel zésü fejlécben azokat a cfmeket alkalmazd.   ame Iyekbe a
+program végrehajtåsa sorän érték kerul. Az értékadåsnak meg—
+felelö programsoroknél Ird be az értékeket a täbldzatba
+(cfmJ: AC   XR YR
+LDA
+STA   $57
+LDA
+STA   $58
+LDY   # $ 04
+LDA   41
+STA   $OEOO
+STA   ($57) , Y
+6.   Äz.utasftåsok tåblåzata a lap jan 61 Iftsd e IO a fenti program
+gépi k6djét! Ä megold&sodat a TEDMON MONITOR A assemblålö pa—
+rancséval el lenörizheted.
+7.   Az alåbbi gépi k6dü programot az utasitåsok tåblézata segftsé—
+gével frd ét assembly alakba (disassemblålds)! Megoldäsod he—
+Iyességéröl a szémftögép hasznd latdval gyözödj meg (T EDMON MO—
+N I TOR D parancs)! Mi a program funkci6ja?
+$2000   A9.41
+$2002   Ä2,FO
+$2004
+$2007   00
+8.   Add meg az alébbi BASIC program assembly megfelelöjét
+100 POKE 64, A
+110 POKE 32768, x
+120 POKE 64+X,A
+
+--- PAGE 34 ---
+-33.-
+9 . Az elözö feladatban közölt BASIC programhoz hasonlOan add meg
+az a18bbi assembly programrészlet megfelelöjét!
+LDX $CC
+STA $BB,X
+LDA $2000,Y
+LDA ($FF) . Y
+LDA ($FF,X)
+IO. Mel yik a hibés assembly utasftås az aldbbiak közül?
+LDX   $FF,X
+STX   $3000,x
+LDY   $BB.X
+LDA   ($DO,Y)
+LDX
+TXY
+Tys
+LDY   #$AOOB
+11. Add meg az   alébbi BASIC utasftégoknak   megfelelö assembly so—
+rokat !
+POKE
+POKE 65535.PEEK(15+X)
+POKE 32768+X.PEEK(X)
+12 . Hasznél juk a vererrmemöriét a következö feladatok megoldé3å—
+Cseréljük fel az YR ég az AC tartalmét!
+Helyezzük eI a verembe a BASIC szöveg mutat6 ($3B, $3C)
+értékét !
+Al I Itsuk vissza a BASIC szöveg mutat6t a veremböl !
+Ä vererrrnutatö értékét mentsük ki a nul léslap $DO reke—
+szébe !
+frjuk az ÄC—ba az 81 lapotregiszter értékét !
+13.Megfrand6 az az assembly programrészlet, amel lye I a szémftö—
+•gép AC. XR. YR. SR regiszterinek az értékei a verembe ment—
+hetöek a megadott sorrendben .
+14. Old juk meg az elözö feladat inverzét. azaz olvassuk ki a ve—
+r embe he lyezett értékeket! A be irås sorrendjét is az e lözö
+feladatban taléljuk.
+15. Mi az aldbbi assembly program funkciOja7
+$3000   PHA
+$3001   TXA
+$3002   PHA
+$3003   TYA
+$3004   TAX
+$3005   PLA
+$3006   TAY
+$3007   PLA
+$3008   BRK
+
+--- PAGE 35 ---
+-34 . —
+ÄRITMETIKÄI UTASfTASOK
+1.Äz alåbbi utasitésok   végrehajtåga utan mi   lesz az SR N és Z
+bitjének az értéke?
+LOX *$FF   LDY   LDY #$7F
+INX   STY $3000   INY
+DEC $3000
+2 .Növeljük meg az AC aktu61ig értékét eggyel! Az egyik megol—
+désban ne hasznål juk egyik indexregisztert sem. a rn6E31k meg—
+oldésban ezt a korIåtoz6 feltételt ne vegyük figyelembel.
+3. Ha a szåmftOgép elvégzi az ADC *$0A rnüveletet, akkor mi I esz
+az SR N, Z, C jelzöbitjeinek az értéke? Az összeadås elött az
+AC és a C bit értékei az aldbbiak voltak:
+AC-$00 C-O   b..   ÄC-$FF C-1   ÄC-$7F
+AC-$26 C-O   AC-$36 C-1   AC-$F6
+Hatårozd meg az ÄC üj értékét is!
+4. Old juk meg az elözö feladatot ügy is, hogy az elvégzendö mu—
+velet assembly utasftåsa SBC #$06 legyen!
+5. Mi I esz az AC ég az SR N. Z.C jelzöbi tek értéke az alåbbi
+assembly programok végrehajtésa   utån?
+LDA   LDA *$4D
+CLC   ADC #$4C
+ADC   BRK
+BRK
+LDA   d..   LDA #$FÄ
+CLC   SEC
+ADC   ADC #$5Ä
+BRK   BRK
+6. Mi az alåbbi assembly   programok   funkciOja?
+a..   LDX   LDA
+STX   STA
+LDX   LDA
+STX   SEI   STA   $DI
+LDA   SEC
+CLC   LDA
+ADC   SBC
+STA   $3000   STA
+LDA   LDA
+ADC   SBC
+STA   $3001   STÄ
+BRK   BRK
+7. Ird meg azt   az assembly programot. amelyik   osszeadja a 345
+és a 234 decimålis gzdmokat! Egy mésik program segltségével
+hatérozd meg a két szåm különbségét is!
+
+--- PAGE 36 ---
+-35.-
+LOGIKAI, ELTOLASI tnÄSfTASOK
+1 . Mi lesz az AC ég az SR N, Z bitjeinek az értéke az a16bbi mü—
+veletek elvégzége ut&n?
+a..   LDA *$37   LDA *$D2   LDA *$B7
+AND #$A3   ORA *$4C   EOR *$3D
+2. Végeztetsd el a sz6mftOgéppel a log ikai és,   a vagy, és a ki—
+zårO vagy mi-iveleteket a 247 és a 119 között   assembly progra—
+mokkal !
+3. A megfelelö log ikai müveletek alka Imazåsdval o Idd meg az
+aldbbi feladatokat!
+Ä $FF06 regiszter 3. bitjét töröl jük, a többi marad!
+b..   Nullézzuk az AC—t!
+AI Iitsuk I—re a $FF07 regiszter 3. bitjét!
+A $FFOF regiszter legmagasabb bitjét negél juk. a többit
+hagyjuk våltozatlanul !
+4 . Az alåbbi program elemzése ut&n töltsük ki az a 18bbi téblé—
+zat pontozott helyeit!
+utasftds   XR   $008C
+$2000   LDA
+TAX
+INX
+STX
+INC
+EOR   $41, x
+BRK
+5. Az alébbi   programok végrahajtåsa utan mi I esz az SR N ,   v,   z
+bi t je i nek   az értéke?
+LDA   b. , LDX *$7F   c. , LDY *$22
+STÄ   STX $DO   TY A
+BIT   LDA *$F7   INY
+ERK   BIT $DO   STY $DO
+BRK   BIT $DO
+BRK
+6. irjuk, meg azt az assembly programot, amel lye I a 24 decim6—
+I is szåmot 2—vel megszorozhat juk !
+7. Osszuk eI a 64 decimålis értéket kettövel! Az assembly prog—
+ramban az elt016si és/vagy forgatési utasltdsokat hasznél juk!
+8. Mi I esz az AC tar talma az alåbbi programok hatéséra?
+a..   $1FFE   LDA   $3000   LDA #$C9
+$2000   STA   $3002   CLC
+$2002   ASL   $3003   ROR
+$2003   CLC   $3004   ASL
+$2004   ADC   $3005   SEC
+$2006   ASL   $3006   LSR
+$2007   BRK   $3007   ROL
+$3008   BRK
+
+--- PAGE 37 ---
+-36.-
+öSSZEHASONLITO. FELTÉTELES   ELAGAZTATO.   UGRO vrASITASOK
+1 . El emezve a programokat.   töltsd ki a   tdblåzatok pontozott he—
+lye it!
+$2000   LDX   $2000   LDA $DO
+$2002   CPX   $3000   $2002   CMP *$3C
+$2005   BRK   $2004   BRK
+$3000   N   z   c   N   z   c
+$09
+2. Add meg az SR N, Z,   C   jelzöbitjeit. ha egy CMP utasitéssal
+összehasonl It juk egymåggal az alébbi két—két szåmot !
+128-t 127-el,   127-t 128-al,   128-at 128-al
+frd meg a feladatot megold6 assembly programokat is!
+3. Ä BASIC feladatok assembly megfelelöjét és az assembly sorok
+BASIC megfelelöjét Ird I e!
+IF AC-24 THEN GOTO (cima)   b..   CMP *$4Ä
+BCC (cimbl
+IF YR>-34 THEN GOTO (cimc)   CPX #$FD
+BEQ (cimd)
+IF XR<IOO THEN GOTO (cime)   CPY *$88
+BCS [cimfl
+4. A feltételes ugrés (JTASiTASét rendszerint egy összehasonl f to
+utasités elöz meg (val ame ly ik REGISZTER értékét hagonl it ja
+a megc fmzett OPERANDUS—hoz ég felül I r ja az SR va lame ly ik
+JELZöbitjét). Az alébbi tåb18zat elsö sordt segitségul ki—
+töltöttük. a többi belr&sa legyen a te feladatod! Egy utasi—
+tas csak egyszer szerepel a tåblézatban!
+UTÄSfTAS   UGRAS HA REGISZTER... OPERANDUS JELZö-ÉRTÉK
+BCS   nagyobb egyenlö   c   1
+BEQ
+nem egyenlö
+kisebb   c
+BMI
+N   o
+5. f rd meg azt az assembly programot .   ame I yik a nul léslapon
+szereplö e lsö o Iyan cfmet meghatérozza, ame lynek a tartalma
+128. A cimet f r juk be a verembe !
+6. frassuk ki a képernyöre az ABC betüit ügy. hogy minden ka—
+raktert egy—egy sz6köz vd laggzon eI egym6stOl !
+7. A $3000—$3040 térterületen tal&lhat6 $00 értékeket szémoljuk
+le, az eredményt frjuk be az XR—be! Mind a BASIC. mind az
+assemly programot készftsük eI !
+
+--- PAGE 38 ---
+-37
+8.11 lapitsd meg   az a 16bbi programok   funkci6jåt!
+$2000   LDX   b.   $3000   LDA   *$48
+$2002   LDY   $3002   STÄ   $2000
+$2004   LDÄ   $3000,x   $3005   LSR   $2000
+$2007   CMP   $3008   LDX   $2000
+$2009   BNE   $2040   $300B   CPX
+$200B   INX   $300D   BNE   $3005
+$200C   CPX   *$31   $300F   BCS   $3014
+$200E   BNE   $2004   $301 1   BRK
+$2010   BRK   $3012   LI)Y
+$3014   STY   $ODOO
+INY   $3017   JMP   $3011
+$2043   STY   $4000
+$2044   UMP   $200B
+9. A TEL)MON MONITOR A   parancsånak hasznä lata   sorän lemaradt a
+feliratr61 az utasitås operandusa. amelynek   belråsa a te fe—
+ladatod. Az SR mi Iyen bitål Idsénål tOrténik   az ugräs?
+$2000 DO 29 BNE $ ..   jelzo:...   értéke:.
+$2040 BO EB BCS $ ..   jelzö:...   értéke:
+c..   $200A 70 F5   jelzö:...   értéke:...
+IO.Äz   elOzö feladathoz hasonlöan 'elromlott a   TEDMON MONITOR A
+funkci6jånak ki jelzöje   Egészitsd k) a sorokat a jelzobi—
+tek nevének és értékének feltüntetésével együtt!
+$2000   BMI $206C   jelzö:...   értéke:...
+b..   $2040   $202B   jelzö: C   értéke:   1
+$20FO   jelzO : N értéke;
+11 . Szorozzuk Osse a 12—t 8—al. a szorzatot a $3000 c Imre taro I—
+juk let. A szorzåst ismételt összeadåsgal va I Ositsuk meg !
+12. Osszuk el a 49—t 15—el ! A hdnyados egész részét az XR—ben a
+maradékot az ÄC—ban taro I juk! Az osztast ismételt kivonéssal
+rel izål juk az assembly programunkban!
+13. Mi az alåbbi assembly programok funkc)öJa?
+$2000   LDX   b..   $2000   LOX
+$2002   LDA   $00.x   $2002   LDA   $00.x
+$2004   AND   $2004   AND
+$2006   BEQ   $2020   $2006   BNE   $2020
+$2008   INX   $2008   DEX
+$2009   BNE   $2002   $2009   BNE   $ 2002
+$200B   JMP   $2023   $200B   BRK
+$2020   STX   $3000   $2020   STX   $3000
+$2023   BRK   $2023   JMP   $ 200B
+14. Add meg az alåbbi BASIC programrészletnek megfelelO assembly
+programocskåt !
+2000   FOR Y- 255 TO O STEP -1
+2010   IF THEN AC-255 :END
+2020   NEXT Y
+2030   AC-O
+2040   END
+
+--- PAGE 39 ---
+—38. —
+15. Mi Iyen rnüveletet végeznek   az AC   tartalmån az   a16bbi assembly
+programok ?
+$3000   LDX   b..   $3000   LDX *$00
+$3002   ASL   $3002   LDY *$08
+$3003   ROR   $300'1   ROL
+$3005   DEX   $3005   BCC $3008
+$3006   BNE   $3002   $3007   INX
+$3008   LDA   $3008   DEY
+$300A   BRK   $3009   BNE $3004
+$300B   BRK
+16. frassuk ki a képernyöre a   szémftögép hi baüzeneteit! Ez ügy
+történik, hogy az XR—be a   soron következö hibaködot helyez—
+ve meghfvjuk a $8683—n kezdödo szubrutint.
+17. A ROM $818E cimétöl kezdve helyezkednek eI a BASIC kulcssza—
+vak. frassuk ki ezeket a képernyöre a $FFD2—töl kezdödö a l—
+program segftségével! Ez a szubrutln azt az ASCII jelet v i—
+szi ki a képernyö aktuålis helyére, amelynek a kOdja az AC—
+ban van a rutin hivésakor ( ld. KERNAL RUTINOK). A kulcssza—
+vak ki Irésånak az j e lenti a végét. hogy a tarterületröl be—
+olvasott érték $00 lesz.
+18. Ä $FFD2 cfmen kezdödö szubrutin segltségével frjuk ki a kép—
+ernyöre a szåmftögépünk grafikus jeleit!
+19. A képernyö utolsö e lötti sordban egy dlszftOsort szeretnénk
+elhelyezni, amelyik a felvål tva szereplo   karak—
+terekbol 61 1 . A képernyö bal   felso karakterhe lyének cime
+socoo.
+20. A képernyö tabuldtormezöinek e lsö karakterhe lye ire az ' A' ,
+az utoIsO helyeire a • Z' karaktereket irassuk k i!
+KERNÄL RUTINOK,BASIC RUTINOK HASZNALÄTA
+I . Ad juk meg az a låbbi BASIC programoknak megfelelo assembly
+megoldésokat. Hasznål juk a ROM KERNÄL rut in Jai közül a meg—
+fe lelöeket!
+100   REM a. feladat   100   REM b. feladat
+110   SCNCLR   110   SCNCLR
+120   INPUT A$   120   INPUT A$
+130   SCNCLR   130   OPEN 6.4, 7
+140   140   PRINT#6. AS
+150   FOR X-O TO 39 STEP 2   150   CLOSE 6
+160   PRINT TAB(X)   160   END
+170   NEXT X
+180   END
+Mi az egyeg programok funkciöja?
+2. A közölt mintaprogramoknak megfelelö BASIC programokat frd
+meg, csup&n az assembly IiBt8k alapjån!
+
+--- PAGE 40 ---
+a.. program   b.. program
+$2000   LDA   *$93   $2000   LDA
+$2002   JSR   $FFD2   $2002   JSR   $FFD2
+$2005   LDY   $2005   LDY
+$2007   JSR   $FFCF   $2007   JSR   $FFCF
+$200Ä   STA   $3000.Y   $200A   STÄ   $3000.Y
+$200D   INY   $200D   INY
+$200E   CMP   $200E   CMP
+$2010   BNE   $2007   $2010   BNE   $2007
+$2012   STY   $2FOO   $2012   STY   $2FOO
+$2015   LDA   #$93   $2015   LDA
+$2017   JSR   $FFD2   $2017   LDX
+$201A   LDX   $2019   LDY
+$201C   LDY   $2FOO   $201B   JSR   $FFBÄ
+$201F   DEY   $201E   LDA
+$2020   LDA   $3000,Y   $2020   JSR   $FFBD
+$2023   JSR   $FFD2   $2023   JSR   $FFCO
+$2026   DEY   $2026   LDX
+$2027   INX   $2028   JSR   $FFC9
+$2028   CPX   $2FOO   $202B   LDY
+$202B   BNE   $2020   $202D   LDA   $3000,Y
+$202D   RTS   $2030   JSR   $FFD2
+$2033   INY
+$2034   CPY   $2FOO
+$2037   BNE   $202D
+$2039   JSR   $FFCC
+$203B   LDA
+$203E   JSR   $FFC3
+$2041   BRK
+3.   Az aldbbi   programot   az ASS—16 assembler   rendszerprogranvnal
+fejlesztettük k i. Add meg a program funkci6jåt! Ird meg azt
+a BASIC programot, amelyik ugyanezt a feladatot old ja meg! Ä
+he ly szukössége miatt megosztottuk a   I apot .
+100   SYS 12224   250   JSR   SETNÄM
+110   .OPT P,OO   260   JSR   OPEN
+120   SETLFS   -$FFBÄ   270   LDX
+130   CLOSE   -$FFC3   280   JSR   CHKOUT
+140   SETNAM   -SFFBD   290   LDA
+150   OPEN   -$FFCO   300   JSR   CHROUT
+1•60   cHKour   -$FFC9   310   JSR   CLRCHN
+170   CLRCHN   -$FFCC   320   LDA
+180   CHROUT   -$FFD2   330   JSR   CLOSE
+190   340   RTS
+200   LDA   350
+. END
+210   LDX
+220   LDY
+230   JSR   SETLFS
+240   LDA
+4.   O Idd meg assembly nyelven   ig az alébbi   BASIC programot !
+100   INPUT Ä$
+110   OPEN 3.1, 1, "ADAT91"
+120   PRINT#3.Ä$
+130   CLOSE 3
+140   END
+
+--- PAGE 41 ---
+5.   Egy, a bil lentyüzetröl beadott szdrnmal osszuk el a négyzet—
+gyök kettöt! Haszndl juk a FAC—ot!
+6.   Egy, a bil lentyüzetröl beadott sz6rnhoz ad juk hozzå a kong—
+tanst !
+7.   Szårnitsuk ki egy egész szarn ötOdik hatvånyåt!
+8.   Ha tarozzuk meg egy természetes szdrn természetes k i tevöjü
+hatvånyånak értékét!
+9.   Allftsunk e lö 20 darab véletlen egégz szémot a (0; 9) inter—
+val lumban. Az aldbbi aritmetikai rutinokat célszerüen hasz—
+nd I hat juk a feladat mogolddsa sor6n:
+$Ä70E FÄC-RND(O)   $A162   FAC-IO*FÄC
+$A358 FAC-INT(FAC)   $Ä469   FAC > ASCII
+10. El emezzük az alåbbi programot!A pontozott vona I akra {r j!
+100   SYS 12224
+110   .OPT P. 00
+120
+130   LDY   ;CIKLUS VALTOZ6 KEZDöÉRTÉKÉNEK BEALLfTASA
+140   IDE   STY $EO
+150   JSR   $9A81   ; FAC   Y ARITMETIKÄI RUTIN
+160   LDA   ALSO CfME
+170   LDY
+180   JSR   $A072   RUTIN
+190   JSR   $AÄ77
+. ARIIYETIKAI RUTIN
+200   LDY   ; ELöKÉSZfTÉS
+210   JSR   $A469
+. ÄRIIYETIKAI RUTIN
+220   LDY
+230   INY
+240   CPY
+250   BNE   IDE
+260   RTS
+270
+. END
+II. Az aldbbi program a soros busz programozåsara mutat Pé Idét.
+Ä program elemzésekor 81 lapftgd meg   az 1/0 eszközt, az 1/0
+muvelet irényåt ég tårgydt! Most is   osztott frasmödot alkal—
+mazunk .
+100   SYS 12224   230   LDY
+110   .OPT P.OO   240   CIKLUS LDA SZOVEG.Y
+120   LISTEN   - $FFBI   250   CMP
+130   SECOND   - $FF93   260   BEQ VEGE
+140   C 1 OUT   - $FFD2   270   JSR CLOUT
+150   UNLS   - $FFAE   280   INY
+160   $2000   290   UMP CIKLUS
+170   LDA   300   VEGE LDA
+180   STÄ   $90   310   JSR CIOUT
+190   LDA   320   JSR UNLSN
+200   JSR   LISTEN   330   RTS
+210   LDA   340   SZOVEG . ASC   "MARIKÄO"
+220   JSR   SECOND
+meg   a programot   BASIC   nyelven is!
+
+--- PAGE 42 ---
+Xl. FuGGELÉK
+1. ALFANUMERIKUS KARÄKTEREK KÉPERNYo ASCII KODJÄI
+Ter Jedelmi korlétok mi att csak az un. a I fanumerikug karakterek
+kOdjait tartalmazza a tdblézatunk. Emlékeztetöül: a képernyöhöz
+rendelt memöria kezdöclme $OCOO, az utolsö båjt cime pedig
+$0FE7 .
+Ha egy karakterhely pozfciOi (sor, oszlop). ahol O < — gor < — 24
+és O < = oszlop < — 39, akkor a 3072+40 •sor+oszlop képlettel hatå—
+rozhatjuk meg az i Ileto helyhez tartoz6 cimet.
+JEL   KÉPK.   ASC   JEL   KÉPK .   JEL   KÉPK.
+$00   $40   T   $14   $54
+$01   $41   $55
+$02   $42   $16   $56
+$03   $43   w   $17   $57
+$04   $44   $18   $58
+$05   $45   $19   $59   $30   $30
+$06   $46   $31   $31
+$07   $47   $32   $32
+H   $08   $48   $51)   $33   $33
+$09   $49   SPC   $20   $20   $34   $34
+$21   $21   $35   $35
+SOB   $22   $22   $36   $36
+soc   $23   $23   $37   $37
+$41)   $24   $24   $38   $38
+$25   $25   $39   $39
+$26   $26
+$10   $50   $27   $27
+Q   $11   $51   $28   $28
+$12   $52   $29   $29
+$13   $53
+2. SZiNK6DOK
+LehetöségUnk van az egyes karakterek szfneit megvdlasztani. Min—
+den karakterhelynek a szfnmem6riåban egy—egy béjt felel meg. a—
+melynek az értéke megadja a karakter szinét, a vil log6st és az
+nverz meg jelenitést is. Az összefüggö szinmem6ria kezdöcfme
+az utolsö haszndlt båjt c Ime $0BE7. A gzfnrnem6ria egy
+båJtJånak jelentése:
+7. bit:   1   esetén vil logag bekapcsolva.
+O   esetén vil logds kikapcsolva
+4.—6. bit: a   fényero értéke (0—7)
+O. —3. bit: a   szfn ködya (0—15) az   a16bbi t 6b 16 zat szerint:
+C): fekete   l:fehér   2 : vöros   3: encién
+4: bibor   5:zöld   6: kék   7: sarga
+8: narancs   9 : barna   A: sdrgdszold   B:r6zsaszfn
+C:kékeszöld   D: vi ldgoskék   E: sötétkék   F:vilégoszöld
+
+--- PAGE 43 ---
+3. crrASiTASOK GÉPI KOWA
+cc   cc,X   cc.Y cccc cccc,X cccc.Y (cc.X)   (cc).Y   ) rnp   (cccc)
+69   65   75   61)
+AND   29   25   35   39   21
+ASL   06   16
+pcs
+BEQ
+BIT   24
+BMI   30
+BNE   DO
+BPL
+BRK   00
+BVS   70
+CLC
+CLD
+CLI   58
+CLV
+CMP   CD
+CPX   EO   EC
+CPY   co   cc
+DEC   CE   DE
+DEX
+DEY
+EOR   45   55
+INC   EE
+INX   Ed
+INY
+JMP
+JSR
+LDA   B5
+LDX   36
+BC
+LSR   46   56
+NOP
+ORA   09   05   15
+PHA
+PHP   08
+6B
+PLP
+ROL   26   36
+ROR   66   76
+RTI   40
+RTS   60
+SBC   ED   FD
+SEC
+SED
+SEI   78
+STA   95   99   91
+SIX   96
+STY
+TAX
+TAY
+TSX
+TXA
+TXS
+98
+
+--- PAGE 44 ---
+4.   AZ UTASITASOK HATASA   AZ ALLAPOMRF.GISZTER   BITJEIRE
+JELMÄGYÄRAZÄT :   1   a kérdéses flag értéke 1 1 esz
+0   a kérdéses flag értéke O I esz
+a kérdéseg f lag ålIIt6dik. értékét   a   rnUvel et
+eredménye hatårozza meg
+az utasftds hatåsdra a kérdéses flag   értéke nem
+véltozik
+MNE.   1   B   D   1   MNE.   1   1
+ADC   AND
+ASL   BCC
+BCS   BEQ
+BIT   BMI
+BNE   BPL
+BRK   BVC
+BVS   CLC
+CLD   CLI
+CLV   CMP
+CPX   CPY
+DEC   DEX
+DEY   EOR
+INC   INX
+INY   UMP
+USR   LDA
+L.DX   LDY
+LSR   NOP
+ORA   PHA
+PLP   ROL
+ROR   RTI
+RTS   SBC
+SEC   SED
+SEI   STA
+STX
+TAX   TAY
+TSX   TXA
+TXS   TYA
+
+--- PAGE 45 ---
+5. FONTOSABB MEMORIACIMEK
+NULLAS LAP   RENDSZERV&LTOZOI
+002B   - 002C   BASIC program kezdetének c Ime
+002D   - 002E   BASIC vd I tozök kezdetének c Ime
+002F -   0030   BASIC tömbök kezdetének cime
+0033   0034   füzérek kezdetének cime
+0037   - 0038   BASIC RAM felsö hatara
+0061   - 0066   a FAC területe
+0069   - 006E   az ARG terulete
+006F   ÄRG—FAC elöjelegyezés
+0090   az ST rendszervél tozö
+009B   a beviteli készülék szårna
+0099   a kiviteli készülék
+009D   - 009E   a program vége mutat6
+00A3   - OOA5   az Ora
+00D0 -   OOE8   szabad terület a programozöknak
+EGYÉB   CIMEK
+0100   - 01 FF   rendszer verem terulete
+0200 -   0258   input puffer
+02E4   karaktergeneråtor cirnének felsO   båJtja
+0300   - 0331   BASIC és KERNAL ugro vektorok
+0332   - 03F2   kazettapuffer
+0479   CHRGOT rutin belépési cime
+0527 -   0530   billentyuzet puffer
+0552 -   0558   CPU REGISZTEREK (PC, SR. XR,   YR. SP)
+05F5   - 06EB   szabad terület. ha nincs bövitO   program
+07FB   MONITOR RAM/ROM kapcs016
+07FE   - 07FF   nem haszndlt terUlet
+0800   - OBFF   szin memOna
+ocoo   - OFE7   képernyO memöria
+1000   - FCFF   BASIC RAM grafika meghivdsa   nélkul
+• KERNAL RUTINUK BELÉPÉSI POMrJA1
+FF81   CINT   FF84   IOINIT   FF87   RAWAS
+FFdA   RESTOR   FF8D   VECTOR   F'F90   SFXMSG
+FF93   SECOND   FF96   TALK   F F 99   METI'OP
+FF9C   MEMBOT   FF9F   SCNKEY   FFA2   S ETINO
+FFA5   ACPTR   FFÄ8   CIOUT   FFAB   UNTLK
+FFÄE   UNLSN   FFBI   LISTEN   FFB4   TALK
+FFB7   READST   FFBA   SETLFS   FFBD   SETNÄM
+FFCO   OPEN   FFC3   CLOSE   FFC6   CHKIN
+FFC9   CHKOUT   FFCC   CLRCHN   FFCF   CHRIN
+FFD2   CHROUT   FFD5   LOAD   FFD8   SAVE
+FFDB   SETTIM   FFDE   RDTIM   FFEI   STOP
+FFE4   GETIN   FFE7   CLALL   FFEA   UDTIM
+FFED   SCREEN   FFFO   PLOT   FFF3   IOBÄSE
+
+--- PAGE 46 ---
+—45 . —
+6. ARITMETIKÄI   RI-rr1NOK BELÉPÉSI CIMEI
+ADATATVITEL   FUGGVÉNYEK
+Ä281   FÄC-ÄRG   A2BE   FAC-SIN(FÄC)
+Ä291   ARG-FÄC   A2DD   FAC-ÄBS (FÄC)
+AODC   ROM   A358   FAC-INT(FAC)
+A107   ARG- (YA)   RAM   A5E4   NC-SQR (FAC)
+A221   FAC-(YA)   ROM   AA70   NC-COS (FAC)
+Ä21F   FÄC-(YÄ)   RAM   AA77   FÄC-SIN(FAC)
+Ä259   (YX)-FAC   RAM   FÄC-TÄN(FAC)
+9Ä81   Y a FAC-ba   ABIA   FÄC-ÄTN (FÄC)
+9DE4   FAC ÄY-ba   ÄOEI   NC-LOG (FAC)
+9A76   AY a FAC-ba   A70E   FAC-RND(O)
+A37F   ASCII a FAC-ba   Ä660   FAC-EXP(FAC)
+Ä469   FAC ASCII-be   AOIE   FAC-L.OG (FAC )
+MuVELETEK   ALLÄNDOK
+9E9E   FAC-ARG+FAC   9FFO   1
+9E9B   (RAM)   A179   10
+9E87   FÄC-ARG-FAC   98C6   32768
+A06C   (ROM)   Ä44E   100 . . ooo
+Ä627   FAC--FAC   A5Ä3   1/2
+A07B   FÄC-ARG*FAC   A014   -1/2
+A078   (RAM)   ÄAF6   1/4
+A162   FAC-IO*FÄC   9439
+Ä072   ( ROM)   AAEO
+A194   FAC- (YA)/FAC   (RAM)   AAE9
+A183   FAC-FAC/IO   AOOF   SQR(2)
+ASEE   FÄC-ARG ernelve a FÄC-ra   Ä00Ä   1/SQR(2)
+95F8   FAC-FÄC OR ARG   AOI 9   LN(2)
+95FB   FÄC-FAC AND ARG   E3Ä2   c 1984COMMODORE
+9469   FÄC-NOT FAC   CD32   ARE YOU SURE?
+A2EO   FAC   és (Y A) hasonl i tasa
+BASIC UTASITASOK BELÉPÉSI PONTJAI
+8CDA   END   ADCÄ   FOR   9294   NEXT   8DBO   DATA
+90EE'   INPUT*   9108   INPUT   969B   DIM   914F   READ
+8E7C   LET   8D4D   GOTO   BBBC   RUN   8DE1   IF
+8C9A   RESTORE   8D2C   GOSUB   8D83   RETURN   ON
+Ä7F3   LOAD   A7DE   SAVE   A7FO   VERIFY   9E12   POKE
+8FEO   PRINT*   9000   PRINT   8Ä98   CLR   A84D   OPEN
+A85Ä   CLOSE   90B8   GET   BEOB   ELSE   B849   SOUND
+B8BD   VOL   C5C3   GRAPHIC   B8D1   PAINT   B9D4   CHAR
+BAE2   BOX   COIE   CIRCLE   BD35   GSHÄPE   BE29   SSHAPE
+C4D9   DRAW   C50F   LOCATE   C51Ä   COLOR   C567   SCNCLR
+B557   DO   B603   LOOP   AE5Ä   DELETE   B729   KEY
+B42B   TRAP   B652   TRON   B655   TROFF   C8BC   DIRECTORY
+FF52   MONITOR   8A79   NEW   BEOB   REM   9A9D   DEF
+Ä7B5   sys   B5AC   EXIT   C5B8   SCALE   BAFF   LIST
+
+--- PAGE 47 ---
+—46 • —
+1.   Cmgler Zoltan   A Cornmodore 64 programozégänak gya—
+korlata 4. kotet
+Gépi k6dU programozås
+(SZAMALK, Bp. ,   1989.)
+2.   Babén Gåbor—   Gépi ködü programozås kezdöknek és
+Masa Istvan   haladöknak C 16 ég Plus/ 4   szårnitö—
+gépre
+(Novotrade Rt. ,   198B.)
+3.   Gdspär Dénes—   Ä Plus 4 belsO felépitése
+Gyenes Tamas   (Novotrade   1988.)
+4.   Erdös Istvan   Corrrnodore   Plus/4. C-16. C-116   ROM
+lista
+(LSI, Bp..   1986.)
+5.   Vadnai   Szabo I cg   Cornrnodore Plus/ 4 programoz6i   zseb—
+könyv
+(Novotrade Rt. ,   1986.)
+6.   W. BESEhrrHÄL-   Plus/ 4 kézikönyv az Osszes tudniva—
+J. Muus   I Ova I
+(Novotrade Rt..   Bp.,   1989.)
+7.   Obädovics J.   Gyu I a   Szåmitåstechnika C 64
+(Novotrade Rt. .   Bp..   1989.)
+8.   Varga Antal   C 16, Plug/ 4 programoz6i utrnutat6
+(Novotrade Rt. ,   Bp.,   1987.)
+9.   Farkas Zol t6n   Commodore 64 fi le—kezelés és
+BSI int Baldzs   input—output
+(LSI, Bp..   1988.)

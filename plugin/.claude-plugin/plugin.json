@@ -1,0 +1,9 @@
+{
+  "name": "plus4-assembly-expert",
+  "version": "0.1.0",
+  "description": "Commodore Plus/4 / C16 (264 family) assembly expert with a bundled offline mirror of the Plus/4 World Encyclopedia: TED registers, memory map, KERNAL, BASIC 3.5, 7501/8501 CPU, Kick Assembler defaults.",
+  "author": {
+    "name": "Zsolt Tarczali"
+  },
+  "keywords": ["plus4", "plus/4", "c16", "c116", "264", "ted", "7501", "8501", "6502", "assembly", "commodore", "kick-assembler"]
+}

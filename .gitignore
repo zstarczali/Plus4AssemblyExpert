@@ -1,0 +1,8 @@
+knowledge/sources/plus4encyclopedia/raw/
+knowledge/sources/pdfs/ocr_work/
+__pycache__/
+*.log
+plugin/knowledge/
+
+# original book scans (530 MB, two files > 100 MB); originals live in iCloudDrive\Plus4
+knowledge/sources/pdfs/*.pdf
